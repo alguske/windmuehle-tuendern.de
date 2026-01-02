@@ -1,7 +1,7 @@
 export default {
   footer: {
     association: 'Asociación Molino de Viento Tündern',
-    copyright: '© 2025 Asociación Molino de Viento Tündern',
+    copyright: '© 2026 Asociación Molino de Viento Tündern',
     builtBy: 'Desarrollado por',
     links: {
       donate: { text: 'Donar', href: '/es/spenden' },

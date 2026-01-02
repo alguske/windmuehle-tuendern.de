@@ -1,7 +1,7 @@
 export default {
   footer: {
     association: 'Windmill Tündern Association',
-    copyright: '© 2025 Windmill Tündern Association',
+    copyright: '© 2026 Windmill Tündern Association',
     builtBy: 'Developed by',
     links: {
       donate: { text: 'Donate', href: '/en/spenden' },
