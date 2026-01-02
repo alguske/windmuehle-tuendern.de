@@ -98,14 +98,12 @@ img {
 }
 
 /* ================================
-   SEASONAL BANNER (Christmas) - Parallax Effect
+   SEASONAL BANNER - Dynamic Backgrounds for German Public Holidays
    ================================ */
-.section-seasonal,
-.section-seasonal:hover,
-.section-seasonal:visited,
-.section-seasonal:active {
+.section-seasonal {
+  --seasonal-bg: url('/imgs/bilder/windmill-7.jpeg');
   display: block;
-  background: url('/imgs/winter/windmuelle-snow1.jpg') center center / cover no-repeat fixed;
+  background: var(--seasonal-bg) center center / cover no-repeat fixed;
   padding: 5rem 1rem;
   text-align: center;
   text-decoration: none !important;
@@ -114,6 +112,7 @@ img {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   position: relative;
+  min-height: 200px;
 }
 
 .section-seasonal::before {
@@ -127,9 +126,7 @@ img {
   transition: background 0.3s ease;
 }
 
-.section-seasonal:hover::before {
-  background: rgba(0, 0, 0, 0.25);
-}
+/* Removed hover effect since banner is no longer clickable */
 
 .seasonal-banner {
   max-width: 900px;

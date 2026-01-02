@@ -10,8 +10,15 @@ export default {
     }
   },
   home: {
-    christmasGreeting: '🎄 Frohe Weihnachten vom Förderverein! 🎄',
-    christmasLink: '/aktuelles/2025-12-weihnachten',
+    // Seasonal greetings for German public holidays
+    newyearGreeting: '🎊 Frohes neues Jahr {year}! 🎊',
+    karfreitagGreeting: '🐣 Frohe Ostern! 🐣',
+    osternGreeting: '🐣 Frohe Ostern! 🐣',
+    tagDerArbeitGreeting: '🌷 Schönen Tag der Arbeit! 🌷',
+    himmelfahrtGreeting: '☀️ Frohe Himmelfahrt! ☀️',
+    pfingstenGreeting: '🌸 Frohe Pfingsten! 🌸',
+    einheitGreeting: '🇩🇪 Tag der Deutschen Einheit 🇩🇪',
+    weihnachtenGreeting: '🎄 Frohe Weihnachten! 🎄',
     heroTitle: 'Förderverein Windmühle Tündern e.V.',
     heroSubtitle: 'Geschichte bewahren. Gemeinsam.',
     heroText: 'Seit 1883 ein Wahrzeichen – mit Ihrer Hilfe auch für die Zukunft.',

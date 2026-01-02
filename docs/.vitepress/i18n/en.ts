@@ -10,8 +10,15 @@ export default {
     }
   },
   home: {
-    christmasGreeting: '🎄 Merry Christmas from the Association! 🎄',
-    christmasLink: '/en/aktuelles/2025-12-weihnachten',
+    // Seasonal greetings for German public holidays
+    newyearGreeting: '🎊 Happy New Year {year}! 🎊',
+    karfreitagGreeting: '🐣 Happy Easter! 🐣',
+    osternGreeting: '🐣 Happy Easter! 🐣',
+    tagDerArbeitGreeting: '🌷 Happy Labour Day! 🌷',
+    himmelfahrtGreeting: '☀️ Happy Ascension Day! ☀️',
+    pfingstenGreeting: '🌸 Happy Whitsun! 🌸',
+    einheitGreeting: '🇩🇪 German Unity Day 🇩🇪',
+    weihnachtenGreeting: '🎄 Merry Christmas! 🎄',
     heroTitle: 'Windmill Tündern Association',
     heroSubtitle: 'Preserving history. Together.',
     heroText: 'A landmark since 1883 – with your help, for the future too.',

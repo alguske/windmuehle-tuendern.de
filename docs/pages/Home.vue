@@ -1,15 +1,26 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useT } from '../.vitepress/i18n'
+import { getSeasonalInfo, getCurrentYear } from '../utils/holidays'
+
 const t = useT()
 
-const isChristmasSeason = computed(() => {
-  const now = new Date()
-  const month = now.getMonth()
-  const day = now.getDate()
-  // Dec 15-31 (month 11, day >= 15) OR Jan 1-7 (month 0, day <= 7)
-  return (month === 11 && day >= 15) || (month === 0 && day <= 7)
+const seasonalInfo = computed(() => getSeasonalInfo())
+
+const seasonalGreeting = computed(() => {
+  const info = seasonalInfo.value
+  if (!info.key) return null
+
+  // For New Year, dynamically include the year
+  if (info.key === 'newyear') {
+    const greeting = t(`home.${info.key}Greeting`)
+    return greeting.replace('{year}', String(getCurrentYear()))
+  }
+
+  return t(`home.${info.key}Greeting`)
 })
+
+const seasonalBackground = computed(() => seasonalInfo.value.background)
 </script>
 
 <template>
@@ -23,11 +34,11 @@ const isChristmasSeason = computed(() => {
     </div>
   </div>
 
-  <a v-if="isChristmasSeason" :href="t('home.christmasLink')" class="section-seasonal">
-    <div class="seasonal-banner">
-      {{ t('home.christmasGreeting') }}
+  <div class="section-seasonal" :style="{ '--seasonal-bg': `url(${seasonalBackground})` }">
+    <div v-if="seasonalGreeting" class="seasonal-banner">
+      {{ seasonalGreeting }}
     </div>
-  </a>
+  </div>
 
   <section class="section-light">
     <div class="home-intro">

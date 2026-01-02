@@ -10,8 +10,15 @@ export default {
     }
   },
   home: {
-    christmasGreeting: '🎄 ¡Feliz Navidad de la Asociación! 🎄',
-    christmasLink: '/es/aktuelles/2025-12-weihnachten',
+    // Seasonal greetings for German public holidays
+    newyearGreeting: '🎊 ¡Feliz Año Nuevo {year}! 🎊',
+    karfreitagGreeting: '🐣 ¡Felices Pascuas! 🐣',
+    osternGreeting: '🐣 ¡Felices Pascuas! 🐣',
+    tagDerArbeitGreeting: '🌷 ¡Feliz Día del Trabajo! 🌷',
+    himmelfahrtGreeting: '☀️ ¡Feliz Día de la Ascensión! ☀️',
+    pfingstenGreeting: '🌸 ¡Feliz Pentecostés! 🌸',
+    einheitGreeting: '🇩🇪 Día de la Unidad Alemana 🇩🇪',
+    weihnachtenGreeting: '🎄 ¡Feliz Navidad! 🎄',
     heroTitle: 'Asociación Molino de Viento Tündern',
     heroSubtitle: 'Preservar la historia. Juntos.',
     heroText: 'Un monumento desde 1883 – con su ayuda, también para el futuro.',
