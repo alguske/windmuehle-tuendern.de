@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useT } from '../.vitepress/i18n'
 const t = useT()
+const copyright = computed(() => `© ${new Date().getFullYear()} ${t('footer.association')}`)
 </script>
 
 <template>
   <footer class="site-footer">
     <div class="footer-content">
-      <span class="footer-copyright">{{ t('footer.copyright') }}</span>
+      <span class="footer-copyright">{{ copyright }}</span>
       <span class="footer-separator">·</span>
       <span class="footer-credits">
         {{ t('footer.builtBy') }}
