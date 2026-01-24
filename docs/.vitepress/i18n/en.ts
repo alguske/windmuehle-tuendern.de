@@ -145,6 +145,21 @@ export default {
   },
   newsPosts: [
     {
+      id: '2026-01-kupfer',
+      title: 'Copper Cladding on the Fantail Exit',
+      date: 'January 2026',
+      excerpt: 'Since the painter cannot work in this cold weather, the time is being used to clad the fantail exit with copper sheets.',
+      image: '/imgs/maler/windmuelle24Jan26-1.jpg',
+      link: '/en/aktuelles/2026-01-kupfer',
+      body: `<p>Since the painter cannot work in this cold weather, the time is being used to clad the exit to the fantail with copper sheets.</p>
+<p>The shiny copper sheets not only protect the exit from the elements, but also give the mill a particularly elegant appearance.</p>
+<div class="post-images">
+  <img src="/imgs/maler/windmuelle24Jan26-1.jpg" alt="Copper cladding on the fantail exit" />
+  <img src="/imgs/maler/windmuelle24Jan26-2.jpg" alt="Copper sheets on the windmill" />
+</div>
+<p>As soon as the weather permits, the painting work will continue.</p>`
+    },
+    {
       id: '2025-12-weihnachten',
       title: 'Merry Christmas from the Association!',
       date: 'December 2025',

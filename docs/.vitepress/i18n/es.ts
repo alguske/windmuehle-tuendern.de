@@ -145,6 +145,21 @@ export default {
   },
   newsPosts: [
     {
+      id: '2026-01-kupfer',
+      title: 'Revestimiento de cobre en la salida a la rosa de los vientos',
+      date: 'Enero 2026',
+      excerpt: 'Como el pintor no puede trabajar con este frío, se aprovecha el tiempo para revestir la salida a la rosa de los vientos con láminas de cobre.',
+      image: '/imgs/maler/windmuelle24Jan26-1.jpg',
+      link: '/es/aktuelles/2026-01-kupfer',
+      body: `<p>Como el pintor no puede trabajar con este frío, se aprovecha el tiempo para revestir la salida a la rosa de los vientos con láminas de cobre.</p>
+<p>Las brillantes láminas de cobre no solo protegen la salida de las inclemencias del tiempo, sino que también le dan al molino un aspecto especialmente elegante.</p>
+<div class="post-images">
+  <img src="/imgs/maler/windmuelle24Jan26-1.jpg" alt="Revestimiento de cobre en la salida a la rosa de los vientos" />
+  <img src="/imgs/maler/windmuelle24Jan26-2.jpg" alt="Láminas de cobre en el molino" />
+</div>
+<p>En cuanto el tiempo lo permita, continuarán los trabajos de pintura.</p>`
+    },
+    {
       id: '2025-12-weihnachten',
       title: '¡Feliz Navidad de la Asociación!',
       date: 'Diciembre 2025',

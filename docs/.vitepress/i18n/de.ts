@@ -145,6 +145,21 @@ export default {
   },
   newsPosts: [
     {
+      id: '2026-01-kupfer',
+      title: 'Kupferverkleidung am Ausgang zur Windrose',
+      date: 'Januar 2026',
+      excerpt: 'Da der Maler bei diesem kalten Wetter noch nicht arbeiten kann, wird die Zeit genutzt, um den Ausgang zur Windrose mit Kupferblechen zu verkleiden.',
+      image: '/imgs/maler/windmuelle24Jan26-1.jpg',
+      link: '/aktuelles/2026-01-kupfer',
+      body: `<p>Da der Maler bei diesem kalten Wetter noch nicht arbeiten kann, wird die Zeit genutzt, um den Ausgang zur Windrose mit Kupferblechen zu verkleiden.</p>
+<p>Die glänzenden Kupferbleche schützen den Ausgang nicht nur vor der Witterung, sondern verleihen der Mühle auch ein besonders edles Aussehen.</p>
+<div class="post-images">
+  <img src="/imgs/maler/windmuelle24Jan26-1.jpg" alt="Kupferverkleidung am Ausgang zur Windrose" />
+  <img src="/imgs/maler/windmuelle24Jan26-2.jpg" alt="Kupferbleche an der Windmühle" />
+</div>
+<p>Sobald das Wetter es zulässt, werden die Malerarbeiten fortgesetzt.</p>`
+    },
+    {
       id: '2025-12-weihnachten',
       title: 'Frohe Weihnachten vom Förderverein!',
       date: 'Dezember 2025',
