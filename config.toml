@@ -32,7 +32,7 @@ home_mission_text = "Wir sind eine engagierte Gemeinschaft von Denkmalschützern
 home_news_title = "Aktuelles"
 home_all_news = "Alle Neuigkeiten"
 home_achieved_title = "Bereits erreicht"
-home_achieved_items = "<li>Sicherung der Grundstruktur</li><li>Restaurierung des Mahlwerks</li><li>Erneuerung der Dachkonstruktion</li><li>Einrichtung eines kleinen Museums</li>"
+home_achieved_items = "<li>Erstellung eines Sachverständigengutachtens über Umfang und Kosten</li><li>Förderzusagen von <strong>EU</strong>, <strong>Stiftung Denkmalschutz</strong>, <strong>Stadt Hameln</strong> und <strong>Landkreis Hameln-Pyrmont</strong></li><li>Ausschreibung und Angebote für die Sanierungsarbeiten</li><li>Einholen von Angeboten für den Austausch der Mühlenflügel</li><li>Abnahme der alten Flügel</li><li>Einrüsten der Mühle</li><li>Entfernung des alten Putzes und Ausbessern schadhafter Mauerstellen</li><li>Neuer Putz</li><li><strong>Januar 2026:</strong> Neuer Anstrich</li><li><strong>März 2026:</strong> Anbringen der neuen Flügel</li>"
 
 home_gallery_1 = "Erhalt und Sicherung der historischen Bausubstanz"
 home_gallery_2 = "Führungen & Veranstaltungen zur Mühlengeschichte"
@@ -99,7 +99,7 @@ home_mission_text = "We are a dedicated community of heritage preservationists, 
 home_news_title = "Latest News"
 home_all_news = "All news"
 home_achieved_title = "Already Achieved"
-home_achieved_items = "<li>Securing the basic structure</li><li>Restoration of the milling mechanism</li><li>Renewal of the roof construction</li><li>Establishment of a small museum</li>"
+home_achieved_items = "<li>Preparation of an expert report on scope and costs</li><li>Funding commitments from <strong>EU</strong>, <strong>Heritage Conservation Foundation</strong>, <strong>City of Hameln</strong> and <strong>Hameln-Pyrmont District</strong></li><li>Tendering and offers for the restoration work</li><li>Offer for replacing the mill's blades</li><li>Remove the old blades</li><li>Scaffold the mill</li><li>Remove the old plaster and repair damaged masonry</li><li>New plaster</li><li><strong>January 2026:</strong> New coat of paint</li><li><strong>March 2026:</strong> Install the new blades</li>"
 
 home_gallery_1 = "Preservation and safeguarding of the historic structure"
 home_gallery_2 = "Tours & events about the mill's history"
@@ -166,7 +166,7 @@ home_mission_text = "Somos una comunidad dedicada de conservadores del patrimoni
 home_news_title = "Noticias"
 home_all_news = "Todas las noticias"
 home_achieved_title = "Logros"
-home_achieved_items = "<li>Asegurar la estructura básica</li><li>Restauración del mecanismo de molienda</li><li>Renovación de la estructura del techo</li><li>Establecimiento de un pequeño museo</li>"
+home_achieved_items = "<li>Elaboración de un informe pericial sobre el alcance y los costes</li><li>Compromisos de financiación de la <strong>UE</strong>, la <strong>Fundación de Protección del Patrimonio</strong>, la <strong>ciudad de Hameln</strong> y el <strong>distrito de Hameln-Pyrmont</strong></li><li>Licitación y ofertas para los trabajos de restauración</li><li>Oferta para sustituir las aspas del molino</li><li>Retirada de las aspas antiguas</li><li>Andamiaje del molino</li><li>Eliminación del yeso viejo y reparación de los muros dañados</li><li>Nuevo revestimiento</li><li><strong>Enero 2026:</strong> Nueva capa de pintura</li><li><strong>Marzo 2026:</strong> Colocación de las nuevas aspas</li>"
 
 home_gallery_1 = "Conservación y seguridad de la estructura histórica"
 home_gallery_2 = "Visitas guiadas y eventos sobre la historia del molino"
