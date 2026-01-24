@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% if page.path is starting_with("/en/") %}
+    {% set lang = "en" %}
+{% elif page.path is starting_with("/es/") %}
+    {% set lang = "es" %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<div class="page-wrapper">
+    <header class="page-header">
+        <h1>{{ trans(key="gallery_title", lang=lang) }}</h1>
+        <p>{{ trans(key="gallery_subtitle", lang=lang) }}</p>
+    </header>
+
+    <div class="gallery-intro">
+        <p>{{ trans(key="gallery_intro", lang=lang) | safe }}</p>
+    </div>
+
+    <!-- Renovation 2025 -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_renovation_title", lang=lang) }}</h3>
+        <div class="grid-gallery" data-lightbox-gallery>
+            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle1.jpg" alt="{{ trans(key='gallery_renovation_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle2.jpg" alt="{{ trans(key='gallery_renovation_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle3.jpg" alt="{{ trans(key='gallery_renovation_alt', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Reconstruction -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_reconstruction_title", lang=lang) }}</h3>
+        <div class="grid-gallery" data-lightbox-gallery>
+            <img src="/imgs/scaffolding/scaffolding1.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/scaffolding/scaffolding2.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/scaffolding/scaffolding3.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/scaffolding/scaffolding4.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/scaffolding/scaffolding5.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="{{ trans(key='gallery_reconstruction_title', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Blade Removal 2025 -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_blades_title", lang=lang) }}</h3>
+        <div class="blade-gallery" data-lightbox-gallery>
+            <img src="/imgs/blade-removal/blade-removal1.jpeg" alt="{{ trans(key='gallery_blades_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/blade-removal/blade-removal2.jpeg" alt="{{ trans(key='gallery_blades_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/blade-removal/blade-removal3.jpeg" alt="{{ trans(key='gallery_blades_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/blade-removal/blade-removal4.jpeg" alt="{{ trans(key='gallery_blades_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/blade-removal/blade-removal5.jpeg" alt="{{ trans(key='gallery_blades_alt', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Whit Monday -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_whit_title", lang=lang) }}</h3>
+        <div class="grid-gallery" data-lightbox-gallery>
+            <img src="/imgs/pfingstmontag/pfingstmontag1.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/pfingstmontag/pfingstmontag2.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/pfingstmontag/pfingstmontag3.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/pfingstmontag/pfingstmontag4.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/pfingstmontag/pfingstmontag5.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+            <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="{{ trans(key='gallery_whit_title', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Morning and Evening Moods -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_moods_title", lang=lang) }}</h3>
+        <div class="grid-gallery" data-lightbox-gallery>
+            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-3.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-4.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-5.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-7.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='gallery_moods_alt', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Historical Photos -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_historic_title", lang=lang) }}</h3>
+        <div class="scroll-gallery" data-lightbox-gallery>
+            <img src="/imgs/historisch/historisch1.jpeg" class="scroll-img" alt="{{ trans(key='gallery_historic_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/historisch/historisch2.jpeg" class="scroll-img" alt="{{ trans(key='gallery_historic_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/historisch/historisch3.jpeg" class="scroll-img" alt="{{ trans(key='gallery_historic_alt', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Fire and Reconstruction -->
+    <section class="gallery-section">
+        <h3>{{ trans(key="gallery_fire_title", lang=lang) }}</h3>
+        <div class="scroll-gallery" data-lightbox-gallery>
+            <img src="/imgs/brand/brand1.jpeg" class="scroll-img" alt="{{ trans(key='gallery_fire_alt', lang=lang) }}" loading="lazy">
+            <img src="/imgs/brand/brand2.jpeg" class="scroll-img" alt="{{ trans(key='gallery_fire_alt', lang=lang) }}" loading="lazy">
+        </div>
+    </section>
+</div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% if section is defined %}
+    {% if section.path is starting_with("/en/") %}{% set lang = "en" %}{% elif section.path is starting_with("/es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+{% elif page is defined %}
+    {% if page.path is starting_with("/en/") %}{% set lang = "en" %}{% elif page.path is starting_with("/es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/main.css">
+
+    {% include "partials/seo-head.html" %}
+    {% include "partials/hreflang.html" %}
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', { clientKey: '{{ config.extra.cronitor_key }}' });
+    </script>
+
+    {% block head %}{% endblock head %}
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">
+        {{ trans(key="accessibility_skip_to_content", lang=lang) }}
+    </a>
+
+    {% include "partials/header.html" %}
+
+    <main id="main-content">
+        {% block content %}{% endblock content %}
+    </main>
+
+    {% include "partials/footer.html" %}
+
+    <!-- Lightbox modal -->
+    {% include "partials/lightbox.html" %}
+
+    <!-- JavaScript -->
+    <script src="/js/holidays.js"></script>
+    <script src="/js/lightbox.js"></script>
+    <script src="/js/accessibility.js"></script>
+    <script src="/js/mobile-menu.js"></script>
+    <script src="/js/back-to-top.js"></script>
+
+    {% block scripts %}{% endblock scripts %}
+</body>
+</html>

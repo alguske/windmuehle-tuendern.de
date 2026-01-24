@@ -1,0 +1,250 @@
+# Zola configuration for Windmühle Tündern website
+# Trilingual site: German (default), English, Spanish
+
+base_url = "https://windmuehle-tuendern.de"
+title = "Windmühle Tündern"
+description = "Förderverein zur Erhaltung der historischen Windmühle in Tündern."
+default_language = "de"
+compile_sass = true
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+[markdown]
+smart_punctuation = true
+
+# ===========================================
+# GERMAN (Default Language) Translations
+# ===========================================
+[translations]
+footer_association = "Förderverein Windmühle Tündern e.V."
+footer_built_by = "Entwickelt von"
+footer_donate = "Spenden"
+footer_news = "Aktuelles"
+footer_imprint = "Impressum"
+
+home_hero_title = "Förderverein Windmühle Tündern e.V."
+home_hero_subtitle = "Geschichte bewahren. Gemeinsam."
+home_hero_text = "Seit 1883 ein Wahrzeichen – mit Ihrer Hilfe auch für die Zukunft."
+home_hero_cta = "Jetzt unterstützen"
+
+home_mission_title = "Unsere Mission"
+home_mission_text = "Wir sind eine engagierte Gemeinschaft von Denkmalschützern, Handwerkern und Mühlenliebhabern, die sich der Bewahrung dieses <strong>einzigartigen Kulturerbes</strong> verschrieben hat. Die <strong>Windmühle Tündern</strong>, erbaut 1883, ist eines der letzten Zeugnisse traditioneller Mühlenbaukunst in unserer Region."
+home_news_title = "Aktuelles"
+home_all_news = "Alle Neuigkeiten"
+home_achieved_title = "Bereits erreicht"
+home_achieved_items = "<li>Sicherung der Grundstruktur</li><li>Restaurierung des Mahlwerks</li><li>Erneuerung der Dachkonstruktion</li><li>Einrichtung eines kleinen Museums</li>"
+
+home_gallery_1 = "Erhalt und Sicherung der historischen Bausubstanz"
+home_gallery_2 = "Führungen & Veranstaltungen zur Mühlengeschichte"
+home_gallery_3 = "Integration der Mühle in den lokalen Tourismus"
+home_gallery_4 = "Kulturveranstaltungen und Workshops"
+
+home_cta_quote = '„Wer die Vergangenheit bewahrt, gestaltet die Zukunft."'
+home_cta_message = "Helfen Sie uns, dieses einzigartige Kulturdenkmal für kommende Generationen zu erhalten."
+home_cta_button = "Jetzt unterstützen"
+
+blog_index_title = "Aktuelles"
+blog_index_subtitle = "Hier finden Sie die neuesten Nachrichten rund um die Windmühle Tündern."
+blog_back_to_list = "← Zurück zu Aktuelles"
+blog_prev_post = "← Vorheriger"
+blog_next_post = "Nächster →"
+blog_read_more = "Weiterlesen →"
+blog_support_message = "Gefällt Ihnen dieser Beitrag? Unterstützen Sie die Erhaltung der historischen Windmühle Tündern."
+blog_support_cta = "Jetzt unterstützen →"
+
+gallery_title = "Bilder der Windmühle"
+gallery_subtitle = "Bilder und Impressionen"
+gallery_intro = "Entdecken Sie die historische Windmühle Tündern in Bildern – von der behutsamen Restaurierung über bewegende historische Aufnahmen bis hin zu den ruhigen Momenten in der Morgen- und Abendstimmung. Jede Aufnahme erzählt ein Stück der Geschichte dieses einzigartigen Kulturdenkmals."
+gallery_renovation_title = "Sanierung 2025"
+gallery_renovation_alt = "Sanierungsarbeiten an der Windmühle Tündern 2025"
+gallery_blades_title = "Abbau der Flügel 2025"
+gallery_blades_alt = "Abbau der Flügel an der Windmühle Tündern 2025"
+gallery_reconstruction_title = "Im Wiederaufbau"
+gallery_whit_title = "Pfingstmontag an der Mühle"
+gallery_moods_title = "Morgen- und Abendstimmung"
+gallery_moods_alt = "Windmühle Tündern in Morgen- und Abendstimmung"
+gallery_historic_title = "Historische Aufnahmen"
+gallery_historic_alt = "Historische Aufnahme der Windmühle Tündern"
+gallery_fire_title = "Brand und Wiederaufbau"
+gallery_fire_alt = "Brand und Wiederaufbau der Windmühle Tündern 1980"
+
+accessibility_skip_to_content = "Zum Inhalt springen"
+accessibility_font_smaller = "Kleinere Schrift"
+accessibility_font_normal = "Normale Schrift"
+accessibility_font_larger = "Größere Schrift"
+
+# ===========================================
+# ENGLISH Translations
+# ===========================================
+[languages.en]
+title = "Windmill Tündern"
+description = "Association dedicated to preserving the historic windmill in Tündern."
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+[languages.en.translations]
+footer_association = "Windmill Tündern Association"
+footer_built_by = "Developed by"
+footer_donate = "Donate"
+footer_news = "News"
+footer_imprint = "Imprint"
+
+home_hero_title = "Windmill Tündern Association"
+home_hero_subtitle = "Preserving history. Together."
+home_hero_text = "A landmark since 1883 – with your help, for the future too."
+home_hero_cta = "Support us"
+
+home_mission_title = "Our Mission"
+home_mission_text = "We are a dedicated community of heritage preservationists, craftsmen, and mill enthusiasts committed to preserving this <strong>unique cultural heritage</strong>. The <strong>Tündern Windmill</strong>, built in 1883, is one of the last witnesses of traditional milling craftsmanship in our region."
+home_news_title = "Latest News"
+home_all_news = "All news"
+home_achieved_title = "Already Achieved"
+home_achieved_items = "<li>Securing the basic structure</li><li>Restoration of the milling mechanism</li><li>Renewal of the roof construction</li><li>Establishment of a small museum</li>"
+
+home_gallery_1 = "Preservation and safeguarding of the historic structure"
+home_gallery_2 = "Tours & events about the mill's history"
+home_gallery_3 = "Integration of the mill into local tourism"
+home_gallery_4 = "Cultural events and workshops"
+
+home_cta_quote = "\"Those who preserve the past shape the future.\""
+home_cta_message = "Help us preserve this unique cultural monument for generations to come."
+home_cta_button = "Support us now"
+
+blog_index_title = "News"
+blog_index_subtitle = "Here you will find the latest news about the Tündern windmill."
+blog_back_to_list = "← Back to News"
+blog_prev_post = "← Previous"
+blog_next_post = "Next →"
+blog_read_more = "Read more →"
+blog_support_message = "Did you enjoy this post? Support the preservation of the historic Tündern windmill."
+blog_support_cta = "Support us →"
+
+gallery_title = "Pictures of the Windmill"
+gallery_subtitle = "Pictures and impressions"
+gallery_intro = "Discover the historic Tündern windmill in pictures – from careful restoration to moving historical photographs and quiet moments in the morning and evening light. Each image tells a piece of the story of this unique cultural monument."
+gallery_renovation_title = "Renovation 2025"
+gallery_renovation_alt = "Renovation works at Tündern windmill 2025"
+gallery_blades_title = "Removal of the blades 2025"
+gallery_blades_alt = "Removal of blades at Tündern windmill 2025"
+gallery_reconstruction_title = "Reconstruction process"
+gallery_whit_title = "Whit Monday at the mill"
+gallery_moods_title = "Morning and evening moods"
+gallery_moods_alt = "Tündern windmill in morning and evening light"
+gallery_historic_title = "Historical shots"
+gallery_historic_alt = "Historical photograph of Tündern windmill"
+gallery_fire_title = "Fire and reconstruction"
+gallery_fire_alt = "Fire and reconstruction of Tündern windmill 1980"
+
+accessibility_skip_to_content = "Skip to content"
+accessibility_font_smaller = "Smaller text"
+accessibility_font_normal = "Normal text"
+accessibility_font_larger = "Larger text"
+
+# ===========================================
+# SPANISH Translations
+# ===========================================
+[languages.es]
+title = "Molino de Viento Tündern"
+description = "Asociación dedicada a preservar el histórico molino de viento de Tündern."
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+[languages.es.translations]
+footer_association = "Asociación Molino de Viento Tündern"
+footer_built_by = "Desarrollado por"
+footer_donate = "Donar"
+footer_news = "Noticias"
+footer_imprint = "Aviso legal"
+
+home_hero_title = "Asociación Molino de Viento Tündern"
+home_hero_subtitle = "Preservar la historia. Juntos."
+home_hero_text = "Un monumento desde 1883 – con su ayuda, también para el futuro."
+home_hero_cta = "Apóyanos"
+
+home_mission_title = "Nuestra misión"
+home_mission_text = "Somos una comunidad dedicada de conservadores del patrimonio, artesanos y entusiastas de los molinos comprometidos con la preservación de este <strong>patrimonio cultural único</strong>. El <strong>Molino de Tündern</strong>, construido en 1883, es uno de los últimos testimonios de la artesanía molinera tradicional en nuestra región."
+home_news_title = "Noticias"
+home_all_news = "Todas las noticias"
+home_achieved_title = "Logros"
+home_achieved_items = "<li>Asegurar la estructura básica</li><li>Restauración del mecanismo de molienda</li><li>Renovación de la estructura del techo</li><li>Establecimiento de un pequeño museo</li>"
+
+home_gallery_1 = "Conservación y seguridad de la estructura histórica"
+home_gallery_2 = "Visitas guiadas y eventos sobre la historia del molino"
+home_gallery_3 = "Integración del molino en el turismo local"
+home_gallery_4 = "Eventos culturales y talleres"
+
+home_cta_quote = "«Quien preserva el pasado, moldea el futuro.»"
+home_cta_message = "Ayúdenos a conservar este monumento cultural único para las generaciones venideras."
+home_cta_button = "Apoyar ahora"
+
+blog_index_title = "Noticias"
+blog_index_subtitle = "Aquí encontrará las últimas noticias sobre el molino de Tündern."
+blog_back_to_list = "← Volver a Noticias"
+blog_prev_post = "← Anterior"
+blog_next_post = "Siguiente →"
+blog_read_more = "Leer más →"
+blog_support_message = "¿Te ha gustado este artículo? Apoya la conservación del histórico molino de Tündern."
+blog_support_cta = "Apóyanos →"
+
+gallery_title = "Imágenes del molino"
+gallery_subtitle = "Imágenes e impresiones"
+gallery_intro = "Descubra el histórico molino de Tündern en imágenes – desde la cuidadosa restauración hasta fotografías históricas conmovedoras y momentos tranquilos en la luz del amanecer y atardecer. Cada imagen cuenta una parte de la historia de este monumento cultural único."
+gallery_renovation_title = "Restauración 2025"
+gallery_renovation_alt = "Trabajos de restauración en el molino de Tündern 2025"
+gallery_blades_title = "Retirada de las aspas 2025"
+gallery_blades_alt = "Retirada de las aspas del molino de Tündern 2025"
+gallery_reconstruction_title = "En proceso de reconstrucción"
+gallery_whit_title = "Lunes de Pentecostés en el molino"
+gallery_moods_title = "Ambiente de mañana y tarde"
+gallery_moods_alt = "Molino de Tündern al amanecer y atardecer"
+gallery_historic_title = "Fotografías históricas"
+gallery_historic_alt = "Fotografía histórica del molino de Tündern"
+gallery_fire_title = "Incendio y reconstrucción"
+gallery_fire_alt = "Incendio y reconstrucción del molino de Tündern 1980"
+
+accessibility_skip_to_content = "Ir al contenido"
+accessibility_font_smaller = "Texto más pequeño"
+accessibility_font_normal = "Texto normal"
+accessibility_font_larger = "Texto más grande"
+
+# ===========================================
+# EXTRA CONFIG
+# ===========================================
+[extra]
+site_name = "Förderverein Windmühle Tündern e.V."
+site_url = "https://windmuehle-tuendern.de"
+logo = "/imgs/logo.svg"
+og_image = "/imgs/og-image.jpg"
+logo_alt = "Logo der Windmühle Tündern mit Vereinsname"
+
+org_name = "Förderverein Windmühle Tündern e.V."
+org_street = "Linkworth 1"
+org_city = "Hameln-Tündern"
+org_postal = "31789"
+org_country = "DE"
+
+cronitor_key = "3d2da17f8a39e4c1b9999593a1d14ab3"
+
+[extra.nav.de]
+items = [
+    { text = "Aktuelles", link = "/aktuelles/" },
+    { text = "Geschichte", link = "/geschichte/" },
+    { text = "Bilder", link = "/bilder/" },
+    { text = "Spenden", link = "/spenden/" },
+]
+
+[extra.nav.en]
+items = [
+    { text = "News", link = "/en/aktuelles/" },
+    { text = "History", link = "/en/geschichte/" },
+    { text = "Gallery", link = "/en/bilder/" },
+    { text = "Donate", link = "/en/spenden/" },
+]
+
+[extra.nav.es]
+items = [
+    { text = "Noticias", link = "/es/aktuelles/" },
+    { text = "Historia", link = "/es/geschichte/" },
+    { text = "Galería", link = "/es/bilder/" },
+    { text = "Donar", link = "/es/spenden/" },
+]

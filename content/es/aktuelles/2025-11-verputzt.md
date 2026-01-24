@@ -1,0 +1,18 @@
++++
+title = "El molino recién revocado"
+date = 2025-11-15
+description = "Necesitamos mucha paciencia, pero ahora el molino está recién revocado y la siguiente fase de construcción está completada."
+template = "blog-post.html"
+
+[extra]
+image = "/imgs/news/2025-nov/aktuelles-nob-windmuhle2.jpg"
++++
+
+Necesitamos mucha paciencia, pero ahora el molino está recién revocado y la siguiente fase de construcción está completada.
+
+<div class="post-images">
+  <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle1.jpg" alt="El molino recién revocado">
+  <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle3.jpg" alt="Detalle del nuevo revoque">
+</div>
+
+¡Un enorme agradecimiento a todos los que han hecho posible este importante hito!

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Molino de Viento Tündern</title>
+      <link>https://windmuehle-tuendern.de</link>
+      <description>Asociación dedicada a preservar el histórico molino de viento de Tündern.</description>
+      <generator>Zola</generator>
+      <language>es</language>
+      <atom:link href="https://windmuehle-tuendern.de/es/rss.xml" rel="self" type="application/rss+xml"/>
+      
+    </channel>
+</rss>

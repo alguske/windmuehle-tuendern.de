@@ -1,0 +1,40 @@
+<footer class="site-footer">
+    <div class="footer-content">
+        <p class="footer-association">{{ trans(key="footer_association", lang=lang) }}</p>
+        <nav class="footer-links">
+            {% if lang == "de" %}
+            <a href="/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
+            {% elif lang == "en" %}
+            <a href="/en/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/en/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/en/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
+            {% else %}
+            <a href="/es/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/es/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
+            <span class="separator">|</span>
+            <a href="/es/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
+            {% endif %}
+        </nav>
+        <p class="footer-copyright">
+            &copy; {{ now() | date(format="%Y") }} {{ trans(key="footer_association", lang=lang) }}
+        </p>
+        <p class="footer-credit">
+            {{ trans(key="footer_built_by", lang=lang) }}
+            <a href="https://chemaclass.com" target="_blank" rel="noopener">Chema</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" aria-label="Back to top" hidden>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"/>
+    </svg>
+</button>

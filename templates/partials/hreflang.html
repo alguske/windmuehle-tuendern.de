@@ -1,0 +1,24 @@
+{% if section is defined %}
+    {% set current_path = section.path %}
+{% elif page is defined %}
+    {% set current_path = page.path %}
+{% else %}
+    {% set current_path = "/" %}
+{% endif %}
+{# Remove language prefix to get base German path #}
+{% if current_path is starting_with("/en/") %}
+    {% set base_path = current_path | replace(from="/en", to="") %}
+{% elif current_path is starting_with("/es/") %}
+    {% set base_path = current_path | replace(from="/es", to="") %}
+{% else %}
+    {% set base_path = current_path %}
+{% endif %}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ config.base_url }}{{ current_path }}">
+
+<!-- Hreflang alternate links -->
+<link rel="alternate" hreflang="de" href="{{ config.base_url }}{{ base_path }}">
+<link rel="alternate" hreflang="en" href="{{ config.base_url }}/en{{ base_path }}">
+<link rel="alternate" hreflang="es" href="{{ config.base_url }}/es{{ base_path }}">
+<link rel="alternate" hreflang="x-default" href="{{ config.base_url }}{{ base_path }}">

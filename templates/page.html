@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% if page.path is starting_with("/en/") %}
+    {% set lang = "en" %}
+{% elif page.path is starting_with("/es/") %}
+    {% set lang = "es" %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<div class="page-wrapper">
+    <header class="page-header">
+        <h1>{{ page.title }}</h1>
+        {% if page.extra.subtitle %}
+        <p>{{ page.extra.subtitle }}</p>
+        {% endif %}
+    </header>
+
+    <article class="page-content">
+        {{ page.content | safe }}
+    </article>
+</div>
+{% endblock content %}

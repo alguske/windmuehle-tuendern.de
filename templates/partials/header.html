@@ -1,0 +1,91 @@
+<header class="site-header">
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="{% if lang == 'de' %}/{% elif lang == 'en' %}/en/{% else %}/es/{% endif %}" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
+                <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="logo">
+                <span class="site-title">
+                    {% if lang == "de" %}Windmühle Tündern
+                    {% elif lang == "en" %}Windmill Tündern
+                    {% else %}Molino Tündern{% endif %}
+                </span>
+            </a>
+        </div>
+
+        <!-- Desktop navigation -->
+        <ul class="nav-menu">
+            {% set nav_items = config.extra.nav[lang].items %}
+            {% for item in nav_items %}
+            <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <!-- Language switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                <span class="lang-current">{% if lang == "de" %}DE{% elif lang == "en" %}EN{% else %}ES{% endif %}</span>
+                <svg class="lang-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+            </button>
+            <ul class="lang-dropdown" role="menu">
+                {% if section is defined %}
+                    {% set current_path = section.path %}
+                {% elif page is defined %}
+                    {% set current_path = page.path %}
+                {% else %}
+                    {% set current_path = "/" %}
+                {% endif %}
+                {# Remove language prefix to get base German path #}
+                {% if current_path is starting_with("/en/") %}
+                    {% set base_path = current_path | replace(from="/en", to="") %}
+                {% elif current_path is starting_with("/es/") %}
+                    {% set base_path = current_path | replace(from="/es", to="") %}
+                {% else %}
+                    {% set base_path = current_path %}
+                {% endif %}
+                <li role="menuitem"><a href="{{ base_path }}" {% if lang == "de" %}aria-current="true"{% endif %}>Deutsch</a></li>
+                <li role="menuitem"><a href="/en{{ base_path }}" {% if lang == "en" %}aria-current="true"{% endif %}>English</a></li>
+                <li role="menuitem"><a href="/es{{ base_path }}" {% if lang == "es" %}aria-current="true"{% endif %}>Español</a></li>
+            </ul>
+        </div>
+
+        <!-- Accessibility controls -->
+        <div class="a11y-controls">
+            <button class="a11y-btn" data-action="font-decrease" aria-label="{{ trans(key='accessibility_font_smaller', lang=lang) }}" title="{{ trans(key='accessibility_font_smaller', lang=lang) }}">A-</button>
+            <button class="a11y-btn" data-action="font-reset" aria-label="{{ trans(key='accessibility_font_normal', lang=lang) }}" title="{{ trans(key='accessibility_font_normal', lang=lang) }}">A</button>
+            <button class="a11y-btn" data-action="font-increase" aria-label="{{ trans(key='accessibility_font_larger', lang=lang) }}" title="{{ trans(key='accessibility_font_larger', lang=lang) }}">A+</button>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <ul class="mobile-nav-list">
+            {% for item in nav_items %}
+            <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+            {% endfor %}
+            <li class="mobile-lang-section">
+                <span class="mobile-lang-label">Language</span>
+                <div class="mobile-lang-links">
+                    <a href="{{ base_path }}" {% if lang == "de" %}class="active"{% endif %}>DE</a>
+                    <a href="/en{{ base_path }}" {% if lang == "en" %}class="active"{% endif %}>EN</a>
+                    <a href="/es{{ base_path }}" {% if lang == "es" %}class="active"{% endif %}>ES</a>
+                </div>
+            </li>
+        </ul>
+        <div class="mobile-a11y-controls">
+            <button class="a11y-btn" data-action="font-decrease">A-</button>
+            <button class="a11y-btn" data-action="font-reset">A</button>
+            <button class="a11y-btn" data-action="font-increase">A+</button>
+        </div>
+    </div>
+</header>
