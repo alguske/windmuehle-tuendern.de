@@ -3,6 +3,7 @@
 .claude/
 
 dist/
+public/
 cache/
 node_modules/
 

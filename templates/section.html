@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% if section.path is starting_with("/en/") %}
+    {% set lang = "en" %}
+{% elif section.path is starting_with("/es/") %}
+    {% set lang = "es" %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<div class="page-wrapper">
+    <header class="page-header">
+        <h1>{{ trans(key="blog_index_title", lang=lang) }}</h1>
+        <p>{{ trans(key="blog_index_subtitle", lang=lang) }}</p>
+    </header>
+
+    <div class="blog-list">
+        {% for post in section.pages %}
+        <article class="blog-card">
+            <a href="{{ post.permalink }}" class="blog-card-link">
+                {% if post.extra.image %}
+                <div class="blog-card-image">
+                    <img src="{{ post.extra.image }}" alt="{{ post.title }}">
+                </div>
+                {% endif %}
+                <div class="blog-card-content">
+                    <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
+                        {% if lang == "de" %}{{ post.date | date(format="%B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%B %Y", locale="es_ES") }}{% endif %}
+                    </time>
+                    <h2>{{ post.title }}</h2>
+                    {% if post.description %}
+                    <p>{{ post.description }}</p>
+                    {% endif %}
+                    <span class="read-more">{{ trans(key="blog_read_more", lang=lang) }}</span>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

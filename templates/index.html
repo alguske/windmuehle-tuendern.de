@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% if section.path is starting_with("/en/") %}
+    {% set lang = "en" %}
+{% elif section.path is starting_with("/es/") %}
+    {% set lang = "es" %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+
+{% block title %}{{ trans(key="home_hero_title", lang=lang) }}{% endblock title %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="home-hero">
+    <div class="hero-content">
+        <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="hero-logo">
+        <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
+        <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
+        <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
+        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+            {{ trans(key="home_hero_cta", lang=lang) }}
+        </a>
+    </div>
+</section>
+
+<!-- Seasonal Banner -->
+{% include "partials/seasonal-banner.html" %}
+
+<!-- Mission Section -->
+<section class="section-light">
+    <div class="home-intro">
+        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
+        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
+    </div>
+</section>
+
+<!-- News Section -->
+<section class="section-news">
+    <div class="news-preview">
+        <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
+        <div class="news-cards">
+            {% if lang == "de" %}
+                {% set news_section = get_section(path="aktuelles/_index.md") %}
+            {% elif lang == "en" %}
+                {% set news_section = get_section(path="en/aktuelles/_index.md") %}
+            {% else %}
+                {% set news_section = get_section(path="es/aktuelles/_index.md") %}
+            {% endif %}
+            {% for post in news_section.pages | slice(end=2) %}
+            <a href="{{ post.permalink }}" class="news-card">
+                {% if post.extra.image %}
+                <img src="{{ post.extra.image }}" alt="{{ post.title }}">
+                {% endif %}
+                <div class="news-card-content">
+                    <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%B %Y", locale="es_ES") }}{% endif %}</span>
+                    <h3>{{ post.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <a href="{% if lang == 'de' %}/aktuelles/{% elif lang == 'en' %}/en/aktuelles/{% else %}/es/aktuelles/{% endif %}" class="news-link">
+            {{ trans(key="home_all_news", lang=lang) }} &rarr;
+        </a>
+    </div>
+</section>
+
+<!-- Achieved Section -->
+<section class="section-accent">
+    <div class="home-achieved">
+        <div class="card achieved">
+            <h3>{{ trans(key="home_achieved_title", lang=lang) }}</h3>
+            <ul>
+                {{ trans(key="home_achieved_items", lang=lang) | safe }}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="section-light">
+    <div class="home-gallery">
+        <div class="home-gallery-item">
+            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='home_gallery_1', lang=lang) }}">
+            <span class="focus-text">{{ trans(key="home_gallery_1", lang=lang) }}</span>
+        </div>
+        <div class="home-gallery-item">
+            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='home_gallery_2', lang=lang) }}">
+            <span class="focus-text">{{ trans(key="home_gallery_2", lang=lang) }}</span>
+        </div>
+        <div class="home-gallery-item">
+            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='home_gallery_3', lang=lang) }}">
+            <span class="focus-text">{{ trans(key="home_gallery_3", lang=lang) }}</span>
+        </div>
+        <div class="home-gallery-item">
+            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='home_gallery_4', lang=lang) }}">
+            <span class="focus-text">{{ trans(key="home_gallery_4", lang=lang) }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-cta">
+    <div class="cta-content">
+        <p class="cta-quote">{{ trans(key="home_cta_quote", lang=lang) }}</p>
+        <p class="cta-message">{{ trans(key="home_cta_message", lang=lang) }}</p>
+        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+            {{ trans(key="home_cta_button", lang=lang) }}
+        </a>
+    </div>
+</section>
+{% endblock content %}

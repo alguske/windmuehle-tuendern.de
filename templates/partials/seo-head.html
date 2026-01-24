@@ -1,0 +1,44 @@
+{% set page_title = page.title | default(value=section.title) | default(value=config.title) %}
+{% set page_description = page.description | default(value=section.description) | default(value=config.description) %}
+{% set page_url = current_url | default(value=config.base_url) %}
+{% set og_image = config.base_url ~ config.extra.og_image %}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:alt" content="{{ config.extra.logo_alt }}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ config.extra.site_name }}">
+<meta property="og:locale" content="{% if lang == 'de' %}de_DE{% elif lang == 'en' %}en_US{% else %}es_ES{% endif %}">
+{% if lang != "de" %}<meta property="og:locale:alternate" content="de_DE">{% endif %}
+{% if lang != "en" %}<meta property="og:locale:alternate" content="en_US">{% endif %}
+{% if lang != "es" %}<meta property="og:locale:alternate" content="es_ES">{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+<meta name="twitter:image:alt" content="{{ config.extra.logo_alt }}">
+<meta name="twitter:creator" content="@Chemaclass">
+
+<!-- JSON-LD Organization -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ config.extra.org_name }}",
+    "url": "{{ config.extra.site_url }}",
+    "logo": "{{ config.extra.site_url }}{{ config.extra.logo }}",
+    "description": "Verein zur Erhaltung der historischen Windmühle in Tündern, erbaut 1883.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ config.extra.org_street }}",
+        "addressLocality": "{{ config.extra.org_city }}",
+        "postalCode": "{{ config.extra.org_postal }}",
+        "addressCountry": "{{ config.extra.org_country }}"
+    }
+}
+</script>
