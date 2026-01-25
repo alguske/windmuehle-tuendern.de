@@ -135,7 +135,7 @@ a {
 
 .nav-menu {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.25rem;
   list-style: none;
   margin: 0 0 0 auto;
   padding: 0;
@@ -143,10 +143,13 @@ a {
   a {
     font-weight: 500;
     color: var(--c-text-2);
-    padding: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 
     &:hover {
       color: var(--c-brand-1);
+      background: rgba(37, 99, 168, 0.08);
     }
   }
 
