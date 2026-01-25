@@ -1,0 +1,63 @@
+{% set home_url = "/" %}
+{% set home_name = "Home" %}
+{% if lang == "en" %}
+    {% set home_url = "/en/" %}
+{% elif lang == "es" %}
+    {% set home_url = "/es/" %}
+{% endif %}
+
+{% if page is defined or section is defined %}
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="{{ home_url }}">
+                <span itemprop="name">{{ home_name }}</span>
+            </a>
+            <meta itemprop="position" content="1">
+        </li>
+        {% if section is defined %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{{ section.title }}</span>
+            <meta itemprop="position" content="2">
+        </li>
+        {% elif page is defined %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{{ page.title }}</span>
+            <meta itemprop="position" content="2">
+        </li>
+        {% endif %}
+    </ol>
+</nav>
+
+<!-- JSON-LD BreadcrumbList -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "{{ home_name }}",
+            "item": "{{ config.base_url }}{{ home_url }}"
+        }
+        {% if section is defined %}
+        ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ section.title }}",
+            "item": "{{ config.base_url }}{{ section.path }}"
+        }
+        {% elif page is defined %}
+        ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ page.title }}",
+            "item": "{{ config.base_url }}{{ page.path }}"
+        }
+        {% endif %}
+    ]
+}
+</script>
+{% endif %}
