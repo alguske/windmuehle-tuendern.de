@@ -1387,10 +1387,14 @@ section {
 
 .blog-card-image {
   flex: 0 0 250px;
+  position: relative;
 
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
     margin: 0;
     border-radius: 0;
@@ -1398,8 +1402,10 @@ section {
 
   @media (max-width: 600px) {
     flex: none;
+    height: 200px;
 
     img {
+      position: static;
       height: 200px;
     }
   }
