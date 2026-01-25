@@ -12,11 +12,22 @@
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
 
 {% block content %}
+{% if page.extra.header_image %}
+<div class="page-hero" style="background-image: url('{{ page.extra.header_image }}');">
+    <div class="page-hero-content">
+        <h1>{{ trans(key="gallery_title", lang=lang) }}</h1>
+        <p>{{ trans(key="gallery_subtitle", lang=lang) }}</p>
+    </div>
+</div>
+{% endif %}
+
 <div class="page-wrapper">
+    {% if not page.extra.header_image %}
     <header class="page-header">
         <h1>{{ trans(key="gallery_title", lang=lang) }}</h1>
         <p>{{ trans(key="gallery_subtitle", lang=lang) }}</p>
     </header>
+    {% endif %}
 
     <div class="gallery-intro">
         <p>{{ trans(key="gallery_intro", lang=lang) | safe }}</p>

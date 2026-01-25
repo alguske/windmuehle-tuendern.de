@@ -12,13 +12,26 @@
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
 
 {% block content %}
+{% if page.extra.header_image %}
+<div class="page-hero" style="background-image: url('{{ page.extra.header_image }}');">
+    <div class="page-hero-content">
+        <h1>{{ page.title }}</h1>
+        {% if page.extra.subtitle %}
+        <p>{{ page.extra.subtitle }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
 <div class="page-wrapper">
+    {% if not page.extra.header_image %}
     <header class="page-header">
         <h1>{{ page.title }}</h1>
         {% if page.extra.subtitle %}
         <p>{{ page.extra.subtitle }}</p>
         {% endif %}
     </header>
+    {% endif %}
 
     <article class="page-content">
         {{ page.content | safe }}

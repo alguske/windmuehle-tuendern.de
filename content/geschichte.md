@@ -5,6 +5,7 @@ template = "page.html"
 
 [extra]
 subtitle = "Von 1883 bis heute"
+header_image = "/imgs/bilder/windmill-3.jpeg"
 +++
 
 <div class="history-content">

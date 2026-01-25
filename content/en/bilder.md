@@ -5,4 +5,5 @@ template = "gallery.html"
 
 [extra]
 subtitle = "Pictures and impressions"
+header_image = "/imgs/bilder/windmill-7.jpeg"
 +++

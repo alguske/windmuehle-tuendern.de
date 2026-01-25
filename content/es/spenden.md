@@ -2,6 +2,9 @@
 title = "Donaciones"
 description = "Apoye la conservación del histórico molino de Tündern con su donación."
 template = "page.html"
+
+[extra]
+header_image = "/imgs/bilder/windmill-5.jpeg"
 +++
 
 <div class="donate-intro">
