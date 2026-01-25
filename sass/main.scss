@@ -286,6 +286,7 @@ a {
 
 // Mobile menu
 .mobile-menu {
+  display: none;
   position: fixed;
   top: var(--nav-height);
   right: 0;
@@ -294,12 +295,13 @@ a {
   height: calc(100vh - var(--nav-height));
   background: #fff;
   z-index: 95;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
   overflow-y: auto;
   padding: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
 
   &.active {
+    display: block;
     transform: translateX(0);
   }
 }
