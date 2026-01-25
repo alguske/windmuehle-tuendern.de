@@ -3,6 +3,24 @@
 {% set page_url = current_url | default(value=config.base_url) %}
 {% set og_image = config.base_url ~ config.extra.og_image %}
 
+{# Localized descriptions for structured data #}
+{% if lang == "en" %}
+    {% set org_description = "Association dedicated to preserving the historic windmill in Tündern, built in 1883." %}
+    {% set landmark_name = "Tündern Windmill" %}
+    {% set landmark_description = "Historic Dutch windmill from 1883 on the Weser Cycle Route in Tündern near Hameln." %}
+    {% set tourist_types = '["Cultural tourism", "Cycling tourism"]' %}
+{% elif lang == "es" %}
+    {% set org_description = "Asociación dedicada a preservar el histórico molino de viento de Tündern, construido en 1883." %}
+    {% set landmark_name = "Molino de Tündern" %}
+    {% set landmark_description = "Molino de viento holandés histórico de 1883 en la Ruta Ciclista del Weser en Tündern, cerca de Hameln." %}
+    {% set tourist_types = '["Turismo cultural", "Cicloturismo"]' %}
+{% else %}
+    {% set org_description = "Verein zur Erhaltung der historischen Windmühle in Tündern, erbaut 1883." %}
+    {% set landmark_name = "Windmühle Tündern" %}
+    {% set landmark_description = "Historische Holländer-Windmühle aus dem Jahr 1883 am Weserradweg in Tündern bei Hameln." %}
+    {% set tourist_types = '["Kulturtourismus", "Radtourismus"]' %}
+{% endif %}
+
 <!-- Additional SEO Meta Tags -->
 <meta name="author" content="{{ config.extra.org_name }}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -11,6 +29,8 @@
 <meta name="geo.placename" content="Tündern, Hameln">
 <meta name="geo.position" content="52.1047;9.3589">
 <meta name="ICBM" content="52.1047, 9.3589">
+<meta name="language" content="{{ lang }}">
+<meta name="content-language" content="{{ lang }}">
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ page_title }}">
@@ -35,15 +55,16 @@
 <meta name="twitter:image:alt" content="{{ config.extra.logo_alt }}">
 <meta name="twitter:creator" content="@Chemaclass">
 
-<!-- JSON-LD WebSite with SearchAction -->
+<!-- JSON-LD WebSite -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "{{ config.extra.site_name }}",
     "url": "{{ config.extra.site_url }}",
-    "description": "{{ config.description }}",
-    "inLanguage": ["de", "en", "es"],
+    "description": "{{ page_description }}",
+    "inLanguage": "{{ lang }}",
+    "availableLanguage": ["de", "en", "es"],
     "publisher": {
         "@type": "Organization",
         "name": "{{ config.extra.org_name }}"
@@ -59,7 +80,7 @@
     "name": "{{ config.extra.org_name }}",
     "url": "{{ config.extra.site_url }}",
     "logo": "{{ config.extra.site_url }}{{ config.extra.logo }}",
-    "description": "Verein zur Erhaltung der historischen Windmühle in Tündern, erbaut 1883.",
+    "description": "{{ org_description }}",
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "{{ config.extra.org_street }}",
@@ -76,9 +97,9 @@
 {
     "@context": "https://schema.org",
     "@type": "LandmarksOrHistoricalBuildings",
-    "name": "Windmühle Tündern",
-    "alternateName": ["Tündern Windmill", "Molino de Tündern"],
-    "description": "Historische Holländer-Windmühle aus dem Jahr 1883 am Weserradweg in Tündern bei Hameln.",
+    "name": "{{ landmark_name }}",
+    "alternateName": ["Windmühle Tündern", "Tündern Windmill", "Molino de Tündern"],
+    "description": "{{ landmark_description }}",
     "url": "{{ config.extra.site_url }}",
     "image": "{{ config.extra.site_url }}{{ config.extra.og_image }}",
     "address": {
@@ -97,6 +118,7 @@
     "foundingDate": "1883",
     "isAccessibleForFree": true,
     "publicAccess": true,
-    "touristType": ["Cultural tourism", "Cycling tourism"]
+    "touristType": {{ tourist_types | safe }},
+    "inLanguage": "{{ lang }}"
 }
 </script>

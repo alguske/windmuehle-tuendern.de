@@ -1,14 +1,17 @@
 {% set home_url = "/" %}
-{% set home_name = "Home" %}
 {% if lang == "en" %}
     {% set home_url = "/en/" %}
+    {% set home_name = "Home" %}
 {% elif lang == "es" %}
     {% set home_url = "/es/" %}
+    {% set home_name = "Inicio" %}
+{% else %}
+    {% set home_name = "Startseite" %}
 {% endif %}
 
 {% if page is defined or section is defined %}
 <!-- Breadcrumb Navigation -->
-<nav class="breadcrumbs" aria-label="Breadcrumb">
+<nav class="breadcrumbs" aria-label="{% if lang == 'en' %}Breadcrumb{% elif lang == 'es' %}Migas de pan{% else %}Brotkrümel{% endif %}">
     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <a itemprop="item" href="{{ home_url }}">

@@ -33,7 +33,12 @@
             "url": "{{ config.base_url }}{{ config.extra.logo }}"
         }
     },
-    "description": "{{ page.description | default(value=page.title) }}"
+    "description": "{{ page.description | default(value=page.title) }}",
+    "inLanguage": "{{ lang }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ config.base_url }}{{ page.path }}"
+    }
 }
 </script>
 {% endblock head %}
