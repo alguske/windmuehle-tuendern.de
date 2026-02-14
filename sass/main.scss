@@ -1538,13 +1538,9 @@ section {
 
   img {
     width: 100%;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 12px;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-
-    &:hover {
-      box-shadow: var(--card-shadow-hover);
-    }
   }
 }
 
