@@ -1544,6 +1544,16 @@ section {
   }
 }
 
+.blog-full-image {
+  margin: 2rem 0 0;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+}
+
 .blog-content {
   font-size: 1.1rem;
   line-height: 1.8;

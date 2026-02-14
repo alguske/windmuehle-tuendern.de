@@ -71,6 +71,12 @@
         <!-- Post content -->
         <div class="blog-content" data-lightbox-gallery>
             {{ page.content | safe }}
+
+            {% if page.extra.image and page.content | split(pat="<img") | length == 1 %}
+            <figure class="blog-full-image">
+                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy">
+            </figure>
+            {% endif %}
         </div>
 
         <!-- Support message -->
