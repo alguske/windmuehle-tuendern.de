@@ -83,19 +83,19 @@
 
         <!-- Post navigation -->
         <nav class="blog-navigation">
-            {% if page.earlier %}
-            <a href="{{ page.earlier.permalink }}" class="nav-prev">
-                <span class="nav-label">{{ trans(key="blog_prev_post", lang=lang) }}</span>
-                <span class="nav-title">{{ page.earlier.title }}</span>
+            {% if page.higher %}
+            <a href="{{ page.higher.permalink }}" class="nav-prev">
+                <span class="nav-label">{{ trans(key="blog_earlier_post", lang=lang) }}</span>
+                <span class="nav-title">{{ page.higher.title }}</span>
             </a>
             {% else %}
             <span class="nav-prev disabled"></span>
             {% endif %}
 
-            {% if page.later %}
-            <a href="{{ page.later.permalink }}" class="nav-next">
-                <span class="nav-label">{{ trans(key="blog_next_post", lang=lang) }}</span>
-                <span class="nav-title">{{ page.later.title }}</span>
+            {% if page.lower %}
+            <a href="{{ page.lower.permalink }}" class="nav-next">
+                <span class="nav-label">{{ trans(key="blog_later_post", lang=lang) }}</span>
+                <span class="nav-title">{{ page.lower.title }}</span>
             </a>
             {% else %}
             <span class="nav-next disabled"></span>
