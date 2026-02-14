@@ -8,14 +8,20 @@
 {# Remove language prefix to get base German path #}
 {% if current_path is starting_with("/en/") %}
     {% set base_path = current_path | replace(from="/en", to="") %}
+{% elif current_path is starting_with("en/") %}
+    {% set base_path = "/" ~ current_path | replace(from="en/", to="") %}
 {% elif current_path is starting_with("/es/") %}
     {% set base_path = current_path | replace(from="/es", to="") %}
-{% else %}
+{% elif current_path is starting_with("es/") %}
+    {% set base_path = "/" ~ current_path | replace(from="es/", to="") %}
+{% elif current_path is starting_with("/") %}
     {% set base_path = current_path %}
+{% else %}
+    {% set base_path = "/" ~ current_path %}
 {% endif %}
 
 <!-- Canonical URL -->
-<link rel="canonical" href="{{ config.base_url }}{{ current_path }}">
+<link rel="canonical" href="{{ config.base_url }}{{ base_path }}">
 
 <!-- Hreflang alternate links -->
 <link rel="alternate" hreflang="de" href="{{ config.base_url }}{{ base_path }}">

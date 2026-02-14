@@ -38,10 +38,16 @@
                 {# Remove language prefix to get base German path #}
                 {% if current_path is starting_with("/en/") %}
                     {% set base_path = current_path | replace(from="/en", to="") %}
+                {% elif current_path is starting_with("en/") %}
+                    {% set base_path = "/" ~ current_path | replace(from="en/", to="") %}
                 {% elif current_path is starting_with("/es/") %}
                     {% set base_path = current_path | replace(from="/es", to="") %}
-                {% else %}
+                {% elif current_path is starting_with("es/") %}
+                    {% set base_path = "/" ~ current_path | replace(from="es/", to="") %}
+                {% elif current_path is starting_with("/") %}
                     {% set base_path = current_path %}
+                {% else %}
+                    {% set base_path = "/" ~ current_path %}
                 {% endif %}
                 <li role="menuitem"><a href="{{ base_path }}" {% if lang == "de" %}aria-current="true"{% endif %}>Deutsch</a></li>
                 <li role="menuitem"><a href="/en{{ base_path }}" {% if lang == "en" %}aria-current="true"{% endif %}>English</a></li>
