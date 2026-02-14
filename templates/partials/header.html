@@ -73,7 +73,7 @@
             <li><a href="{{ item.link }}">{{ item.text }}</a></li>
             {% endfor %}
             <li class="mobile-lang-section">
-                <span class="mobile-lang-label">Language</span>
+                <span class="mobile-lang-label">{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}</span>
                 <div class="mobile-lang-links">
                     <a href="{{ base_path }}" {% if lang == "de" %}class="active"{% endif %}>DE</a>
                     <a href="/en{{ base_path }}" {% if lang == "en" %}class="active"{% endif %}>EN</a>

@@ -21,7 +21,12 @@
 {% endif %}
 
 <!-- Canonical URL -->
-<link rel="canonical" href="{{ config.base_url }}{{ base_path }}">
+{% if current_path is starting_with("/") %}
+    {% set canonical_path = current_path %}
+{% else %}
+    {% set canonical_path = "/" ~ current_path %}
+{% endif %}
+<link rel="canonical" href="{{ config.base_url }}{{ canonical_path }}">
 
 <!-- Hreflang alternate links -->
 <link rel="alternate" hreflang="de" href="{{ config.base_url }}{{ base_path }}">
