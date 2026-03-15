@@ -37,7 +37,9 @@
             <a href="{{ post.permalink }}" class="blog-card-link">
                 {% if post.extra.image %}
                 <div class="blog-card-image">
-                    <img src="{{ post.extra.image }}" alt="{{ post.title }}">
+                    {% set parts = post.extra.image | split(pat="/") %}
+                    {% set filename = parts | last | split(pat=".") | first %}
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="250" height="250">
                 </div>
                 {% endif %}
                 <div class="blog-card-content">

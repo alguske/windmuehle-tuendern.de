@@ -36,6 +36,12 @@ class Lightbox {
   }
 
   setupGalleries() {
+    // Add lazy loading to all blog content and gallery images
+    document.querySelectorAll('.blog-content img, .post-images img').forEach(img => {
+      img.loading = 'lazy';
+      img.decoding = 'async';
+    });
+
     // Images in galleries
     document.querySelectorAll('[data-lightbox-gallery]').forEach(gallery => {
       const images = gallery.querySelectorAll('img');
