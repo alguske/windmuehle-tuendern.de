@@ -1,0 +1,22 @@
++++
+title = "Arbeiten an der Windrose"
+date = 2026-03-15
+description = "Die Windrose der Mühle wird fachgerecht restauriert – hoch oben auf der Kappe wird mit viel Einsatz und Können gearbeitet."
+template = "blog-post.html"
+
+[extra]
+image = "/imgs/windrose/windrose-arbeiten-1.png"
++++
+
+Die Restaurierung unserer Windmühle geht weiter – diesmal steht die Windrose im Mittelpunkt. Hoch oben auf der Kappe der Mühle wird mit viel handwerklichem Geschick und Einsatz an der historischen Windrose gearbeitet.
+
+<div class="post-images">
+  <img src="/imgs/windrose/windrose-arbeiten-2.png" alt="Gesicherte Arbeit an der Windrose auf der Mühlenkappe">
+  <img src="/imgs/windrose/windrose-arbeiten-3.png" alt="Die Windrose der Windmühle Tündern wird montiert">
+  <img src="/imgs/windrose/windrose-arbeiten-4.png" alt="Blick von oben auf die Holzkonstruktion der Windrose">
+  <img src="/imgs/windrose/windrose-arbeiten-5.png" alt="Handwerker auf der Mühlenkappe bei den Arbeiten an der Windrose">
+</div>
+
+Die Windrose ist ein wichtiges Element der Mühle – sie sorgt dafür, dass sich die Kappe automatisch in den Wind dreht. Die sorgfältige Restaurierung dieses Bauteils ist ein weiterer Meilenstein in der Wiederherstellung unserer historischen Windmühle.
+
+Wir danken den Handwerkern für ihren mutigen Einsatz in luftiger Höhe!
