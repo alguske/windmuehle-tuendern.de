@@ -935,7 +935,7 @@ section {
     top: 0.1rem;
   }
 
-  li:nth-last-child(-n+2)::before {
+  li:last-child::before {
     content: '';
     width: 8px;
     height: 8px;
