@@ -5,16 +5,18 @@ description = "Die Windrose der Mühle wird fachgerecht restauriert – hoch obe
 template = "blog-post.html"
 
 [extra]
-image = "/imgs/windrose/windrose-arbeiten-1.png"
+image = "/imgs/windrose/windrose-arbeiten-1.jpg"
 +++
 
 Die Restaurierung unserer Windmühle geht weiter – diesmal steht die Windrose im Mittelpunkt. Hoch oben auf der Kappe der Mühle wird mit viel handwerklichem Geschick und Einsatz an der historischen Windrose gearbeitet.
 
 <div class="post-images">
-  <img src="/imgs/windrose/windrose-arbeiten-2.png" alt="Gesicherte Arbeit an der Windrose auf der Mühlenkappe">
-  <img src="/imgs/windrose/windrose-arbeiten-3.png" alt="Die Windrose der Windmühle Tündern wird montiert">
-  <img src="/imgs/windrose/windrose-arbeiten-4.png" alt="Blick von oben auf die Holzkonstruktion der Windrose">
-  <img src="/imgs/windrose/windrose-arbeiten-5.png" alt="Handwerker auf der Mühlenkappe bei den Arbeiten an der Windrose">
+  <img src="/imgs/windrose/windrose-arbeiten-2.jpg" alt="Gesicherte Arbeit an der Windrose auf der Mühlenkappe">
+  <img src="/imgs/windrose/windrose-arbeiten-3.jpg" alt="Die Windrose der Windmühle Tündern wird montiert">
+  <img src="/imgs/windrose/windrose-arbeiten-4.jpg" alt="Blick von oben auf die Holzkonstruktion der Windrose">
+  <img src="/imgs/windrose/windrose-arbeiten-5.jpg" alt="Handwerker auf der Mühlenkappe bei den Arbeiten an der Windrose">
+  <img src="/imgs/windrose/windrose-arbeiten-6.jpg" alt="Montage eines Flügelblatts an der Windrose">
+  <img src="/imgs/windrose/windrose-arbeiten-7.jpg" alt="Arbeiten an der Windrose auf dem Gerüst der Mühle">
 </div>
 
 Die Windrose ist ein wichtiges Element der Mühle – sie sorgt dafür, dass sich die Kappe automatisch in den Wind dreht. Die sorgfältige Restaurierung dieses Bauteils ist ein weiterer Meilenstein in der Wiederherstellung unserer historischen Windmühle.
