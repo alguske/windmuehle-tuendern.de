@@ -10,6 +10,7 @@ class Lightbox {
     this.prevBtn = this.lightbox?.querySelector('.lightbox-prev');
     this.nextBtn = this.lightbox?.querySelector('.lightbox-next');
     this.counter = this.lightbox?.querySelector('.lightbox-counter');
+    this.caption = this.lightbox?.querySelector('.lightbox-caption');
     this.backdrop = this.lightbox?.querySelector('.lightbox-backdrop');
 
     this.images = [];
@@ -135,6 +136,11 @@ class Lightbox {
 
     this.image.src = current.src;
     this.image.alt = current.alt || '';
+
+    // Update caption
+    if (this.caption) {
+      this.caption.textContent = current.alt || '';
+    }
 
     // Update counter
     if (this.counter) {

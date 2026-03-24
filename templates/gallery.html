@@ -35,74 +35,191 @@
         <p>{{ trans(key="gallery_intro", lang=lang) | safe }}</p>
     </div>
 
+    <!-- Section quick-nav -->
+    <nav class="gallery-nav" aria-label="Gallery sections">
+        <a href="#gallery-renovation" class="gallery-nav-link">{{ trans(key="gallery_renovation_title", lang=lang) }}</a>
+        <a href="#gallery-reconstruction" class="gallery-nav-link">{{ trans(key="gallery_reconstruction_title", lang=lang) }}</a>
+        <a href="#gallery-blades" class="gallery-nav-link">{{ trans(key="gallery_blades_title", lang=lang) }}</a>
+        <a href="#gallery-whit" class="gallery-nav-link">{{ trans(key="gallery_whit_title", lang=lang) }}</a>
+        <a href="#gallery-historic" class="gallery-nav-link">{{ trans(key="gallery_historic_title", lang=lang) }}</a>
+    </nav>
+
     <!-- Renovation 2025 -->
-    <section class="gallery-section">
+    <section id="gallery-renovation" class="gallery-section">
         <h3>{{ trans(key="gallery_renovation_title", lang=lang) }}</h3>
-        <div class="grid-gallery" data-lightbox-gallery>
-            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle1.jpg" alt="{{ trans(key='gallery_renovation_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1820">
-            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle2.jpg" alt="{{ trans(key='gallery_renovation_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1444" height="1900">
-            <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle3.jpg" alt="{{ trans(key='gallery_renovation_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1866">
+        <div class="masonry-gallery" data-lightbox-gallery>
+            <figure class="gallery-item">
+                <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle1.jpg" alt="{{ trans(key='gallery_renovation_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1820">
+                <figcaption>{{ trans(key="gallery_renovation_alt_1", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle2.jpg" alt="{{ trans(key='gallery_renovation_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1444" height="1900">
+                <figcaption>{{ trans(key="gallery_renovation_alt_2", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle3.jpg" alt="{{ trans(key='gallery_renovation_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1866">
+                <figcaption>{{ trans(key="gallery_renovation_alt_3", lang=lang) }}</figcaption>
+            </figure>
         </div>
     </section>
 
     <!-- Reconstruction -->
-    <section class="gallery-section">
+    <section id="gallery-reconstruction" class="gallery-section">
         <h3>{{ trans(key="gallery_reconstruction_title", lang=lang) }}</h3>
-        <div class="grid-gallery" data-lightbox-gallery>
-            <img src="/imgs/scaffolding/scaffolding1.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/scaffolding/scaffolding2.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
-            <img src="/imgs/scaffolding/scaffolding3.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1196" height="1600">
-            <img src="/imgs/scaffolding/scaffolding4.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/scaffolding/scaffolding5.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
+        <div class="masonry-gallery" data-lightbox-gallery>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding1.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_1", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding2.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_2", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding3.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1196" height="1600">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_3", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding4.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_4", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding5.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_5", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
+                <figcaption>{{ trans(key="gallery_reconstruction_alt_6", lang=lang) }}</figcaption>
+            </figure>
         </div>
     </section>
 
     <!-- Blade Removal 2025 -->
-    <section class="gallery-section">
+    <section id="gallery-blades" class="gallery-section">
         <h3>{{ trans(key="gallery_blades_title", lang=lang) }}</h3>
-        <div class="grid-gallery" data-lightbox-gallery>
-            <img src="/imgs/flugel-abgebaut/windmill-1.jpeg" alt="{{ trans(key='gallery_blades_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
-            <img src="/imgs/flugel-abgebaut/windmill-2.jpeg" alt="{{ trans(key='gallery_blades_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
-            <img src="/imgs/flugel-abgebaut/windmill-3.jpeg" alt="{{ trans(key='gallery_blades_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
-            <img src="/imgs/flugel-abgebaut/windmill-4.jpeg" alt="{{ trans(key='gallery_blades_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='gallery_blades_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+        <div class="masonry-gallery" data-lightbox-gallery>
+            <figure class="gallery-item">
+                <img src="/imgs/flugel-abgebaut/windmill-1.jpeg" alt="{{ trans(key='gallery_blades_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+                <figcaption>{{ trans(key="gallery_blades_alt_1", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/flugel-abgebaut/windmill-2.jpeg" alt="{{ trans(key='gallery_blades_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+                <figcaption>{{ trans(key="gallery_blades_alt_2", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/flugel-abgebaut/windmill-3.jpeg" alt="{{ trans(key='gallery_blades_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+                <figcaption>{{ trans(key="gallery_blades_alt_3", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/flugel-abgebaut/windmill-4.jpeg" alt="{{ trans(key='gallery_blades_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_blades_alt_4", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='gallery_blades_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+                <figcaption>{{ trans(key="gallery_blades_alt_5", lang=lang) }}</figcaption>
+            </figure>
         </div>
     </section>
 
     <!-- Whit Monday -->
-    <section class="gallery-section">
+    <section id="gallery-whit" class="gallery-section">
         <h3>{{ trans(key="gallery_whit_title", lang=lang) }}</h3>
-        <div class="grid-gallery" data-lightbox-gallery>
-            <img src="/imgs/pfingstmontag/pfingstmontag1.jpeg" alt="{{ trans(key='gallery_whit_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="2000" height="1496">
-            <img src="/imgs/pfingstmontag/pfingstmontag2.jpeg" alt="{{ trans(key='gallery_whit_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="897">
-            <img src="/imgs/pfingstmontag/pfingstmontag3.jpeg" alt="{{ trans(key='gallery_whit_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
-            <img src="/imgs/pfingstmontag/pfingstmontag4.jpeg" alt="{{ trans(key='gallery_whit_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="897">
-            <img src="/imgs/pfingstmontag/pfingstmontag5.jpeg" alt="{{ trans(key='gallery_whit_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
-            <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="{{ trans(key='gallery_whit_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+        <div class="masonry-gallery" data-lightbox-gallery>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag1.jpeg" alt="{{ trans(key='gallery_whit_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="2000" height="1496">
+                <figcaption>{{ trans(key="gallery_whit_alt_1", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag2.jpeg" alt="{{ trans(key='gallery_whit_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="897">
+                <figcaption>{{ trans(key="gallery_whit_alt_2", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag3.jpeg" alt="{{ trans(key='gallery_whit_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
+                <figcaption>{{ trans(key="gallery_whit_alt_3", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag4.jpeg" alt="{{ trans(key='gallery_whit_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="897">
+                <figcaption>{{ trans(key="gallery_whit_alt_4", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag5.jpeg" alt="{{ trans(key='gallery_whit_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="897" height="1200">
+                <figcaption>{{ trans(key="gallery_whit_alt_5", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="{{ trans(key='gallery_whit_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
+                <figcaption>{{ trans(key="gallery_whit_alt_6", lang=lang) }}</figcaption>
+            </figure>
         </div>
     </section>
 
     <!-- Historic / Morning and Evening Moods -->
-    <section class="gallery-section">
+    <section id="gallery-historic" class="gallery-section">
         <h3>{{ trans(key="gallery_historic_title", lang=lang) }}</h3>
-        <div class="grid-gallery" data-lightbox-gallery>
-            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='gallery_historic_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='gallery_historic_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/bilder/windmill-3.jpeg" alt="{{ trans(key='gallery_historic_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-4.jpeg" alt="{{ trans(key='gallery_historic_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1512" height="2016">
-            <img src="/imgs/bilder/windmill-5.jpeg" alt="{{ trans(key='gallery_historic_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="2016" height="1512">
-            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='gallery_historic_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/bilder/windmill-7.jpeg" alt="{{ trans(key='gallery_historic_alt_7', lang=lang) }}" loading="lazy" decoding="async" width="1007" height="692">
-            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='gallery_historic_alt_8', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <img src="/imgs/bilder/windmill-9.jpeg" alt="{{ trans(key='gallery_historic_alt_9', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-10.jpeg" alt="{{ trans(key='gallery_historic_alt_10', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-11.jpeg" alt="{{ trans(key='gallery_historic_alt_11', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-12.jpeg" alt="{{ trans(key='gallery_historic_alt_12', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-13.jpeg" alt="{{ trans(key='gallery_historic_alt_13', lang=lang) }}" loading="lazy" decoding="async" width="1530" height="2040">
-            <img src="/imgs/bilder/windmill-14.jpeg" alt="{{ trans(key='gallery_historic_alt_14', lang=lang) }}" loading="lazy" decoding="async" width="1530" height="2040">
-            <img src="/imgs/bilder/windmill-15.jpeg" alt="{{ trans(key='gallery_historic_alt_15', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
-            <img src="/imgs/bilder/windmill-16.jpeg" alt="{{ trans(key='gallery_historic_alt_16', lang=lang) }}" loading="lazy" decoding="async" width="2048" height="1536">
+        <div class="masonry-gallery" data-lightbox-gallery>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='gallery_historic_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_historic_alt_1", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='gallery_historic_alt_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_historic_alt_2", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-3.jpeg" alt="{{ trans(key='gallery_historic_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_3", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-4.jpeg" alt="{{ trans(key='gallery_historic_alt_4', lang=lang) }}" loading="lazy" decoding="async" width="1512" height="2016">
+                <figcaption>{{ trans(key="gallery_historic_alt_4", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-5.jpeg" alt="{{ trans(key='gallery_historic_alt_5', lang=lang) }}" loading="lazy" decoding="async" width="2016" height="1512">
+                <figcaption>{{ trans(key="gallery_historic_alt_5", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='gallery_historic_alt_6', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_historic_alt_6", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-7.jpeg" alt="{{ trans(key='gallery_historic_alt_7', lang=lang) }}" loading="lazy" decoding="async" width="1007" height="692">
+                <figcaption>{{ trans(key="gallery_historic_alt_7", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='gallery_historic_alt_8', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
+                <figcaption>{{ trans(key="gallery_historic_alt_8", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-9.jpeg" alt="{{ trans(key='gallery_historic_alt_9', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_9", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-10.jpeg" alt="{{ trans(key='gallery_historic_alt_10', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_10", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-11.jpeg" alt="{{ trans(key='gallery_historic_alt_11', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_11", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-12.jpeg" alt="{{ trans(key='gallery_historic_alt_12', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_12", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-13.jpeg" alt="{{ trans(key='gallery_historic_alt_13', lang=lang) }}" loading="lazy" decoding="async" width="1530" height="2040">
+                <figcaption>{{ trans(key="gallery_historic_alt_13", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-14.jpeg" alt="{{ trans(key='gallery_historic_alt_14', lang=lang) }}" loading="lazy" decoding="async" width="1530" height="2040">
+                <figcaption>{{ trans(key="gallery_historic_alt_14", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-15.jpeg" alt="{{ trans(key='gallery_historic_alt_15', lang=lang) }}" loading="lazy" decoding="async" width="1536" height="2048">
+                <figcaption>{{ trans(key="gallery_historic_alt_15", lang=lang) }}</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="/imgs/bilder/windmill-16.jpeg" alt="{{ trans(key='gallery_historic_alt_16', lang=lang) }}" loading="lazy" decoding="async" width="2048" height="1536">
+                <figcaption>{{ trans(key="gallery_historic_alt_16", lang=lang) }}</figcaption>
+            </figure>
         </div>
     </section>
 </div>
