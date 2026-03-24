@@ -64,7 +64,7 @@
         <!-- Hero image -->
         {% if page.extra.image %}
         <figure class="blog-hero-image">
-            <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy">
+            <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" width="1200" height="800">
         </figure>
         {% endif %}
 
@@ -74,7 +74,7 @@
 
             {% if page.extra.image and page.content | split(pat="<img") | length == 1 %}
             <figure class="blog-full-image">
-                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy">
+                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" width="1200" height="800">
             </figure>
             {% endif %}
         </div>
