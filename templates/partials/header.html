@@ -75,9 +75,9 @@
             <li class="mobile-lang-section">
                 <span class="mobile-lang-label">{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}</span>
                 <div class="mobile-lang-links">
-                    <a href="{{ base_path }}" {% if lang == "de" %}class="active"{% endif %}>DE</a>
-                    <a href="/en{{ base_path }}" {% if lang == "en" %}class="active"{% endif %}>EN</a>
-                    <a href="/es{{ base_path }}" {% if lang == "es" %}class="active"{% endif %}>ES</a>
+                    <a href="{{ base_path }}" {% if lang == "de" %}class="active" aria-current="true"{% endif %}>DE</a>
+                    <a href="/en{{ base_path }}" {% if lang == "en" %}class="active" aria-current="true"{% endif %}>EN</a>
+                    <a href="/es{{ base_path }}" {% if lang == "es" %}class="active" aria-current="true"{% endif %}>ES</a>
                 </div>
             </li>
         </ul>
