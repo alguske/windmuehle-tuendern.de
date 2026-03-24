@@ -738,6 +738,33 @@ section {
   }
 }
 
+.post-image-text {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+
+  img {
+    border-radius: 8px;
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
 // ================================
 // MISSION / INTRO SECTION
 // ================================
