@@ -44,7 +44,7 @@
                 {% endif %}
                 <div class="blog-card-content">
                     <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
-                        {% if lang == "de" %}{{ post.date | date(format="%B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%B %Y", locale="es_ES") }}{% endif %}
+                        {% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}
                     </time>
                     <h2>{{ post.title }}</h2>
                     {% if post.description %}
