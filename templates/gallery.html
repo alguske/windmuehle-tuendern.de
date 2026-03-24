@@ -37,17 +37,16 @@
 
     <!-- Section quick-nav -->
     <nav class="gallery-nav" aria-label="Gallery sections">
-        <a href="#gallery-renovation" class="gallery-nav-link">{{ trans(key="gallery_renovation_title", lang=lang) }}</a>
-        <a href="#gallery-reconstruction" class="gallery-nav-link">{{ trans(key="gallery_reconstruction_title", lang=lang) }}</a>
+        <a href="#gallery-renovation" class="gallery-nav-link">{{ trans(key="gallery_renovation_combined_title", lang=lang) }}</a>
         <a href="#gallery-blades" class="gallery-nav-link">{{ trans(key="gallery_blades_title", lang=lang) }}</a>
         <a href="#gallery-whit" class="gallery-nav-link">{{ trans(key="gallery_whit_title", lang=lang) }}</a>
         <a href="#gallery-historic" class="gallery-nav-link">{{ trans(key="gallery_historic_title", lang=lang) }}</a>
     </nav>
 
-    <!-- Renovation 2025 -->
+    <!-- Renovation & Reconstruction 2025 -->
     <section id="gallery-renovation" class="gallery-section">
-        <h3>{{ trans(key="gallery_renovation_title", lang=lang) }}</h3>
-        <div class="masonry-gallery" data-lightbox-gallery>
+        <h3>{{ trans(key="gallery_renovation_combined_title", lang=lang) }}</h3>
+        <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle1.jpg" alt="{{ trans(key='gallery_renovation_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1820">
                 <figcaption>{{ trans(key="gallery_renovation_alt_1", lang=lang) }}</figcaption>
@@ -60,13 +59,6 @@
                 <img src="/imgs/news/2025-nov/aktuelles-nob-windmuhle3.jpg" alt="{{ trans(key='gallery_renovation_alt_3', lang=lang) }}" loading="lazy" decoding="async" width="1080" height="1866">
                 <figcaption>{{ trans(key="gallery_renovation_alt_3", lang=lang) }}</figcaption>
             </figure>
-        </div>
-    </section>
-
-    <!-- Reconstruction -->
-    <section id="gallery-reconstruction" class="gallery-section">
-        <h3>{{ trans(key="gallery_reconstruction_title", lang=lang) }}</h3>
-        <div class="masonry-gallery" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/scaffolding/scaffolding1.jpeg" alt="{{ trans(key='gallery_reconstruction_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
                 <figcaption>{{ trans(key="gallery_reconstruction_alt_1", lang=lang) }}</figcaption>
@@ -97,7 +89,7 @@
     <!-- Blade Removal 2025 -->
     <section id="gallery-blades" class="gallery-section">
         <h3>{{ trans(key="gallery_blades_title", lang=lang) }}</h3>
-        <div class="masonry-gallery" data-lightbox-gallery>
+        <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/flugel-abgebaut/windmill-1.jpeg" alt="{{ trans(key='gallery_blades_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1496" height="2000">
                 <figcaption>{{ trans(key="gallery_blades_alt_1", lang=lang) }}</figcaption>
@@ -124,7 +116,7 @@
     <!-- Whit Monday -->
     <section id="gallery-whit" class="gallery-section">
         <h3>{{ trans(key="gallery_whit_title", lang=lang) }}</h3>
-        <div class="masonry-gallery" data-lightbox-gallery>
+        <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/pfingstmontag/pfingstmontag1.jpeg" alt="{{ trans(key='gallery_whit_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="2000" height="1496">
                 <figcaption>{{ trans(key="gallery_whit_alt_1", lang=lang) }}</figcaption>
@@ -155,7 +147,7 @@
     <!-- Historic / Morning and Evening Moods -->
     <section id="gallery-historic" class="gallery-section">
         <h3>{{ trans(key="gallery_historic_title", lang=lang) }}</h3>
-        <div class="masonry-gallery" data-lightbox-gallery>
+        <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='gallery_historic_alt_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
                 <figcaption>{{ trans(key="gallery_historic_alt_1", lang=lang) }}</figcaption>
