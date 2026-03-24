@@ -47,7 +47,7 @@
             {% for post in news_section.pages | slice(end=2) %}
             <a href="{{ post.permalink }}" class="news-card">
                 {% if post.extra.image %}
-                <img src="{{ post.extra.image }}" alt="{{ post.title }}" loading="lazy" width="600" height="400">
+                <img src="{{ post.extra.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" width="600" height="400">
                 {% endif %}
                 <div class="news-card-content">
                     <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%B %Y", locale="es_ES") }}{% endif %}</span>
@@ -78,19 +78,19 @@
 <section class="section-light">
     <div class="home-gallery">
         <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='home_gallery_1', lang=lang) }}" loading="lazy" width="1200" height="1600">
+            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='home_gallery_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
             <span class="focus-text">{{ trans(key="home_gallery_1", lang=lang) }}</span>
         </div>
         <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='home_gallery_2', lang=lang) }}" loading="lazy" width="1200" height="1600">
+            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='home_gallery_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
             <span class="focus-text">{{ trans(key="home_gallery_2", lang=lang) }}</span>
         </div>
         <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='home_gallery_3', lang=lang) }}" loading="lazy" width="1200" height="1600">
+            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='home_gallery_3', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
             <span class="focus-text">{{ trans(key="home_gallery_3", lang=lang) }}</span>
         </div>
         <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='home_gallery_4', lang=lang) }}" loading="lazy" width="1200" height="1600">
+            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='home_gallery_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
             <span class="focus-text">{{ trans(key="home_gallery_4", lang=lang) }}</span>
         </div>
     </div>
