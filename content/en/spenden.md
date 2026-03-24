@@ -36,7 +36,7 @@ The windmill restoration is budgeted at **€166,600**. Thanks to funding commit
   <p>Please send your donation to the following account:</p>
   <ul>
     <li><strong>Recipient:</strong> Förderverein Windmühle Tündern e.V.</li>
-    <li><strong>IBAN:</strong> DE12 2549 1744 0190 4883 00</li>
+    <li><strong>IBAN:</strong> DE37 2546 2160 0107 7074 00</li>
     <li><strong>BIC:</strong> GENODEF1HMP</li>
     <li><strong>Bank:</strong> Volksbank Hameln-Stadthagen</li>
     <li><strong>Reference:</strong> Spende Windmühle</li>

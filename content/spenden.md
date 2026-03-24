@@ -36,7 +36,7 @@ Die Sanierung der Windmühle wird mit insgesamt **166.600 Euro** veranschlagt. D
   <p>Bitte richten Sie Ihre Spende an folgendes Konto:</p>
   <ul>
     <li><strong>Empfänger:</strong> Förderverein Windmühle Tündern e.V.</li>
-    <li><strong>IBAN:</strong> DE12 2549 1744 0190 4883 00</li>
+    <li><strong>IBAN:</strong> DE37 2546 2160 0107 7074 00</li>
     <li><strong>BIC:</strong> GENODEF1HMP</li>
     <li><strong>Bank:</strong> Volksbank Hameln-Stadthagen</li>
     <li><strong>Verwendungszweck:</strong> Spende Windmühle</li>

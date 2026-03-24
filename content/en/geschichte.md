@@ -20,7 +20,7 @@ The so-called Dutch windmill on the Weser embankment in Tündern was built in **
 
 After the **Second World War** the mill began to fall into disrepair. Only with the founding of the local heritage association **"Tundirum" in 1974** did a new era begin. Thanks to numerous donations the mill was reopened in **1979** with a new roof and fresh plaster.
 
-But a year later, on the evening of **19 July 1980**, lightning struck. The mill was almost completely destroyed by fire – roof, fantail, cap and milling machinery were lost. Thanks to tremendous commitment and many helping hands, reconstruction was completed by **1981**. Since then it has been regarded as a landmark of Tündern and a popular waypoint on the Weser Cycle Route.
+But a year later, on the evening of **27 July 1980**, lightning struck. The mill was almost completely destroyed by fire – roof, fantail, cap and milling machinery were lost. Thanks to tremendous commitment and many helping hands, reconstruction was completed by **1981**. Since then it has been regarded as a landmark of Tündern and a popular waypoint on the Weser Cycle Route.
 
 </section>
 

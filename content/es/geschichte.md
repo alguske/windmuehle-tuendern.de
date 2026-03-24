@@ -20,7 +20,7 @@ El llamado molino de viento holandés junto al dique del Weser en Tündern se co
 
 Tras la **Segunda Guerra Mundial**, el molino comenzó a deteriorarse. Solo con la fundación de la asociación local de historia **"Tundirum" en 1974** comenzó una nueva era. Gracias a numerosas donaciones, el molino pudo reabrirse en **1979** con un nuevo tejado y un revoque renovado.
 
-Pero un año después, la noche del **19 de julio de 1980**, cayó un rayo. El molino se quemó casi por completo: se destruyeron el tejado, la rosa de los vientos, la caperuza y el mecanismo de molienda. Gracias al enorme compromiso y a muchas manos voluntarias, la reconstrucción se completó ya en **1981**. Desde entonces es considerado un símbolo de Tündern y un punto de referencia popular en la Ruta Ciclista del Weser.
+Pero un año después, la noche del **27 de julio de 1980**, cayó un rayo. El molino se quemó casi por completo: se destruyeron el tejado, la rosa de los vientos, la caperuza y el mecanismo de molienda. Gracias al enorme compromiso y a muchas manos voluntarias, la reconstrucción se completó ya en **1981**. Desde entonces es considerado un símbolo de Tündern y un punto de referencia popular en la Ruta Ciclista del Weser.
 
 </section>
 

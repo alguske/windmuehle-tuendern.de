@@ -20,7 +20,7 @@ Die sogenannte Holländer-Windmühle am Weserdamm in Tündern wurde im Jahr **18
 
 Nach dem **Zweiten Weltkrieg** begann der allmähliche Verfall der Mühle. Erst mit der Gründung des Heimatvereins **„Tundirum" im Jahr 1974** begann eine neue Ära. Durch zahlreiche Spenden konnte die Mühle **1979** mit einem neuen Dach und frischem Putz wiedereröffnet werden.
 
-Doch ein Jahr später, am Abend des **19. Juli 1980**, schlug ein Blitz ein. Die Mühle brannte nahezu vollständig nieder – Dach, Windrose, Mühlenkrone und Mahlwerk wurden zerstört. Dank überwältigendem Engagement und vielen helfenden Händen konnte der Wiederaufbau schon **1981** abgeschlossen werden. Seither gilt sie als Wahrzeichen Tünderns und beliebte Wegmarke am Weserradweg.
+Doch ein Jahr später, am Abend des **27. Juli 1980**, schlug ein Blitz ein. Die Mühle brannte nahezu vollständig nieder – Dach, Windrose, Mühlenkrone und Mahlwerk wurden zerstört. Dank überwältigendem Engagement und vielen helfenden Händen konnte der Wiederaufbau schon **1981** abgeschlossen werden. Seither gilt sie als Wahrzeichen Tünderns und beliebte Wegmarke am Weserradweg.
 
 </section>
 
