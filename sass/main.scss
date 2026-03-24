@@ -80,7 +80,7 @@ a {
   z-index: 9999;
   transition: top 0.2s ease;
 
-  &:focus {
+  &:focus-visible {
     top: 0;
     outline: none;
   }
