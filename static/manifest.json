@@ -1,0 +1,22 @@
+{
+  "name": "Windmühle Tündern",
+  "short_name": "Windmühle",
+  "description": "Förderverein zur Erhaltung der historischen Windmühle in Tündern.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2c5f2d",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/imgs/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
