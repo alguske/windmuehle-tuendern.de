@@ -17,7 +17,18 @@
 
     <!-- Favicon & Manifest -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/imgs/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
+
+    <!-- RSS Feed -->
+    {% if lang == "en" %}
+    <link rel="alternate" type="application/rss+xml" title="Windmill Tündern – News" href="{{ config.base_url }}/en/aktuelles/rss.xml">
+    {% elif lang == "es" %}
+    <link rel="alternate" type="application/rss+xml" title="Molino Tündern – Noticias" href="{{ config.base_url }}/es/aktuelles/rss.xml">
+    {% else %}
+    <link rel="alternate" type="application/rss+xml" title="Windmühle Tündern – Aktuelles" href="{{ config.base_url }}/aktuelles/rss.xml">
+    {% endif %}
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://rum.cronitor.io" crossorigin>
