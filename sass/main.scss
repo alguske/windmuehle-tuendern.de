@@ -904,14 +904,6 @@ section {
     top: 0.1rem;
   }
 
-  li:last-child::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: var(--c-accent);
-    border-radius: 50%;
-    top: 0.45em;
-  }
 }
 
 // ================================
