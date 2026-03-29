@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% set lang = "de" %}
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c5f2d">
+    <title>404 – {{ config.title }}</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    {% include "partials/header.html" %}
+
+    <main id="main-content">
+        <section class="error-page">
+            <div class="error-content">
+                <div class="error-icon">
+                    <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" width="120" height="120">
+                </div>
+                <h1 class="error-code">404</h1>
+                <p class="error-message">Diese Seite wurde nicht gefunden.</p>
+                <p class="error-hint">Die Seite wurde möglicherweise verschoben oder existiert nicht mehr.</p>
+                <a href="/" class="cta-button">Zurück zur Startseite</a>
+            </div>
+        </section>
+    </main>
+
+    {% include "partials/footer.html" %}
+
+    <script src="/js/mobile-menu.js"></script>
+</body>
+</html>
