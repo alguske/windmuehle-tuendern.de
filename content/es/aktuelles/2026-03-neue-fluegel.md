@@ -22,3 +22,14 @@ image = "/imgs/neue-fluegel/windmuehle-sonnenschein.jpg"
 </div>
 
 ¡Estamos enormemente contentos con este momento tan especial y orgullosos de que nuestro molino luzca ahora como se merece. Un sincero agradecimiento a todos los artesanos y colaboradores que hicieron posible este día!
+
+## Reportaje NDR: Nuevas aspas para el molino
+
+<div class="post-video">
+  <a href="https://www.ndr.de/fernsehen/sendungen/hallo_niedersachsen/tuendern-alte-windmuehle-bei-hameln-bekommt-wieder-fluegel,hallonds-6514.html" target="_blank" rel="noopener noreferrer" class="video-link">
+    <div class="video-thumbnail">
+      <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="Reportaje NDR: El viejo molino de Hameln recupera sus aspas">
+      <span class="video-caption">NDR Hallo Niedersachsen — Ver en ndr.de →</span>
+    </div>
+  </a>
+</div>

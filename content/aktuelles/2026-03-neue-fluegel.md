@@ -22,3 +22,14 @@ Gestern war es endlich so weit: Die neuen Flügel wurden an unserer Windmühle a
 </div>
 
 Wir freuen uns riesig über diesen besonderen Moment und sind stolz, dass unsere Windmühle nun wieder so aussieht, wie sie es verdient. Ein herzliches Dankeschön an alle Handwerker und Helfer, die diesen Tag möglich gemacht haben!
+
+## NDR berichtet: Neue Flügel für die Windmühle
+
+<div class="post-video">
+  <a href="https://www.ndr.de/fernsehen/sendungen/hallo_niedersachsen/tuendern-alte-windmuehle-bei-hameln-bekommt-wieder-fluegel,hallonds-6514.html" target="_blank" rel="noopener noreferrer" class="video-link">
+    <div class="video-thumbnail">
+      <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="NDR-Beitrag: Alte Windmühle bei Hameln bekommt wieder Flügel">
+      <span class="video-caption">NDR Hallo Niedersachsen — Zum Beitrag auf ndr.de →</span>
+    </div>
+  </a>
+</div>
