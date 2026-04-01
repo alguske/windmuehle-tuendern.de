@@ -1060,6 +1060,12 @@ section {
 }
 
 .card.achieved {
+  .achieved-subtitle {
+    color: var(--c-text-2);
+    font-size: 1.05rem;
+    margin: -0.5rem 0 1rem;
+  }
+
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
