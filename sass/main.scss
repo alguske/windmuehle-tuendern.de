@@ -356,63 +356,96 @@ a {
 .site-footer {
   background: linear-gradient(135deg, var(--c-brand-2) 0%, var(--c-brand-3) 100%);
   color: #fff;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 1.5rem;
   margin-top: auto;
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-association {
   font-weight: 600;
   font-size: 1.1rem;
-  margin: 0 0 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.footer-address {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.footer-links-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  margin: 0 0 0.5rem;
 }
 
 .footer-links {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
 
   a {
     color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
 
     &:hover {
       color: #fff;
       text-decoration: underline;
     }
   }
+}
 
-  .separator {
-    margin: 0 0.75rem;
-    opacity: 0.5;
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
 
-    @media (max-width: 480px) {
-      display: none;
-    }
-  }
-
-  @media (max-width: 480px) {
-    display: flex;
+  @media (max-width: 600px) {
     flex-direction: column;
-    gap: 0.5rem;
-
-    a {
-      display: block;
-    }
+    text-align: center;
+    gap: 0.25rem;
   }
 }
 
 .footer-copyright {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 0;
 }
 
 .footer-credit {
   font-size: 0.85rem;
-  opacity: 0.7;
+  opacity: 0.6;
   margin: 0;
 
   a {
@@ -663,34 +696,48 @@ section {
 // PARTNERS SECTION
 // ================================
 .home-partners {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 
   h2 {
-    font-size: 1.5rem;
-    color: var(--c-text-2);
-    margin: 0 0 1.25rem;
-    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--c-text-3);
+    margin: 0 0 1.5rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
   }
 }
 
 .partners-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .partner-badge {
-  padding: 0.6rem 1.25rem;
-  border: 2px solid var(--c-brand-1);
-  border-radius: 8px;
-  color: var(--c-brand-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  color: var(--c-text-1);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
 }
 
 // ================================
