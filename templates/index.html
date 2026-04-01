@@ -92,12 +92,10 @@
 <!-- Achieved Section -->
 <section class="section-accent">
     <div class="home-achieved">
-        <div class="card achieved">
-            <h3>{{ trans(key="home_achieved_title", lang=lang) }}</h3>
-            <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
-            <ul>
-                {{ trans(key="home_achieved_items", lang=lang) | safe }}
-            </ul>
+        <h2>{{ trans(key="home_achieved_title", lang=lang) }}</h2>
+        <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
+        <div class="achieved-timeline">
+            {{ trans(key="home_achieved_items", lang=lang) | safe }}
         </div>
     </div>
 </section>

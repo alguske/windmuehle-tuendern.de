@@ -1101,41 +1101,58 @@ section {
 }
 
 .home-achieved {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 0 1rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    margin: 0 0 0.5rem;
+  }
 }
 
-.card.achieved {
-  .achieved-subtitle {
-    color: var(--c-text-2);
-    font-size: 1.05rem;
-    margin: -0.5rem 0 1rem;
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1.5rem;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  li::before {
-    content: '✓';
-    width: auto;
-    height: auto;
-    background: none;
-    border-radius: 0;
-    color: #22c55e;
-    font-weight: 700;
-    font-size: 0.9rem;
-    top: 0.1rem;
-  }
-
+.achieved-subtitle {
+  color: var(--c-text-3);
+  font-size: 0.95rem;
+  margin: 0 0 2rem;
 }
+
+.achieved-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.achieved-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--c-text-1);
+  }
+
+  span:last-child {
+    font-size: 0.85rem;
+    color: var(--c-text-3);
+  }
+}
+
+.achieved-icon {
+  color: #22c55e;
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 
 // ================================
 // 404 ERROR PAGE
