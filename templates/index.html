@@ -18,17 +18,6 @@
         <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
         <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
         <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
-        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
-            {{ trans(key="home_hero_cta", lang=lang) }}
-        </a>
-    </div>
-</section>
-
-<!-- Mission Section -->
-<section class="section-light">
-    <div class="home-intro">
-        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
-        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
     </div>
 </section>
 
@@ -42,6 +31,14 @@
                 <span class="video-caption">{{ trans(key="home_video_caption", lang=lang) }}</span>
             </div>
         </a>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="section-light">
+    <div class="home-intro">
+        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
+        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
     </div>
 </section>
 
