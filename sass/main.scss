@@ -1374,9 +1374,22 @@ section {
   }
 }
 
-.gallery-section {
-  margin-bottom: 3.5rem;
+.gallery-year {
+  margin-bottom: 2.5rem;
   scroll-margin-top: calc(var(--nav-height) + 1rem);
+
+  > h2 {
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--c-brand-1);
+  }
+}
+
+.gallery-section {
+  margin-bottom: 0;
+  padding: 0;
 
   h3 {
     font-size: 1.4rem;
@@ -1466,7 +1479,7 @@ section {
 .gallery-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0;
   margin: 0;
 }
 
@@ -1490,7 +1503,8 @@ section {
   img {
     display: block;
     width: 100%;
-    height: 280px;
+    height: 240px;
+    margin: 0;
     object-fit: cover;
     transition: var(--transition-smooth);
   }
