@@ -1,5 +1,5 @@
 +++
-title = "History of the Windmill"
+title = "History of the Windmill in Tündern"
 description = "The history of the historic Tündern windmill from 1883 to today."
 template = "page.html"
 
@@ -10,44 +10,22 @@ header_image = "/imgs/bilder/windmill-3.jpeg"
 
 <div class="history-content">
 
-The so-called Dutch windmill on the Weser embankment in Tündern was built in **1883**. At first, the village's four bakeries obtained their flour directly from the mill. Until **1960** grain continued to be milled there for animal feed. Originally powered by wind, a motor was installed in an outbuilding as early as **1921** – an early step toward independence from wind and weather.
+The Dutch-style windmill on the Weser embankment in Tündern was built in **1883**. While the four bakeries in Tündern initially obtained their flour from the windmill, grain continued to be milled there as animal feed for the local farmers until **1960**. Wind power could be used to drive the mill until **1941**. However, a motor had already been installed in a small outbuilding in **1921** to ensure independence from wind and weather.
 
 <img src="/imgs/bilder/windmill-8.jpeg" alt="Tündern Windmill" class="history-image">
 
-<section class="history-section">
+After the Second World War, a slow but steady decline of the mill set in. When the local heritage association "Tundrium" was founded in **1974**, it took on the task of a thorough renovation and restoration of the windmill. With the help of many small and large donations, the mill was inaugurated in **1979** with a new roof and fresh plaster.
 
-### From decay to rescue
+On the late evening of **27 July 1980**, a severe thunderstorm swept over Tündern. Lightning struck the windmill, and it burned almost completely. The roof, mill cap, fantail and milling machinery were destroyed. Thanks to incredible commitment and many helping hands, the reconstruction was completed just one year later. As a landmark of Tündern and a waypoint for the many cyclists on the Weser Cycle Route, it once again became a monument to traditional craftsmanship.
 
-After the **Second World War** the mill began to fall into disrepair. Only with the founding of the local heritage association **"Tundirum" in 1974** did a new era begin. Thanks to numerous donations the mill was reopened in **1979** with a new roof and fresh plaster.
+But the ravages of time had again taken their toll on the windmill. The wooden sails were rotten, the plaster had suffered from wind and weather, and the masonry was damaged. A thorough restoration was therefore urgently needed to preserve this architectural monument and make it accessible to the public again. For this purpose, we founded a support association on **15 August 2024**.
 
-But a year later, on the evening of **27 July 1980**, lightning struck. The mill was almost completely destroyed by fire – roof, fantail, cap and milling machinery were lost. Thanks to tremendous commitment and many helping hands, reconstruction was completed by **1981**. Since then it has been regarded as a landmark of Tündern and a popular waypoint on the Weser Cycle Route.
+### Mills in Fairy Tales, Legends and Stories
 
-</section>
+The windmill in Tündern is located not only on Germany's most popular cycle route, but also on the German Fairy Tale Route.
 
-<section class="history-section">
+Have you ever noticed how often mills, the miller, the miller's daughter or the miller's son appear in fairy tales and stories? In the Grimms' tales such as "Puss in Boots" or "Rumpelstiltskin", through to the legend of "Krabat", the miller's trade does not always play a sympathetic role. In fact, the profession of miller was long considered dishonourable. Thieves and robbers were supposedly hidden in the mills. Nobody could know exactly what went on inside them. They were watched with suspicion, as mills lay outside the urban or village communities and were beyond social control. Added to this was the farmers' dependence on the mills to have their grain processed. Only in the nineteenth century did attitudes change, and mills became an essential guarantor of the food supply.
 
-### Today: A monument in need
-
-But today the **ravages of time** are gnawing at the windmill:
-
-- The **wooden blades are rotten**
-- The **plaster is weathered**
-- The **masonry is damaged**
-
-A comprehensive restoration is therefore **urgently required** to preserve this cultural heritage and make it accessible to the public again.
-
-</section>
-
-<section class="history-section">
-
-### Mills in fairy tales, legends and stories
-
-The windmill in Tündern lies not only on the **Weser Cycle Route**, but also on the famous **German Fairy Tale Route**. Have you noticed how often **mills** appear in old stories? Whether in the Grimm tales like **"Puss in Boots"** or **"Rumpelstiltskin"**, or in legends such as **"Krabat"** – the miller's trade always played a role.
-
-In earlier times, **millers** were seen as mysterious figures. Mills often stood apart from villages, outside social control. Many believed robbers would hide there – and indeed the profession of miller was long held in low esteem.
-
-Only in the **19th century** did the image change: mills became a symbol of food security and technical innovation. The windmill in Tündern is also such a cultural treasure well worth preserving.
-
-</section>
+We are bringing this traditional craft back to life at the Tündern windmill.
 
 </div>
