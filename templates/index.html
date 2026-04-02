@@ -94,8 +94,19 @@
     <div class="home-achieved">
         <h2>{{ trans(key="home_achieved_title", lang=lang) }}</h2>
         <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
-        <div class="achieved-timeline">
-            {{ trans(key="home_achieved_items", lang=lang) | safe }}
+        <div class="achieved-columns">
+            <div class="achieved-column achieved-plan">
+                <h3>{{ trans(key="home_achieved_plan_title", lang=lang) }}</h3>
+                <ul>{{ trans(key="home_achieved_plan_items", lang=lang) | safe }}</ul>
+            </div>
+            <div class="achieved-column achieved-done">
+                <h3>{{ trans(key="home_achieved_done_title", lang=lang) }}</h3>
+                <ul>{{ trans(key="home_achieved_done_items", lang=lang) | safe }}</ul>
+            </div>
+            <div class="achieved-column achieved-next">
+                <h3>{{ trans(key="home_achieved_next_title", lang=lang) }}</h3>
+                <ul>{{ trans(key="home_achieved_next_items", lang=lang) | safe }}</ul>
+            </div>
         </div>
     </div>
 </section>
@@ -106,9 +117,10 @@
         <h2>{{ trans(key="home_partners_title", lang=lang) }}</h2>
         <div class="partners-grid">
             <span class="partner-badge">{{ trans(key="home_partner_1", lang=lang) }}</span>
-            <span class="partner-badge">{{ trans(key="home_partner_2", lang=lang) }}</span>
             <span class="partner-badge">{{ trans(key="home_partner_3", lang=lang) }}</span>
             <span class="partner-badge">{{ trans(key="home_partner_4", lang=lang) }}</span>
+            <span class="partner-badge">{{ trans(key="home_partner_2", lang=lang) }}</span>
+            <span class="partner-badge">{{ trans(key="home_partner_5", lang=lang) }}</span>
         </div>
     </div>
 </section>
