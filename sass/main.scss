@@ -696,17 +696,14 @@ section {
 // PARTNERS SECTION
 // ================================
 .home-partners {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 
   h2 {
-    font-size: 0.85rem;
-    color: var(--c-text-3);
-    margin: 0 0 1.5rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    margin: 0 0 0.5rem;
   }
 }
 
@@ -725,21 +722,14 @@ section {
   padding: 1rem 1.5rem;
   background: #fff;
   border-radius: 10px;
-  border-left: 3px solid var(--c-brand-1);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   color: var(--c-text-1);
   font-weight: 600;
   font-size: 0.88rem;
   text-align: center;
-  transition: var(--transition-smooth);
 
   &:nth-child(n+4) {
     flex: 0 1 calc((100% - 1rem) / 2);
-  }
-
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
