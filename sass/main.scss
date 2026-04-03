@@ -740,8 +740,12 @@ section {
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     flex: 1 1 100%;
+
+    &:nth-child(n+4) {
+      flex: 1 1 100%;
+    }
   }
 }
 
