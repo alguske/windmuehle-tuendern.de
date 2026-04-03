@@ -77,7 +77,7 @@
                 <img src="{{ post.extra.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" width="600" height="400">
                 {% endif %}
                 <div class="news-card-content">
-                    <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%B %Y", locale="es_ES") }}{% endif %}</span>
+                    <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}</span>
                     <h3>{{ post.title }}</h3>
                 </div>
             </a>
