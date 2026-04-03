@@ -37,6 +37,9 @@ Every content or translation change **must** cover all 3 languages.
 - Frontmatter requires: `title`, `date`, `description`, `template`, `[extra] image`
 - Images go in `static/imgs/` and are referenced with absolute paths (`/imgs/...`)
 - Posts use `<div class="post-images">` for image galleries
+- Post images: optimize to 1200px width, 80% JPEG quality via `sips -s format jpeg -s formatOptions 80 --resampleWidth 1200`
+- Thumbnails: generate at 600px width, 70% JPEG quality into `static/imgs/thumbs/` via `sips -s format jpeg -s formatOptions 70 --resampleWidth 600`
+- Every post with `[extra] image` must have a matching thumbnail in `static/imgs/thumbs/<filename>.jpg`
 
 ## Conventions
 

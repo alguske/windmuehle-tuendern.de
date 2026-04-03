@@ -18,6 +18,17 @@
         <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
         <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
         <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
+        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+            {{ trans(key="home_hero_cta", lang=lang) }}
+        </a>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="section-light">
+    <div class="home-intro">
+        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
+        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
     </div>
 </section>
 
@@ -31,31 +42,6 @@
                 <span class="video-caption">{{ trans(key="home_video_caption", lang=lang) }}</span>
             </div>
         </a>
-    </div>
-</section>
-
-<!-- Mission Section -->
-<section class="section-light">
-    <div class="home-intro">
-        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
-        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
-    </div>
-</section>
-
-<!-- Before/After Section -->
-<section class="section-accent">
-    <div class="home-before-after">
-        <h2>{{ trans(key="home_before_after_title", lang=lang) }}</h2>
-        <div class="before-after-grid">
-            <div class="before-after-item">
-                <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='home_before_label', lang=lang) }}" loading="lazy" decoding="async">
-                <span class="before-after-label">{{ trans(key="home_before_label", lang=lang) }}</span>
-            </div>
-            <div class="before-after-item">
-                <img src="/imgs/neue-fluegel/windmuehle-sonnenschein.jpg" alt="{{ trans(key='home_after_label', lang=lang) }}" loading="lazy" decoding="async">
-                <span class="before-after-label">{{ trans(key="home_after_label", lang=lang) }}</span>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -74,7 +60,9 @@
             {% for post in news_section.pages | slice(end=2) %}
             <a href="{{ post.permalink }}" class="news-card">
                 {% if post.extra.image %}
-                <img src="{{ post.extra.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" width="600" height="400">
+                    {% set parts = post.extra.image | split(pat="/") %}
+                    {% set filename = parts | last | split(pat=".") | first %}
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250">
                 {% endif %}
                 <div class="news-card-content">
                     <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}</span>
@@ -89,11 +77,23 @@
     </div>
 </section>
 
-<!-- Achieved Section -->
+<!-- Restaurierung Section -->
 <section class="section-accent">
     <div class="home-achieved">
         <h2>{{ trans(key="home_achieved_title", lang=lang) }}</h2>
         <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
+        <div class="home-before-after">
+            <div class="before-after-grid">
+                <div class="before-after-item">
+                    <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='home_before_label', lang=lang) }}" loading="lazy" decoding="async">
+                    <span class="before-after-label">{{ trans(key="home_before_label", lang=lang) }}</span>
+                </div>
+                <div class="before-after-item">
+                    <img src="/imgs/neue-fluegel/windmuehle-sonnenschein.jpg" alt="{{ trans(key='home_after_label', lang=lang) }}" loading="lazy" decoding="async">
+                    <span class="before-after-label">{{ trans(key="home_after_label", lang=lang) }}</span>
+                </div>
+            </div>
+        </div>
         <div class="achieved-columns">
             <div class="achieved-column achieved-plan">
                 <h3>{{ trans(key="home_achieved_plan_title", lang=lang) }}</h3>
@@ -121,28 +121,6 @@
             <span class="partner-badge">{{ trans(key="home_partner_4", lang=lang) }}</span>
             <span class="partner-badge">{{ trans(key="home_partner_2", lang=lang) }}</span>
             <span class="partner-badge">{{ trans(key="home_partner_5", lang=lang) }}</span>
-        </div>
-    </div>
-</section>
-
-<!-- Gallery Section -->
-<section class="section-light">
-    <div class="home-gallery">
-        <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-8.jpeg" alt="{{ trans(key='home_gallery_1', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <span class="focus-text">{{ trans(key="home_gallery_1", lang=lang) }}</span>
-        </div>
-        <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-6.jpeg" alt="{{ trans(key='home_gallery_2', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <span class="focus-text">{{ trans(key="home_gallery_2", lang=lang) }}</span>
-        </div>
-        <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-2.jpeg" alt="{{ trans(key='home_gallery_3', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <span class="focus-text">{{ trans(key="home_gallery_3", lang=lang) }}</span>
-        </div>
-        <div class="home-gallery-item">
-            <img src="/imgs/bilder/windmill-1.jpeg" alt="{{ trans(key='home_gallery_4', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="1600">
-            <span class="focus-text">{{ trans(key="home_gallery_4", lang=lang) }}</span>
         </div>
     </div>
 </section>
