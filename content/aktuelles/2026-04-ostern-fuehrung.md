@@ -41,7 +41,7 @@ Weiter oben offenbarte sich das beeindruckende Getriebe der Mühle. Massive Zahn
 
 ## Ein gelungener Ostertag
 
-Zum Abschluss des Rundgangs leuchtete der Schriftzug "Windmühle" stimmungsvoll im Sockelgeschoss. Die Osterführung war ein voller Erfolg und zeigte einmal mehr, wie lebendig unsere Mühle nach der Restaurierung wieder ist.
+Zum Abschluss des Rundgangs leuchtete der Schriftzug "Windmühle" stimmungsvoll im Obergeschoss. Die Osterführung war ein voller Erfolg und zeigte einmal mehr, wie lebendig unsere Mühle nach der Restaurierung wieder ist.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/windmuehle-von-unten.jpg" alt="Die Windmühle Tündern von unten betrachtet">

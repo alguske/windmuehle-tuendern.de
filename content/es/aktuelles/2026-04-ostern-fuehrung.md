@@ -41,7 +41,7 @@ Más arriba se reveló el impresionante engranaje del molino. Enormes ruedas den
 
 ## Un día de Pascua perfecto
 
-Al final del recorrido, el letrero luminoso "Windmühle" brillaba con encanto en el sótano. La visita de Pascua fue todo un éxito y demostró una vez más lo viva que está nuestra mühle tras la restauración.
+Al final del recorrido, el letrero luminoso "Windmühle" brillaba con encanto en la planta superior. La visita de Pascua fue todo un éxito y demostró una vez más lo viva que está nuestra mühle tras la restauración.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/windmuehle-von-unten.jpg" alt="El molino de Tündern visto desde abajo">

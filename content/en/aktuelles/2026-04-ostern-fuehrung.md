@@ -41,7 +41,7 @@ Higher up, the impressive gearing of the mill revealed itself. Massive cogwheels
 
 ## A wonderful Easter day
 
-At the end of the tour, the illuminated "Windmühle" lettering glowed atmospherically in the basement. The Easter tour was a great success and showed once again how alive our mill has become after its restoration.
+At the end of the tour, the illuminated "Windmühle" lettering glowed atmospherically on the upper floor. The Easter tour was a great success and showed once again how alive our mill has become after its restoration.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/windmuehle-von-unten.jpg" alt="The Tündern Windmill seen from below">
