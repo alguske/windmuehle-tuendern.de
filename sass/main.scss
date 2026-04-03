@@ -1,5 +1,4 @@
 // Windmühle Tündern - Main Stylesheet
-// Migrated from VitePress custom.css
 
 :root {
   --nav-height: 70px;
@@ -9,7 +8,6 @@
   --c-brand-2: #1a4a7a;
   --c-brand-3: #0f3359;
 
-  --c-brand: #2563a8;
   --c-link: #1e5496;
   --c-accent: #e8a838;
 
@@ -20,7 +18,6 @@
   // Design tokens
   --section-bg-light: #f8fafc;
   --section-bg-accent: linear-gradient(135deg, #2563a810 0%, #e8a83810 100%);
-  --section-bg-dark: #1e3a5f;
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -596,15 +593,6 @@ section {
   background: var(--section-bg-accent);
 }
 
-.section-dark {
-  background-color: var(--section-bg-dark);
-  padding: 3rem 1rem 2rem;
-
-  h2 {
-    color: #fff;
-  }
-}
-
 // ================================
 // VIDEO SECTION
 // ================================
@@ -628,7 +616,6 @@ section {
 .video-link {
   display: block;
   text-decoration: none;
-
 }
 
 .video-thumbnail {
@@ -753,7 +740,7 @@ section {
 // BEFORE/AFTER SECTION
 // ================================
 .home-before-after {
-  max-width: 600px;
+  max-width: 480px;
   margin: 0 auto 2rem;
   text-align: center;
 }
@@ -772,13 +759,13 @@ section {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: var(--card-shadow);
 
   img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
+    margin: 0;
   }
 }
 
@@ -787,8 +774,8 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.5rem 0.75rem;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem 0.75rem 0.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
@@ -966,33 +953,6 @@ section {
   margin: 1.5rem 0;
 }
 
-.post-image-text {
-  display: flex;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  align-items: flex-start;
-
-  img {
-    border-radius: 8px;
-    width: 50%;
-    height: auto;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-
-    img {
-      width: 100%;
-    }
-  }
-}
-
 // ================================
 // MISSION / INTRO SECTION
 // ================================
@@ -1029,80 +989,8 @@ section {
 }
 
 // ================================
-// CARDS & GRID
+// ACHIEVED / RESTAURIERUNG SECTION
 // ================================
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition-smooth);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--card-shadow-hover);
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 1.25rem;
-    color: var(--c-brand-1);
-    font-size: 1.4rem;
-    position: relative;
-    padding-bottom: 0.75rem;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: var(--c-accent);
-      border-radius: 2px;
-    }
-  }
-
-  ul {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  li {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-    color: #555;
-    position: relative;
-    padding-left: 1.5rem;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5rem;
-      width: 8px;
-      height: 8px;
-      background: var(--c-accent);
-      border-radius: 50%;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
 .home-achieved {
   max-width: 1100px;
   margin: 0 auto;
@@ -1186,7 +1074,6 @@ section {
   content: "\25cb";
   color: var(--c-brand-1);
 }
-
 
 // ================================
 // 404 ERROR PAGE
@@ -2242,7 +2129,7 @@ section {
     scroll-behavior: auto !important;
   }
 
-  .hero-logo:hover, .news-card:hover, .card:hover, .blog-hero-image:hover {
+  .hero-logo:hover, .news-card:hover, .blog-hero-image:hover {
     transform: none !important;
   }
 }
@@ -2283,7 +2170,7 @@ section {
     }
   }
 
-  .card, .bank-card, .thanks-section, .history-section, .imprint-card {
+  .bank-card, .thanks-section, .history-section, .imprint-card {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
     break-inside: avoid;
@@ -2366,18 +2253,6 @@ section {
 
     p {
       font-size: 1rem;
-    }
-  }
-
-  .card {
-    padding: 1.5rem;
-
-    h3 {
-      font-size: 1.2rem;
-    }
-
-    li {
-      font-size: 0.95rem;
     }
   }
 
