@@ -10,6 +10,8 @@ function set_up() {
   temp_dir=$(mktemp -d)
   original_dir=$(pwd)
   mkdir -p "$temp_dir/content/aktuelles" \
+           "$temp_dir/content/en/aktuelles" \
+           "$temp_dir/content/es/aktuelles" \
            "$temp_dir/static/imgs/thumbs" \
            "$temp_dir/local/imgs"
   cp "$SEED_IMG" "$temp_dir/local/imgs/photo-a.jpg"
@@ -27,6 +29,43 @@ function test_creates_post_file_with_date_prefix() {
   "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
 
   assert_file_exists "content/aktuelles/2026-05-my-slug.md"
+}
+
+function test_creates_en_and_es_post_stubs() {
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  assert_file_exists "content/en/aktuelles/2026-05-my-slug.md"
+  assert_file_exists "content/es/aktuelles/2026-05-my-slug.md"
+}
+
+function test_en_and_es_posts_have_translation_markers() {
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  en=$(cat "content/en/aktuelles/2026-05-my-slug.md")
+  es=$(cat "content/es/aktuelles/2026-05-my-slug.md")
+
+  assert_contains "TODO: translate to English" "$en"
+  assert_contains "TODO: translate to Spanish" "$es"
+}
+
+function test_de_post_has_no_translation_marker() {
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  de=$(cat "content/aktuelles/2026-05-my-slug.md")
+
+  assert_not_contains "TODO: translate" "$de"
+}
+
+function test_rerun_preserves_existing_en_post() {
+  echo "existing EN content" > "content/en/aktuelles/2026-05-my-slug.md"
+  en_before=$(cat "content/en/aktuelles/2026-05-my-slug.md")
+
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  en_after=$(cat "content/en/aktuelles/2026-05-my-slug.md")
+  assert_same "$en_before" "$en_after"
+  assert_file_exists "content/aktuelles/2026-05-my-slug.md"
+  assert_file_exists "content/es/aktuelles/2026-05-my-slug.md"
 }
 
 function test_post_frontmatter_contains_title_date_description() {
@@ -159,11 +198,79 @@ function test_fails_when_source_dir_has_no_images() {
   assert_contains "no images" "$output"
 }
 
-function test_fails_when_post_already_exists() {
+function test_rerun_leaves_all_posts_untouched_when_all_exist() {
   "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
 
-  output=$("$SCRIPT" my-slug -D 2026-05-10 2>&1) && status=0 || status=$?
+  # Mutate DE so we can prove the re-run does not overwrite it.
+  echo "MUTATED" >> "content/aktuelles/2026-05-my-slug.md"
+  de_before=$(cat "content/aktuelles/2026-05-my-slug.md")
 
-  assert_not_equals "0" "$status"
-  assert_contains "already exists" "$output"
+  output=$("$SCRIPT" my-slug -D 2026-05-10 2>&1)
+
+  assert_contains "Nothing new to do" "$output"
+  assert_contains "Untouched" "$output"
+
+  de_after=$(cat "content/aktuelles/2026-05-my-slug.md")
+  assert_same "$de_before" "$de_after"
+}
+
+function test_rerun_creates_only_missing_language_posts() {
+  # First run creates all three.
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  # Remove EN and ES only; keep DE with a mutation we can detect.
+  echo "KEEP" >> "content/aktuelles/2026-05-my-slug.md"
+  de_before=$(cat "content/aktuelles/2026-05-my-slug.md")
+  rm "content/en/aktuelles/2026-05-my-slug.md" \
+     "content/es/aktuelles/2026-05-my-slug.md"
+
+  output=$("$SCRIPT" my-slug -D 2026-05-10 2>&1)
+
+  assert_contains "Created:" "$output"
+  assert_file_exists "content/en/aktuelles/2026-05-my-slug.md"
+  assert_file_exists "content/es/aktuelles/2026-05-my-slug.md"
+
+  de_after=$(cat "content/aktuelles/2026-05-my-slug.md")
+  assert_same "$de_before" "$de_after"
+}
+
+function test_rerun_inherits_frontmatter_from_existing_de() {
+  # Seed DE with a handcrafted post; re-run should use its title/description
+  # and extra.image when creating EN/ES stubs.
+  mkdir -p content/aktuelles
+  cat > "content/aktuelles/2026-04-my-slug.md" <<'EOF'
++++
+title = "Handgepflegter Titel"
+date = 2026-04-17
+description = "Handgepflegte Beschreibung"
+template = "blog-post.html"
+
+[extra]
+image = "/imgs/my-slug/my-slug-03.jpg"
++++
+
+body
+EOF
+
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  en=$(cat "content/en/aktuelles/2026-04-my-slug.md")
+  assert_contains 'title = "Handgepflegter Titel"' "$en"
+  assert_contains 'description = "Handgepflegte Beschreibung"' "$en"
+  assert_contains 'image = "/imgs/my-slug/my-slug-03.jpg"' "$en"
+  assert_contains 'date = 2026-04-17' "$en"
+}
+
+function test_rerun_reuses_existing_optimized_images_without_source_dir() {
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  # Remove EN stub and delete the source dir; images should be reused from
+  # static/imgs/my-slug/, so the second run must still succeed.
+  rm "content/en/aktuelles/2026-05-my-slug.md"
+  rm -rf local
+
+  output=$("$SCRIPT" my-slug -D 2026-05-10 2>&1)
+
+  assert_contains "Reusing" "$output"
+  assert_file_exists "content/en/aktuelles/2026-05-my-slug.md"
 }

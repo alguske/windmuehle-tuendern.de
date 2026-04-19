@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# Emergency offline script to create a new DE aktuelles post.
-# Optimizes images, generates thumbnail, scaffolds markdown with frontmatter.
+# Emergency offline script to create a new aktuelles post (DE + EN + ES).
+# Optimizes images, generates a thumbnail, scaffolds the markdown files.
+# Safe to re-run: existing language files are left untouched; only missing
+# ones are created. Existing optimized images are reused when present.
 #
 # Usage:
 #   ./scripts/new-post.sh <slug> [options]
@@ -16,8 +18,6 @@
 # Example:
 #   ./scripts/new-post.sh fluegel-montage -t "Flügelmontage" -s "Die neuen Flügel wurden montiert."
 
-# ./scripts/new-post.sh einweihung-der-windmuehle -s "Wir hatten am 17. April eine schöne Einweihung der Windmühle. Über die vielen Besucher haben wir uns sehr gefreut. Wir bedanken uns für die Glückwünsche und die großen und kleinen Spenden."
-
 set -euo pipefail
 
 SRC_DIR="local/imgs/"
@@ -27,7 +27,7 @@ SUMMARY=""
 DATE="$(date +%Y-%m-%d)"
 
 usage() {
-  sed -n '3,17p' "$0" | sed 's/^# \{0,1\}//'
+  sed -n '3,20p' "$0" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
 }
 
@@ -58,11 +58,6 @@ if ! [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
   exit 1
 fi
 
-if [[ ! -d "$SRC_DIR" ]]; then
-  echo "Error: source dir '$SRC_DIR' does not exist" >&2
-  exit 1
-fi
-
 if ! command -v sips >/dev/null 2>&1; then
   echo "Error: sips not found (macOS required)" >&2
   exit 1
@@ -73,64 +68,144 @@ humanize() {
   echo "$1" | tr '-' ' ' | awk '{for (i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1'
 }
 
-[[ -z "$TITLE" ]]   && TITLE="$(humanize "$SLUG")"
-[[ -z "$SUMMARY" ]] && SUMMARY="$TITLE"
+# Return the path to the existing post in $1 whose filename ends with -<slug>.md.
+# Empty if none. Exits with an error if more than one matches.
+find_existing_post() {
+  local dir="$1"
+  shopt -s nullglob
+  local matches=("$dir"/*-"${SLUG}".md)
+  shopt -u nullglob
+  if [[ ${#matches[@]} -eq 0 ]]; then echo ""; return; fi
+  if [[ ${#matches[@]} -gt 1 ]]; then
+    echo "Error: multiple posts match slug '$SLUG' in $dir:" >&2
+    printf '  %s\n' "${matches[@]}" >&2
+    exit 1
+  fi
+  echo "${matches[0]}"
+}
+
+# Read `key = "value"` from the frontmatter of $1. Empty if missing.
+read_fm_string() {
+  awk -F'"' -v key="$2" '$0 ~ "^" key " = "{print $2; exit}' "$1"
+}
+
+# Read `date = YYYY-MM-DD` (unquoted) from $1.
+read_fm_date() {
+  awk '/^date = /{print $3; exit}' "$1"
+}
 
 YEAR_MONTH="${DATE:0:7}"
-POST_FILE="content/aktuelles/${YEAR_MONTH}-${SLUG}.md"
 IMG_DIR="static/imgs/${SLUG}"
 THUMB_DIR="static/imgs/thumbs"
 
-if [[ -e "$POST_FILE" ]]; then
-  echo "Error: post already exists: $POST_FILE" >&2
-  exit 1
+EXISTING_DE=$(find_existing_post "content/aktuelles")
+EXISTING_EN=$(find_existing_post "content/en/aktuelles")
+EXISTING_ES=$(find_existing_post "content/es/aktuelles")
+
+POST_DE="${EXISTING_DE:-content/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_EN="${EXISTING_EN:-content/en/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_ES="${EXISTING_ES:-content/es/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+
+# Inherit frontmatter from the DE post when it exists, so newly-created
+# EN/ES stubs stay aligned with whatever the user has since edited.
+if [[ -n "$EXISTING_DE" ]]; then
+  de_title=$(read_fm_string "$EXISTING_DE" "title")
+  de_desc=$(read_fm_string "$EXISTING_DE" "description")
+  de_date=$(read_fm_date "$EXISTING_DE")
+  de_image=$(read_fm_string "$EXISTING_DE" "image")
+  [[ -n "$de_title" ]] && TITLE="$de_title"
+  [[ -n "$de_desc" ]]  && SUMMARY="$de_desc"
+  [[ -n "$de_date" ]]  && DATE="$de_date"
+  EXTRA_IMAGE_OVERRIDE="$de_image"
+else
+  [[ -z "$TITLE" ]]   && TITLE="$(humanize "$SLUG")"
+  [[ -z "$SUMMARY" ]] && SUMMARY="$TITLE"
+  EXTRA_IMAGE_OVERRIDE=""
 fi
 
-mkdir -p "$IMG_DIR" "$THUMB_DIR"
+# Recompute fallback paths after a possible DATE inherit from DE, so newly
+# created EN/ES stubs line up with the DE post's filename date prefix.
+YEAR_MONTH="${DATE:0:7}"
+POST_DE="${EXISTING_DE:-content/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_EN="${EXISTING_EN:-content/en/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_ES="${EXISTING_ES:-content/es/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
 
-# Collect source images (jpg/jpeg/png/heic), case-insensitive, sorted
-shopt -s nullglob nocaseglob
-SRC_IMAGES=()
-for f in "$SRC_DIR"/*.{jpg,jpeg,png,heic}; do
-  [[ -f "$f" ]] && SRC_IMAGES+=("$f")
-done
-shopt -u nocaseglob
+mkdir -p "$IMG_DIR" "$THUMB_DIR" \
+         "$(dirname "$POST_EN")" "$(dirname "$POST_ES")"
+
+# Collect existing optimized images. When present, skip source optimization
+# entirely so re-runs don't require the source directory to still be around.
+shopt -s nullglob
+EXISTING_OPTIMIZED=("$IMG_DIR"/"${SLUG}"-*.jpg)
 shopt -u nullglob
 
-if [[ ${#SRC_IMAGES[@]} -eq 0 ]]; then
-  echo "Error: no images found in '$SRC_DIR' (jpg/jpeg/png/heic)" >&2
-  exit 1
+OPTIMIZED_NAMES=()
+IMAGES_REUSED=0
+
+if [[ ${#EXISTING_OPTIMIZED[@]} -gt 0 ]]; then
+  IFS=$'\n' EXISTING_OPTIMIZED=($(printf '%s\n' "${EXISTING_OPTIMIZED[@]}" | sort))
+  unset IFS
+  for p in "${EXISTING_OPTIMIZED[@]}"; do
+    OPTIMIZED_NAMES+=("$(basename "$p")")
+  done
+  IMAGES_REUSED=1
+  echo "→ Reusing ${#OPTIMIZED_NAMES[@]} existing optimized image(s) in $IMG_DIR/"
+else
+  if [[ ! -d "$SRC_DIR" ]]; then
+    echo "Error: source dir '$SRC_DIR' does not exist and no existing images in $IMG_DIR/" >&2
+    exit 1
+  fi
+
+  # Collect source images (jpg/jpeg/png/heic), case-insensitive, sorted
+  shopt -s nullglob nocaseglob
+  SRC_IMAGES=()
+  for f in "$SRC_DIR"/*.{jpg,jpeg,png,heic}; do
+    [[ -f "$f" ]] && SRC_IMAGES+=("$f")
+  done
+  shopt -u nocaseglob
+  shopt -u nullglob
+
+  if [[ ${#SRC_IMAGES[@]} -eq 0 ]]; then
+    echo "Error: no images found in '$SRC_DIR' (jpg/jpeg/png/heic)" >&2
+    exit 1
+  fi
+
+  IFS=$'\n' SRC_IMAGES=($(printf '%s\n' "${SRC_IMAGES[@]}" | sort))
+  unset IFS
+
+  echo "→ Found ${#SRC_IMAGES[@]} image(s) in $SRC_DIR"
+  i=1
+  for src in "${SRC_IMAGES[@]}"; do
+    num="$(printf '%02d' "$i")"
+    dest_name="${SLUG}-${num}.jpg"
+    dest_path="${IMG_DIR}/${dest_name}"
+    echo "  [${num}] $(basename "$src") → $dest_path"
+    sips -s format jpeg -s formatOptions 80 --resampleWidth 1200 \
+      "$src" --out "$dest_path" >/dev/null
+    OPTIMIZED_NAMES+=("$dest_name")
+    i=$((i+1))
+  done
 fi
 
-# Sort deterministically
-IFS=$'\n' SRC_IMAGES=($(printf '%s\n' "${SRC_IMAGES[@]}" | sort))
-unset IFS
-
-echo "→ Found ${#SRC_IMAGES[@]} image(s) in $SRC_DIR"
-
-OPTIMIZED_NAMES=()
-i=1
-for src in "${SRC_IMAGES[@]}"; do
-  num="$(printf '%02d' "$i")"
-  dest_name="${SLUG}-${num}.jpg"
-  dest_path="${IMG_DIR}/${dest_name}"
-
-  echo "  [${num}] $(basename "$src") → $dest_path"
-  sips -s format jpeg -s formatOptions 80 --resampleWidth 1200 \
-    "$src" --out "$dest_path" >/dev/null
-
-  OPTIMIZED_NAMES+=("$dest_name")
-  i=$((i+1))
-done
-
-# Generate thumbnail for the first optimized image (used as extra.image).
-# If extra.image is later changed to a different image in the post folder,
-# run scripts/make-thumb.sh on that image to swap the thumbnail.
+# Pick extra.image: inherit from DE if it exists, else use the first image.
 FIRST_IMG="${OPTIMIZED_NAMES[0]}"
-THUMB_FILE="${THUMB_DIR}/${FIRST_IMG}"
-echo "→ Generating thumbnail: $THUMB_FILE"
-sips -s format jpeg -s formatOptions 70 --resampleWidth 600 \
-  "${SRC_IMAGES[0]}" --out "$THUMB_FILE" >/dev/null
+EXTRA_IMAGE="${EXTRA_IMAGE_OVERRIDE:-/imgs/${SLUG}/${FIRST_IMG}}"
+
+# Ensure the thumbnail for the effective extra.image exists.
+thumb_stem=$(basename "$EXTRA_IMAGE"); thumb_stem="${thumb_stem%.*}"
+THUMB_FILE="${THUMB_DIR}/${thumb_stem}.jpg"
+THUMB_CREATED=0
+if [[ ! -f "$THUMB_FILE" ]]; then
+  # Source for the thumb: prefer the optimized file on disk.
+  thumb_src="static${EXTRA_IMAGE}"
+  if [[ ! -f "$thumb_src" ]]; then
+    thumb_src="${IMG_DIR}/${FIRST_IMG}"
+  fi
+  echo "→ Generating thumbnail: $THUMB_FILE"
+  sips -s format jpeg -s formatOptions 70 --resampleWidth 600 \
+    "$thumb_src" --out "$THUMB_FILE" >/dev/null
+  THUMB_CREATED=1
+fi
 
 # Build gallery markdown: single <div class="post-images">. The grid is
 # 2-column; splitting into multiple divs produces orphan rows and oversized
@@ -146,8 +221,10 @@ build_gallery() {
 
 GALLERY="$(build_gallery)"
 
-# Write post
-cat > "$POST_FILE" <<EOF
+# Write a post file with the given language marker in the body.
+write_post() {
+  local path="$1" marker="$2"
+  cat > "$path" <<EOF
 +++
 title = "${TITLE}"
 date = ${DATE}
@@ -155,19 +232,64 @@ description = "${SUMMARY}"
 template = "blog-post.html"
 
 [extra]
-image = "/imgs/${SLUG}/${FIRST_IMG}"
+image = "${EXTRA_IMAGE}"
 +++
 
-${SUMMARY}
+${marker}${SUMMARY}
 ${GALLERY}
 EOF
+}
+
+CREATED=()
+UNTOUCHED=()
+
+maybe_write() {
+  local path="$1" marker="$2"
+  if [[ -f "$path" ]]; then
+    UNTOUCHED+=("$path")
+  else
+    write_post "$path" "$marker"
+    CREATED+=("$path")
+  fi
+}
+
+maybe_write "$POST_DE" ""
+maybe_write "$POST_EN" "<!-- TODO: translate to English -->
+"
+maybe_write "$POST_ES" "<!-- TODO: translate to Spanish -->
+"
 
 echo ""
-echo "✓ Post created:   $POST_FILE"
-echo "✓ Images:         $IMG_DIR/ (${#OPTIMIZED_NAMES[@]} files)"
-echo "✓ Thumbnail:      $THUMB_FILE"
+echo "Summary:"
+if [[ ${#CREATED[@]} -gt 0 ]]; then
+  echo "  Created:"
+  printf '    %s\n' "${CREATED[@]}"
+else
+  echo "  Created:       (none)"
+fi
+if [[ ${#UNTOUCHED[@]} -gt 0 ]]; then
+  echo "  Untouched:"
+  printf '    %s\n' "${UNTOUCHED[@]}"
+fi
+if [[ $IMAGES_REUSED -eq 1 ]]; then
+  echo "  Images:        reused ${#OPTIMIZED_NAMES[@]} existing in $IMG_DIR/"
+else
+  echo "  Images:        optimized ${#OPTIMIZED_NAMES[@]} new into $IMG_DIR/"
+fi
+if [[ $THUMB_CREATED -eq 1 ]]; then
+  echo "  Thumbnail:     generated $THUMB_FILE"
+else
+  echo "  Thumbnail:     untouched $THUMB_FILE"
+fi
+
+if [[ ${#CREATED[@]} -eq 0 ]]; then
+  echo ""
+  echo "Nothing new to do — all three language files already exist."
+  exit 0
+fi
+
 echo ""
 echo "Next steps:"
-echo "  1. Edit $POST_FILE — replace TODOs, add alt texts"
-echo "  2. Create EN + ES translations in content/en/aktuelles/ and content/es/aktuelles/"
+echo "  1. Edit $POST_DE"
+echo "  2. Translate $POST_EN and $POST_ES (remove the TODO marker)"
 echo "  3. Run: zola build"
