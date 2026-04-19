@@ -20,6 +20,10 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/optimize.sh
+source "${SCRIPT_DIR}/lib/optimize.sh"
+
 SRC_DIR="local/imgs/"
 SLUG=""
 TITLE=""
@@ -55,11 +59,6 @@ fi
 
 if ! [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
   echo "Error: date must be YYYY-MM-DD" >&2
-  exit 1
-fi
-
-if ! command -v sips >/dev/null 2>&1; then
-  echo "Error: sips not found (macOS required)" >&2
   exit 1
 fi
 
@@ -180,8 +179,7 @@ else
     dest_name="${SLUG}-${num}.jpg"
     dest_path="${IMG_DIR}/${dest_name}"
     echo "  [${num}] $(basename "$src") → $dest_path"
-    sips -s format jpeg -s formatOptions 80 --resampleWidth 1200 \
-      "$src" --out "$dest_path" >/dev/null
+    optimize_image "$src" "$dest_path"
     OPTIMIZED_NAMES+=("$dest_name")
     i=$((i+1))
   done
@@ -202,8 +200,7 @@ if [[ ! -f "$THUMB_FILE" ]]; then
     thumb_src="${IMG_DIR}/${FIRST_IMG}"
   fi
   echo "→ Generating thumbnail: $THUMB_FILE"
-  sips -s format jpeg -s formatOptions 70 --resampleWidth 600 \
-    "$thumb_src" --out "$THUMB_FILE" >/dev/null
+  make_thumb "$thumb_src" "$THUMB_FILE"
   THUMB_CREATED=1
 fi
 

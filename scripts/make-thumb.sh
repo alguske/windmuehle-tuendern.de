@@ -15,13 +15,12 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/optimize.sh
+source "${SCRIPT_DIR}/lib/optimize.sh"
+
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <image-path>" >&2
-  exit 1
-fi
-
-if ! command -v sips >/dev/null 2>&1; then
-  echo "Error: sips not found (macOS required)" >&2
   exit 1
 fi
 
@@ -77,12 +76,14 @@ if [[ -z "$OLD_IMAGE" ]]; then
 fi
 
 THUMB_DIR="static/imgs/thumbs"
-mkdir -p "$THUMB_DIR"
 
 old_stem=$(basename "$OLD_IMAGE"); old_stem="${old_stem%.*}"
 new_stem=$(basename "$FS_PATH");   new_stem="${new_stem%.*}"
 OLD_THUMB="${THUMB_DIR}/${old_stem}.jpg"
 NEW_THUMB="${THUMB_DIR}/${new_stem}.jpg"
+
+echo "→ Optimizing source image: $FS_PATH"
+optimize_image_in_place "$FS_PATH"
 
 if [[ "$OLD_IMAGE" != "$WEB_PATH" && -f "$OLD_THUMB" ]]; then
   echo "→ Removing old thumb: $OLD_THUMB"
@@ -90,8 +91,7 @@ if [[ "$OLD_IMAGE" != "$WEB_PATH" && -f "$OLD_THUMB" ]]; then
 fi
 
 echo "→ Generating thumb: $NEW_THUMB"
-sips -s format jpeg -s formatOptions 70 --resampleWidth 600 \
-  "$FS_PATH" --out "$NEW_THUMB" >/dev/null
+make_thumb "$FS_PATH" "$NEW_THUMB"
 
 if [[ "$OLD_IMAGE" != "$WEB_PATH" ]]; then
   for post in "${POSTS[@]}"; do
