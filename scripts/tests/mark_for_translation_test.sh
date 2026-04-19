@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-SCRIPT="./mark-for-translation.sh"
+TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT="$TEST_DIR/../mark-for-translation.sh"
 
 function set_up() {
   temp_dir=$(mktemp -d)
