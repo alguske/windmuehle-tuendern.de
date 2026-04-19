@@ -12,16 +12,17 @@ The user will provide:
 
 Create three markdown files with identical structure:
 
-1. `content/aktuelles/YYYY-MM-slug.md` (German)
-2. `content/en/aktuelles/YYYY-MM-slug.md` (English)
-3. `content/es/aktuelles/YYYY-MM-slug.md` (Spanish)
+1. `content/aktuelles/YYYY-MM-DD-slug.md` (German)
+2. `content/en/aktuelles/YYYY-MM-DD-slug.md` (English)
+3. `content/es/aktuelles/YYYY-MM-DD-slug.md` (Spanish)
+
+Zola reads `page.date` from the filename prefix, so the frontmatter has no `date` field.
 
 ## Frontmatter Template
 
 ```markdown
 +++
 title = "Post title in the respective language"
-date = YYYY-MM-DD
 description = "Short description in the respective language"
 template = "blog-post.html"
 
@@ -32,8 +33,8 @@ image = "/imgs/path/to/main-image.jpg"
 
 ## Rules
 
-1. All three files must have the **same filename** (slug should be based on the German version).
-2. All three files must have the **same date** and **same image paths**.
+1. All three files must have the **same filename** (slug + date prefix from the German version).
+2. All three files must have the **same image paths**.
 3. Translate title, description, and body content naturally — not word-for-word.
 4. Preserve the tone: informative, community-oriented, warm.
 5. Use `<div class="post-images">` for image galleries within posts.

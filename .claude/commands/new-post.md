@@ -8,9 +8,11 @@ The user will provide the topic. Ask for any missing details:
 - Are there images to include? (paths in `static/imgs/`)
 
 Create files in:
-- `content/aktuelles/YYYY-MM-slug.md`
-- `content/en/aktuelles/YYYY-MM-slug.md`
-- `content/es/aktuelles/YYYY-MM-slug.md`
+- `content/aktuelles/YYYY-MM-DD-slug.md`
+- `content/en/aktuelles/YYYY-MM-DD-slug.md`
+- `content/es/aktuelles/YYYY-MM-DD-slug.md`
+
+Zola derives `page.date` from the filename, so the post frontmatter has no `date` field.
 
 After creating the files, run `zola build` to verify they compile without errors.
 

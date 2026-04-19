@@ -26,10 +26,9 @@ function set_up() {
   cp "$SEED_IMG" "$temp_dir/static/imgs/thumbs/$slug-01.jpg"
 
   for tree in "aktuelles" "en/aktuelles" "es/aktuelles"; do
-    cat > "$temp_dir/content/$tree/2026-04-$slug.md" <<EOF
+    cat > "$temp_dir/content/$tree/2026-04-17-$slug.md" <<EOF
 +++
 title = "Einweihung"
-date = 2026-04-17
 description = "desc"
 template = "blog-post.html"
 
@@ -68,7 +67,7 @@ function test_updates_extra_image_in_all_language_posts() {
   "$SCRIPT" "/imgs/$slug/$slug-06.jpg" >/dev/null
 
   for tree in "aktuelles" "en/aktuelles" "es/aktuelles"; do
-    content=$(cat "content/$tree/2026-04-$slug.md")
+    content=$(cat "content/$tree/2026-04-17-$slug.md")
     assert_contains "image = \"/imgs/$slug/$slug-06.jpg\"" "$content"
   done
 }
@@ -91,7 +90,7 @@ function test_idempotent_when_target_matches_current_extra_image() {
 
   assert_file_exists "static/imgs/thumbs/$slug-01.jpg"
 
-  content=$(cat "content/aktuelles/2026-04-$slug.md")
+  content=$(cat "content/aktuelles/2026-04-17-$slug.md")
   assert_contains "image = \"/imgs/$slug/$slug-01.jpg\"" "$content"
 }
 

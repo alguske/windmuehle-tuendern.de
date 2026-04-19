@@ -32,9 +32,9 @@ Every content or translation change **must** cover all 3 languages.
 ## Blog Posts
 
 - Live in `content/aktuelles/` (de), `content/en/aktuelles/` (en), `content/es/aktuelles/` (es)
-- Filename format: `YYYY-MM-slug.md`
+- Filename format: `YYYY-MM-DD-slug.md` — Zola derives `page.date` from the filename, so no `date` field in frontmatter
 - Use `template = "blog-post.html"` in frontmatter
-- Frontmatter requires: `title`, `date`, `description`, `template`, `[extra] image`
+- Frontmatter requires: `title`, `description`, `template`, `[extra] image`
 - Images go in `static/imgs/` and are referenced with absolute paths (`/imgs/...`)
 - Posts use `<div class="post-images">` for image galleries
 - Post images: optimize to 1200px width, 80% JPEG quality via `sips -s format jpeg -s formatOptions 80 --resampleWidth 1200`
@@ -62,7 +62,7 @@ Your job is to produce a post that reads well and looks good, not to faithfully 
 - **Text**: Rewrite the generated body from scratch. Use the user-provided summary as input, not as the final text. Invent section headings (`##`) that match the content. Weave short paragraphs. Vary sentence length.
 - **Image layout**: The `.post-images` CSS is a 2-column grid. Group images into `<div class="post-images">` blocks of any size, but even-sized groups avoid orphan rows. Split galleries into **multiple logical sections with H2 headings between them** when the images tell a story — this reads much better than one long gallery.
 - **Hero image**: Pick the most visually striking photo as `extra.image` (run `scripts/make-thumb.sh` to swap — it handles all three language files and regenerates the thumbnail).
-- **Structure**: Opening paragraph → sectioned narrative → closing paragraph is a good default. Copy the rhythm from `content/aktuelles/2026-04-einweihung-der-windmuehle.md` as a reference.
+- **Structure**: Opening paragraph → sectioned narrative → closing paragraph is a good default. Copy the rhythm from `content/aktuelles/2026-04-17-einweihung-der-windmuehle.md` as a reference.
 
 ### Voice and tone (strict)
 

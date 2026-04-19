@@ -45,7 +45,9 @@ What it does:
 4. Generates a 600px / quality 70 thumbnail into `static/imgs/thumbs/` whose filename matches `extra.image`.
 5. Writes three markdown files with identical frontmatter. EN and ES get a `<!-- TODO: translate -->` marker above the body.
 
-**Re-runs are safe.** If some language posts already exist, the script leaves them untouched and only creates the missing ones. When the DE post already exists, its title, description, date and `extra.image` are inherited by the new EN/ES stubs so all three stay aligned. Existing optimized images are reused, so the source directory isn't required on re-runs.
+**Re-runs are safe.** If some language posts already exist, the script leaves them untouched and only creates the missing ones. When the DE post already exists, its title, description, filename date and `extra.image` are inherited by the new EN/ES stubs so all three stay aligned. Existing optimized images are reused, so the source directory isn't required on re-runs.
+
+Filenames follow `YYYY-MM-DD-<slug>.md`. Zola derives `page.date` from the filename, so the post frontmatter has no `date` field.
 
 ### `scripts/make-thumb.sh` — swap the homepage thumbnail
 
@@ -82,7 +84,7 @@ Overwrites every `.md` file in the given directory with the single line `to be t
    ```bash
    ./scripts/new-post.sh <slug> -s "Kurze Beschreibung für Listen und Teaser."
    ```
-3. **Edit the DE post** in `content/aktuelles/YYYY-MM-<slug>.md`. Add headings, group images into logical sections (see below), refine the body text.
+3. **Edit the DE post** in `content/aktuelles/YYYY-MM-DD-<slug>.md`. Add headings, group images into logical sections (see below), refine the body text.
 4. **Translate the EN and ES stubs** in `content/en/aktuelles/` and `content/es/aktuelles/`. Remove the `<!-- TODO: translate -->` marker, translate title, description and body. Keep image paths untouched — they're shared across languages.
 5. **Pick a different hero image if needed** by running `make-thumb.sh` on the image you prefer. Templates derive the homepage thumbnail from `extra.image`, so swapping means regenerating that single thumbnail.
 6. **Clear `local/imgs/`** once the post is committed; the directory should stay empty between posts.
@@ -102,7 +104,7 @@ The `.post-images` CSS rule is a 2-column grid. Each `<div class="post-images">`
 - **Logical sections** with H2 headings between gallery blocks read far better than one long gallery.
 - **Avoid odd-size groups** unless an orphan row is intentional. A standalone image can be placed as a plain `<img>` outside the grid.
 
-See `content/aktuelles/2026-04-einweihung-der-windmuehle.md` for a structured example with four sections and three image pairs.
+See `content/aktuelles/2026-04-17-einweihung-der-windmuehle.md` for a structured example with four sections and three image pairs.
 
 ### When not to use `new-post.sh`
 

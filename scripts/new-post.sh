@@ -89,12 +89,13 @@ read_fm_string() {
   awk -F'"' -v key="$2" '$0 ~ "^" key " = "{print $2; exit}' "$1"
 }
 
-# Read `date = YYYY-MM-DD` (unquoted) from $1.
-read_fm_date() {
-  awk '/^date = /{print $3; exit}' "$1"
+# Extract date from a post filename of the form YYYY-MM-DD-slug.md.
+filename_date() {
+  local base
+  base=$(basename "$1")
+  echo "${base:0:10}"
 }
 
-YEAR_MONTH="${DATE:0:7}"
 IMG_DIR="static/imgs/${SLUG}"
 THUMB_DIR="static/imgs/thumbs"
 
@@ -102,16 +103,16 @@ EXISTING_DE=$(find_existing_post "content/aktuelles")
 EXISTING_EN=$(find_existing_post "content/en/aktuelles")
 EXISTING_ES=$(find_existing_post "content/es/aktuelles")
 
-POST_DE="${EXISTING_DE:-content/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
-POST_EN="${EXISTING_EN:-content/en/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
-POST_ES="${EXISTING_ES:-content/es/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_DE="${EXISTING_DE:-content/aktuelles/${DATE}-${SLUG}.md}"
+POST_EN="${EXISTING_EN:-content/en/aktuelles/${DATE}-${SLUG}.md}"
+POST_ES="${EXISTING_ES:-content/es/aktuelles/${DATE}-${SLUG}.md}"
 
 # Inherit frontmatter from the DE post when it exists, so newly-created
 # EN/ES stubs stay aligned with whatever the user has since edited.
 if [[ -n "$EXISTING_DE" ]]; then
   de_title=$(read_fm_string "$EXISTING_DE" "title")
   de_desc=$(read_fm_string "$EXISTING_DE" "description")
-  de_date=$(read_fm_date "$EXISTING_DE")
+  de_date=$(filename_date "$EXISTING_DE")
   de_image=$(read_fm_string "$EXISTING_DE" "image")
   [[ -n "$de_title" ]] && TITLE="$de_title"
   [[ -n "$de_desc" ]]  && SUMMARY="$de_desc"
@@ -125,10 +126,9 @@ fi
 
 # Recompute fallback paths after a possible DATE inherit from DE, so newly
 # created EN/ES stubs line up with the DE post's filename date prefix.
-YEAR_MONTH="${DATE:0:7}"
-POST_DE="${EXISTING_DE:-content/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
-POST_EN="${EXISTING_EN:-content/en/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
-POST_ES="${EXISTING_ES:-content/es/aktuelles/${YEAR_MONTH}-${SLUG}.md}"
+POST_DE="${EXISTING_DE:-content/aktuelles/${DATE}-${SLUG}.md}"
+POST_EN="${EXISTING_EN:-content/en/aktuelles/${DATE}-${SLUG}.md}"
+POST_ES="${EXISTING_ES:-content/es/aktuelles/${DATE}-${SLUG}.md}"
 
 mkdir -p "$IMG_DIR" "$THUMB_DIR" \
          "$(dirname "$POST_EN")" "$(dirname "$POST_ES")"
@@ -227,7 +227,6 @@ write_post() {
   cat > "$path" <<EOF
 +++
 title = "${TITLE}"
-date = ${DATE}
 description = "${SUMMARY}"
 template = "blog-post.html"
 
