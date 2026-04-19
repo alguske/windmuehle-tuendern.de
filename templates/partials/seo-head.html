@@ -96,6 +96,37 @@
 }
 </script>
 
+{% if page and "/spenden" in page.path %}
+<!-- JSON-LD NGO + DonateAction (Spenden page) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "{{ config.extra.org_name }}",
+    "url": "{{ config.extra.site_url }}",
+    "logo": "{{ config.extra.site_url }}{{ config.extra.logo }}",
+    "description": "{{ org_description }}",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ config.extra.org_street }}",
+        "addressLocality": "{{ config.extra.org_city }}",
+        "postalCode": "{{ config.extra.org_postal }}",
+        "addressCountry": "{{ config.extra.org_country }}"
+    },
+    "potentialAction": {
+        "@type": "DonateAction",
+        "name": "{{ page_title }}",
+        "target": "{{ page_url }}",
+        "recipient": {
+            "@type": "NGO",
+            "name": "{{ config.extra.org_name }}",
+            "iban": "DE37 2546 2160 0107 7074 00"
+        }
+    }
+}
+</script>
+{% endif %}
+
 <!-- JSON-LD LandmarksOrHistoricalBuildings -->
 <script type="application/ld+json">
 {

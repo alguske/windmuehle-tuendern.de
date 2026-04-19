@@ -8,42 +8,90 @@ header_image = "/imgs/bilder/windmill-5.jpeg"
 +++
 
 <div class="donate-intro">
-  <strong>¡Contribuya a mantener vivo el molino de Tündern!</strong>
-  <p>Con su donación apoya la conservación, el cuidado y el desarrollo continuo de nuestro histórico molino de viento, un valioso monumento cultural y símbolo de nuestro pueblo. Cada aportación – grande o pequeña – nos ayuda a hacer tangible la historia – también para las próximas generaciones.</p>
+  <strong>Ayúdenos a mantener vivo el molino de Tündern.</strong>
+  <p>Con su donación apoya la conservación, el cuidado y el desarrollo continuo de nuestro histórico molino de viento. Cada aportación nos ayuda a hacer tangible la historia, también para las próximas generaciones.</p>
 </div>
 
 <section class="content-section">
 
-### Apoyo oficial
+### Restauración completada
 
-La restauración del molino tiene un presupuesto de **166.600 euros**. Gracias al apoyo de la **UE (LEADER)**, el **Estado**, el **Distrito de Hameln-Pyrmont**, **Calenberg-Grubenhagensche Landschaft** y la **Ciudad de Hameln**, este importante proyecto puede hacerse realidad. La **Fundación Alemana para la Protección de Monumentos** también nos apoya.
+La gran restauración tuvo un presupuesto de **166.600 euros** y pudo realizarse gracias a las ayudas de la **UE (LEADER)**, el **Estado de Baja Sajonia**, el **Distrito de Hameln-Pyrmont**, la **Calenberg-Grubenhagensche Landschaft**, la **Ciudad de Hameln** y la **Fundación Alemana para la Protección de Monumentos**. La inauguración tuvo lugar el 17 de abril de 2026.
 
 </section>
 
 <section class="content-section">
 
-### Su donación hace posible
+### Qué financia ahora su donación
 
-- Conservación de la estructura histórica
-- Restauración de aspas y mampostería
-- Eventos y visitas guiadas
-- Preservación para futuras generaciones
+El molino vuelve a lucir en pie, pero el trabajo continúa. Su donación se destina directamente a:
+
+- Mantenimiento corriente y pequeñas reparaciones del edificio
+- Acondicionamiento del entorno del molino
+- Construcción de instalaciones sanitarias
+- Reparaciones y renovación del interior
+- Visitas guiadas y eventos para visitantes
+- Desarrollo de un concepto pedagógico para las visitas
 
 </section>
 
 <div class="bank-card">
   <h3>Datos bancarios</h3>
   <p>Por favor envíe su donación a la siguiente cuenta:</p>
-  <ul>
-    <li><strong>Beneficiario:</strong> Förderverein Windmühle Tündern e.V.</li>
-    <li><strong>IBAN:</strong> DE37 2546 2160 0107 7074 00</li>
-    <li><strong>BIC:</strong> GENODEF1HMP</li>
-    <li><strong>Banco:</strong> Volksbank Hameln-Stadthagen</li>
-    <li><strong>Concepto:</strong> Spende Windmühle</li>
-  </ul>
+  <dl>
+    <dt>Beneficiario</dt>
+    <dd>Förderverein Windmühle Tündern e.V.</dd>
+    <dt>IBAN</dt>
+    <dd>
+      <span class="copyable">DE37 2546 2160 0107 7074 00</span>
+      <button type="button" class="copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN copiado" aria-label="Copiar IBAN">
+        <span class="copy-btn__label-default">Copiar</span>
+        <span class="copy-btn__label-copied">Copiado</span>
+      </button>
+    </dd>
+    <dt>BIC</dt>
+    <dd>
+      <span class="copyable">GENODEF1HMP</span>
+      <button type="button" class="copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC copiado" aria-label="Copiar BIC">
+        <span class="copy-btn__label-default">Copiar</span>
+        <span class="copy-btn__label-copied">Copiado</span>
+      </button>
+    </dd>
+    <dt>Banco</dt>
+    <dd>Volksbank Hameln-Stadthagen</dd>
+    <dt>Concepto</dt>
+    <dd>Spende Windmühle</dd>
+  </dl>
 </div>
 
+<section class="donor-impact">
+
+### Lo que hace posible su donación
+
+<p class="donor-impact__intro">Los siguientes trabajos fueron posibles gracias a la financiación pública y a las donaciones privadas.</p>
+
+<div class="donor-impact__grid">
+  <figure>
+    <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="El molino con sus nuevas aspas">
+    <figcaption>Nuevas aspas</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/windrose/windrose-arbeiten-3.jpg" alt="Montaje de la rosa de los vientos">
+    <figcaption>Montaje de la rosa</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/maler/maler-maerz2026-1.jpg" alt="Pintor trabajando en el molino">
+    <figcaption>Nueva pintura</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-06.jpg" alt="Fiesta de inauguración en el molino">
+    <figcaption>Inauguración</figcaption>
+  </figure>
+</div>
+
+</section>
+
 <div class="thanks-section">
-  <h3>¡Muchas gracias!</h3>
-  <p>Le agradecemos sinceramente su apoyo y la confianza en nuestro trabajo. Juntos podremos conservar este pedazo tan especial de nuestra tierra.</p>
+  <h3>Muchas gracias</h3>
+  <p>Le agradecemos de corazón su apoyo y la confianza en nuestro trabajo. Juntos mantenemos vivo este pedazo especial de nuestra tierra.</p>
 </div>

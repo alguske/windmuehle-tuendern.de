@@ -8,42 +8,90 @@ header_image = "/imgs/bilder/windmill-5.jpeg"
 +++
 
 <div class="donate-intro">
-  <strong>Tragen Sie dazu bei, die Windmühle Tündern lebendig zu halten!</strong>
-  <p>Mit Ihrer Spende unterstützen Sie den Erhalt, die Pflege und die Weiterentwicklung unserer historischen Windmühle – ein wertvolles Kulturdenkmal und Wahrzeichen unseres Dorfes. Jeder Beitrag – ob groß oder klein – hilft uns dabei, Geschichte erlebbar zu machen – auch für kommende Generationen.</p>
+  <strong>Tragen Sie dazu bei, die Windmühle Tündern lebendig zu halten.</strong>
+  <p>Mit Ihrer Spende unterstützen Sie den Erhalt, die Pflege und die Weiterentwicklung unserer historischen Windmühle. Jeder Beitrag hilft uns, Geschichte erlebbar zu machen, auch für kommende Generationen.</p>
 </div>
 
 <section class="content-section">
 
-### Öffentliche Unterstützung
+### Sanierung abgeschlossen
 
-Die Sanierung der Windmühle wird mit insgesamt **166.600 Euro** veranschlagt. Dank Förderzusagen von **EU (LEADER)**, **Land**, **Landkreis Hameln-Pyrmont**, **Calenberg-Grubenhagensche Landschaft** und der **Stadt Hameln** kann dieses wichtige Projekt realisiert werden. Auch die **Deutsche Stiftung Denkmalschutz** unterstützt uns.
+Die große Sanierung war mit **166.600 Euro** veranschlagt und konnte dank Förderzusagen von **EU (LEADER)**, **Land**, **Landkreis Hameln-Pyrmont**, **Calenberg-Grubenhagenscher Landschaft**, der **Stadt Hameln** sowie der **Deutschen Stiftung Denkmalschutz** realisiert werden. Am 17. April 2026 haben wir die Einweihung gefeiert.
 
 </section>
 
 <section class="content-section">
 
-### Ihre Spende bewirkt
+### Wofür wir jetzt Spenden brauchen
 
-- Erhalt der historischen Bausubstanz
-- Sanierung von Flügeln und Mauerwerk
-- Veranstaltungen und Führungen
-- Bewahrung für kommende Generationen
+Die Windmühle ist wieder sichtbar, aber die Arbeit geht weiter. Ihre Spende fließt direkt in:
+
+- Laufende Pflege und kleinere Reparaturen am Bauwerk
+- Herrichtung des Außenbereichs
+- Bau einer Sanitäranlage
+- Reparaturen und Renovierung im Innenbereich
+- Führungen und Veranstaltungen für Besucher
+- Entwicklung eines pädagogischen Konzepts für Besichtigungen
 
 </section>
 
 <div class="bank-card">
   <h3>Bankverbindung</h3>
   <p>Bitte richten Sie Ihre Spende an folgendes Konto:</p>
-  <ul>
-    <li><strong>Empfänger:</strong> Förderverein Windmühle Tündern e.V.</li>
-    <li><strong>IBAN:</strong> DE37 2546 2160 0107 7074 00</li>
-    <li><strong>BIC:</strong> GENODEF1HMP</li>
-    <li><strong>Bank:</strong> Volksbank Hameln-Stadthagen</li>
-    <li><strong>Verwendungszweck:</strong> Spende Windmühle</li>
-  </ul>
+  <dl>
+    <dt>Empfänger</dt>
+    <dd>Förderverein Windmühle Tündern e.V.</dd>
+    <dt>IBAN</dt>
+    <dd>
+      <span class="copyable">DE37 2546 2160 0107 7074 00</span>
+      <button type="button" class="copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN kopiert" aria-label="IBAN kopieren">
+        <span class="copy-btn__label-default">Kopieren</span>
+        <span class="copy-btn__label-copied">Kopiert</span>
+      </button>
+    </dd>
+    <dt>BIC</dt>
+    <dd>
+      <span class="copyable">GENODEF1HMP</span>
+      <button type="button" class="copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC kopiert" aria-label="BIC kopieren">
+        <span class="copy-btn__label-default">Kopieren</span>
+        <span class="copy-btn__label-copied">Kopiert</span>
+      </button>
+    </dd>
+    <dt>Bank</dt>
+    <dd>Volksbank Hameln-Stadthagen</dd>
+    <dt>Verwendungszweck</dt>
+    <dd>Spende Windmühle</dd>
+  </dl>
 </div>
 
+<section class="donor-impact">
+
+### Was Ihre Spende bewegt
+
+<p class="donor-impact__intro">Diese Arbeiten wurden durch öffentliche Förderung und private Spenden möglich.</p>
+
+<div class="donor-impact__grid">
+  <figure>
+    <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="Die Windmühle mit neuen Flügeln">
+    <figcaption>Neue Flügel</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/windrose/windrose-arbeiten-3.jpg" alt="Montage der Windrose">
+    <figcaption>Windrose-Montage</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/maler/maler-maerz2026-1.jpg" alt="Maler bei der Arbeit">
+    <figcaption>Neuer Anstrich</figcaption>
+  </figure>
+  <figure>
+    <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-06.jpg" alt="Einweihungsfest an der Mühle">
+    <figcaption>Einweihungsfest</figcaption>
+  </figure>
+</div>
+
+</section>
+
 <div class="thanks-section">
-  <h3>Herzlichen Dank!</h3>
-  <p>Wir danken Ihnen herzlich für Ihre Unterstützung und Ihr Vertrauen in unsere Arbeit. Gemeinsam können wir dieses besondere Stück Heimat erhalten.</p>
+  <h3>Herzlichen Dank</h3>
+  <p>Wir danken Ihnen für Ihre Unterstützung und Ihr Vertrauen in unsere Arbeit. Gemeinsam halten wir dieses Stück Heimat lebendig.</p>
 </div>
