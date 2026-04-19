@@ -40,6 +40,15 @@ function test_post_frontmatter_contains_title_date_description() {
   assert_contains 'template = "blog-post.html"' "$content"
 }
 
+function test_post_body_contains_summary_as_intro() {
+  "$SCRIPT" baustelle -t "Baustelle" -s "Infos zur Baustelle" -D 2026-05-10 >/dev/null
+
+  # Body text between closing +++ and first <div class="post-images">
+  body=$(awk '/^\+\+\+$/{c++;next} c==2' "content/aktuelles/2026-05-baustelle.md")
+
+  assert_contains "Infos zur Baustelle" "$body"
+}
+
 function test_humanizes_slug_to_title_when_title_omitted() {
   "$SCRIPT" neue-fluegel -D 2026-05-10 >/dev/null
 
@@ -64,12 +73,16 @@ function test_resizes_post_images_to_1200px_width() {
   assert_same "1200" "$width"
 }
 
-function test_generates_thumbnail() {
+function test_generates_thumbnail_only_for_first_image() {
+  # Only the first image is the default extra.image. Additional thumbnails
+  # are generated on demand via scripts/make-thumb.sh.
   "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
 
-  assert_file_exists "static/imgs/thumbs/my-slug.jpg"
+  assert_file_exists "static/imgs/thumbs/my-slug-01.jpg"
+  assert_file_not_exists "static/imgs/thumbs/my-slug-02.jpg"
+  assert_file_not_exists "static/imgs/thumbs/my-slug-03.jpg"
 
-  width=$(sips -g pixelWidth "static/imgs/thumbs/my-slug.jpg" | awk '/pixelWidth/ {print $2}')
+  width=$(sips -g pixelWidth "static/imgs/thumbs/my-slug-01.jpg" | awk '/pixelWidth/ {print $2}')
   assert_same "600" "$width"
 }
 
@@ -81,6 +94,15 @@ function test_gallery_references_optimized_image_paths() {
   assert_contains '/imgs/my-slug/my-slug-01.jpg' "$content"
   assert_contains '/imgs/my-slug/my-slug-02.jpg' "$content"
   assert_contains '<div class="post-images">' "$content"
+}
+
+function test_gallery_uses_single_post_images_div() {
+  # CSS .post-images is a 2-column grid; multiple divs create orphan rows.
+  "$SCRIPT" my-slug -D 2026-05-10 >/dev/null
+
+  count=$(grep -c '<div class="post-images">' "content/aktuelles/2026-05-my-slug.md")
+
+  assert_same "1" "$count"
 }
 
 function test_frontmatter_extra_image_uses_first_optimized() {

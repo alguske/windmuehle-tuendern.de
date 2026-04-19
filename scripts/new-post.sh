@@ -16,6 +16,8 @@
 # Example:
 #   ./scripts/new-post.sh fluegel-montage -t "Flügelmontage" -s "Die neuen Flügel wurden montiert."
 
+# ./scripts/new-post.sh einweihung-der-windmuehle -s "Wir hatten am 17. April eine schöne Einweihung der Windmühle. Über die vielen Besucher haben wir uns sehr gefreut. Wir bedanken uns für die Glückwünsche und die großen und kleinen Spenden."
+
 set -euo pipefail
 
 SRC_DIR="local/imgs/"
@@ -78,7 +80,6 @@ YEAR_MONTH="${DATE:0:7}"
 POST_FILE="content/aktuelles/${YEAR_MONTH}-${SLUG}.md"
 IMG_DIR="static/imgs/${SLUG}"
 THUMB_DIR="static/imgs/thumbs"
-THUMB_FILE="${THUMB_DIR}/${SLUG}.jpg"
 
 if [[ -e "$POST_FILE" ]]; then
   echo "Error: post already exists: $POST_FILE" >&2
@@ -122,31 +123,28 @@ for src in "${SRC_IMAGES[@]}"; do
   i=$((i+1))
 done
 
-# Generate thumbnail from first image (source, highest quality input)
+# Generate thumbnail for the first optimized image (used as extra.image).
+# If extra.image is later changed to a different image in the post folder,
+# run scripts/make-thumb.sh on that image to swap the thumbnail.
+FIRST_IMG="${OPTIMIZED_NAMES[0]}"
+THUMB_FILE="${THUMB_DIR}/${FIRST_IMG}"
 echo "→ Generating thumbnail: $THUMB_FILE"
 sips -s format jpeg -s formatOptions 70 --resampleWidth 600 \
   "${SRC_IMAGES[0]}" --out "$THUMB_FILE" >/dev/null
 
-# Build gallery markdown: groups of 3 per <div class="post-images">
+# Build gallery markdown: single <div class="post-images">. The grid is
+# 2-column; splitting into multiple divs produces orphan rows and oversized
+# gaps. Split manually after editing if logical sections are needed.
 build_gallery() {
-  local group_size=3
-  local count=0
-  local opened=0
+  echo ""
+  echo "<div class=\"post-images\">"
   for name in "${OPTIMIZED_NAMES[@]}"; do
-    if [[ $((count % group_size)) -eq 0 ]]; then
-      [[ $opened -eq 1 ]] && echo "</div>"
-      echo ""
-      echo "<div class=\"post-images\">"
-      opened=1
-    fi
-    echo "  <img src=\"/imgs/${SLUG}/${name}\" alt=\"TODO: Bildbeschreibung\">"
-    count=$((count+1))
+    echo "  <img src=\"/imgs/${SLUG}/${name}\">"
   done
-  [[ $opened -eq 1 ]] && echo "</div>"
+  echo "</div>"
 }
 
 GALLERY="$(build_gallery)"
-FIRST_IMG="${OPTIMIZED_NAMES[0]}"
 
 # Write post
 cat > "$POST_FILE" <<EOF
@@ -160,10 +158,8 @@ template = "blog-post.html"
 image = "/imgs/${SLUG}/${FIRST_IMG}"
 +++
 
-TODO: Einleitungstext hier schreiben.
+${SUMMARY}
 ${GALLERY}
-
-TODO: Schlusstext hier schreiben.
 EOF
 
 echo ""
