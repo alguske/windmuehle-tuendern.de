@@ -19,7 +19,7 @@ El molino se inauguró oficialmente en el podio decorado. Dimos las gracias a to
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-04.jpg">
 </div>
 
-Una banda tocó justo al lado del molino. Desde arriba se veía toda la fiesta: el molino en el centro, los invitados y la carpa verde alrededor.
+Hubo música en vivo de la banda de los bomberos voluntarios justo al lado del molino. Desde arriba se veía toda la fiesta: el molino en el centro, los invitados y la carpa verde alrededor.
 
 <div class="post-images">
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-05.jpg">

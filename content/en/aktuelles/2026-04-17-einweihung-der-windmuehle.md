@@ -19,7 +19,7 @@ The mill was officially inaugurated at the decorated podium. We thanked all the 
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-04.jpg">
 </div>
 
-A brass band played right next to the mill. From above you could take in the whole celebration: the mill in the middle, the guests and the green marquee all around.
+There was live music from the volunteer fire brigade's band right next to the mill. From above you could take in the whole celebration: the mill in the middle, the guests and the green marquee all around.
 
 <div class="post-images">
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-05.jpg">

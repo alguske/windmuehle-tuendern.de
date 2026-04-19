@@ -19,7 +19,7 @@ Am geschmückten Podium wurde die Mühle offiziell eingeweiht. Wir haben uns bei
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-04.jpg">
 </div>
 
-Eine Blaskapelle hat direkt an der Mühle gespielt. Von oben konnte man das ganze Fest sehen: die Mühle in der Mitte, rundherum die Gäste und das grüne Zelt.
+Es gab Livemusik vom Musikzug der Freiwilligen Feuerwehr direkt an der Mühle. Von oben konnte man das ganze Fest sehen: die Mühle in der Mitte, rundherum die Gäste und das grüne Zelt.
 
 <div class="post-images">
   <img src="/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-05.jpg">
