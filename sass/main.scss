@@ -2647,7 +2647,6 @@ $fh-surface-soft: #f8fafc;
   padding: 0.7rem 0.9rem;
   background: $fh-surface-soft;
   border-radius: 8px;
-  transition: background 0.15s ease;
 
   &--cancelled {
     opacity: 0.6;
@@ -2655,8 +2654,6 @@ $fh-surface-soft: #f8fafc;
     .fuehrungen-slot__time,
     .fuehrungen-slot__meta { text-decoration: line-through; text-decoration-thickness: 1px; }
   }
-
-  &:hover { background: #eef2f7; }
 }
 
 .fuehrungen-slot__time {
@@ -2967,22 +2964,17 @@ $fh-surface-soft: #f8fafc;
 
 .fuehrungen-meeting {
   margin: 1.5rem 0 0;
-  margin-top: 1.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 0.9rem 1rem;
+  gap: 0.85rem;
+  padding: 0.95rem 1.1rem;
   border: 1px solid $fh-border;
   border-radius: 10px;
   background: $fh-surface;
   color: $fh-text;
-  font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
-
-  & > svg:first-child { flex-shrink: 0; color: $fh-accent; }
-  strong { color: $fh-brand-2; }
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
   &:hover,
   &:focus-visible {
@@ -2990,11 +2982,6 @@ $fh-surface-soft: #f8fafc;
     border-color: $fh-accent;
     color: $fh-text;
     box-shadow: 0 2px 10px rgba(232, 168, 56, 0.15);
-
-    & > svg:first-child { color: $fh-accent; }
-    strong { color: $fh-brand-2; }
-
-    .fuehrungen-meeting__cta { color: $fh-brand-2; }
   }
 
   &:focus-visible {
@@ -3003,22 +2990,78 @@ $fh-surface-soft: #f8fafc;
   }
 }
 
-.fuehrungen-meeting__text {
-  flex: 1;
+.fuehrungen-meeting__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(232, 168, 56, 0.15);
+  color: var(--c-accent);
+  flex-shrink: 0;
+}
+
+.fuehrungen-meeting__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
   min-width: 0;
+}
+
+.fuehrungen-meeting__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: $fh-brand;
+}
+
+.fuehrungen-meeting__addr {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: $fh-brand-2;
+  line-height: 1.3;
 }
 
 .fuehrungen-meeting__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.3rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 168, 0.08);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--c-brand-1);
+  color: $fh-brand-2;
   white-space: nowrap;
-  transition: color 0.2s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 
   svg { color: inherit; }
+
+  .fuehrungen-meeting:hover &,
+  .fuehrungen-meeting:focus-visible & {
+    background: var(--c-accent);
+    color: #fff;
+  }
+}
+
+@media (max-width: 540px) {
+  .fuehrungen-meeting {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon info"
+      "cta cta";
+    row-gap: 0.75rem;
+  }
+  .fuehrungen-meeting__icon { grid-area: icon; }
+  .fuehrungen-meeting__info { grid-area: info; }
+  .fuehrungen-meeting__cta {
+    grid-area: cta;
+    justify-self: stretch;
+    justify-content: center;
+    padding: 0.6rem 0.85rem;
+  }
 }
 
 // ---------- Past ----------
@@ -3092,8 +3135,6 @@ $fh-surface-soft: #f8fafc;
     font-size: 0.88rem;
     grid-template-columns: auto auto 1fr auto;
     opacity: 0.85;
-
-    &:hover { background: $fh-surface-soft; opacity: 1; }
   }
 
   .fuehrungen-date-inline {
@@ -3106,34 +3147,46 @@ $fh-surface-soft: #f8fafc;
 
 // ---------- Responsive ----------
 @media (max-width: 600px) {
-  .fuehrungen-day { flex-direction: column; }
+  .fuehrungen-day {
+    flex-direction: column;
+  }
 
+  // Drop the decorative calendar strip on phones (it duplicates the
+  // localized date below and steals vertical space).
   .fuehrungen-day__cal {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 0.65rem 1rem;
-
-    &::after {
-      top: auto;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, $fh-accent 0%, transparent 100%);
-    }
+    display: none;
   }
 
-  .fuehrungen-day__cal-day { font-size: 1.4rem; }
-  .fuehrungen-day__cal-month, .fuehrungen-day__cal-dow { font-size: 0.75rem; }
+  .fuehrungen-day__body {
+    padding: 0.9rem 1rem 1rem;
+  }
 
+  .fuehrungen-day__date {
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid $fh-border;
+    font-size: 0.95rem;
+    color: $fh-brand;
+  }
+
+  // Two-row slot: time + status on row 1, meta on row 2.
   .fuehrungen-slot {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "time status"
+      "meta meta";
+    row-gap: 0.4rem;
+    column-gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
   }
-  .fuehrungen-slot__status { justify-self: start; }
+
+  .fuehrungen-slot__time { grid-area: time; }
+  .fuehrungen-slot__status { grid-area: status; justify-self: end; }
+  .fuehrungen-slot__meta {
+    grid-area: meta;
+    font-size: 0.85rem;
+    gap: 0.4rem 0.6rem;
+  }
 }
 
 @media (max-width: 480px) {
