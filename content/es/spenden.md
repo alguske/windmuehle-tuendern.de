@@ -42,12 +42,12 @@ El molino vuelve a lucir en pie, pero el trabajo continúa. Su donación se dest
     <dt>IBAN</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN copiado" aria-label="Copiar IBAN: DE37 2546 2160 0107 7074 00">DE37 2546 2160 0107 7074 00</button>
-      <span class="copy-feedback" aria-hidden="true">Copiado</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>BIC</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC copiado" aria-label="Copiar BIC: GENODEF1HMP">GENODEF1HMP</button>
-      <span class="copy-feedback" aria-hidden="true">Copiado</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>Banco</dt>
     <dd>Volksbank Hameln-Stadthagen</dd>

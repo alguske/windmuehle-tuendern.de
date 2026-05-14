@@ -42,12 +42,12 @@ The windmill stands tall again, but the work continues. Your donation goes direc
     <dt>IBAN</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN copied" aria-label="Copy IBAN: DE37 2546 2160 0107 7074 00">DE37 2546 2160 0107 7074 00</button>
-      <span class="copy-feedback" aria-hidden="true">Copied</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>BIC</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC copied" aria-label="Copy BIC: GENODEF1HMP">GENODEF1HMP</button>
-      <span class="copy-feedback" aria-hidden="true">Copied</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>Bank</dt>
     <dd>Volksbank Hameln-Stadthagen</dd>

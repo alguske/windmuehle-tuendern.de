@@ -35,7 +35,12 @@
         else waLink.remove();
       }
 
+      trigger.setAttribute('aria-expanded', 'true');
       trigger.replaceWith(frag);
+
+      // Move focus to the revealed number so keyboard / SR users land there.
+      const revealed = card.querySelector('.contact-card__number');
+      if (revealed) revealed.focus();
     }, { once: true });
   });
 })();

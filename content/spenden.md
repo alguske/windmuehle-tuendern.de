@@ -42,12 +42,12 @@ Die Windmühle ist wieder sichtbar, aber die Arbeit geht weiter. Ihre Spende fli
     <dt>IBAN</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN kopiert" aria-label="IBAN kopieren: DE37 2546 2160 0107 7074 00">DE37 2546 2160 0107 7074 00</button>
-      <span class="copy-feedback" aria-hidden="true">Kopiert</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>BIC</dt>
     <dd>
       <button type="button" class="copyable copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC kopiert" aria-label="BIC kopieren: GENODEF1HMP">GENODEF1HMP</button>
-      <span class="copy-feedback" aria-hidden="true">Kopiert</span>
+      <span class="copy-feedback" role="status" aria-live="polite"></span>
     </dd>
     <dt>Bank</dt>
     <dd>Volksbank Hameln-Stadthagen</dd>
