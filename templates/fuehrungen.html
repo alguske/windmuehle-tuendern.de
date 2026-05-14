@@ -151,34 +151,53 @@
         <p class="fuehrungen-contact-intro">{{ trans(key="fuehrungen_contact_text", lang=lang) }}</p>
 
         <div class="contact-cards">
-            <article class="contact-card">
+            <article class="contact-card"
+                     data-reveal-card
+                     data-display="{{ '05151 27203' | base64_encode }}"
+                     data-tel="{{ '+49515127203' | base64_encode }}"
+                     data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                     data-copy-label="{{ trans(key='fuehrungen_copy_label', lang=lang) }}">
                 <header class="contact-card__head">
                     <svg class="contact-card__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
                     </svg>
                     <span class="contact-card__label">{{ trans(key="fuehrungen_phone_landline", lang=lang) }}</span>
                 </header>
-                <div class="contact-card__number-wrap">
-                    <button type="button"
-                            class="contact-card__number copy-btn"
-                            data-copy="05151 27203"
-                            data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
-                            aria-label="05151 27203 — {{ trans(key='fuehrungen_copy_label', lang=lang) }}">
-                        05151 27203
-                    </button>
-                    <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
-                </div>
-                <div class="contact-card__actions">
-                    <a href="tel:+4951512720" class="btn-call">
-                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        {{ trans(key="fuehrungen_call_label", lang=lang) }}
-                    </a>
-                </div>
+                <button type="button" class="contact-card__reveal">
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    {{ trans(key="fuehrungen_reveal_phone", lang=lang) }}
+                </button>
+                <template class="contact-card__revealed-tpl">
+                    <div class="contact-card__number-wrap">
+                        <button type="button"
+                                class="contact-card__number copy-btn"
+                                data-copy=""
+                                data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                                aria-label="">
+                        </button>
+                        <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
+                    </div>
+                    <div class="contact-card__actions">
+                        <a href="#" class="btn-call">
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            {{ trans(key="fuehrungen_call_label", lang=lang) }}
+                        </a>
+                    </div>
+                </template>
             </article>
 
-            <article class="contact-card">
+            <article class="contact-card"
+                     data-reveal-card
+                     data-display="{{ '0176 95661693' | base64_encode }}"
+                     data-tel="{{ '+4917695661693' | base64_encode }}"
+                     data-wa="{{ '4917695661693' | base64_encode }}"
+                     data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                     data-copy-label="{{ trans(key='fuehrungen_copy_label', lang=lang) }}">
                 <header class="contact-card__head">
                     <svg class="contact-card__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
@@ -186,30 +205,38 @@
                     </svg>
                     <span class="contact-card__label">{{ trans(key="fuehrungen_phone_mobile", lang=lang) }}</span>
                 </header>
-                <div class="contact-card__number-wrap">
-                    <button type="button"
-                            class="contact-card__number copy-btn"
-                            data-copy="0176 95661693"
-                            data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
-                            aria-label="0176 95661693 — {{ trans(key='fuehrungen_copy_label', lang=lang) }}">
-                        0176 95661693
-                    </button>
-                    <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
-                </div>
-                <div class="contact-card__actions">
-                    <a href="tel:+4917695661693" class="btn-call">
-                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        {{ trans(key="fuehrungen_call_label", lang=lang) }}
-                    </a>
-                    <a href="https://wa.me/4917695661693" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
-                            <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.2-.7.2c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2.6 1.1 3.1.9 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-                        </svg>
-                        {{ trans(key="fuehrungen_whatsapp_label", lang=lang) }}
-                    </a>
-                </div>
+                <button type="button" class="contact-card__reveal">
+                    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    {{ trans(key="fuehrungen_reveal_phone", lang=lang) }}
+                </button>
+                <template class="contact-card__revealed-tpl">
+                    <div class="contact-card__number-wrap">
+                        <button type="button"
+                                class="contact-card__number copy-btn"
+                                data-copy=""
+                                data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                                aria-label="">
+                        </button>
+                        <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
+                    </div>
+                    <div class="contact-card__actions">
+                        <a href="#" class="btn-call">
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            {{ trans(key="fuehrungen_call_label", lang=lang) }}
+                        </a>
+                        <a href="#" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
+                                <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.2-.7.2c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2.6 1.1 3.1.9 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+                            </svg>
+                            {{ trans(key="fuehrungen_whatsapp_label", lang=lang) }}
+                        </a>
+                    </div>
+                </template>
             </article>
         </div>
 
@@ -219,7 +246,7 @@
                 <circle cx="12" cy="10" r="3"/>
             </svg>
             <span class="fuehrungen-meeting__text">
-                <strong>{{ trans(key="fuehrungen_meeting_label", lang=lang) }}:</strong> Linkworth 1, 31789 Hameln-Tündern
+                <strong>{{ trans(key="fuehrungen_meeting_label", lang=lang) }}:</strong> Windmühlenweg 20, 31789 Hameln
             </span>
             <span class="fuehrungen-meeting__cta">
                 {{ trans(key="fuehrungen_open_in_maps", lang=lang) }}
