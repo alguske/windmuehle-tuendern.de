@@ -37,6 +37,18 @@ guide = "Firstname"
 - The JSON-LD `Event` schema is emitted only for upcoming `public`, non-cancelled slots. Adding a public slot enables it automatically.
 - Phone numbers and meeting point are static in `templates/fuehrungen.html`. Do not touch them from this skill.
 
+## Fast path: pure bash script
+
+For straightforward adds, use the script directly (no AI involvement):
+
+```bash
+./scripts/new-tour.sh --date 2026-08-09 --time 15:00 --kind public --guide Dirk
+```
+
+Flags: `--date`, `--time`, `--kind`, optional `--status`, `--duration`, `--guide`. The script validates inputs, defaults `status` to `free` for public / `booked` for private, and appends a new `[[slots]]` table to `data/fuehrungen.toml`. Run `./scripts/validate-fuehrungen.py` and `zola build` after.
+
+Use the manual edit path below when you need to update an existing slot (status change, reschedule, guide swap) since the script only appends.
+
 ## Common operations
 
 - **Add a slot**: append a new `[[slots]]` table.

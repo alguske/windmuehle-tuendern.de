@@ -16,6 +16,7 @@ All scripts live in `scripts/`, are offline and idempotent. Bashunit tests in `s
 |---|---|
 | `new-post.sh <slug> [opts]` | Scaffold an Aktuelles post in DE / EN / ES, optimize images, generate thumbnail |
 | `make-thumb.sh <image-path>` | Swap a post's hero image and regenerate its thumbnail across all three languages |
+| `new-tour.sh --date ... --time ... --kind ...` | Append a guided tour entry to `data/fuehrungen.toml` |
 | `validate-fuehrungen.py` | Lint `data/fuehrungen.toml` shape and field values |
 | `mark-for-translation.sh <dir>` | Reset every `.md` in a directory to `to be translated` |
 
