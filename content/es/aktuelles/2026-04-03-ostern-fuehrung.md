@@ -1,14 +1,14 @@
 +++
 title = "Visita guiada de Pascua por el molino"
 aliases = ["/es/aktuelles/2026-04-ostern-fuehrung/"]
-description = "El Viernes Santo el molino de Tündern abrió sus puertas para una visita especial de Pascua, donde los visitantes pudieron descubrir el interior del molino recién restaurado."
+description = "El Viernes Santo el molino de Tündern abrió para una visita de Pascua. Los visitantes descubrieron el interior del molino restaurado."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/ostern-fuehrung/windmuehle-aussen.jpg"
 +++
 
-El Viernes Santo nuestro molino en Tündern abrió sus puertas para una visita guiada especial de Pascua. Con un tiempo primaveral, visitantes de toda la región vinieron a descubrir el interior del molino recién restaurado.
+El Viernes Santo nuestro molino en Tündern abrió para una visita guiada de Pascua. Con tiempo suave, visitantes de la región vinieron a ver el interior del molino restaurado.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/fluegel-detail.jpg" alt="Detalle de la construcción de las aspas con uniones metálicas">
@@ -17,7 +17,7 @@ El Viernes Santo nuestro molino en Tündern abrió sus puertas para una visita g
 
 ## Una mirada al interior
 
-Paso a paso, el recorrido atravesó las diferentes plantas del molino. En la planta baja, los visitantes descubrieron las imponentes piedras de moler, desde la piedra arenisca hasta la piedra volandera y la solera, que antaño molían el grano hasta convertirlo en harina. Junto a ellas se encontraban la tolva de madera y la máquina mezcladora de harina, testigos silenciosos de una época pasada.
+El recorrido atravesó las plantas del molino. En la planta baja están las piedras de moler, desde la piedra arenisca hasta la piedra volandera y la solera. Junto a ellas, la tolva de madera y la máquina mezcladora de harina.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/innenraum-flagge.jpg" alt="Interior del molino con la bandera de Baja Sajonia y la máquina mezcladora de harina">
@@ -26,9 +26,9 @@ Paso a paso, el recorrido atravesó las diferentes plantas del molino. En la pla
   <img src="/imgs/ostern-fuehrung/holz-maschine.jpg" alt="Maquinaria histórica de madera junto al muro de ladrillo">
 </div>
 
-## El corazón del molino: la maquinaria
+## La maquinaria del molino
 
-Más arriba se reveló el impresionante engranaje del molino. Enormes ruedas dentadas y coronas de madera y hierro fundido encajan entre sí, una obra maestra de la ingeniería de siglos pasados. A través de las estrechas ventanas se abría una vista única sobre los tejados de Tündern.
+Más arriba se ve el engranaje del molino. Ruedas dentadas y coronas de madera y hierro fundido encajan entre sí. A través de las ventanas hay vistas sobre los tejados de Tündern.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/zahnrad-getriebe.jpg" alt="El mecanismo de engranajes en el interior del molino">
@@ -39,13 +39,13 @@ Más arriba se reveló el impresionante engranaje del molino. Enormes ruedas den
   <img src="/imgs/ostern-fuehrung/besucher-getriebe.jpg" alt="Un visitante junto al engranaje histórico del molino">
 </div>
 
-## Un día de Pascua perfecto
+## Para terminar
 
-Al final del recorrido, el letrero luminoso "Windmühle" brillaba con encanto en la planta superior. La visita de Pascua fue todo un éxito y demostró una vez más lo viva que está nuestra mühle tras la restauración.
+En la planta superior el letrero luminoso "Windmühle" estaba encendido. Muchos visitantes vinieron a esta primera visita tras la restauración.
 
 <div class="post-images">
   <img src="/imgs/ostern-fuehrung/windmuehle-von-unten.jpg" alt="El molino de Tündern visto desde abajo">
   <img src="/imgs/ostern-fuehrung/leuchtschrift.jpg" alt="Letrero luminoso Windmühle en el muro de piedra">
 </div>
 
-¡Agradecemos a todos los visitantes su interés y esperamos la próxima visita!
+Agradecemos a todos los visitantes y esperamos la próxima visita.

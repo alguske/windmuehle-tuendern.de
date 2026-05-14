@@ -1,14 +1,14 @@
 +++
 title = "Lunes de Pentecostés en el molino"
 aliases = ["/es/aktuelles/2025-06-pfingstmontag/"]
-description = "Tradicional Lunes de Pentecostés con numerosos visitantes en el histórico molino."
+description = "Lunes de Pentecostés en el molino de Tündern con muchos visitantes."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/pfingstmontag/pfingstmontag3.jpeg"
 +++
 
-Como cada año, este año también se celebró el tradicional **Lunes de Pentecostés en el molino**. Con un sol radiante, numerosos visitantes acudieron a ver el histórico molino de Tündern y disfrutar del encuentro social.
+Como cada año, el Lunes de Pentecostés en el molino tuvo lugar. Con buen tiempo, muchos visitantes acudieron al molino de Tündern.
 
 ## Impresiones del día
 
@@ -24,4 +24,4 @@ Como cada año, este año también se celebró el tradicional **Lunes de Penteco
 
 <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="Lunes de Pentecostés en el molino">
 
-¡Agradecemos a todos los visitantes y colaboradores por este maravilloso día!
+Agradecemos a todos los visitantes y colaboradores.

@@ -1,14 +1,14 @@
 +++
 title = "The Mill Under Reconstruction"
 aliases = ["/en/aktuelles/2025-08-wiederaufbau/"]
-description = "The restoration work on the windmill is in full swing. A look at the current state of the construction work."
+description = "Restoration work on the windmill is underway. A look at the current state."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++
 
-The **restoration work** on our historic windmill is progressing! Now that the scaffolding has been erected, the extensive work on the masonry and plaster can begin.
+Restoration work on our windmill is underway. The scaffolding is up, and work on the masonry and plaster has begun.
 
 ## Impressions from the Construction Site
 
@@ -22,6 +22,6 @@ The **restoration work** on our historic windmill is progressing! Now that the s
   <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="Work progress">
 </div>
 
-The windmill is currently fully scaffolded. Step by step, the old plaster is being removed and damaged areas in the masonry are being repaired.
+The windmill is fully scaffolded. The old plaster is being removed and damaged areas in the masonry are being repaired.
 
-We thank all supporters who make this important milestone possible!
+We thank everyone involved for their work.

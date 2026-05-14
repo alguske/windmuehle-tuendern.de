@@ -4,7 +4,7 @@ description = "Termine für öffentliche und private Führungen durch die Windm�
 template = "fuehrungen.html"
 
 [extra]
-subtitle = "Termine durch die Windmühle Tündern"
+subtitle = "Termine in der Windmühle Tündern"
 +++
 
 <div class="fuehrungen-intro">

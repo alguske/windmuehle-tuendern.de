@@ -1,14 +1,14 @@
 +++
 title = "Pfingstmontag an der Mühle"
 aliases = ["/aktuelles/2025-06-pfingstmontag/"]
-description = "Traditioneller Pfingstmontag mit zahlreichen Besuchern an der historischen Windmühle."
+description = "Pfingstmontag an der Windmühle Tündern mit vielen Besuchern."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/pfingstmontag/pfingstmontag3.jpeg"
 +++
 
-Wie jedes Jahr fand auch dieses Jahr der traditionelle **Pfingstmontag an der Mühle** statt. Bei strahlendem Sonnenschein kamen zahlreiche Besucher, um die historische Windmühle Tündern zu besichtigen und das gesellige Beisammensein zu genießen.
+Wie jedes Jahr fand auch dieses Jahr der Pfingstmontag an der Mühle statt. Bei gutem Wetter kamen viele Besucher zur Windmühle Tündern.
 
 ## Impressionen vom Tag
 
@@ -24,4 +24,4 @@ Wie jedes Jahr fand auch dieses Jahr der traditionelle **Pfingstmontag an der M�
 
 <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="Pfingstmontag an der Mühle">
 
-Wir danken allen Besuchern und Helfern für diesen wunderbaren Tag!
+Wir danken allen Besuchern und Helfern.

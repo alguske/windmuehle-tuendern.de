@@ -1,14 +1,14 @@
 +++
 title = "Whit Monday at the Mill"
 aliases = ["/en/aktuelles/2025-06-pfingstmontag/"]
-description = "Traditional Whit Monday with numerous visitors at the historic windmill."
+description = "Whit Monday at the Tündern windmill, with many visitors."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/pfingstmontag/pfingstmontag3.jpeg"
 +++
 
-As every year, this year the traditional **Whit Monday at the Mill** took place. In glorious sunshine, numerous visitors came to see the historic Tündern windmill and enjoy the convivial gathering.
+As every year, Whit Monday at the Mill took place. Many visitors came to the Tündern windmill in good weather.
 
 ## Impressions of the Day
 
@@ -24,4 +24,4 @@ As every year, this year the traditional **Whit Monday at the Mill** took place.
 
 <img src="/imgs/pfingstmontag/pfingstmontag6.jpeg" alt="Whit Monday at the Mill">
 
-We thank all visitors and helpers for this wonderful day!
+We thank all visitors and helpers.

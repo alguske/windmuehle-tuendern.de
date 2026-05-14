@@ -1,14 +1,14 @@
 +++
-title = "El molino despierta – Comienza la primera fase de construcción"
+title = "Comienza la primera fase de construcción"
 aliases = ["/es/aktuelles/2025-07-bauabschnitt/"]
-description = "Ya se está montando el andamiaje y la restauración toma impulso."
+description = "El andamio está montado y comienza la restauración del molino de Tündern."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/scaffolding/scaffolding3.jpeg"
 +++
 
-Por fin ha llegado el momento: ¡ha comenzado la restauración del histórico molino de Tündern! Ya se está montando el andamiaje y los trabajos avanzan.
+La restauración del molino de Tündern comienza. El andamio está montado y los trabajos en el edificio han arrancado.
 
 <div class="post-images">
   <img src="/imgs/scaffolding/scaffolding3.jpeg" alt="Andamiaje en el molino">
@@ -25,8 +25,8 @@ La restauración se realiza en varias fases:
 - **Septiembre 2025:** Nuevo revoque y pintura
 - **Marzo 2026:** Instalación de las nuevas aspas
 
-## Un hito
+## Financiadores
 
-Gracias al apoyo de numerosos donantes y patrocinadores – incluyendo la UE, la Fundación de Protección del Patrimonio, la ciudad de Hameln y el distrito de Hameln-Pyrmont – el histórico molino por fin puede ser restaurado.
+La restauración es posible gracias a la UE, la Fundación Alemana para la Protección de Monumentos, la ciudad de Hameln y el distrito de Hameln-Pyrmont.
 
-¡Estamos emocionados de que todo comience y os mantendremos informados del progreso!
+Mantendremos informados sobre el avance de los trabajos.

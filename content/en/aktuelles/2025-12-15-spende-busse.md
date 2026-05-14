@@ -1,5 +1,5 @@
 +++
-title = "Generous Donation for the Windmill"
+title = "Donation from Susanne and Carsten Busse"
 aliases = ["/en/aktuelles/2025-12-spende-busse/"]
 description = "Susanne and Carsten Busse donated 1,000 euros for the renovation of the windmill."
 template = "blog-post.html"
@@ -8,10 +8,8 @@ template = "blog-post.html"
 image = "/imgs/news/carsten-susanne-1000.jpg"
 +++
 
-We are delighted: **Susanne and Carsten Busse** have donated 1,000 euros for the renovation of the windmill.
+**Susanne and Carsten Busse** have donated 1,000 euros for the renovation of the windmill. Thank you for your support.
 
-Thank you so much for your generous support!
+Donations like this help us preserve the Tündern windmill and open it for future generations.
 
-Donations like this help us enormously in achieving our goal: preserving the historic windmill in Tündern and making it accessible for future generations.
-
-Every contribution – big or small – brings us one step closer to our goal. Together we can preserve this precious cultural monument.
+Every contribution, large or small, brings us a step further. Together we preserve this cultural monument.

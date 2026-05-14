@@ -85,5 +85,5 @@ The windmill stands tall again, but the work continues. Your donation goes direc
 
 <div class="thanks-section">
   <h3>Thank you</h3>
-  <p>We sincerely thank you for your support and for your trust in our work. Together we keep this special piece of heritage alive.</p>
+  <p>We sincerely thank you for your support and for your trust in our work. Together we keep this piece of heritage alive.</p>
 </div>

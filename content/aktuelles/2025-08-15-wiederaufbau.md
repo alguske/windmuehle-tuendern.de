@@ -1,14 +1,14 @@
 +++
 title = "Die Mühle im Wiederaufbau"
 aliases = ["/aktuelles/2025-08-wiederaufbau/"]
-description = "Die Sanierungsarbeiten an der Windmühle sind in vollem Gange. Ein Blick auf den aktuellen Stand der Bauarbeiten."
+description = "Die Sanierungsarbeiten an der Windmühle laufen. Ein Blick auf den aktuellen Stand."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++
 
-Die **Sanierungsarbeiten** an unserer historischen Windmühle schreiten voran! Nachdem das Gerüst aufgebaut wurde, können nun die umfangreichen Arbeiten am Mauerwerk und Putz beginnen.
+Die Sanierungsarbeiten an unserer Windmühle laufen. Das Gerüst steht, und die Arbeiten am Mauerwerk und Putz haben begonnen.
 
 ## Eindrücke von der Baustelle
 
@@ -22,6 +22,6 @@ Die **Sanierungsarbeiten** an unserer historischen Windmühle schreiten voran! N
   <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="Fortschritt der Arbeiten">
 </div>
 
-Die Windmühle ist derzeit komplett eingerüstet. Schritt für Schritt wird der alte Putz entfernt und schadhafte Stellen im Mauerwerk ausgebessert.
+Die Windmühle ist komplett eingerüstet. Der alte Putz wird entfernt und schadhafte Stellen im Mauerwerk werden ausgebessert.
 
-Wir danken allen Unterstützern, die diesen wichtigen Meilenstein möglich machen!
+Wir danken allen Beteiligten für ihre Arbeit.

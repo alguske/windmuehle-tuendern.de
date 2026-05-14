@@ -85,5 +85,5 @@ El molino vuelve a lucir en pie, pero el trabajo continúa. Su donación se dest
 
 <div class="thanks-section">
   <h3>Muchas gracias</h3>
-  <p>Le agradecemos de corazón su apoyo y la confianza en nuestro trabajo. Juntos mantenemos vivo este pedazo especial de nuestra tierra.</p>
+  <p>Le agradecemos de corazón su apoyo y la confianza en nuestro trabajo. Juntos mantenemos vivo este pedazo de nuestra tierra.</p>
 </div>

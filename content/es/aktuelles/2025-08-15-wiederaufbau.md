@@ -1,14 +1,14 @@
 +++
 title = "El molino en reconstrucción"
 aliases = ["/es/aktuelles/2025-08-wiederaufbau/"]
-description = "Las obras de restauración del molino están en pleno apogeo. Una mirada al estado actual de las obras."
+description = "Las obras de restauración del molino están en marcha. Una mirada al estado actual."
 template = "blog-post.html"
 
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++
 
-¡Las **obras de restauración** de nuestro histórico molino avanzan! Una vez montado el andamiaje, pueden comenzar los extensos trabajos de mampostería y revoque.
+Las obras de restauración del molino están en marcha. El andamio está montado y han comenzado los trabajos de mampostería y revoque.
 
 ## Impresiones de la obra
 
@@ -22,6 +22,6 @@ image = "/imgs/scaffolding/scaffolding1.jpeg"
   <img src="/imgs/scaffolding/scaffolding6.jpeg" alt="Progreso de las obras">
 </div>
 
-El molino está actualmente completamente andamiado. Paso a paso, se elimina el revoque viejo y se reparan las zonas dañadas de la mampostería.
+El molino está completamente andamiado. Se elimina el revoque viejo y se reparan las zonas dañadas de la mampostería.
 
-¡Agradecemos a todos los colaboradores que hacen posible este importante hito!
+Agradecemos a todos los involucrados su trabajo.
