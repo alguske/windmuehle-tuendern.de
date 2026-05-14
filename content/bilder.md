@@ -5,5 +5,4 @@ template = "gallery.html"
 
 [extra]
 subtitle = "Bilder und Impressionen"
-header_image = "/imgs/bilder/windmill-7.jpeg"
 +++

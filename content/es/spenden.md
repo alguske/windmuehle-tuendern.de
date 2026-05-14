@@ -3,8 +3,6 @@ title = "Donaciones"
 description = "Apoye la conservación del histórico molino de Tündern con su donación."
 template = "page.html"
 
-[extra]
-header_image = "/imgs/bilder/windmill-5.jpeg"
 +++
 
 <div class="donate-intro">
@@ -43,19 +41,13 @@ El molino vuelve a lucir en pie, pero el trabajo continúa. Su donación se dest
     <dd>Förderverein Windmühle Tündern e.V.</dd>
     <dt>IBAN</dt>
     <dd>
-      <span class="copyable">DE37 2546 2160 0107 7074 00</span>
-      <button type="button" class="copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN copiado" aria-label="Copiar IBAN">
-        <span class="copy-btn__label-default">Copiar</span>
-        <span class="copy-btn__label-copied">Copiado</span>
-      </button>
+      <button type="button" class="copyable copy-btn" data-copy="DE37254621600107707400" data-copied-label="IBAN copiado" aria-label="Copiar IBAN: DE37 2546 2160 0107 7074 00">DE37 2546 2160 0107 7074 00</button>
+      <span class="copy-feedback" aria-hidden="true">Copiado</span>
     </dd>
     <dt>BIC</dt>
     <dd>
-      <span class="copyable">GENODEF1HMP</span>
-      <button type="button" class="copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC copiado" aria-label="Copiar BIC">
-        <span class="copy-btn__label-default">Copiar</span>
-        <span class="copy-btn__label-copied">Copiado</span>
-      </button>
+      <button type="button" class="copyable copy-btn" data-copy="GENODEF1HMP" data-copied-label="BIC copiado" aria-label="Copiar BIC: GENODEF1HMP">GENODEF1HMP</button>
+      <span class="copy-feedback" aria-hidden="true">Copiado</span>
     </dd>
     <dt>Banco</dt>
     <dd>Volksbank Hameln-Stadthagen</dd>

@@ -1,13 +1,16 @@
 /**
- * Back to top button - Shows after scrolling down
+ * Back to top button - Shows when scrolling up past the threshold.
+ * Hides when scrolling down or near the top.
  */
 
 class BackToTop {
   constructor() {
     this.button = document.querySelector('.back-to-top');
-    this.threshold = 300; // pixels to scroll before showing
+    this.threshold = 300;
+    this.deltaMin = 5; // ignore jitter
     this.isVisible = false;
     this.ticking = false;
+    this.lastScrollY = window.scrollY;
 
     if (this.button) {
       this.init();
@@ -15,14 +18,8 @@ class BackToTop {
   }
 
   init() {
-    // Click handler
     this.button.addEventListener('click', () => this.scrollToTop());
-
-    // Scroll handler with throttling
     window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
-
-    // Initial check
-    this.checkVisibility();
   }
 
   handleScroll() {
@@ -36,12 +33,21 @@ class BackToTop {
   }
 
   checkVisibility() {
-    const shouldShow = window.scrollY > this.threshold;
+    const currentY = window.scrollY;
+    const delta = currentY - this.lastScrollY;
+
+    if (Math.abs(delta) < this.deltaMin) return;
+
+    const scrollingUp = delta < 0;
+    const pastThreshold = currentY > this.threshold;
+    const shouldShow = scrollingUp && pastThreshold;
 
     if (shouldShow !== this.isVisible) {
       this.isVisible = shouldShow;
       this.button.hidden = !shouldShow;
     }
+
+    this.lastScrollY = currentY;
   }
 
   scrollToTop() {
