@@ -77,6 +77,85 @@
     </div>
 </section>
 
+<!-- Upcoming Tours Section -->
+<section class="section-tours">
+    <div class="tours-preview">
+        <h2>{{ trans(key="home_tours_title", lang=lang) }}</h2>
+        <p class="tours-subtitle">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
+
+        {% set tours_data = load_data(path="data/fuehrungen.toml") %}
+        {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
+        {% set all_tour_slots = tours_data.slots | default(value=[]) %}
+
+        {% set_global upcoming_public = [] %}
+        {% for s in all_tour_slots %}
+            {% set slot_ts = s.date | date(format="%s") | int %}
+            {% if slot_ts >= today_ts and s.kind == "public" and s.status != "cancelled" %}
+                {% set_global upcoming_public = upcoming_public | concat(with=s) %}
+            {% endif %}
+        {% endfor %}
+        {% set upcoming_public_sorted = upcoming_public | sort(attribute="date") %}
+
+        {% if upcoming_public_sorted | length > 0 %}
+            <div class="tours-cards">
+                {% for s in upcoming_public_sorted | slice(end=3) %}
+                    {% set duration = s.duration_min | default(value=60) %}
+                    <a href="{% if lang == 'de' %}/fuehrungen/{% elif lang == 'en' %}/en/fuehrungen/{% else %}/es/fuehrungen/{% endif %}" class="tours-card">
+                        <div class="tours-card__cal" aria-hidden="true">
+                            <span class="tours-card__cal-month">
+                                {% if lang == "de" %}{{ s.date | date(format="%b", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ s.date | date(format="%b", locale="en_US") }}
+                                {% else %}{{ s.date | date(format="%b", locale="es_ES") }}{% endif %}
+                            </span>
+                            <span class="tours-card__cal-day">{{ s.date | date(format="%d") }}</span>
+                            <span class="tours-card__cal-dow">
+                                {% if lang == "de" %}{{ s.date | date(format="%a", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ s.date | date(format="%a", locale="en_US") }}
+                                {% else %}{{ s.date | date(format="%a", locale="es_ES") }}{% endif %}
+                            </span>
+                        </div>
+                        <div class="tours-card__body">
+                            <h3 class="tours-card__date">
+                                {% if lang == "de" %}{{ s.date | date(format="%A, %d. %B %Y", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ s.date | date(format="%A, %B %d, %Y", locale="en_US") }}
+                                {% else %}{{ s.date | date(format="%A, %d de %B de %Y", locale="es_ES") }}{% endif %}
+                            </h3>
+                            <div class="tours-card__time">
+                                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <strong>{{ s.time }}{% if lang == "de" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% elif lang == "es" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% endif %}</strong>
+                                <span class="tours-card__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
+                            </div>
+                            <div class="tours-card__meta">
+                                <span class="kind-pill kind-pill--public">{{ trans(key="fuehrungen_kind_public", lang=lang) }}</span>
+                                {% if s.guide %}
+                                    <span class="tours-card__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="tours-empty">
+                <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <p>{{ trans(key="home_tours_empty", lang=lang) }}</p>
+            </div>
+        {% endif %}
+
+        <a href="{% if lang == 'de' %}/fuehrungen/{% elif lang == 'en' %}/en/fuehrungen/{% else %}/es/fuehrungen/{% endif %}" class="news-link">
+            {{ trans(key="home_tours_cta", lang=lang) }} &rarr;
+        </a>
+    </div>
+</section>
+
 <!-- Restaurierung Section -->
 <section class="section-accent">
     <div class="home-achieved">
