@@ -97,6 +97,29 @@ accessibility_font_smaller = "Kleinere Schrift"
 accessibility_font_normal = "Normale Schrift"
 accessibility_font_larger = "Größere Schrift"
 
+fuehrungen_upcoming_title = "Kommende Termine"
+fuehrungen_no_upcoming = "Aktuell sind keine Führungen geplant. Schauen Sie später wieder vorbei oder vereinbaren Sie eine private Führung."
+fuehrungen_kind_public = "Öffentlich"
+fuehrungen_kind_private = "Privat"
+fuehrungen_status_free = "Frei"
+fuehrungen_status_booked = "Ausgebucht"
+fuehrungen_status_cancelled = "Abgesagt"
+fuehrungen_private_label = "Geschlossene Gruppe"
+fuehrungen_min = "Min."
+fuehrungen_clock_suffix = "Uhr"
+fuehrungen_guide_label = "Führung mit"
+fuehrungen_contact_title = "Führung anfragen"
+fuehrungen_contact_text = "Sie möchten eine private Führung vereinbaren oder haben Fragen zu einem öffentlichen Termin? Rufen Sie uns gern an."
+fuehrungen_phone_landline = "Festnetz"
+fuehrungen_phone_mobile = "Mobil"
+fuehrungen_call_label = "Anrufen"
+fuehrungen_whatsapp_label = "WhatsApp"
+fuehrungen_copy_label = "Kopieren"
+fuehrungen_copied_label = "Kopiert"
+fuehrungen_meeting_label = "Treffpunkt"
+fuehrungen_open_in_maps = "In Google Maps öffnen"
+fuehrungen_past_toggle = "Vergangene Führungen anzeigen"
+
 # ===========================================
 # ENGLISH Translations
 # ===========================================
@@ -187,6 +210,29 @@ accessibility_skip_to_content = "Skip to content"
 accessibility_font_smaller = "Smaller text"
 accessibility_font_normal = "Normal text"
 accessibility_font_larger = "Larger text"
+
+fuehrungen_upcoming_title = "Upcoming dates"
+fuehrungen_no_upcoming = "No tours scheduled at the moment. Check back later or arrange a private tour."
+fuehrungen_kind_public = "Public"
+fuehrungen_kind_private = "Private"
+fuehrungen_status_free = "Free"
+fuehrungen_status_booked = "Booked"
+fuehrungen_status_cancelled = "Cancelled"
+fuehrungen_private_label = "Closed group"
+fuehrungen_min = "min"
+fuehrungen_clock_suffix = ""
+fuehrungen_guide_label = "Tour with"
+fuehrungen_contact_title = "Request a tour"
+fuehrungen_contact_text = "Would you like to arrange a private tour or have a question about a public date? Just give us a call."
+fuehrungen_phone_landline = "Landline"
+fuehrungen_phone_mobile = "Mobile"
+fuehrungen_call_label = "Call"
+fuehrungen_whatsapp_label = "WhatsApp"
+fuehrungen_copy_label = "Copy"
+fuehrungen_copied_label = "Copied"
+fuehrungen_meeting_label = "Meeting point"
+fuehrungen_open_in_maps = "Open in Google Maps"
+fuehrungen_past_toggle = "Show past tours"
 
 # ===========================================
 # SPANISH Translations
@@ -279,6 +325,29 @@ accessibility_font_smaller = "Texto más pequeño"
 accessibility_font_normal = "Texto normal"
 accessibility_font_larger = "Texto más grande"
 
+fuehrungen_upcoming_title = "Próximas fechas"
+fuehrungen_no_upcoming = "Actualmente no hay visitas programadas. Vuelva a consultarlo más adelante o concierte una visita privada."
+fuehrungen_kind_public = "Pública"
+fuehrungen_kind_private = "Privada"
+fuehrungen_status_free = "Libre"
+fuehrungen_status_booked = "Completa"
+fuehrungen_status_cancelled = "Cancelada"
+fuehrungen_private_label = "Grupo cerrado"
+fuehrungen_min = "min"
+fuehrungen_clock_suffix = "h"
+fuehrungen_guide_label = "Visita con"
+fuehrungen_contact_title = "Solicitar una visita"
+fuehrungen_contact_text = "¿Quiere concertar una visita privada o tiene preguntas sobre una fecha pública? Llámenos."
+fuehrungen_phone_landline = "Fijo"
+fuehrungen_phone_mobile = "Móvil"
+fuehrungen_call_label = "Llamar"
+fuehrungen_whatsapp_label = "WhatsApp"
+fuehrungen_copy_label = "Copiar"
+fuehrungen_copied_label = "Copiado"
+fuehrungen_meeting_label = "Punto de encuentro"
+fuehrungen_open_in_maps = "Abrir en Google Maps"
+fuehrungen_past_toggle = "Mostrar visitas pasadas"
+
 # ===========================================
 # EXTRA CONFIG
 # ===========================================
@@ -302,6 +371,7 @@ items = [
     { text = "Aktuelles", link = "/aktuelles/" },
     { text = "Geschichte", link = "/geschichte/" },
     { text = "Bilder", link = "/bilder/" },
+    { text = "Führungen", link = "/fuehrungen/" },
     { text = "Spenden", link = "/spenden/" },
 ]
 
@@ -310,6 +380,7 @@ items = [
     { text = "News", link = "/en/aktuelles/" },
     { text = "History", link = "/en/geschichte/" },
     { text = "Gallery", link = "/en/bilder/" },
+    { text = "Tours", link = "/en/fuehrungen/" },
     { text = "Donate", link = "/en/spenden/" },
 ]
 
@@ -318,5 +389,6 @@ items = [
     { text = "Noticias", link = "/es/aktuelles/" },
     { text = "Historia", link = "/es/geschichte/" },
     { text = "Galería", link = "/es/bilder/" },
+    { text = "Visitas", link = "/es/fuehrungen/" },
     { text = "Donar", link = "/es/spenden/" },
 ]

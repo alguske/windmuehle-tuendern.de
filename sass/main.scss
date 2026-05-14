@@ -1178,10 +1178,12 @@ section {
   transition: var(--transition-smooth);
   white-space: nowrap;
 
-  &:hover {
-    background: var(--c-brand-1);
-    color: white;
-    border-color: var(--c-brand-1);
+  &:hover,
+  &:focus-visible {
+    background: #fff;
+    color: var(--c-brand-2);
+    border-color: var(--c-accent);
+    box-shadow: 0 2px 8px rgba(232, 168, 56, 0.18);
   }
 }
 
@@ -1819,20 +1821,28 @@ section {
   gap: 0.5rem;
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--c-brand-1);
-  color: #fff;
+  background: #f8fafc;
+  color: var(--c-brand-2);
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: var(--transition-smooth);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 
-  &:hover {
-    background: var(--c-brand-2);
+  svg { flex-shrink: 0; color: var(--c-accent); }
+
+  &:hover,
+  &:focus-visible {
+    background: #fff;
+    border-color: var(--c-accent);
+    color: var(--c-brand-2);
+    box-shadow: 0 2px 10px rgba(232, 168, 56, 0.18);
   }
 
-  svg {
-    flex-shrink: 0;
+  &:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
   }
 }
 
@@ -2448,4 +2458,635 @@ section {
   .hero-title {
     font-size: 2.2rem;
   }
+}
+
+// ================================
+// Führungen / Guided tours
+// ================================
+$fh-brand: var(--c-brand-1);
+$fh-brand-2: var(--c-brand-2);
+$fh-accent: var(--c-accent);
+$fh-text: var(--c-text-1);
+$fh-text-soft: var(--c-text-3);
+$fh-border: #e2e8f0;
+$fh-surface: #fff;
+$fh-surface-soft: #f8fafc;
+
+.fuehrungen-intro {
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--section-bg-accent);
+  border-left: 4px solid $fh-accent;
+  border-radius: 6px;
+
+  p {
+    margin: 0 0 0.5rem;
+    line-height: 1.65;
+    color: $fh-text;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  strong { color: $fh-brand-2; }
+}
+
+.fuehrungen-section {
+  margin: 2.5rem 0 3rem;
+}
+
+.fuehrungen-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.4rem;
+  color: $fh-brand-2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  svg { color: $fh-accent; flex-shrink: 0; }
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, $fh-border, transparent);
+    margin-left: 0.5rem;
+  }
+}
+
+.fuehrungen-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1.5rem;
+  background: $fh-surface-soft;
+  border: 1px dashed $fh-border;
+  border-radius: 10px;
+  color: $fh-text-soft;
+  text-align: center;
+
+  svg { color: #cbd5e0; }
+  p { margin: 0; max-width: 32em; line-height: 1.6; }
+}
+
+.fuehrungen-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fuehrungen-day {
+  display: flex;
+  background: $fh-surface;
+  border: 1px solid $fh-border;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba(37, 99, 168, 0.3);
+    box-shadow: var(--card-shadow);
+  }
+}
+
+.fuehrungen-day__cal {
+  flex-shrink: 0;
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 0.5rem;
+  background: linear-gradient(160deg, $fh-brand 0%, $fh-brand-2 100%);
+  color: #fff;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, $fh-accent 0%, transparent 100%);
+  }
+}
+
+.fuehrungen-day__cal-month {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fuehrungen-day__cal-day {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0.1rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.fuehrungen-day__cal-dow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $fh-accent;
+}
+
+.fuehrungen-day__body {
+  flex: 1;
+  padding: 1rem 1.25rem 1.1rem;
+  min-width: 0;
+}
+
+.fuehrungen-day__date {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $fh-brand-2;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+}
+
+.fuehrungen-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fuehrungen-slot {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.9rem;
+  background: $fh-surface-soft;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+
+  &--cancelled {
+    opacity: 0.6;
+
+    .fuehrungen-slot__time,
+    .fuehrungen-slot__meta { text-decoration: line-through; text-decoration-thickness: 1px; }
+  }
+
+  &:hover { background: #eef2f7; }
+}
+
+.fuehrungen-slot__time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: $fh-text;
+  font-variant-numeric: tabular-nums;
+
+  svg { color: $fh-brand; flex-shrink: 0; }
+
+  strong { font-size: 1.05rem; font-weight: 700; }
+}
+
+.fuehrungen-slot__duration {
+  font-size: 0.82rem;
+  color: $fh-text-soft;
+  font-weight: 500;
+}
+
+.fuehrungen-slot__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  color: $fh-text-soft;
+}
+
+.fuehrungen-slot__guide {
+  color: $fh-text-soft;
+
+  strong { color: $fh-brand-2; font-weight: 600; }
+}
+
+.fuehrungen-slot__status { justify-self: end; }
+
+.kind-pill {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  &--public {
+    background: rgba(56, 161, 105, 0.12);
+    color: #2f7a4f;
+  }
+  &--private {
+    background: rgba(37, 99, 168, 0.1);
+    color: $fh-brand-2;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+
+  &--free {
+    background: rgba(56, 161, 105, 0.15);
+    color: #2f7a4f;
+    border: 1px solid rgba(56, 161, 105, 0.3);
+  }
+  &--booked {
+    background: rgba(232, 168, 56, 0.15);
+    color: #a05f0a;
+    border: 1px solid rgba(232, 168, 56, 0.4);
+  }
+  &--cancelled {
+    background: rgba(220, 53, 53, 0.12);
+    color: #a02525;
+    border: 1px solid rgba(220, 53, 53, 0.25);
+  }
+  &--private {
+    background: rgba(37, 99, 168, 0.1);
+    color: $fh-brand-2;
+    border: 1px solid rgba(37, 99, 168, 0.25);
+  }
+}
+
+// ---------- Contact ----------
+.fuehrungen-contact {
+  margin: 3rem 0;
+  padding: 1.75rem;
+  background: linear-gradient(160deg, $fh-surface 0%, $fh-surface-soft 100%);
+  border: 1px solid $fh-border;
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+}
+
+.fuehrungen-contact-intro {
+  margin: 0 0 1.5rem;
+  color: $fh-text;
+  line-height: 1.6;
+  max-width: 48em;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.contact-card {
+  background: $fh-surface;
+  border: 1px solid $fh-border;
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  transition: var(--transition-smooth);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, $fh-brand, $fh-accent);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: transparent;
+    box-shadow: 0 6px 24px rgba(37, 99, 168, 0.12);
+
+    &::before { opacity: 1; }
+  }
+}
+
+.contact-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.contact-card__icon {
+  flex-shrink: 0;
+  color: $fh-brand;
+}
+
+.contact-card__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: $fh-brand-2;
+}
+
+.contact-card__number-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.15rem 0 0.6rem;
+}
+
+.contact-card__number {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: $fh-text;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.005em;
+  word-break: keep-all;
+  transition: color 0.15s ease;
+
+  &:hover { color: $fh-brand-2; background: transparent; border: none; }
+  &:focus-visible {
+    outline: 2px solid $fh-brand;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  &.copy-btn--copied {
+    background: transparent;
+    border: none;
+    color: #2f7a4f;
+  }
+}
+
+.contact-card__feedback {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2f7a4f;
+  pointer-events: none;
+  white-space: nowrap;
+
+  &::before { content: "✓ "; }
+}
+
+.contact-card__number.copy-btn--copied + .contact-card__feedback {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-call,
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-call {
+  background: $fh-surface-soft;
+  color: $fh-brand-2;
+  border: 1px solid $fh-border;
+
+  svg { color: var(--c-accent); }
+
+  &:hover,
+  &:focus-visible {
+    background: #fff;
+    border-color: var(--c-accent);
+    color: $fh-brand-2;
+    box-shadow: 0 2px 10px rgba(232, 168, 56, 0.18);
+  }
+  &:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  border: 1px solid #25d366;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25);
+
+  &:hover {
+    background: #1ebe57;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35);
+  }
+  &:focus-visible { outline: 2px solid #0c8a3a; outline-offset: 2px; }
+}
+
+.fuehrungen-meeting {
+  margin: 1.5rem 0 0;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid $fh-border;
+  border-radius: 10px;
+  background: $fh-surface;
+  color: $fh-text;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+
+  & > svg:first-child { flex-shrink: 0; color: $fh-accent; }
+  strong { color: $fh-brand-2; }
+
+  &:hover,
+  &:focus-visible {
+    background: $fh-surface-soft;
+    border-color: $fh-accent;
+    color: $fh-text;
+    box-shadow: 0 2px 10px rgba(232, 168, 56, 0.15);
+
+    & > svg:first-child { color: $fh-accent; }
+    strong { color: $fh-brand-2; }
+
+    .fuehrungen-meeting__cta { color: $fh-brand-2; }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $fh-accent;
+    outline-offset: 2px;
+  }
+}
+
+.fuehrungen-meeting__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.fuehrungen-meeting__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-brand-1);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+
+  svg { color: inherit; }
+}
+
+// ---------- Past ----------
+.fuehrungen-past {
+  margin: 3rem 0 1rem;
+
+  details {
+    border-top: 1px solid $fh-border;
+    padding-top: 1.25rem;
+
+    &[open] summary { color: $fh-brand-2; }
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: $fh-text-soft;
+    padding: 0.6rem 0.9rem;
+    user-select: none;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &::-webkit-details-marker { display: none; }
+    &::before {
+      content: "▸";
+      color: $fh-accent;
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+
+    &:hover {
+      color: $fh-brand-2;
+      background: $fh-surface-soft;
+    }
+  }
+
+  details[open] summary::before { transform: rotate(90deg); }
+}
+
+.fuehrungen-past-count {
+  color: $fh-text-soft;
+  font-weight: 500;
+  margin-left: 0.2rem;
+}
+
+.fuehrungen-year {
+  margin-top: 1.25rem;
+
+  h3 {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $fh-brand;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid $fh-border;
+  }
+}
+
+.fuehrungen-slots--past {
+  .fuehrungen-slot {
+    background: transparent;
+    border-left-color: transparent;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.88rem;
+    grid-template-columns: auto auto 1fr auto;
+    opacity: 0.85;
+
+    &:hover { background: $fh-surface-soft; opacity: 1; }
+  }
+
+  .fuehrungen-date-inline {
+    font-weight: 600;
+    color: $fh-brand-2;
+    text-transform: capitalize;
+    min-width: 5rem;
+  }
+}
+
+// ---------- Responsive ----------
+@media (max-width: 600px) {
+  .fuehrungen-day { flex-direction: column; }
+
+  .fuehrungen-day__cal {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+
+    &::after {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, $fh-accent 0%, transparent 100%);
+    }
+  }
+
+  .fuehrungen-day__cal-day { font-size: 1.4rem; }
+  .fuehrungen-day__cal-month, .fuehrungen-day__cal-dow { font-size: 0.75rem; }
+
+  .fuehrungen-slot {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .fuehrungen-slot__status { justify-self: start; }
+}
+
+@media (max-width: 480px) {
+  .contact-card__number { font-size: 1.4rem; }
+  .btn-call, .btn-whatsapp { flex: 1; justify-content: center; }
 }

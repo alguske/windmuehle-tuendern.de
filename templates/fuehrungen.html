@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% if page.path is starting_with("/en/") %}
+    {% set lang = "en" %}
+{% elif page.path is starting_with("/es/") %}
+    {% set lang = "es" %}
+{% else %}
+    {% set lang = "de" %}
+{% endif %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+{% if page.extra.header_image %}
+<div class="page-hero" style="background-image: url('{{ page.extra.header_image }}');">
+    <div class="page-hero-content">
+        <h1>{{ page.title }}</h1>
+        {% if page.extra.subtitle %}<p>{{ page.extra.subtitle }}</p>{% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% include "partials/breadcrumbs.html" %}
+
+<div class="page-wrapper">
+    {% if not page.extra.header_image %}
+    <header class="page-header">
+        <h1>{{ page.title }}</h1>
+        {% if page.extra.subtitle %}<p>{{ page.extra.subtitle }}</p>{% endif %}
+    </header>
+    {% endif %}
+
+    <article class="page-content">
+        {{ page.content | safe }}
+    </article>
+
+    {# ---------- Slot data ---------- #}
+    {% set data = load_data(path="data/fuehrungen.toml") %}
+    {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
+    {% set all_slots = data.slots | default(value=[]) %}
+
+    {% set_global upcoming = [] %}
+    {% set_global past = [] %}
+    {% for s in all_slots %}
+        {% set slot_ts = s.date | date(format="%s") | int %}
+        {% if slot_ts >= today_ts %}
+            {% set_global upcoming = upcoming | concat(with=s) %}
+        {% else %}
+            {% set_global past = past | concat(with=s) %}
+        {% endif %}
+    {% endfor %}
+
+    {% set upcoming_sorted = upcoming | sort(attribute="date") %}
+    {% set past_sorted = past | sort(attribute="date") | reverse %}
+
+    {# ---------- Upcoming ---------- #}
+    <section class="fuehrungen-section">
+        <h2 class="fuehrungen-section-title">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            {{ trans(key="fuehrungen_upcoming_title", lang=lang) }}
+        </h2>
+
+        {% if upcoming_sorted | length == 0 %}
+            <div class="fuehrungen-empty">
+                <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <p>{{ trans(key="fuehrungen_no_upcoming", lang=lang) }}</p>
+            </div>
+        {% else %}
+            {% set grouped = upcoming_sorted | group_by(attribute="date") %}
+            <div class="fuehrungen-list">
+                {% for date_key, day_slots in grouped %}
+                    {% set day_sorted = day_slots | sort(attribute="time") %}
+                    <article class="fuehrungen-day">
+                        <div class="fuehrungen-day__cal" aria-hidden="true">
+                            <span class="fuehrungen-day__cal-month">
+                                {% if lang == "de" %}{{ date_key | date(format="%b", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ date_key | date(format="%b", locale="en_US") }}
+                                {% else %}{{ date_key | date(format="%b", locale="es_ES") }}{% endif %}
+                            </span>
+                            <span class="fuehrungen-day__cal-day">{{ date_key | date(format="%d") }}</span>
+                            <span class="fuehrungen-day__cal-dow">
+                                {% if lang == "de" %}{{ date_key | date(format="%a", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ date_key | date(format="%a", locale="en_US") }}
+                                {% else %}{{ date_key | date(format="%a", locale="es_ES") }}{% endif %}
+                            </span>
+                        </div>
+                        <div class="fuehrungen-day__body">
+                            <h3 class="fuehrungen-day__date">
+                                {% if lang == "de" %}{{ date_key | date(format="%A, %d. %B %Y", locale="de_DE") }}
+                                {% elif lang == "en" %}{{ date_key | date(format="%A, %B %d, %Y", locale="en_US") }}
+                                {% else %}{{ date_key | date(format="%A, %d de %B de %Y", locale="es_ES") }}{% endif %}
+                            </h3>
+                            <ul class="fuehrungen-slots">
+                                {% for s in day_sorted %}
+                                    {% set duration = s.duration_min | default(value=60) %}
+                                    <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
+                                        <div class="fuehrungen-slot__time">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <polyline points="12 6 12 12 16 14"/>
+                                            </svg>
+                                            <strong>{{ s.time }}{% if lang == "de" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% elif lang == "es" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% endif %}</strong>
+                                            <span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
+                                        </div>
+                                        <div class="fuehrungen-slot__meta">
+                                            <span class="kind-pill kind-pill--{{ s.kind }}">
+                                                {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
+                                            </span>
+                                            {% if s.guide %}
+                                                <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="fuehrungen-slot__status">
+                                            {% if s.status == "cancelled" %}
+                                                <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
+                                            {% elif s.kind == "private" %}
+                                                <span class="badge badge--private">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
+                                            {% elif s.status == "booked" %}
+                                                <span class="badge badge--booked">{{ trans(key="fuehrungen_status_booked", lang=lang) }}</span>
+                                            {% else %}
+                                                <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+
+    {# ---------- Contact ---------- #}
+    <section class="fuehrungen-contact">
+        <h2 class="fuehrungen-section-title">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            {{ trans(key="fuehrungen_contact_title", lang=lang) }}
+        </h2>
+        <p class="fuehrungen-contact-intro">{{ trans(key="fuehrungen_contact_text", lang=lang) }}</p>
+
+        <div class="contact-cards">
+            <article class="contact-card">
+                <header class="contact-card__head">
+                    <svg class="contact-card__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span class="contact-card__label">{{ trans(key="fuehrungen_phone_landline", lang=lang) }}</span>
+                </header>
+                <div class="contact-card__number-wrap">
+                    <button type="button"
+                            class="contact-card__number copy-btn"
+                            data-copy="05151 27203"
+                            data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                            aria-label="05151 27203 — {{ trans(key='fuehrungen_copy_label', lang=lang) }}">
+                        05151 27203
+                    </button>
+                    <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
+                </div>
+                <div class="contact-card__actions">
+                    <a href="tel:+4951512720" class="btn-call">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        {{ trans(key="fuehrungen_call_label", lang=lang) }}
+                    </a>
+                </div>
+            </article>
+
+            <article class="contact-card">
+                <header class="contact-card__head">
+                    <svg class="contact-card__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                        <line x1="12" y1="18" x2="12" y2="18"/>
+                    </svg>
+                    <span class="contact-card__label">{{ trans(key="fuehrungen_phone_mobile", lang=lang) }}</span>
+                </header>
+                <div class="contact-card__number-wrap">
+                    <button type="button"
+                            class="contact-card__number copy-btn"
+                            data-copy="0176 95661693"
+                            data-copied-label="{{ trans(key='fuehrungen_copied_label', lang=lang) }}"
+                            aria-label="0176 95661693 — {{ trans(key='fuehrungen_copy_label', lang=lang) }}">
+                        0176 95661693
+                    </button>
+                    <span class="contact-card__feedback" aria-hidden="true">{{ trans(key="fuehrungen_copied_label", lang=lang) }}</span>
+                </div>
+                <div class="contact-card__actions">
+                    <a href="tel:+4917695661693" class="btn-call">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        {{ trans(key="fuehrungen_call_label", lang=lang) }}
+                    </a>
+                    <a href="https://wa.me/4917695661693" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
+                            <path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.2-.7.2c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2.6 1.1 3.1.9 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+                        </svg>
+                        {{ trans(key="fuehrungen_whatsapp_label", lang=lang) }}
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <a href="https://maps.app.goo.gl/RsCk1LxS6XMP5Ffj8" target="_blank" rel="noopener noreferrer" class="fuehrungen-meeting">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="fuehrungen-meeting__text">
+                <strong>{{ trans(key="fuehrungen_meeting_label", lang=lang) }}:</strong> Linkworth 1, 31789 Hameln-Tündern
+            </span>
+            <span class="fuehrungen-meeting__cta">
+                {{ trans(key="fuehrungen_open_in_maps", lang=lang) }}
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17L17 7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                </svg>
+            </span>
+        </a>
+    </section>
+
+    {# ---------- Past ---------- #}
+    {% if past_sorted | length > 0 %}
+        <section class="fuehrungen-past">
+            <details>
+                <summary>
+                    {{ trans(key="fuehrungen_past_toggle", lang=lang) }}
+                    <span class="fuehrungen-past-count">({{ past_sorted | length }})</span>
+                </summary>
+
+                {# Build unique year list #}
+                {% set_global years = [] %}
+                {% for s in past_sorted %}
+                    {% set y = s.date | split(pat="-") | first %}
+                    {% if y not in years %}
+                        {% set_global years = years | concat(with=y) %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for year in years %}
+                    <div class="fuehrungen-year">
+                        <h3>{{ year }}</h3>
+                        <ul class="fuehrungen-slots fuehrungen-slots--past">
+                            {% for s in past_sorted %}
+                                {% set sy = s.date | split(pat="-") | first %}
+                                {% if sy == year %}
+                                    {% set duration = s.duration_min | default(value=60) %}
+                                    <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
+                                        <span class="fuehrungen-date-inline">
+                                            {% if lang == "de" %}{{ s.date | date(format="%d. %b", locale="de_DE") }}
+                                            {% elif lang == "en" %}{{ s.date | date(format="%b %d", locale="en_US") }}
+                                            {% else %}{{ s.date | date(format="%d %b", locale="es_ES") }}{% endif %}
+                                        </span>
+                                        <span class="fuehrungen-slot__time">
+                                            <strong>{{ s.time }}</strong>
+                                        </span>
+                                        <div class="fuehrungen-slot__meta">
+                                            <span class="kind-pill kind-pill--{{ s.kind }}">
+                                                {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
+                                            </span>
+                                            {% if s.guide %}
+                                                <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="fuehrungen-slot__status">
+                                            {% if s.status == "cancelled" %}
+                                                <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </details>
+        </section>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,57 @@
+# Führungen / Guided tours data
+# Time zone: Europe/Berlin (Hannover), always.
+#
+# Slot fields:
+#   date         "YYYY-MM-DD"
+#   time         "HH:MM"  (24h)
+#   duration_min default 60
+#   kind         "public" | "private"
+#   status       "free" | "booked" | "cancelled"
+#                 (private slots are always "booked" or "cancelled")
+#   guide        first name(s) of the tour guide, e.g. "Dirk" or "Falk & Philipp"
+#
+# Edit this file to add / update / cancel tours.
+# Run `zola build` locally to preview.
+
+[[slots]]
+date = "2026-06-07"
+time = "15:00"
+kind = "private"
+status = "booked"
+guide = "Dirk"
+
+[[slots]]
+date = "2026-06-20"
+time = "16:00"
+kind = "private"
+status = "booked"
+guide = "Falk"
+
+[[slots]]
+date = "2026-06-21"
+time = "15:00"
+kind = "private"
+status = "booked"
+guide = "Dirk"
+
+[[slots]]
+date = "2026-07-12"
+time = "15:00"
+kind = "private"
+status = "booked"
+guide = "Philipp"
+
+[[slots]]
+date = "2026-07-17"
+time = "17:00"
+kind = "private"
+status = "booked"
+guide = "Dirk"
+
+[[slots]]
+date = "2026-07-26"
+time = "12:00"
+duration_min = 60
+kind = "private"
+status = "booked"
+guide = "Dirk"
