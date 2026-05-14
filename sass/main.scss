@@ -3139,4 +3139,72 @@ $fh-surface-soft: #f8fafc;
 @media (max-width: 480px) {
   .contact-card__number { font-size: 1.4rem; }
   .btn-call, .btn-whatsapp { flex: 1; justify-content: center; }
+
+  .fuehrungen-section-title {
+    font-size: 1.15rem;
+    gap: 0.4rem;
+
+    &::after { display: none; }
+  }
+
+  .fuehrungen-contact { padding: 1.1rem; }
+  .fuehrungen-contact-intro { font-size: 0.95rem; }
+
+  .contact-card { padding: 0.9rem 1rem 1rem; }
+  .contact-card__reveal { width: 100%; justify-content: center; }
+
+  .fuehrungen-meeting {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  .fuehrungen-meeting__cta { font-size: 0.8rem; }
+
+  .fuehrungen-day__body { padding: 0.85rem 1rem 1rem; }
+  .fuehrungen-day__date { font-size: 0.9rem; }
+  .fuehrungen-slot { padding: 0.6rem 0.7rem; }
+  .fuehrungen-slot__time strong { font-size: 1rem; }
+
+  .badge {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+  }
+
+  // Stack bank-card definition list so long values (IBAN) breathe
+  .bank-card {
+    padding: 1.1rem 1.1rem;
+
+    dl {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    dt {
+      padding: 0.65rem 0 0.15rem;
+      border-bottom: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    dd {
+      padding: 0 0 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    dd:last-of-type { border-bottom: none; }
+  }
+
+  .copyable.copy-btn {
+    word-break: break-all;
+    margin: 0;
+    padding: 0.35rem 0;
+  }
+
+  .imprint-map-btn { font-size: 0.9rem; padding: 0.7rem 1rem; }
+}
+
+@media (max-width: 380px) {
+  .contact-card__number { font-size: 1.25rem; letter-spacing: 0; }
+  .fuehrungen-day__date { font-size: 0.85rem; }
+  .fuehrungen-section-title { font-size: 1.05rem; }
 }
