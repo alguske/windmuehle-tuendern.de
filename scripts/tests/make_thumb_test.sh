@@ -3,7 +3,7 @@
 TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$TEST_DIR/../.." && pwd)"
 SCRIPT="$REPO_ROOT/scripts/make-thumb.sh"
-SEED_IMG="$REPO_ROOT/static/imgs/logo.jpg"
+SEED_IMG="$REPO_ROOT/static/imgs/og-image.jpg"
 
 # Seed a temp repo with a post (de/en/es) whose extra.image points at
 # image -01 of a slug, plus several optimized images in static/imgs/<slug>/.

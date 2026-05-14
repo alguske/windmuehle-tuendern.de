@@ -4,7 +4,7 @@
 TEST_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$TEST_DIR/../.." && pwd)"
 SCRIPT="$REPO_ROOT/scripts/new-post.sh"
-SEED_IMG="$REPO_ROOT/static/imgs/logo.jpg"
+SEED_IMG="$REPO_ROOT/static/imgs/og-image.jpg"
 
 function set_up() {
   temp_dir=$(mktemp -d)
