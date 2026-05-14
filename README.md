@@ -69,6 +69,16 @@ Example:
 ./scripts/make-thumb.sh /imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-06.jpg
 ```
 
+### `scripts/validate-fuehrungen.py` — sanity-check tour data
+
+Validates the shape and field values of `data/fuehrungen.toml`. Run before pushing edits to that file.
+
+```bash
+./scripts/validate-fuehrungen.py
+```
+
+Exits non-zero if any slot has an invalid date, time, kind, status, duration or guide field.
+
 ### `scripts/mark-for-translation.sh` — reset content files
 
 Overwrites every `.md` file in the given directory with the single line `to be translated`. Useful when preparing a fresh EN or ES tree for manual translation.
@@ -110,6 +120,42 @@ See `content/aktuelles/2026-04-17-einweihung-der-windmuehle.md` for a structured
 
 - **When you only want to swap the hero image**, use `make-thumb.sh`, don't recreate the post.
 - **When translating an existing post**, edit the EN/ES files directly. The script scaffolds stubs, it does not translate.
+
+## Führungen / Guided tours
+
+The page at `/fuehrungen/` lists upcoming guided tours of the windmill. Data lives in `data/fuehrungen.toml` as an array of `[[slots]]` tables. Edit that file to add, cancel or remove a tour. Run `zola build` (or restart `zola serve`) to publish.
+
+### Slot fields
+
+| Field | Required | Notes |
+|---|---|---|
+| `date` | yes | ISO date, `YYYY-MM-DD`, in Europe/Berlin time zone |
+| `time` | yes | 24h `HH:MM` |
+| `duration_min` | no | Integer minutes, defaults to `60` |
+| `kind` | yes | `"public"` (anyone can attend) or `"private"` (closed group, opaque on page) |
+| `status` | yes | `"free"`, `"booked"` or `"cancelled"`. Private slots cannot be `"free"` |
+| `guide` | no | First name of the tour guide, e.g. `"Dirk"` or `"Falk & Philipp"` |
+
+Example:
+
+```toml
+[[slots]]
+date = "2026-06-14"
+time = "14:00"
+duration_min = 60
+kind = "public"
+status = "free"
+guide = "Dirk"
+```
+
+### Conventions
+
+- Tours sort by date ascending in the upcoming list, descending in the past archive.
+- Past tours auto-move into a collapsible section grouped by year.
+- Private slot details (family name, group) never appear on the page; only `kind`, `time` and `guide` are shown.
+- The JSON-LD `Event` schema is emitted only for upcoming `public`, non-cancelled slots so Google can surface them in the Events panel.
+- Phone numbers on the contact card are base64-encoded and revealed only on click to deter scraping. See `static/js/contact-reveal.js`.
+- Run `scripts/validate-fuehrungen.py` after editing the data file.
 
 ## For AI agents
 

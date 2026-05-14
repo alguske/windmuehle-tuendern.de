@@ -41,6 +41,21 @@ Every content or translation change **must** cover all 3 languages.
 - Thumbnails: generate at 600px width, 70% JPEG quality into `static/imgs/thumbs/` via `sips -s format jpeg -s formatOptions 70 --resampleWidth 600`
 - Every post with `[extra] image` must have a matching thumbnail in `static/imgs/thumbs/<filename>.jpg`
 
+## Führungen (guided tours) data
+
+- Source of truth: `data/fuehrungen.toml`. One `[[slots]]` table per tour. No DB yet.
+- Schema (validated by `scripts/validate-fuehrungen.py`):
+  - `date` ISO `YYYY-MM-DD`, time zone Europe/Berlin
+  - `time` `HH:MM` 24h
+  - `duration_min` integer, defaults to 60
+  - `kind` `"public"` or `"private"`
+  - `status` `"free"`, `"booked"` or `"cancelled"`; private slots cannot be `"free"`
+  - `guide` optional string, first name(s) of the tour guide
+- Private slots are rendered opaque on the page. Never include family names or other identifiers in the data file.
+- Phone numbers on the contact card are base64-encoded server-side and revealed only on click. When adding or changing a phone number, update the `data-display`, `data-tel` and `data-wa` attributes in `templates/fuehrungen.html` using Tera's `base64_encode` filter.
+- JSON-LD `Event` schema emits only for upcoming public, non-cancelled slots.
+- Always run `scripts/validate-fuehrungen.py` after editing the data file. Always run `zola build` before committing.
+
 ## Conventions
 
 - Use conventional commits (no AI/Claude mentions in commit messages)

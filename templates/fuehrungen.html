@@ -316,4 +316,48 @@
         </section>
     {% endif %}
 </div>
+
+{# ---------- JSON-LD: emit upcoming public, non-cancelled slots ---------- #}
+{% set_global ld_events = [] %}
+{% for s in upcoming_sorted %}
+    {% if s.kind == "public" and s.status != "cancelled" %}
+        {% set_global ld_events = ld_events | concat(with=s) %}
+    {% endif %}
+{% endfor %}
+{% if ld_events | length > 0 %}
+<script type="application/ld+json">
+[
+{% for s in ld_events %}
+    {% set duration = s.duration_min | default(value=60) %}
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": {{ "Mühlenführung Windmühle Tündern" | json_encode | safe }},
+      "startDate": "{{ s.date }}T{{ s.time }}",
+      "duration": "PT{{ duration }}M",
+      "eventStatus": "{% if s.status == 'cancelled' %}https://schema.org/EventCancelled{% else %}https://schema.org/EventScheduled{% endif %}",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "isAccessibleForFree": true,
+      "location": {
+        "@type": "Place",
+        "name": "Windmühle Tündern",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Windmühlenweg 20",
+          "postalCode": "31789",
+          "addressLocality": "Hameln",
+          "addressCountry": "DE"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Förderverein Windmühle Tündern e.V.",
+        "url": "{{ config.base_url }}"
+      },
+      "url": "{{ current_url | default(value=config.base_url ~ '/fuehrungen/') }}"
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+]
+</script>
+{% endif %}
 {% endblock content %}
