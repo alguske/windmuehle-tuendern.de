@@ -3388,6 +3388,8 @@ $fh-surface-soft: #f8fafc;
   .badge {
     padding: 0.25rem 0.55rem;
     font-size: 0.7rem;
+    white-space: normal;
+    text-align: center;
   }
 
   // Stack bank-card definition list so long values (IBAN) breathe
