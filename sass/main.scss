@@ -2823,7 +2823,7 @@ $fh-surface-soft: #f8fafc;
 .fuehrungen-slot {
   display: grid;
   grid-template-columns: minmax(110px, auto) 1fr auto;
-  align-items: center;
+  align-items: start;
   gap: 0.85rem;
   padding: 0.7rem 0.9rem;
   background: $fh-surface-soft;
@@ -3314,7 +3314,7 @@ $fh-surface-soft: #f8fafc;
 }
 
 // ---------- Responsive ----------
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .fuehrungen-day {
     flex-direction: column;
   }
