@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "partials/macros.html" as m %}
 
 {% if section.path is starting_with("/en/") %}
     {% set lang = "en" %}
@@ -18,7 +19,7 @@
         <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
         <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
         <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
-        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+        <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
             {{ trans(key="home_hero_cta", lang=lang) }}
         </a>
     </div>
@@ -71,7 +72,7 @@
             </a>
             {% endfor %}
         </div>
-        <a href="{% if lang == 'de' %}/aktuelles/{% elif lang == 'en' %}/en/aktuelles/{% else %}/es/aktuelles/{% endif %}" class="news-link">
+        <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="news-link">
             {{ trans(key="home_all_news", lang=lang) }} &rarr;
         </a>
     </div>
@@ -123,7 +124,7 @@
             <div class="tours-cards">
                 {% for s in upcoming_public_sorted | slice(end=3) %}
                     {% set duration = s.duration_min | default(value=60) %}
-                    <a href="{% if lang == 'de' %}/fuehrungen/{% elif lang == 'en' %}/en/fuehrungen/{% else %}/es/fuehrungen/{% endif %}" class="tours-card">
+                    <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="tours-card">
                         <div class="tours-card__cal" aria-hidden="true">
                             <span class="tours-card__cal-month">
                                 {% if lang == "de" %}{{ s.date | date(format="%b", locale="de_DE") }}
@@ -173,7 +174,7 @@
             </div>
         {% endif %}
 
-        <a href="{% if lang == 'de' %}/fuehrungen/{% elif lang == 'en' %}/en/fuehrungen/{% else %}/es/fuehrungen/{% endif %}" class="news-link">
+        <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="news-link">
             {{ trans(key="home_tours_cta", lang=lang) }} &rarr;
         </a>
     </div>
@@ -229,7 +230,7 @@
     <div class="cta-content">
         <p class="cta-quote">{{ trans(key="home_cta_quote", lang=lang) }}</p>
         <p class="cta-message">{{ trans(key="home_cta_message", lang=lang) }}</p>
-        <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+        <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
             {{ trans(key="home_cta_button", lang=lang) }}
         </a>
     </div>

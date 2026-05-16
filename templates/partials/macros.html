@@ -1,0 +1,7 @@
+{# Localized URL for an internal slug.
+   url(slug="spenden")
+     de -> /spenden/
+     en -> /en/spenden/
+     es -> /es/spenden/
+   Pass slug without leading/trailing slashes. #}
+{% macro url(slug, lang) %}{% if lang == "de" %}/{{ slug }}/{% else %}/{{ lang }}/{{ slug }}/{% endif %}{% endmacro %}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "partials/macros.html" as m %}
 
 {% if page.path is starting_with("/en/") %}
     {% set lang = "en" %}
@@ -48,7 +49,7 @@
     <div class="page-wrapper">
         <!-- Back to list link -->
         <nav class="blog-nav-top">
-            <a href="{% if lang == 'de' %}/aktuelles/{% elif lang == 'en' %}/en/aktuelles/{% else %}/es/aktuelles/{% endif %}" class="back-link">
+            <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="back-link">
                 {{ trans(key="blog_back_to_list", lang=lang) }}
             </a>
         </nav>
@@ -84,7 +85,7 @@
         <!-- Support message -->
         <aside class="blog-support">
             <p>{{ trans(key="blog_support_message", lang=lang) }}</p>
-            <a href="{% if lang == 'de' %}/spenden/{% elif lang == 'en' %}/en/spenden/{% else %}/es/spenden/{% endif %}" class="cta-button">
+            <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
                 {{ trans(key="blog_support_cta", lang=lang) }}
             </a>
         </aside>
