@@ -37,7 +37,7 @@
                 <div class="blog-card-image">
                     {% set parts = post.extra.image | split(pat="/") %}
                     {% set filename = parts | last | split(pat=".") | first %}
-                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="250" height="250">
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="250" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
                 </div>
                 {% endif %}
                 <div class="blog-card-content">

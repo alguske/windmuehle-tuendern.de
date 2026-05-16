@@ -64,7 +64,7 @@
         <!-- Hero image -->
         {% if page.extra.image %}
         <figure class="blog-hero-image">
-            <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200" height="800">
+            <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200" height="800"{% if page.extra.image_position %} style="object-position: {{ page.extra.image_position }};"{% endif %}>
             <figcaption>{{ page.title }}</figcaption>
         </figure>
         {% endif %}

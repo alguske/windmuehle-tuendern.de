@@ -62,7 +62,7 @@
                 {% if post.extra.image %}
                     {% set parts = post.extra.image | split(pat="/") %}
                     {% set filename = parts | last | split(pat=".") | first %}
-                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250">
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
                 {% endif %}
                 <div class="news-card-content">
                     <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}</span>
