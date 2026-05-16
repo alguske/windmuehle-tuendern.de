@@ -1,0 +1,38 @@
+// ================================
+// HISTORY PAGE
+// ================================
+.history-content {
+  max-width: 800px;
+  margin: 0 auto;
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.history-image {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  margin: 2rem 0;
+}
+
+.history-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--c-brand-1);
+    margin-bottom: 1rem;
+  }
+}
+

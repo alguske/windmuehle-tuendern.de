@@ -1,0 +1,35 @@
+// ================================
+// MISSION / INTRO SECTION
+// ================================
+.home-intro {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+
+  h2 {
+    border-top: none;
+    margin: 0 0 1.5rem;
+    padding-top: 0;
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
+      margin: 0.75rem auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+  }
+}
+

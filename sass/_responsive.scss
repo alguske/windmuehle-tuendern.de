@@ -1,0 +1,172 @@
+// ================================
+// RESPONSIVE ADJUSTMENTS
+// ================================
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-logo {
+    width: 120px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-text {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 2rem 0.75rem;
+  }
+
+  .home-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .home-intro p {
+    font-size: 1rem;
+  }
+
+  .page-wrapper {
+    padding: 2rem 1rem 2rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .gallery-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .scroll-gallery {
+    padding: 1rem;
+  }
+
+  .scroll-img {
+    height: 280px;
+  }
+
+  .history-section h3 {
+    font-size: 1.25rem;
+  }
+
+  .history-content p {
+    font-size: 1rem;
+  }
+
+  .donate-intro {
+    padding: 1.5rem;
+
+    strong {
+      font-size: 1.1rem;
+    }
+  }
+
+  .bank-card {
+    padding: 1.5rem;
+
+    li {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  .thanks-section {
+    padding: 1.5rem;
+  }
+
+  .imprint-card {
+    padding: 1.5rem;
+    margin: 1rem auto;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  a, button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .update-images img:hover,
+  .scroll-img:hover,
+  .grid-gallery img:hover,
+  .gallery-item:hover {
+    transform: none;
+  }
+
+  .lightbox-prev {
+    left: 10px;
+  }
+
+  .lightbox-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-logo {
+    width: 100px;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  .home-intro h2 {
+    font-size: 1.25rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .scroll-img {
+    height: 220px;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+

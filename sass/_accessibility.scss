@@ -1,0 +1,24 @@
+// ================================
+// ACCESSIBILITY
+// ================================
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-logo:hover, .news-card:hover, .blog-hero-image:hover {
+    transform: none !important;
+  }
+}
+
+// Focus indicators
+:focus-visible {
+  outline: 3px solid var(--c-brand-1) !important;
+  outline-offset: 2px !important;
+}
+

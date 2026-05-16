@@ -1,0 +1,211 @@
+// ================================
+// DONATE PAGE
+// ================================
+.donate-intro {
+  background: var(--section-bg-accent);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+
+  strong {
+    font-size: 1.25rem;
+    color: var(--c-brand-1);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.bank-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin-top: 0;
+    color: var(--c-brand-1);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: minmax(120px, auto) 1fr;
+    gap: 0.5rem 1rem;
+    margin: 1rem 0 0;
+  }
+
+  dt {
+    color: var(--c-brand-2);
+    font-weight: 600;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    &:nth-last-of-type(1) {
+      border-bottom: none;
+    }
+  }
+
+  dd {
+    margin: 0;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    &:nth-last-of-type(1) {
+      border-bottom: none;
+    }
+  }
+
+  .copyable {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: 0.01em;
+  }
+
+  .copyable.copy-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px dashed transparent;
+    padding: 0.3rem 0.55rem;
+    margin: -0.3rem -0.55rem;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border-radius: 6px;
+    text-align: left;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--c-accent);
+      outline-offset: 2px;
+    }
+
+    &.copy-btn--copied {
+      background: transparent;
+      border-color: transparent;
+      color: #2f7a4f;
+    }
+  }
+
+  .copy-feedback {
+    opacity: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #2f7a4f;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
+    &::before { content: "✓ "; }
+  }
+
+  .copy-btn--copied + .copy-feedback { opacity: 1; }
+}
+
+.copy-btn {
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: var(--c-brand-1);
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--section-bg-accent);
+    border-color: var(--c-brand-1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--c-brand-1);
+    outline-offset: 2px;
+  }
+
+  &--copied {
+    background: var(--c-brand-1);
+    color: #fff;
+    border-color: var(--c-brand-1);
+
+    .copy-btn__label-default { display: none; }
+    .copy-btn__label-copied  { display: inline; }
+  }
+
+  &__label-copied { display: none; }
+}
+
+.donor-impact {
+  margin: 1.5rem 0;
+
+  h3 {
+    font-size: 1.3rem;
+    color: var(--c-brand-1);
+    margin-bottom: 0.5rem;
+  }
+
+  .donor-impact__intro {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .donor-impact__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  figure {
+    margin: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+
+  img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.4;
+  }
+}
+
+
+.thanks-section {
+  background: linear-gradient(135deg, rgba(37, 99, 168, 0.05) 0%, rgba(26, 74, 122, 0.05) 100%);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+
+  h3 {
+    color: var(--c-brand-1);
+    margin-top: 0;
+  }
+}
+

@@ -1,0 +1,24 @@
+// Windmühle Tündern - Main Stylesheet
+
+:root {
+  --nav-height: 70px;
+
+  // Primary blue palette - classic and trustworthy
+  --c-brand-1: #2563a8;
+  --c-brand-2: #1a4a7a;
+  --c-brand-3: #0f3359;
+
+  --c-link: #1e5496;
+  --c-accent: #e8a838;
+
+  --c-text-1: #213547;
+  --c-text-2: #444;
+  --c-text-3: #555;
+
+  // Design tokens
+  --section-bg-light: #f8fafc;
+  --section-bg-accent: linear-gradient(135deg, #2563a810 0%, #e8a83810 100%);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

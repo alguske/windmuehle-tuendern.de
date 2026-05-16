@@ -1,0 +1,57 @@
+// ================================
+// PARTNERS SECTION
+// ================================
+.home-partners {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    margin: 0 0 0.5rem;
+  }
+}
+
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.partner-badge {
+  flex: 0 1 calc((100% - 2rem) / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  background: rgba(37, 99, 168, 0.06);
+  border: 1px solid rgba(37, 99, 168, 0.12);
+  border-radius: 10px;
+  color: var(--c-brand-2);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-align: center;
+
+  &:nth-child(n+4) {
+    flex: 0 1 calc((100% - 1rem) / 2);
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 1 calc((100% - 1rem) / 2);
+
+    &:last-child {
+      flex: 1 1 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex: 1 1 100%;
+
+    &:nth-child(n+4) {
+      flex: 1 1 100%;
+    }
+  }
+}
+

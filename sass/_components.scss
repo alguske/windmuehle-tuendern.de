@@ -1,0 +1,57 @@
+// ================================
+// CTA BUTTON
+// ================================
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #e8a838 0%, #d4922a 100%);
+  color: #1a1a1a;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(232, 168, 56, 0.4);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(232, 168, 56, 0.5);
+    background: linear-gradient(135deg, #f0b442 0%, #e8a838 100%);
+    color: #1a1a1a;
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// ================================
+// SECTIONS
+// ================================
+section {
+  padding: 3rem 1rem;
+}
+
+.section-light {
+  background-color: var(--section-bg-light);
+}
+
+.section-accent {
+  background: var(--section-bg-accent);
+}
+

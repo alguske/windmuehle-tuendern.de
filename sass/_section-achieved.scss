@@ -1,0 +1,114 @@
+// ================================
+// ACHIEVED / RESTAURIERUNG SECTION
+// ================================
+.home-achieved {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    color: var(--c-brand-1);
+    margin: 0 0 0.5rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
+      margin: 0.75rem auto 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+.achieved-subtitle {
+  color: var(--c-text-3);
+  font-size: 0.95rem;
+  margin: 0 0 2rem;
+}
+
+.achieved-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.achieved-image {
+  overflow: hidden;
+  border-radius: 8px;
+  margin: -1.5rem -1.5rem 1rem;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 25%;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+.achieved-column {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--c-brand-1);
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--c-brand-1);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  li {
+    font-size: 0.9rem;
+    color: var(--c-text-2);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.4;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.achieved-plan li::before {
+  content: "\2022";
+  color: var(--c-brand-1);
+  font-weight: bold;
+}
+
+.achieved-done li::before {
+  content: "\2713";
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.achieved-next li::before {
+  content: "\25cb";
+  color: var(--c-brand-1);
+}
+

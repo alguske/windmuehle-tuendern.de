@@ -1,0 +1,122 @@
+// ================================
+// PAGE WRAPPER
+// ================================
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1rem 3rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--c-brand-1);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.page-hero {
+  background: center center / cover no-repeat fixed;
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 0.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem;
+    min-height: 150px;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+// ================================
+// CONTENT SECTIONS
+// ================================
+.content-section {
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--c-brand-1);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+  }
+}
+
