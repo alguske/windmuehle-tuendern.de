@@ -1465,6 +1465,7 @@ section {
 .gallery-section {
   margin-bottom: 0;
   padding: 0;
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
 
   h3 {
     font-size: 1.4rem;
@@ -1473,6 +1474,59 @@ section {
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--c-accent);
     display: inline-block;
+  }
+
+  .gallery-section-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .anchor-link {
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0.15rem;
+    margin-bottom: calc(0.5rem + 2px);
+    color: var(--c-brand-2);
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 160ms ease, color 160ms ease, transform 160ms ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--c-accent);
+    }
+
+    &:focus-visible {
+      opacity: 1;
+      outline: 2px solid var(--c-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  .gallery-section-header:hover .anchor-link,
+  .anchor-link:focus-visible {
+    opacity: 1;
+  }
+
+  .anchor-link--copied {
+    opacity: 1;
+    color: var(--c-accent);
+    transform: scale(1.1);
+  }
+}
+
+@media (hover: none) {
+  .gallery-section .anchor-link {
+    opacity: 0.6;
   }
 }
 

@@ -45,7 +45,7 @@
         <h2>2026</h2>
 
     <!-- Sommerstimmung -->
-    <section class="gallery-section">
+    <section id="2026-sommerstimmung" class="gallery-section">
         <h3>{{ trans(key="gallery_summer_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -60,7 +60,8 @@
         </div>
     </section>
 
-    <section class="gallery-section">
+    <!-- New sails -->
+    <section id="2026-neue-fluegel" class="gallery-section">
         <h3>{{ trans(key="gallery_new_sails_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -85,7 +86,7 @@
     </section>
 
     <!-- Windrose -->
-    <section class="gallery-section">
+    <section id="2026-windrose" class="gallery-section">
         <h3>{{ trans(key="gallery_windrose_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -110,7 +111,7 @@
     </section>
 
     <!-- Painting & Copper -->
-    <section class="gallery-section">
+    <section id="2026-anstrich" class="gallery-section">
         <h3>{{ trans(key="gallery_painting_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -132,7 +133,7 @@
         <h2>2025</h2>
 
     <!-- Renovation & Reconstruction -->
-    <section class="gallery-section">
+    <section id="2025-sanierung" class="gallery-section">
         <h3>{{ trans(key="gallery_renovation_combined_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -166,7 +167,7 @@
     </section>
 
     <!-- Blade Removal -->
-    <section class="gallery-section">
+    <section id="2025-fluegel-abbau" class="gallery-section">
         <h3>{{ trans(key="gallery_blades_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -188,7 +189,7 @@
     </section>
 
     <!-- Whit Monday -->
-    <section class="gallery-section">
+    <section id="2025-pfingstmontag" class="gallery-section">
         <h3>{{ trans(key="gallery_whit_title", lang=lang) }}</h3>
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
@@ -218,7 +219,7 @@
     <div id="gallery-historic" class="gallery-year">
         <h2>{{ trans(key="gallery_historic_title", lang=lang) }}</h2>
 
-    <section class="gallery-section">
+    <section id="historisch" class="gallery-section">
         <div class="gallery-grid-3" data-lightbox-gallery>
             <figure class="gallery-item">
                 <img src="/imgs/bilder/windmill-1.jpeg" alt="" loading="lazy" decoding="async" width="1200" height="1600">
@@ -271,3 +272,13 @@
     </div>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script>
+window.galleryAnchorLabels = {
+    copy: "{{ trans(key='gallery_copy_link', lang=lang) }}",
+    copied: "{{ trans(key='gallery_link_copied', lang=lang) }}"
+};
+</script>
+<script src="/js/anchor-link.js" defer></script>
+{% endblock scripts %}
