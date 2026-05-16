@@ -1,13 +1,10 @@
+{% import "partials/macros.html" as m %}
 <header class="site-header">
     <nav class="main-nav">
         <div class="nav-brand">
-            <a href="{% if lang == 'de' %}/{% elif lang == 'en' %}/en/{% else %}/es/{% endif %}" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
+            <a href="{{ m::lang_prefix(lang=lang) }}/" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
                 <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="logo">
-                <span class="site-title">
-                    {% if lang == "de" %}Windmühle Tündern
-                    {% elif lang == "en" %}Windmill Tündern
-                    {% else %}Molino Tündern{% endif %}
-                </span>
+                <span class="site-title">{{ trans(key="site_title", lang=lang) }}</span>
             </a>
         </div>
 
@@ -22,7 +19,7 @@
         <!-- Language switcher -->
         <div class="lang-switcher">
             <button class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
-                <span class="lang-current">{% if lang == "de" %}DE{% elif lang == "en" %}EN{% else %}ES{% endif %}</span>
+                <span class="lang-current">{{ lang | upper }}</span>
                 <svg class="lang-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
                     <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
                 </svg>
@@ -35,7 +32,7 @@
                 {% else %}
                     {% set current_path = "/" %}
                 {% endif %}
-                {# Remove language prefix to get base German path #}
+                {# Strip language prefix to get canonical German path #}
                 {% if current_path is starting_with("/en/") %}
                     {% set base_path = current_path | replace(from="/en", to="") %}
                 {% elif current_path is starting_with("en/") %}
@@ -49,9 +46,9 @@
                 {% else %}
                     {% set base_path = "/" ~ current_path %}
                 {% endif %}
-                <li role="menuitem"><a href="{{ base_path }}" {% if lang == "de" %}aria-current="true"{% endif %}>Deutsch</a></li>
-                <li role="menuitem"><a href="/en{{ base_path }}" {% if lang == "en" %}aria-current="true"{% endif %}>English</a></li>
-                <li role="menuitem"><a href="/es{{ base_path }}" {% if lang == "es" %}aria-current="true"{% endif %}>Español</a></li>
+                {% for code in ["de", "en", "es"] %}
+                <li role="menuitem"><a href="{{ m::lang_prefix(lang=code) }}{{ base_path }}" {% if lang == code %}aria-current="true"{% endif %}>{{ m::lang_native(lang=code) }}</a></li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -73,11 +70,11 @@
             <li><a href="{{ item.link }}">{{ item.text }}</a></li>
             {% endfor %}
             <li class="mobile-lang-section">
-                <span class="mobile-lang-label">{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}</span>
+                <span class="mobile-lang-label">{{ m::lang_label(lang=lang) }}</span>
                 <div class="mobile-lang-links">
-                    <a href="{{ base_path }}" {% if lang == "de" %}class="active" aria-current="true"{% endif %}>DE</a>
-                    <a href="/en{{ base_path }}" {% if lang == "en" %}class="active" aria-current="true"{% endif %}>EN</a>
-                    <a href="/es{{ base_path }}" {% if lang == "es" %}class="active" aria-current="true"{% endif %}>ES</a>
+                    {% for code in ["de", "en", "es"] %}
+                    <a href="{{ m::lang_prefix(lang=code) }}{{ base_path }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
+                    {% endfor %}
                 </div>
             </li>
         </ul>

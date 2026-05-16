@@ -72,24 +72,12 @@
                     {% set day_sorted = day_slots | sort(attribute="time") %}
                     <article class="fuehrungen-day">
                         <div class="fuehrungen-day__cal" aria-hidden="true">
-                            <span class="fuehrungen-day__cal-month">
-                                {% if lang == "de" %}{{ date_key | date(format="%b", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ date_key | date(format="%b", locale="en_US") }}
-                                {% else %}{{ date_key | date(format="%b", locale="es_ES") }}{% endif %}
-                            </span>
+                            <span class="fuehrungen-day__cal-month">{{ m::fmt_date(date=date_key, lang=lang, kind="month_short") }}</span>
                             <span class="fuehrungen-day__cal-day">{{ date_key | date(format="%d") }}</span>
-                            <span class="fuehrungen-day__cal-dow">
-                                {% if lang == "de" %}{{ date_key | date(format="%a", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ date_key | date(format="%a", locale="en_US") }}
-                                {% else %}{{ date_key | date(format="%a", locale="es_ES") }}{% endif %}
-                            </span>
+                            <span class="fuehrungen-day__cal-dow">{{ m::fmt_date(date=date_key, lang=lang, kind="weekday_short") }}</span>
                         </div>
                         <div class="fuehrungen-day__body">
-                            <h3 class="fuehrungen-day__date">
-                                {% if lang == "de" %}{{ date_key | date(format="%A, %d. %B %Y", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ date_key | date(format="%A, %B %d, %Y", locale="en_US") }}
-                                {% else %}{{ date_key | date(format="%A, %d de %B de %Y", locale="es_ES") }}{% endif %}
-                            </h3>
+                            <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
                             <ul class="fuehrungen-slots">
                                 {% for s in day_sorted %}
                                     {% set duration = s.duration_min | default(value=60) %}
@@ -279,11 +267,7 @@
                                 {% if sy == year %}
                                     {% set duration = s.duration_min | default(value=60) %}
                                     <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
-                                        <span class="fuehrungen-date-inline">
-                                            {% if lang == "de" %}{{ s.date | date(format="%d. %b", locale="de_DE") }}
-                                            {% elif lang == "en" %}{{ s.date | date(format="%b %d", locale="en_US") }}
-                                            {% else %}{{ s.date | date(format="%d %b", locale="es_ES") }}{% endif %}
-                                        </span>
+                                        <span class="fuehrungen-date-inline">{{ m::fmt_date(date=s.date, lang=lang, kind="day_month_short") }}</span>
                                         <span class="fuehrungen-slot__time">
                                             <strong>{{ s.time }}</strong>
                                         </span>

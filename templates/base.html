@@ -1,3 +1,4 @@
+{% import "partials/macros.html" as m %}
 <!DOCTYPE html>
 {% if section is defined %}
     {% if section.path is starting_with("/en/") or section.path is starting_with("en/") %}{% set lang = "en" %}{% elif section.path is starting_with("/es/") or section.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}

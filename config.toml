@@ -16,6 +16,7 @@ smart_punctuation = true
 # GERMAN (Default Language) Translations
 # ===========================================
 [translations]
+site_title = "Windmühle Tündern"
 footer_association = "Förderverein Windmühle Tündern e.V."
 footer_address = "Linkworth 1, 31789 Hameln-Tündern"
 footer_built_by = "Entwickelt von"
@@ -143,6 +144,7 @@ generate_feeds = true
 feed_filenames = ["rss.xml"]
 
 [languages.en.translations]
+site_title = "Windmill Tündern"
 footer_association = "Windmill Tündern Association"
 footer_address = "Linkworth 1, 31789 Hameln-Tündern"
 footer_built_by = "Developed by"
@@ -270,6 +272,7 @@ generate_feeds = true
 feed_filenames = ["rss.xml"]
 
 [languages.es.translations]
+site_title = "Molino Tündern"
 footer_association = "Asociación Molino de Viento Tündern"
 footer_address = "Linkworth 1, 31789 Hameln-Tündern"
 footer_built_by = "Desarrollado por"

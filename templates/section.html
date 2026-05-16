@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "partials/macros.html" as m %}
 
 {% if section.path is starting_with("/en/") %}
     {% set lang = "en" %}
@@ -42,7 +43,7 @@
                 {% endif %}
                 <div class="blog-card-content">
                     <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
-                        {% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}
+                        {{ m::fmt_date(date=post.date, lang=lang) }}
                     </time>
                     <h2>{{ post.title }}</h2>
                     {% if post.description %}

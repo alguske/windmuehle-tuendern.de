@@ -1,3 +1,6 @@
+{% import "partials/macros.html" as m %}
+{% set footer_slugs = ["aktuelles", "geschichte", "bilder", "fuehrungen", "spenden", "impressum"] %}
+{% set footer_keys  = ["footer_news", "footer_history", "footer_gallery", "footer_tours", "footer_donate", "footer_imprint"] %}
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-grid">
@@ -8,28 +11,9 @@
             <div class="footer-col">
                 <p class="footer-links-title">{{ trans(key="footer_links_title", lang=lang) }}</p>
                 <nav class="footer-links">
-                    {% if lang == "de" %}
-                    <a href="/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
-                    <a href="/geschichte/">{{ trans(key="footer_history", lang=lang) }}</a>
-                    <a href="/bilder/">{{ trans(key="footer_gallery", lang=lang) }}</a>
-                    <a href="/fuehrungen/">{{ trans(key="footer_tours", lang=lang) }}</a>
-                    <a href="/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
-                    <a href="/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
-                    {% elif lang == "en" %}
-                    <a href="/en/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
-                    <a href="/en/geschichte/">{{ trans(key="footer_history", lang=lang) }}</a>
-                    <a href="/en/bilder/">{{ trans(key="footer_gallery", lang=lang) }}</a>
-                    <a href="/en/fuehrungen/">{{ trans(key="footer_tours", lang=lang) }}</a>
-                    <a href="/en/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
-                    <a href="/en/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
-                    {% else %}
-                    <a href="/es/aktuelles/">{{ trans(key="footer_news", lang=lang) }}</a>
-                    <a href="/es/geschichte/">{{ trans(key="footer_history", lang=lang) }}</a>
-                    <a href="/es/bilder/">{{ trans(key="footer_gallery", lang=lang) }}</a>
-                    <a href="/es/fuehrungen/">{{ trans(key="footer_tours", lang=lang) }}</a>
-                    <a href="/es/spenden/">{{ trans(key="footer_donate", lang=lang) }}</a>
-                    <a href="/es/impressum/">{{ trans(key="footer_imprint", lang=lang) }}</a>
-                    {% endif %}
+                    {% for slug in footer_slugs %}
+                    <a href="{{ m::url(slug=slug, lang=lang) }}">{{ trans(key=footer_keys[loop.index0], lang=lang) }}</a>
+                    {% endfor %}
                 </nav>
             </div>
         </div>

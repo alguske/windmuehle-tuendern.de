@@ -57,7 +57,7 @@
         <!-- Post header -->
         <header class="blog-header">
             <time class="blog-date" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
-                {% if lang == "de" %}{{ page.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ page.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ page.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}
+                {{ m::fmt_date(date=page.date, lang=lang) }}
             </time>
             <h1>{{ page.title }}</h1>
         </header>

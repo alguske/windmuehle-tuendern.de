@@ -66,7 +66,7 @@
                     <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
                 {% endif %}
                 <div class="news-card-content">
-                    <span class="news-date">{% if lang == "de" %}{{ post.date | date(format="%d. %B %Y", locale="de_DE") }}{% elif lang == "en" %}{{ post.date | date(format="%B %d, %Y", locale="en_US") }}{% else %}{{ post.date | date(format="%d de %B de %Y", locale="es_ES") }}{% endif %}</span>
+                    <span class="news-date">{{ m::fmt_date(date=post.date, lang=lang) }}</span>
                     <h3>{{ post.title }}</h3>
                 </div>
             </a>
@@ -126,24 +126,12 @@
                     {% set duration = s.duration_min | default(value=60) %}
                     <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="tours-card">
                         <div class="tours-card__cal" aria-hidden="true">
-                            <span class="tours-card__cal-month">
-                                {% if lang == "de" %}{{ s.date | date(format="%b", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ s.date | date(format="%b", locale="en_US") }}
-                                {% else %}{{ s.date | date(format="%b", locale="es_ES") }}{% endif %}
-                            </span>
+                            <span class="tours-card__cal-month">{{ m::fmt_date(date=s.date, lang=lang, kind="month_short") }}</span>
                             <span class="tours-card__cal-day">{{ s.date | date(format="%d") }}</span>
-                            <span class="tours-card__cal-dow">
-                                {% if lang == "de" %}{{ s.date | date(format="%a", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ s.date | date(format="%a", locale="en_US") }}
-                                {% else %}{{ s.date | date(format="%a", locale="es_ES") }}{% endif %}
-                            </span>
+                            <span class="tours-card__cal-dow">{{ m::fmt_date(date=s.date, lang=lang, kind="weekday_short") }}</span>
                         </div>
                         <div class="tours-card__body">
-                            <h3 class="tours-card__date">
-                                {% if lang == "de" %}{{ s.date | date(format="%A, %d. %B %Y", locale="de_DE") }}
-                                {% elif lang == "en" %}{{ s.date | date(format="%A, %B %d, %Y", locale="en_US") }}
-                                {% else %}{{ s.date | date(format="%A, %d de %B de %Y", locale="es_ES") }}{% endif %}
-                            </h3>
+                            <h3 class="tours-card__date">{{ m::fmt_date(date=s.date, lang=lang, kind="long_with_weekday") }}</h3>
                             <div class="tours-card__time">
                                 <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"/>
