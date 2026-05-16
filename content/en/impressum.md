@@ -34,7 +34,7 @@ template = "page.html"
       </div>
     </div>
   </div>
-  <a href="https://maps.app.goo.gl/RsCk1LxS6XMP5Ffj8" target="_blank" rel="noopener" class="imprint-map-btn">
+  <a href="https://maps.app.goo.gl/XdgR5DGS1cUT9xnh7" target="_blank" rel="noopener" class="imprint-map-btn">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     Open in Google Maps
   </a>
