@@ -17,6 +17,12 @@ smart_punctuation = true
 # ===========================================
 [translations]
 site_title = "Windmühle Tündern"
+site_description = "Förderverein zur Erhaltung der historischen Windmühle in Tündern."
+seo_og_locale = "de_DE"
+seo_org_description = "Verein zur Erhaltung der historischen Windmühle in Tündern, erbaut 1883."
+seo_landmark_name = "Windmühle Tündern"
+seo_landmark_description = "Historische Holländer-Windmühle aus dem Jahr 1883 am Weserradweg in Tündern bei Hameln."
+seo_tourist_types = '["Kulturtourismus", "Radtourismus"]'
 nav_aktuelles = "Aktuelles"
 nav_geschichte = "Geschichte"
 nav_bilder = "Bilder"
@@ -141,13 +147,17 @@ fuehrungen_past_toggle = "Vergangene Führungen anzeigen"
 # ENGLISH Translations
 # ===========================================
 [languages.en]
-title = "Windmill Tündern"
-description = "Association dedicated to preserving the historic windmill in Tündern."
 generate_feeds = true
 feed_filenames = ["rss.xml"]
 
 [languages.en.translations]
 site_title = "Windmill Tündern"
+site_description = "Association dedicated to preserving the historic windmill in Tündern."
+seo_og_locale = "en_US"
+seo_org_description = "Association dedicated to preserving the historic windmill in Tündern, built in 1883."
+seo_landmark_name = "Tündern Windmill"
+seo_landmark_description = "Historic Dutch windmill from 1883 on the Weser Cycle Route in Tündern near Hameln."
+seo_tourist_types = '["Cultural tourism", "Cycling tourism"]'
 nav_aktuelles = "News"
 nav_geschichte = "History"
 nav_bilder = "Gallery"
@@ -271,13 +281,17 @@ fuehrungen_past_toggle = "Show past tours"
 # SPANISH Translations
 # ===========================================
 [languages.es]
-title = "Molino de Viento Tündern"
-description = "Asociación dedicada a preservar el histórico molino de viento de Tündern."
 generate_feeds = true
 feed_filenames = ["rss.xml"]
 
 [languages.es.translations]
 site_title = "Molino Tündern"
+site_description = "Asociación dedicada a preservar el histórico molino de viento de Tündern."
+seo_og_locale = "es_ES"
+seo_org_description = "Asociación dedicada a preservar el histórico molino de viento de Tündern, construido en 1883."
+seo_landmark_name = "Molino de Tündern"
+seo_landmark_description = "Molino de viento holandés histórico de 1883 en la Ruta Ciclista del Weser en Tündern, cerca de Hameln."
+seo_tourist_types = '["Turismo cultural", "Cicloturismo"]'
 nav_aktuelles = "Noticias"
 nav_geschichte = "Historia"
 nav_bilder = "Galería"

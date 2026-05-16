@@ -33,22 +33,9 @@
                 {% else %}
                     {% set current_path = "/" %}
                 {% endif %}
-                {# Strip language prefix to get canonical German path #}
-                {% if current_path is starting_with("/en/") %}
-                    {% set base_path = current_path | replace(from="/en", to="") %}
-                {% elif current_path is starting_with("en/") %}
-                    {% set base_path = "/" ~ current_path | replace(from="en/", to="") %}
-                {% elif current_path is starting_with("/es/") %}
-                    {% set base_path = current_path | replace(from="/es", to="") %}
-                {% elif current_path is starting_with("es/") %}
-                    {% set base_path = "/" ~ current_path | replace(from="es/", to="") %}
-                {% elif current_path is starting_with("/") %}
-                    {% set base_path = current_path %}
-                {% else %}
-                    {% set base_path = "/" ~ current_path %}
-                {% endif %}
+                {% set base_path = m::strip_lang_prefix(path=current_path) %}
                 {% for code in ["de", "en", "es"] %}
-                <li role="menuitem"><a href="{{ m::lang_prefix(lang=code) }}{{ base_path }}" {% if lang == code %}aria-current="true"{% endif %}>{{ m::lang_native(lang=code) }}</a></li>
+                <li role="menuitem"><a href="{{ m::lang_prefix(lang=code) }}{{ base_path | safe }}" {% if lang == code %}aria-current="true"{% endif %}>{{ m::lang_native(lang=code) }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -74,7 +61,7 @@
                 <span class="mobile-lang-label">{{ m::lang_label(lang=lang) }}</span>
                 <div class="mobile-lang-links">
                     {% for code in ["de", "en", "es"] %}
-                    <a href="{{ m::lang_prefix(lang=code) }}{{ base_path }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
+                    <a href="{{ m::lang_prefix(lang=code) }}{{ base_path | safe }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
                     {% endfor %}
                 </div>
             </li>

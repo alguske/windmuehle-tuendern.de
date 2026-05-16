@@ -57,3 +57,19 @@
 {# Render plain text with **bold** markers as <strong>. Uses inline markdown. #}
 {% macro emphasize(text) %}{{ text | markdown(inline=true) | safe }}{% endmacro %}
 
+{# Strip the language prefix from a path so the language switcher can
+   point at the same logical page in another language.
+     "/en/fuehrungen/" -> "/fuehrungen/"
+     "/es/aktuelles/"  -> "/aktuelles/"
+     "/spenden/"       -> "/spenden/"
+   Accepts both leading-slash and non-leading-slash forms. #}
+{% macro strip_lang_prefix(path) -%}
+{%- if path is starting_with("/en/") -%}{{ path | replace(from="/en", to="") }}
+{%- elif path is starting_with("en/") -%}/{{ path | replace(from="en/", to="") }}
+{%- elif path is starting_with("/es/") -%}{{ path | replace(from="/es", to="") }}
+{%- elif path is starting_with("es/") -%}/{{ path | replace(from="es/", to="") }}
+{%- elif path is starting_with("/") -%}{{ path }}
+{%- else -%}/{{ path }}
+{%- endif -%}
+{%- endmacro %}
+

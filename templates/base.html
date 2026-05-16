@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#2c5f2d">
 
-    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-    <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+    <title>{% block title %}{{ trans(key="site_title", lang=lang) }}{% endblock title %}</title>
+    <meta name="description" content="{% block description %}{{ trans(key="site_description", lang=lang) }}{% endblock description %}">
 
     <!-- Favicon & Manifest -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -23,13 +23,7 @@
     <link rel="manifest" href="/manifest.json">
 
     <!-- RSS Feed -->
-    {% if lang == "en" %}
-    <link rel="alternate" type="application/rss+xml" title="Windmill Tündern – News" href="{{ config.base_url }}/en/aktuelles/rss.xml">
-    {% elif lang == "es" %}
-    <link rel="alternate" type="application/rss+xml" title="Molino Tündern – Noticias" href="{{ config.base_url }}/es/aktuelles/rss.xml">
-    {% else %}
-    <link rel="alternate" type="application/rss+xml" title="Windmühle Tündern – Aktuelles" href="{{ config.base_url }}/aktuelles/rss.xml">
-    {% endif %}
+    <link rel="alternate" type="application/rss+xml" title="{{ trans(key='site_title', lang=lang) }} – {{ trans(key='nav_aktuelles', lang=lang) }}" href="{{ config.base_url }}{{ m::url(slug='aktuelles', lang=lang) }}rss.xml">
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://rum.cronitor.io" crossorigin>

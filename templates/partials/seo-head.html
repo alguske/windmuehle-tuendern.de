@@ -1,5 +1,7 @@
-{% set page_title = page.title | default(value=section.title) | default(value=config.title) %}
-{% set page_description = page.description | default(value=section.description) | default(value=config.description) %}
+{% set site_title = trans(key="site_title", lang=lang) %}
+{% set site_description = trans(key="site_description", lang=lang) %}
+{% set page_title = page.title | default(value=section.title) | default(value=site_title) %}
+{% set page_description = page.description | default(value=section.description) | default(value=site_description) %}
 {% set page_url = current_url | default(value=config.base_url) %}
 {% if page.extra.image is defined and page.extra.image %}
     {% set og_image = config.base_url ~ page.extra.image %}
@@ -7,23 +9,10 @@
     {% set og_image = config.base_url ~ config.extra.og_image %}
 {% endif %}
 
-{# Localized descriptions for structured data #}
-{% if lang == "en" %}
-    {% set org_description = "Association dedicated to preserving the historic windmill in Tündern, built in 1883." %}
-    {% set landmark_name = "Tündern Windmill" %}
-    {% set landmark_description = "Historic Dutch windmill from 1883 on the Weser Cycle Route in Tündern near Hameln." %}
-    {% set tourist_types = '["Cultural tourism", "Cycling tourism"]' %}
-{% elif lang == "es" %}
-    {% set org_description = "Asociación dedicada a preservar el histórico molino de viento de Tündern, construido en 1883." %}
-    {% set landmark_name = "Molino de Tündern" %}
-    {% set landmark_description = "Molino de viento holandés histórico de 1883 en la Ruta Ciclista del Weser en Tündern, cerca de Hameln." %}
-    {% set tourist_types = '["Turismo cultural", "Cicloturismo"]' %}
-{% else %}
-    {% set org_description = "Verein zur Erhaltung der historischen Windmühle in Tündern, erbaut 1883." %}
-    {% set landmark_name = "Windmühle Tündern" %}
-    {% set landmark_description = "Historische Holländer-Windmühle aus dem Jahr 1883 am Weserradweg in Tündern bei Hameln." %}
-    {% set tourist_types = '["Kulturtourismus", "Radtourismus"]' %}
-{% endif %}
+{% set org_description = trans(key="seo_org_description", lang=lang) %}
+{% set landmark_name = trans(key="seo_landmark_name", lang=lang) %}
+{% set landmark_description = trans(key="seo_landmark_description", lang=lang) %}
+{% set tourist_types = trans(key="seo_tourist_types", lang=lang) %}
 
 <!-- Additional SEO Meta Tags -->
 <meta name="author" content="{{ config.extra.org_name }}">
@@ -46,7 +35,7 @@
 <meta property="og:url" content="{{ page_url }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ config.extra.site_name }}">
-<meta property="og:locale" content="{% if lang == 'de' %}de_DE{% elif lang == 'en' %}en_US{% else %}es_ES{% endif %}">
+<meta property="og:locale" content="{{ trans(key='seo_og_locale', lang=lang) }}">
 {% if lang != "de" %}<meta property="og:locale:alternate" content="de_DE">{% endif %}
 {% if lang != "en" %}<meta property="og:locale:alternate" content="en_US">{% endif %}
 {% if lang != "es" %}<meta property="og:locale:alternate" content="es_ES">{% endif %}
