@@ -51,13 +51,7 @@
     <div class="news-preview">
         <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
         <div class="news-cards">
-            {% if lang == "de" %}
-                {% set news_section = get_section(path="aktuelles/_index.md") %}
-            {% elif lang == "en" %}
-                {% set news_section = get_section(path="en/aktuelles/_index.md") %}
-            {% else %}
-                {% set news_section = get_section(path="es/aktuelles/_index.md") %}
-            {% endif %}
+            {% set news_section = get_section(path=m::content_path(slug="aktuelles/_index.md", lang=lang)) %}
             {% for post in news_section.pages | slice(end=2) %}
             <a href="{{ post.permalink }}" class="news-card">
                 {% if post.extra.image %}

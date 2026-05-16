@@ -14,6 +14,12 @@
    m::lang_prefix(lang=lang) -> "" | "/en" | "/es" #}
 {% macro lang_prefix(lang) %}{% if lang == "de" %}{% else %}/{{ lang }}{% endif %}{% endmacro %}
 
+{# Content-tree path. DE lives at the root of content/, EN under content/en/,
+   ES under content/es/. Used with get_section / load_data style lookups.
+     m::content_path(slug="aktuelles/_index.md", lang="de") -> "aktuelles/_index.md"
+     m::content_path(slug="aktuelles/_index.md", lang="en") -> "en/aktuelles/_index.md" #}
+{% macro content_path(slug, lang) %}{% if lang == "de" %}{{ slug }}{% else %}{{ lang }}/{{ slug }}{% endif %}{% endmacro %}
+
 {# Calendar icon. #}
 {% macro icon_calendar(size=22, stroke=2) %}<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="{{ stroke }}" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>{% endmacro %}
 
