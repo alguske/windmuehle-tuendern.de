@@ -27,3 +27,9 @@ There was live music from the volunteer fire brigade's band right next to the mi
 </div>
 
 Thank you to all visitors for the good wishes and for the donations, large and small. They help us keep the Tündern windmill in good shape and continue to open it for tours and events.
+
+## Take-away flyer
+
+We made a flyer for the inauguration. You can download it, print it, and share it with neighbours and friends.
+
+[Download flyer (PDF, 2.8 MB)](/downloads/flyer-muehleneroeffnung.pdf)

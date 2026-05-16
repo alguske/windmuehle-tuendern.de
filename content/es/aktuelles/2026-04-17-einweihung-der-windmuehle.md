@@ -27,3 +27,9 @@ Hubo música en vivo de la banda de los bomberos voluntarios justo al lado del m
 </div>
 
 Gracias a todos los visitantes por las felicitaciones y los donativos, grandes y pequeños. Con ellos mantenemos el molino de Tündern en buen estado y podemos seguir abriéndolo para visitas guiadas y actos.
+
+## Folleto para llevar
+
+Hemos preparado un folleto de la inauguración. Puede descargarlo, imprimirlo y repartirlo entre vecinos y amigos.
+
+[Descargar folleto (PDF, 2,8 MB)](/downloads/flyer-muehleneroeffnung.pdf)

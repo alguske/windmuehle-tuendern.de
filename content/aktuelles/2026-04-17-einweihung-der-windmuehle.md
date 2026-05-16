@@ -27,3 +27,9 @@ Es gab Livemusik vom Musikzug der Freiwilligen Feuerwehr direkt an der Mühle. V
 </div>
 
 Wir bedanken uns bei allen Besuchern für die Glückwünsche und die großen und kleinen Spenden. Damit halten wir die Windmühle Tündern in Schuss und können sie auch weiterhin für Führungen und Veranstaltungen öffnen.
+
+## Flyer zum Mitnehmen
+
+Wir haben einen Flyer zur Einweihung gestaltet. Sie können ihn herunterladen, ausdrucken und in der Nachbarschaft verteilen.
+
+[Flyer herunterladen (PDF, 2,8 MB)](/downloads/flyer-muehleneroeffnung.pdf)
