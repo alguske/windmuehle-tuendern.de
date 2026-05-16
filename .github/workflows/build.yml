@@ -25,6 +25,9 @@ jobs:
       - name: Validate fuehrungen data
         run: python scripts/validate-fuehrungen.py
 
+      - name: Check i18n parity (DE/EN/ES)
+        run: python scripts/check-i18n.py
+
       - name: Install Zola
         uses: taiki-e/install-action@v2
         with:
