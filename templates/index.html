@@ -168,27 +168,29 @@
     <div class="home-achieved">
         <h2>{{ trans(key="home_achieved_title", lang=lang) }}</h2>
         <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
+        {% set restoration = load_data(path="data/restoration.toml") %}
+        {% set r = restoration[lang] %}
         <div class="achieved-columns">
             <div class="achieved-column achieved-plan">
                 <div class="achieved-image">
                     <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='home_before_label', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_plan_title", lang=lang) }}</h3>
-                <ul>{{ trans(key="home_achieved_plan_items", lang=lang) | safe }}</ul>
+                <ul>{% for item in r.plan %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
             </div>
             <div class="achieved-column achieved-done">
                 <div class="achieved-image">
                     <img src="/imgs/neue-fluegel/windmuehle-sonnenschein.jpg" alt="{{ trans(key='home_after_label', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_done_title", lang=lang) }}</h3>
-                <ul>{{ trans(key="home_achieved_done_items", lang=lang) | safe }}</ul>
+                <ul>{% for item in r.done %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
             </div>
             <div class="achieved-column achieved-next">
                 <div class="achieved-image">
                     <img src="/imgs/ostern-fuehrung/besucher-eingang.jpg" alt="{{ trans(key='home_achieved_next_title', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_next_title", lang=lang) }}</h3>
-                <ul>{{ trans(key="home_achieved_next_items", lang=lang) | safe }}</ul>
+                <ul>{% for item in r.next %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
             </div>
         </div>
     </div>

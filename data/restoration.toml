@@ -1,0 +1,80 @@
+# Restoration timeline content for the home page "Restaurierung" section.
+# Each list item is plain text. Use **bold** to emphasize key dates/phrases —
+# the template renders them as <strong>. No raw HTML.
+#
+# Translators: edit only the strings. Keep lists aligned across DE/EN/ES.
+
+# ---------- German (default) ----------
+[de]
+plan = [
+    "Erstellung eines Sachverständigengutachtens zum Umfang und den Kosten der notwendigen Arbeiten",
+    "Förderanträge bei möglichen Zuschussgebern",
+    "Ausschreibung der Bauarbeiten und Angebote",
+    "Angebot für den Austausch der Mühlenflügel",
+]
+done = [
+    "Abnahme der alten Flügel Ende Juni/Anfang Juli 2025",
+    "Einrüsten der Windmühle im **Juli 2025**",
+    "Entfernen des alten Putzes",
+    "Ausbessern von schadhaften Stellen im Mauerwerk",
+    "Aufbringen des neuen Putzes ab **September 2025**",
+    "Erneuerung des Anstriches",
+    "Anbringen der neuen Flügel im **März 2026**",
+]
+next = [
+    "Herrichtung und Pflege des Außenbereichs",
+    "Bau einer Sanitäranlage",
+    "Reparaturen und Renovierung im Innenbereich der Windmühle",
+    "Entwicklung eines pädagogischen Konzepts für Besichtigungen",
+    "Angebote von Führungen",
+]
+
+# ---------- English ----------
+[en]
+plan = [
+    "Commissioning an expert assessment of the scope and costs of the necessary work",
+    "Funding applications to potential grant providers",
+    "Tendering of construction work and quotations",
+    "Quotation for the replacement of the mill sails",
+]
+done = [
+    "Removal of the old sails late June/early July 2025",
+    "Scaffolding of the windmill in **July 2025**",
+    "Removal of the old plaster",
+    "Repair of damaged areas in the masonry",
+    "Application of new plaster from **September 2025**",
+    "Renewal of the paintwork",
+    "Installation of the new sails in **March 2026**",
+]
+next = [
+    "Preparation and maintenance of the outdoor area",
+    "Construction of sanitary facilities",
+    "Repairs and renovation of the windmill interior",
+    "Development of an educational concept for guided visits",
+    "Offering guided tours",
+]
+
+# ---------- Spanish ----------
+[es]
+plan = [
+    "Elaboración de un informe pericial sobre el alcance y los costes de los trabajos necesarios",
+    "Solicitudes de subvenciones",
+    "Licitación de las obras y presupuestos",
+    "Presupuesto para la sustitución de las aspas del molino",
+]
+done = [
+    "Desmontaje de las aspas antiguas a finales de junio/principios de julio de 2025",
+    "Montaje de andamios en el molino en **julio de 2025**",
+    "Eliminación del revoque antiguo",
+    "Reparación de zonas dañadas en la mampostería",
+    "Aplicación del nuevo revoque desde **septiembre de 2025**",
+    "Renovación de la pintura",
+    "Instalación de las nuevas aspas en **marzo de 2026**",
+]
+next = [
+    "Acondicionamiento y cuidado de los exteriores",
+    "Construcción de instalaciones sanitarias",
+    "Reparaciones y renovación del interior del molino",
+    "Desarrollo de un concepto pedagógico para visitas",
+    "Oferta de visitas guiadas",
+]

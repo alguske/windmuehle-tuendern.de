@@ -53,3 +53,7 @@
 {# Word for "Language" in the given UI lang.
    m::lang_label(lang="de") -> "Sprache" #}
 {% macro lang_label(lang) %}{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}{% endmacro %}
+
+{# Render plain text with **bold** markers as <strong>. Uses inline markdown. #}
+{% macro emphasize(text) %}{{ text | markdown(inline=true) | safe }}{% endmacro %}
+
