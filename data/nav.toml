@@ -1,0 +1,27 @@
+# Main navigation items shown in the header (desktop + mobile).
+# `slug` is the canonical German path segment. Labels are resolved via
+# the trans keys below — keep keys in sync with [translations] in config.toml.
+#
+# To reorder, add, or remove a nav item: edit this file. To rename a label:
+# edit the corresponding `nav_<slug>` key in config.toml under all three
+# language sections.
+
+[[items]]
+slug = "aktuelles"
+key  = "nav_aktuelles"
+
+[[items]]
+slug = "geschichte"
+key  = "nav_geschichte"
+
+[[items]]
+slug = "bilder"
+key  = "nav_bilder"
+
+[[items]]
+slug = "fuehrungen"
+key  = "nav_fuehrungen"
+
+[[items]]
+slug = "spenden"
+key  = "nav_spenden"

@@ -10,9 +10,10 @@
 
         <!-- Desktop navigation -->
         <ul class="nav-menu">
-            {% set nav_items = config.extra.nav[lang].items %}
+            {% set nav_data = load_data(path="data/nav.toml") %}
+            {% set nav_items = nav_data.items %}
             {% for item in nav_items %}
-            <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+            <li><a href="{{ m::url(slug=item.slug, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
         </ul>
 
@@ -67,7 +68,7 @@
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
         <ul class="mobile-nav-list">
             {% for item in nav_items %}
-            <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+            <li><a href="{{ m::url(slug=item.slug, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
             <li class="mobile-lang-section">
                 <span class="mobile-lang-label">{{ m::lang_label(lang=lang) }}</span>
