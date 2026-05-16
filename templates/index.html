@@ -148,7 +148,7 @@
                                     <circle cx="12" cy="12" r="10"/>
                                     <polyline points="12 6 12 12 16 14"/>
                                 </svg>
-                                <strong>{{ s.time }}{% if lang == "de" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% elif lang == "es" %} {{ trans(key="fuehrungen_clock_suffix", lang=lang) }}{% endif %}</strong>
+                                {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
                                 <span class="tours-card__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
                             </div>
                             <div class="tours-card__meta">
