@@ -12,6 +12,17 @@
 #
 # Edit this file to add / update / cancel tours.
 # Run `zola build` locally to preview.
+#
+# Optional fields:
+#   link  relative path or absolute URL; renders a "more info" link on the slot
+
+[[slots]]
+date = "2026-05-25"
+time = "14:00"
+duration_min = 180
+kind = "public"
+status = "free"
+link = "/aktuelles/deutscher-muehlentag/"
 
 [[slots]]
 date = "2026-06-07"

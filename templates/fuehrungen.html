@@ -109,6 +109,9 @@
                                                 <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
                                             {% endif %}
                                         </div>
+                                        {% if s.link %}
+                                            <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
+                                        {% endif %}
                                     </li>
                                 {% endfor %}
                             </ul>

@@ -55,6 +55,9 @@ def validate() -> list[str]:
             errors.append(f"{prefix}: duration_min must be positive")
         if guide is not None and not isinstance(guide, str):
             errors.append(f"{prefix}: guide must be string, got {guide!r}")
+        link = slot.get("link")
+        if link is not None and not isinstance(link, str):
+            errors.append(f"{prefix}: link must be string, got {link!r}")
 
     return errors
 
