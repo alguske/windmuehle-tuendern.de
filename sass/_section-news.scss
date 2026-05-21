@@ -404,6 +404,12 @@
     object-fit: cover;
   }
 
+  // Single image: span full width and keep natural aspect ratio.
+  img:only-child {
+    grid-column: 1 / -1;
+    aspect-ratio: auto;
+  }
+
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }

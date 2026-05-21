@@ -67,6 +67,48 @@
   }
 }
 
+.event-when {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.1rem;
+  margin: 1.5rem 0 2rem;
+  background: var(--section-bg-accent);
+  border-left: 4px solid var(--c-brand-1);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--c-text-1);
+
+  strong { color: var(--c-brand-1); }
+
+  &::before {
+    content: "🗓";
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}
+
+.post-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 0 0 2rem;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .post-split-text > :first-child { margin-top: 0; }
+  .post-split-text > :last-child { margin-bottom: 0; }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .blog-content {
   font-size: 1.1rem;
   line-height: 1.8;
