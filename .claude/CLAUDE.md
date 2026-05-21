@@ -76,6 +76,22 @@ Your job is to produce a post that reads well and looks good, not to faithfully 
 
 - **Text**: Rewrite the generated body from scratch. Use the user-provided summary as input, not as the final text. Invent section headings (`##`) that match the content. Weave short paragraphs. Vary sentence length.
 - **Image layout**: The `.post-images` CSS is a 2-column grid. Group images into `<div class="post-images">` blocks of any size, but even-sized groups avoid orphan rows. Split galleries into **multiple logical sections with H2 headings between them** when the images tell a story — this reads much better than one long gallery.
+
+### Image layout decisions (single-image posts)
+
+Before writing the body, run `sips -g pixelWidth -g pixelHeight <path>` on each image to know its orientation. Then pick the layout:
+
+| Case | Layout | `hide_hero` | Body markup |
+|---|---|---|---|
+| 1 image, **horizontal** (w ≥ h) | Full-width below the text. `.post-images` auto-spans single child to full width. | `true` | Text first, then `<div class="post-images"><img …></div>` at the bottom. |
+| 1 image, **vertical** (w < h) | Side-by-side: image left, text right (`.post-split`). | `true` | `<div class="post-split"><img …><div class="post-split-text">…</div></div>` |
+| 2+ images | `.post-images` grids (2-col, group evenly). | omit (hero serves as banner) | Group images logically. |
+
+Rules:
+- `hide_hero = true` whenever the only/primary image is already rendered in the body — avoids a duplicate small hero crop.
+- If the photo has a credit, set `extra.image_credit = "Foto: <name>"` (renders as figcaption when the hero shows; otherwise add the credit inline in `.post-split-text` as `<em>Foto: <name></em>`).
+- For event-announcement posts, wrap the date/time line in `<p class="event-when"><strong>Wann/When/Cuándo:</strong> …</p>` for the callout box.
+- Always keep `extra.image` set (used by the homepage news thumbnail), even when the hero is hidden.
 - **Hero image**: Pick the most visually striking photo as `extra.image` (run `scripts/make-thumb.sh` to swap — it handles all three language files and regenerates the thumbnail).
 - **Structure**: Opening paragraph → sectioned narrative → closing paragraph is a good default. Copy the rhythm from `content/aktuelles/2026-04-17-einweihung-der-windmuehle.md` as a reference.
 

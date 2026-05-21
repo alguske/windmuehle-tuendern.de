@@ -22,7 +22,7 @@ Scaffold a new post under `content/aktuelles/` (DE), `content/en/aktuelles/` (EN
    ```bash
    ./scripts/new-post.sh <slug> -t "Title" -s "Description." -D YYYY-MM-DD
    ```
-3. Edit the DE post in `content/aktuelles/YYYY-MM-DD-<slug>.md`. Add H2 section headings, group images in `<div class="post-images">` blocks of even size.
+3. Edit the DE post in `content/aktuelles/YYYY-MM-DD-<slug>.md`. Add H2 section headings, group images in `<div class="post-images">` blocks of even size. For single-image posts, apply the orientation rule (see `.claude/CLAUDE.md` → "Image layout decisions"): horizontal → full width below text + `hide_hero = true`; vertical → `.post-split` left/right + `hide_hero = true`.
 4. Translate the EN and ES stubs. Remove the `<!-- TODO: translate -->` marker. Keep image paths identical across languages.
 5. Optional: `./scripts/make-thumb.sh <image-path>` to swap the hero image.
 6. Run `zola build` to verify.
