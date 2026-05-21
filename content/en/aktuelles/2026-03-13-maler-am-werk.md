@@ -6,14 +6,14 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/maler/maler-maerz2026-2.jpg"
+hide_hero = true
 +++
 
 Painting work on the windmill is underway. The painters work section by section on the façade and apply the new coat of paint.
 
-<div class="post-image-text">
+Traditional techniques are used to honour the monument character of the mill. We thank the painters for their work. The restoration takes a step forward.
+
+<div class="post-images">
   <img src="/imgs/maler/maler-maerz2026-1.jpg" alt="Painting work on the facade of the Tündern Windmill">
-  <div class="post-image-text-content">
-    <p>Traditional techniques are used to honour the monument character of the mill.</p>
-    <p>We thank the painters for their work. The restoration takes a step forward.</p>
-  </div>
+  <img src="/imgs/maler/maler-maerz2026-2.jpg" alt="Painting work on the facade of the Tündern Windmill">
 </div>

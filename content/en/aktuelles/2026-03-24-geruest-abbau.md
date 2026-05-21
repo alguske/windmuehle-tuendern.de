@@ -6,6 +6,7 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/geruest-abbau/geruest-abbau-1.jpg"
+hide_hero = true
 +++
 
 The scaffolding around the windmill is being dismantled. On Saturday the sails will be installed.

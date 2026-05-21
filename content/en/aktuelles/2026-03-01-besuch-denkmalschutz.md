@@ -6,6 +6,7 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
+hide_hero = true
 +++
 
 We had a visit from representatives of the German Foundation for Monument Protection (Deutsche Stiftung Denkmalschutz). They inspected the progress of the restoration work on the windmill.

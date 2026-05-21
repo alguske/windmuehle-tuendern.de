@@ -6,6 +6,7 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
+hide_hero = true
 +++
 
 Wir hatten Besuch von Vertretern der Deutschen Stiftung Denkmalschutz. Sie haben sich über den Stand der Restaurierungsarbeiten an der Windmühle informiert.

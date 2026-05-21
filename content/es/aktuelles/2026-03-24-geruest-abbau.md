@@ -6,6 +6,7 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/geruest-abbau/geruest-abbau-1.jpg"
+hide_hero = true
 +++
 
 El andamio del molino se está desmontando. El sábado se instalarán las aspas.

@@ -6,6 +6,7 @@ template = "blog-post.html"
 
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
+hide_hero = true
 +++
 
 Recibimos la visita de representantes de la Fundación Alemana para la Protección de Monumentos (Deutsche Stiftung Denkmalschutz). Vinieron a conocer el estado de las obras de restauración del molino.
