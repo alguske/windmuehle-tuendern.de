@@ -80,7 +80,7 @@
         {% set body_img_count = page.content | split(pat="<img") | length %}
         {% if page.extra.image and not page.extra.hide_hero and body_img_count > 1 %}
         <figure class="blog-hero-image">
-            <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200" height="800"{% if page.extra.image_position %} style="object-position: {{ page.extra.image_position }};"{% endif %}>
+            <img src="{{ page.extra.image }}" alt="{{ page.title }}" fetchpriority="high" decoding="async" width="1200" height="800"{% if page.extra.image_position %} style="object-position: {{ page.extra.image_position }};"{% endif %}>
             <figcaption>{{ page.extra.image_credit | default(value=page.title) }}</figcaption>
         </figure>
         {% endif %}
@@ -91,7 +91,7 @@
 
             {% if page.extra.image and page.content | split(pat="<img") | length == 1 %}
             <figure class="blog-full-image">
-                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200" height="800">
+                <img src="{{ page.extra.image }}" alt="{{ page.title }}" fetchpriority="high" decoding="async" width="1200" height="800">
                 <figcaption>{{ page.extra.image_credit | default(value=page.title) }}</figcaption>
             </figure>
             {% endif %}

@@ -15,7 +15,7 @@
 <!-- Hero Section -->
 <section class="home-hero">
     <div class="hero-content">
-        <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="hero-logo" width="166" height="166">
+        <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="hero-logo" width="166" height="166" fetchpriority="high" decoding="async">
         <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
         <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
         <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
