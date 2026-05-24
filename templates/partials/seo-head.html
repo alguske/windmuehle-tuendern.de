@@ -47,7 +47,18 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ page_title }}">
 <meta property="og:url" content="{{ page_url }}">
+{% set is_post = page is defined and page.path is matching("/aktuelles/|/en/aktuelles/|/es/aktuelles/") %}
+{% if is_post %}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%d') }}">
+{% if page.updated %}<meta property="article:modified_time" content="{{ page.updated | date(format='%Y-%m-%d') }}">{% endif %}
+<meta property="article:author" content="{{ config.extra.org_name }}">
+<meta property="article:publisher" content="{{ config.extra.org_name }}">
+{% if page.taxonomies.tags %}{% for t in page.taxonomies.tags %}<meta property="article:tag" content="{{ t }}">
+{% endfor %}{% endif %}
+{% else %}
 <meta property="og:type" content="website">
+{% endif %}
 <meta property="og:site_name" content="{{ config.extra.site_name }}">
 <meta property="og:locale" content="{{ trans(key='seo_og_locale', lang=lang) }}">
 {% if lang != "de" %}<meta property="og:locale:alternate" content="de_DE">{% endif %}
