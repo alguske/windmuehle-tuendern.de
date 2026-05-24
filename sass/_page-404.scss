@@ -2,47 +2,104 @@
 // 404 ERROR PAGE
 // ================================
 .error-page {
-  background: linear-gradient(135deg, #fff 0%, #f0f5fa 50%, #e8a83815 100%);
-  padding: 6rem 1rem;
+  position: relative;
+  padding: 4rem 1rem;
   text-align: center;
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.error-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.55);
+  z-index: 0;
+}
+
+.error-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .error-content {
-  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
   margin: 0 auto;
-}
-
-.error-icon img {
-  width: 120px;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  opacity: 0.8;
+  color: #fff;
 }
 
 .error-code {
   font-size: 6rem;
   font-weight: 800;
-  color: var(--c-brand-1);
-  margin: 0 0 0.5rem;
+  color: #fff;
+  margin: 0 0 0.75rem;
   line-height: 1;
   letter-spacing: -0.03em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
 
 .error-message {
   font-size: 1.35rem;
   font-weight: 600;
-  color: var(--c-text-1);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.error-message-alt {
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-bottom: 1rem;
 }
 
 .error-hint {
-  font-size: 1.05rem;
-  color: var(--c-text-3);
+  font-size: 1rem;
   margin-bottom: 2rem;
+  opacity: 0.9;
   line-height: 1.6;
+}
+
+.error-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.error-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background 0.18s ease, transform 0.18s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+}
+
+.error-link-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.error-link-sub {
+  font-size: 0.78rem;
+  opacity: 0.8;
 }
 

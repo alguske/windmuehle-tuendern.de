@@ -1,3 +1,4 @@
+{% import "partials/macros.html" as m %}
 <!DOCTYPE html>
 {% set lang = "de" %}
 <html lang="{{ lang }}">
@@ -15,14 +16,30 @@
 
     <main id="main-content">
         <section class="error-page">
+            <div class="error-photo" style="background-image: url('/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-05.jpg');" aria-hidden="true"></div>
             <div class="error-content">
-                <div class="error-icon">
-                    <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" width="120" height="120">
-                </div>
                 <h1 class="error-code">404</h1>
                 <p class="error-message">Diese Seite wurde nicht gefunden.</p>
-                <p class="error-hint">Die Seite wurde möglicherweise verschoben oder existiert nicht mehr.</p>
-                <a href="/" class="cta-button">Zurück zur Startseite</a>
+                <p class="error-message error-message-alt">Page not found. · Página no encontrada.</p>
+                <p class="error-hint">Die Seite wurde verschoben oder existiert nicht mehr.</p>
+                <nav class="error-links" aria-label="Schnellzugriff">
+                    <a href="/" class="error-link">
+                        <span class="error-link-title">Startseite</span>
+                        <span class="error-link-sub">Home · Inicio</span>
+                    </a>
+                    <a href="/aktuelles/" class="error-link">
+                        <span class="error-link-title">Aktuelles</span>
+                        <span class="error-link-sub">News · Noticias</span>
+                    </a>
+                    <a href="/fuehrungen/" class="error-link">
+                        <span class="error-link-title">Führungen</span>
+                        <span class="error-link-sub">Tours · Visitas</span>
+                    </a>
+                    <a href="/spenden/" class="error-link">
+                        <span class="error-link-title">Spenden</span>
+                        <span class="error-link-sub">Donate · Donar</span>
+                    </a>
+                </nav>
             </div>
         </section>
     </main>
