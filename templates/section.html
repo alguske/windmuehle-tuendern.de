@@ -30,8 +30,14 @@
     </header>
     {% endif %}
 
+    {% set current_year = "" %}
     <div class="blog-list">
         {% for post in section.pages %}
+        {% set post_year = post.date | date(format="%Y") %}
+        {% if post_year != current_year %}
+        {% set_global current_year = post_year %}
+        <h2 class="blog-year-heading">{{ post_year }}</h2>
+        {% endif %}
         <article class="blog-card">
             <a href="{{ post.permalink }}" class="blog-card-link">
                 {% if post.extra.image %}
