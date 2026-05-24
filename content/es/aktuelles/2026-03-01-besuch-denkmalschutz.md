@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2026-03-besuch-denkmalschutz/"]
 description = "Representantes de la Fundación Alemana para la Protección de Monumentos visitaron el molino para ver el avance de los trabajos."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
 hide_hero = true

@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2025-12-weihnachten/"]
 description = "Balance del año y saludos navideños de la Asociación Molino de Viento Tündern."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Evento"]
+
 [extra]
 image = "/imgs/winter/windmuelle-snow2.jpg"
 +++

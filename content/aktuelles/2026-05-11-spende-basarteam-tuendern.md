@@ -3,6 +3,9 @@ title = "Spende vom Basarteam Tündern"
 description = "Wir haben uns sehr über die großzügige Spende des Basarteams Tündern gefreut."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Spende"]
+
 [extra]
 image = "/imgs/spende-basarteam-tuendern/spende-basarteam-tuendern-01.jpg"
 image_position = "top"

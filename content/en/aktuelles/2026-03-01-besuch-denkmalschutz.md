@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2026-03-besuch-denkmalschutz/"]
 description = "Representatives of the German Foundation for Monument Protection inspected the progress of work on the windmill."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
 hide_hero = true

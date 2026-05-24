@@ -4,7 +4,16 @@
     {% if section.path is starting_with("/en/") or section.path is starting_with("en/") %}{% set lang = "en" %}{% elif section.path is starting_with("/es/") or section.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
 {% elif page is defined %}
     {% if page.path is starting_with("/en/") or page.path is starting_with("en/") %}{% set lang = "en" %}{% elif page.path is starting_with("/es/") or page.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
-{% else %}
+{% elif term is defined and term.pages | length > 0 %}
+    {% set tp = term.pages | first %}
+    {% if tp.path is starting_with("/en/") or tp.path is starting_with("en/") %}{% set lang = "en" %}{% elif tp.path is starting_with("/es/") or tp.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+{% elif terms is defined and terms | length > 0 %}
+    {% set tt = terms | first %}
+    {% if tt.pages | length > 0 %}
+        {% set tp = tt.pages | first %}
+        {% if tp.path is starting_with("/en/") or tp.path is starting_with("en/") %}{% set lang = "en" %}{% elif tp.path is starting_with("/es/") or tp.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+    {% else %}{% set lang = "de" %}{% endif %}
+{% elif lang is not defined %}
     {% set lang = "de" %}
 {% endif %}
 <html lang="{{ lang }}">

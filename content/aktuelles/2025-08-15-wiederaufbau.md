@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2025-08-wiederaufbau/"]
 description = "Die Sanierungsarbeiten an der Windmühle laufen. Ein Blick auf den aktuellen Stand."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++

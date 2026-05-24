@@ -3,6 +3,9 @@ title = "German Mill Day 2026"
 description = "We invite you to the German Mill Day on Whit Monday, 25 May 2026, from 2 to 5 pm."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Event"]
+
 [extra]
 image = "/imgs/deutscher-muehlentag/deutscher-muehlentag-01.jpg"
 hide_hero = true

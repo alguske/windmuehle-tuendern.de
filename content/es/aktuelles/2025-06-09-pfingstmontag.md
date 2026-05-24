@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2025-06-pfingstmontag/"]
 description = "Lunes de Pentecostés en el molino de Tündern con muchos visitantes."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Evento"]
+
 [extra]
 image = "/imgs/pfingstmontag/pfingstmontag3.jpeg"
 +++

@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2025-08-wiederaufbau/"]
 description = "Las obras de restauración del molino están en marcha. Una mirada al estado actual."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++

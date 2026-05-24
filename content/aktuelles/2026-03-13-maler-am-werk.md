@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-03-maler-am-werk/"]
 description = "Die Malerarbeiten an der Windmühle Tündern laufen."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/maler/maler-maerz2026-2.jpg"
 hide_hero = true

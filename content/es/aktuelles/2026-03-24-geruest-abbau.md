@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2026-03-geruest-abbau/"]
 description = "El andamio del molino se está desmontando. El sábado se instalarán las aspas."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/geruest-abbau/geruest-abbau-1.jpg"
 hide_hero = true

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+
+{% block title %}{{ trans(key="tags_index_title", lang=lang) }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ trans(key="tags_index_subtitle", lang=lang) }}{% endblock description %}
+
+{% block content %}
+<div class="page-wrapper">
+    <header class="page-header">
+        <h1>{{ trans(key="tags_index_title", lang=lang) }}</h1>
+        <p>{{ trans(key="tags_index_subtitle", lang=lang) }}</p>
+    </header>
+
+    <ul class="tag-cloud">
+        {% for term in terms %}
+        <li>
+            <a class="tag-chip" href="{{ term.permalink }}">
+                {{ term.name }}
+                <span class="tag-count">{{ term.pages | length }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

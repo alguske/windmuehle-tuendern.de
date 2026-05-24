@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2026-03-neue-fluegel/"]
 description = "Las nuevas aspas han sido instaladas en el molino de Tündern."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/neue-fluegel/windmuehle-sonnenschein.jpg"
 +++

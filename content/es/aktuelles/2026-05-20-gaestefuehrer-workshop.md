@@ -4,6 +4,9 @@ description = "Nuestros guías se reunieron en un taller con el experto en molin
 date = 2026-05-20
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Evento"]
+
 [extra]
 image = "/imgs/gaestefuehrer-workshop/gaestefuehrer-workshop-01.jpg"
 image_position = "center 25%"

@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2025-07-bauabschnitt/"]
 description = "Das Gerüst steht und die Sanierung der Windmühle Tündern beginnt."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding3.jpeg"
 +++

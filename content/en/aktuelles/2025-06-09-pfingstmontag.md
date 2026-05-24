@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2025-06-pfingstmontag/"]
 description = "Whit Monday at the Tündern windmill, with many visitors."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Event"]
+
 [extra]
 image = "/imgs/pfingstmontag/pfingstmontag3.jpeg"
 +++

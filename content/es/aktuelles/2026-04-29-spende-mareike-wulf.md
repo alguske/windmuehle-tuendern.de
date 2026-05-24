@@ -3,6 +3,9 @@ title = "Donación de la Sra. Mareike Lotte Wulf MdB"
 description = "Muchas gracias a la diputada del Bundestag Mareike Lotte Wulf por su apoyo."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Donación"]
+
 [extra]
 image = "/imgs/spende-mareike-wulf/spende-mareike-wulf-01.jpg"
 image_position = "top"

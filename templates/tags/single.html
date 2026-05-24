@@ -1,37 +1,24 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m %}
 
-{% if section.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif section.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
-
-{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ section.description | default(value=config.description) }}{% endblock description %}
+{% block title %}{{ trans(key="tag_single_title", lang=lang) }} {{ term.name }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ trans(key="tags_index_subtitle", lang=lang) }}{% endblock description %}
 
 {% block content %}
-{% if section.extra.header_image %}
-<div class="page-hero" style="background-image: url('{{ section.extra.header_image }}');">
-    <div class="page-hero-content">
-        <h1>{{ trans(key="blog_index_title", lang=lang) }}</h1>
-        <p>{{ trans(key="blog_index_subtitle", lang=lang) }}</p>
-    </div>
-</div>
-{% endif %}
-
 <div class="page-wrapper">
-    {% if not section.extra.header_image %}
     <header class="page-header">
-        <h1>{{ trans(key="blog_index_title", lang=lang) }}</h1>
-        <p>{{ trans(key="blog_index_subtitle", lang=lang) }}</p>
+        <p class="page-eyebrow">
+            <a href="{{ m::lang_prefix(lang=lang) }}/tags/">{{ trans(key="tag_back_to_index", lang=lang) }}</a>
+        </p>
+        <h1>{{ trans(key="tag_single_title", lang=lang) }} {{ term.name }}</h1>
+        <p>
+            {{ term.pages | length }}
+            {% if term.pages | length == 1 %}{{ trans(key="tag_post_count_one", lang=lang) }}{% else %}{{ trans(key="tag_post_count_many", lang=lang) }}{% endif %}
+        </p>
     </header>
-    {% endif %}
 
     <div class="blog-list">
-        {% for post in section.pages %}
+        {% for post in term.pages %}
         <article class="blog-card">
             <a href="{{ post.permalink }}" class="blog-card-link">
                 {% if post.extra.image %}
@@ -48,13 +35,6 @@
                     <h2>{{ post.title }}</h2>
                     {% if post.description %}
                     <p>{{ post.description }}</p>
-                    {% endif %}
-                    {% if post.taxonomies.tags %}
-                    <ul class="tag-chip-list">
-                        {% for t in post.taxonomies.tags %}
-                        <li><span class="tag-chip tag-chip-inline">{{ t }}</span></li>
-                        {% endfor %}
-                    </ul>
                     {% endif %}
                     <span class="read-more">{{ trans(key="blog_read_more", lang=lang) }}</span>
                 </div>

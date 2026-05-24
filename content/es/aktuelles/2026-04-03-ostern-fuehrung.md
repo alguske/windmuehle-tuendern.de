@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2026-04-ostern-fuehrung/"]
 description = "El Viernes Santo el molino de Tündern abrió para una visita de Pascua. Los visitantes descubrieron el interior del molino restaurado."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Visita"]
+
 [extra]
 image = "/imgs/ostern-fuehrung/windmuehle-aussen.jpg"
 +++

@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-04-ostern-fuehrung/"]
 description = "Am Karfreitag öffnete die Windmühle Tündern für eine Osterführung. Besucher konnten das Innenleben der restaurierten Mühle entdecken."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Führung"]
+
 [extra]
 image = "/imgs/ostern-fuehrung/windmuehle-aussen.jpg"
 +++

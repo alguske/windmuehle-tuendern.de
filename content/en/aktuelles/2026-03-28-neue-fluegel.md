@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2026-03-neue-fluegel/"]
 description = "The new sails have been installed on the Tündern windmill."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/neue-fluegel/windmuehle-sonnenschein.jpg"
 +++

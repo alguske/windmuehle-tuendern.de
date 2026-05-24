@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2025-08-wiederaufbau/"]
 description = "Restoration work on the windmill is underway. A look at the current state."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding1.jpeg"
 +++

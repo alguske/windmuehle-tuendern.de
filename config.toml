@@ -8,6 +8,7 @@ default_language = "de"
 compile_sass = true
 generate_feeds = true
 feed_filenames = ["rss.xml"]
+taxonomies = [{name = "tags", feed = true}]
 
 [markdown]
 smart_punctuation = true
@@ -90,6 +91,12 @@ blog_back_to_list = "← Zurück zu Aktuelles"
 blog_earlier_post = "← Früher"
 blog_later_post = "Später →"
 blog_read_more = "Weiterlesen →"
+tags_index_title = "Themen"
+tags_index_subtitle = "Beiträge nach Thema gruppiert."
+tag_single_title = "Thema:"
+tag_back_to_index = "← Alle Themen"
+tag_post_count_one = "Beitrag"
+tag_post_count_many = "Beiträge"
 
 gallery_title = "Bilder der Windmühle"
 gallery_subtitle = "Bilder und Impressionen"
@@ -148,6 +155,7 @@ fuehrungen_more_info = "Mehr erfahren"
 [languages.en]
 generate_feeds = true
 feed_filenames = ["rss.xml"]
+taxonomies = [{name = "tags", feed = true}]
 
 [languages.en.translations]
 site_title = "Windmill Tündern"
@@ -223,6 +231,12 @@ blog_back_to_list = "← Back to News"
 blog_earlier_post = "← Earlier"
 blog_later_post = "Later →"
 blog_read_more = "Read more →"
+tags_index_title = "Topics"
+tags_index_subtitle = "Posts grouped by topic."
+tag_single_title = "Topic:"
+tag_back_to_index = "← All topics"
+tag_post_count_one = "post"
+tag_post_count_many = "posts"
 
 gallery_title = "Pictures of the Windmill"
 gallery_subtitle = "Pictures and impressions"
@@ -281,6 +295,7 @@ fuehrungen_more_info = "Learn more"
 [languages.es]
 generate_feeds = true
 feed_filenames = ["rss.xml"]
+taxonomies = [{name = "tags", feed = true}]
 
 [languages.es.translations]
 site_title = "Molino Tündern"
@@ -356,6 +371,12 @@ blog_back_to_list = "← Volver a Noticias"
 blog_earlier_post = "← Antes"
 blog_later_post = "Después →"
 blog_read_more = "Leer más →"
+tags_index_title = "Temas"
+tags_index_subtitle = "Entradas agrupadas por tema."
+tag_single_title = "Tema:"
+tag_back_to_index = "← Todos los temas"
+tag_post_count_one = "entrada"
+tag_post_count_many = "entradas"
 
 gallery_title = "Imágenes del molino"
 gallery_subtitle = "Imágenes e impresiones"

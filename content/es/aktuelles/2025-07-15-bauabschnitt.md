@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2025-07-bauabschnitt/"]
 description = "El andamio está montado y comienza la restauración del molino de Tündern."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding3.jpeg"
 +++

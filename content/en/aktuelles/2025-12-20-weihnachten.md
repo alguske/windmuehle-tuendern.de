@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2025-12-weihnachten/"]
 description = "Year-end review and Christmas greetings from the Windmill Tündern Association."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Event"]
+
 [extra]
 image = "/imgs/winter/windmuelle-snow2.jpg"
 +++

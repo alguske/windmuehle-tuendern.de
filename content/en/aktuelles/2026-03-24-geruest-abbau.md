@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2026-03-geruest-abbau/"]
 description = "The scaffolding around the windmill is being dismantled. On Saturday the sails will be installed."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/geruest-abbau/geruest-abbau-1.jpg"
 hide_hero = true

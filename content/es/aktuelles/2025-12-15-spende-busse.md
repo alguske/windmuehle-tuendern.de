@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2025-12-spende-busse/"]
 description = "Susanne y Carsten Busse han donado 1.000 euros para la renovación del molino."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Donación"]
+
 [extra]
 image = "/imgs/news/carsten-susanne-1000.jpg"
 +++

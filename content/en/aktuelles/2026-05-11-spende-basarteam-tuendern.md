@@ -3,6 +3,9 @@ title = "Donation from the Tündern Bazaar Team"
 description = "We are very grateful for the generous donation from the Tündern Bazaar Team."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Donation"]
+
 [extra]
 image = "/imgs/spende-basarteam-tuendern/spende-basarteam-tuendern-01.jpg"
 image_position = "top"

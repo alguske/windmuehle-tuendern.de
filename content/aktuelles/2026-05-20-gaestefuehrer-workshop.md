@@ -4,6 +4,9 @@ description = "Unsere Gästeführer haben sich zu einem Workshop mit dem Mühlen
 date = 2026-05-20
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Veranstaltung"]
+
 [extra]
 image = "/imgs/gaestefuehrer-workshop/gaestefuehrer-workshop-01.jpg"
 image_position = "center 25%"

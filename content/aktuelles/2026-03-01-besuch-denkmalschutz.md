@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-03-besuch-denkmalschutz/"]
 description = "Vertreter der Deutschen Stiftung Denkmalschutz haben sich über den Stand der Arbeiten an der Windmühle informiert."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/denkmalschutz-besuch-maerz2026.jpg"
 hide_hero = true

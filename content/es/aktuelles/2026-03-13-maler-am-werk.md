@@ -4,6 +4,9 @@ aliases = ["/es/aktuelles/2026-03-maler-am-werk/"]
 description = "Los trabajos de pintura en el molino de Tündern están en marcha."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Obras"]
+
 [extra]
 image = "/imgs/maler/maler-maerz2026-2.jpg"
 hide_hero = true

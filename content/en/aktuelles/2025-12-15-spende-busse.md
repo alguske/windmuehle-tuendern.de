@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2025-12-spende-busse/"]
 description = "Susanne and Carsten Busse donated 1,000 euros for the renovation of the windmill."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Donation"]
+
 [extra]
 image = "/imgs/news/carsten-susanne-1000.jpg"
 +++

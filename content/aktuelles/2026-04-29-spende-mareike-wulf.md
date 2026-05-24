@@ -3,6 +3,9 @@ title = "Spende von Frau Mareike Lotte Wulf MdB"
 description = "Vielen Dank an die Bundestagsabgeordnete Mareike Lotte Wulf für ihre Unterstützung."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Spende"]
+
 [extra]
 image = "/imgs/spende-mareike-wulf/spende-mareike-wulf-01.jpg"
 image_position = "top"

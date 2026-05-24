@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-03-geruest-abbau/"]
 description = "Das Gerüst an der Windmühle wird abgebaut. Am Samstag werden die Flügel montiert."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/geruest-abbau/geruest-abbau-1.jpg"
 hide_hero = true

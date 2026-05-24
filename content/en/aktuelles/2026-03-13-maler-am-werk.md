@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2026-03-maler-am-werk/"]
 description = "Painting work on the Tündern windmill is underway."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/maler/maler-maerz2026-2.jpg"
 hide_hero = true

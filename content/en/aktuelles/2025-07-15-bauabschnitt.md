@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2025-07-bauabschnitt/"]
 description = "Scaffolding is up and restoration of the Tündern windmill begins."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Construction"]
+
 [extra]
 image = "/imgs/scaffolding/scaffolding3.jpeg"
 +++

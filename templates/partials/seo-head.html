@@ -1,9 +1,23 @@
 {% set site_title = trans(key="site_title", lang=lang) %}
 {% set site_description = trans(key="site_description", lang=lang) %}
-{% set page_title = page.title | default(value=section.title) | default(value=site_title) %}
-{% set page_description = page.description | default(value=section.description) | default(value=site_description) %}
+{% if page is defined %}
+    {% set page_title = page.title | default(value=site_title) %}
+    {% set page_description = page.description | default(value=site_description) %}
+{% elif section is defined %}
+    {% set page_title = section.title | default(value=site_title) %}
+    {% set page_description = section.description | default(value=site_description) %}
+{% elif term is defined %}
+    {% set page_title = term.name %}
+    {% set page_description = site_description %}
+{% elif terms is defined %}
+    {% set page_title = trans(key="tags_index_title", lang=lang) %}
+    {% set page_description = trans(key="tags_index_subtitle", lang=lang) %}
+{% else %}
+    {% set page_title = site_title %}
+    {% set page_description = site_description %}
+{% endif %}
 {% set page_url = current_url | default(value=config.base_url) %}
-{% if page.extra.image is defined and page.extra.image %}
+{% if page is defined and page.extra.image %}
     {% set og_image = config.base_url ~ page.extra.image %}
 {% else %}
     {% set og_image = config.base_url ~ config.extra.og_image %}

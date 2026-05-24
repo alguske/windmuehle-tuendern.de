@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-04-einweihung-der-windmuehle/"]
 description = "Am 17. April haben wir die Einweihung der Windmühle Tündern gefeiert. Wir bedanken uns bei allen Besuchern für die Glückwünsche und Spenden."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Veranstaltung"]
+
 [extra]
 image = "/imgs/einweihung-der-windmuehle/einweihung-der-windmuehle-06.jpg"
 +++

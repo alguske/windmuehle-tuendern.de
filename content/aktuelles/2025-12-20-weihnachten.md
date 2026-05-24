@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2025-12-weihnachten/"]
 description = "Rückblick auf das Jahr und Weihnachtsgrüße vom Förderverein Windmühle Tündern."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Veranstaltung"]
+
 [extra]
 image = "/imgs/winter/windmuelle-snow2.jpg"
 +++

@@ -60,6 +60,13 @@
                 {{ m::fmt_date(date=page.date, lang=lang) }}
             </time>
             <h1>{{ page.title }}</h1>
+            {% if page.taxonomies.tags %}
+            <ul class="tag-chip-list">
+                {% for t in page.taxonomies.tags %}
+                <li><a class="tag-chip" href="{{ m::lang_prefix(lang=lang) }}/tags/{{ t | slugify }}/">{{ t }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </header>
 
         <!-- Hero image (skipped when body has no <img>: the full image below stands in) -->

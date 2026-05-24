@@ -3,6 +3,9 @@ title = "Día Alemán del Molino 2026"
 description = "Os invitamos al Día Alemán del Molino el lunes de Pentecostés, 25 de mayo de 2026, de 14 a 17 h."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Evento"]
+
 [extra]
 image = "/imgs/deutscher-muehlentag/deutscher-muehlentag-01.jpg"
 hide_hero = true

@@ -4,6 +4,9 @@ aliases = ["/aktuelles/2026-03-neue-fluegel/"]
 description = "Die neuen Flügel wurden an der Windmühle Tündern montiert."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Bauarbeiten"]
+
 [extra]
 image = "/imgs/neue-fluegel/windmuehle-sonnenschein.jpg"
 +++

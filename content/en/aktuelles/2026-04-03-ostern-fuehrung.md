@@ -4,6 +4,9 @@ aliases = ["/en/aktuelles/2026-04-ostern-fuehrung/"]
 description = "On Good Friday the Tündern Windmill opened for an Easter tour. Visitors discovered the inner workings of the restored mill."
 template = "blog-post.html"
 
+[taxonomies]
+tags = ["Tour"]
+
 [extra]
 image = "/imgs/ostern-fuehrung/windmuehle-aussen.jpg"
 +++
