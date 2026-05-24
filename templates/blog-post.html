@@ -13,18 +13,19 @@
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
 
 {% block head %}
-<!-- JSON-LD NewsArticle -->
+<!-- JSON-LD BlogPosting -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
+    "@type": "BlogPosting",
     "headline": "{{ page.title }}",
     "image": "{{ config.base_url }}{{ page.extra.image | default(value='/imgs/og-image.jpg') }}",
     "datePublished": "{{ page.date | date(format='%Y-%m-%d') }}",
     "dateModified": "{{ page.updated | default(value=page.date) | date(format='%Y-%m-%d') }}",
     "author": {
         "@type": "Organization",
-        "name": "{{ config.extra.org_name }}"
+        "name": "{{ config.extra.org_name }}",
+        "url": "{{ config.base_url }}"
     },
     "publisher": {
         "@type": "Organization",
@@ -36,9 +37,15 @@
     },
     "description": "{{ page.description | default(value=page.title) }}",
     "inLanguage": "{{ lang }}",
+    "url": "{{ page.permalink }}",
+    {% if page.taxonomies.tags %}
+    "articleSection": "{{ page.taxonomies.tags | first }}",
+    "keywords": "{{ page.taxonomies.tags | join(sep=', ') }}",
+    {% endif %}
+    "wordCount": {{ page.word_count | default(value=0) }},
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ config.base_url }}{{ page.path }}"
+        "@id": "{{ page.permalink }}"
     }
 }
 </script>
