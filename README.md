@@ -6,7 +6,7 @@ Official site of the non-profit association restoring the historic windmill in T
 
 - [Zola](https://www.getzola.org/) static site generator. Build: `zola build`. Preview: `zola serve`.
 - Tera templates in `templates/`, Sass in `sass/main.scss`.
-- Trilingual: German (default), English (`/en`), Spanish (`/es`). Every content change must cover all three. See [`.claude/CLAUDE.md`](./.claude/CLAUDE.md).
+- Trilingual: German (default), English (`/en`), Spanish (`/es`). Every content change must cover all three. See [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md).
 
 ## Scripts
 
@@ -84,4 +84,6 @@ Add or update tests when changing script behavior.
 
 ## For AI agents
 
-Read [`.claude/CLAUDE.md`](./.claude/CLAUDE.md) for voice, tone, image layout rules and the creative freedom expected when drafting or enriching content.
+AI config (agents, skills, instructions) is defined once under `.agnostic-ai/` and transpiled to Claude Code and Codex with [agnostic-ai](https://github.com/Chemaclass/agnostic-ai). The `.claude/`, `.codex/`, `CLAUDE.md` and `AGENTS.md` files are generated and git-ignored. Edit specs under `.agnostic-ai/`, then run `agnostic-ai sync`. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+Read [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md) for voice, tone, image layout rules and the creative freedom expected when drafting or enriching content.
