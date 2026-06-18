@@ -7,6 +7,16 @@
 - **Styles**: Sass (`sass/main.scss`), compiled by Zola
 - **Hosting**: Static site, deployed via GitHub Pages with CNAME `windmuehle-tuendern.de`
 
+## Local Development
+
+Start the local preview server from the repository root with:
+
+```bash
+./start-local.sh
+```
+
+The script runs `zola serve` and forwards any extra arguments to Zola, for example `./start-local.sh --port 1112` if the default port is busy. Keep it running while previewing changes. Zola normally serves the site at `http://127.0.0.1:1111`; if the command prints a different URL, use that URL.
+
 ## Trilingual Architecture
 
 The site supports three languages: **German (de, default)**, **English (en)**, **Spanish (es)**.
