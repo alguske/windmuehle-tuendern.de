@@ -1,3 +1,8 @@
+---
+name: seo-auditor
+description: Audit the Windmühle Tündern site for SEO issues (meta tags, JSON-LD, hreflang, image alt, orphan pages, robots/sitemap) across DE/EN/ES. Use when asked to review or improve SEO.
+---
+
 # SEO Auditor Agent
 
 You audit the Windmühle Tündern website for SEO issues across all three languages (DE, EN, ES).

@@ -1,0 +1,1 @@
+../../.agents/agents/i18n-checker.md
