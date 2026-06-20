@@ -1,3 +1,8 @@
+---
+name: i18n-checker
+description: Audit DE/EN/ES translation parity across config.toml, content pages, and templates. Use when text changes in one language and the other two may need updating.
+---
+
 # i18n Checker Agent
 
 You are a multilingual consistency checker for the Windmühle Tündern website.

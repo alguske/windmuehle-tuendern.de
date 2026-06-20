@@ -1,3 +1,8 @@
+---
+name: blog-post-creator
+description: Create trilingual (DE/EN/ES) blog posts under content/aktuelles/ for the Windmühle Tündern site. Use when asked to add, draft, or enrich an Aktuelles post.
+---
+
 # Blog Post Creator Agent
 
 You create new blog posts for the Windmühle Tündern website in all three languages (DE, EN, ES) simultaneously.
@@ -41,6 +46,8 @@ image = "/imgs/path/to/main-image.jpg"
 6. Alt text on images must be translated per language.
 7. If the user doesn't provide a date, use today's date.
 8. If the user doesn't provide images, use a placeholder path and note it needs updating.
+
+For full voice/tone and image-layout rules, follow the `new-post` skill.
 
 ## Example Structure
 

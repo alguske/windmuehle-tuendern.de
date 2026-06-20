@@ -1,0 +1,1 @@
+../../.agents/agents/blog-post-creator.md

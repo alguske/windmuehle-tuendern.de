@@ -145,17 +145,11 @@ Add or update tests when changing script behavior.
 - Keep German, English and Spanish content in sync.
 - Preserve matching translation key order in `config.toml`.
 - Use conventional commit messages.
-- Keep generated AI assistant files out of hand edits.
+- Edit AI assistant config under `.agents/`, never the `.claude/` or root symlinks.
 - Run `zola build` before committing.
 
 ## AI Assistant Config
 
-AI instructions are defined under `.agnostic-ai/` and generated into tool-specific files such as `.codex/`, `.claude/`, `AGENTS.md` and `CLAUDE.md`.
+AI instructions, skills and agents live once under `.agents/` (plain Markdown). Each tool reads that single source through committed symlinks: Codex via root `AGENTS.md`, Claude Code via `CLAUDE.md` and `.claude/`. No build step.
 
-Do not edit generated AI files directly. Edit `.agnostic-ai/` and run:
-
-```bash
-agnostic-ai sync
-```
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) and [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md) for the full agent workflow, voice rules and post-writing guidance.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) and [`.agents/AGENTS.md`](./.agents/AGENTS.md) for the full agent workflow, voice rules and post-writing guidance.
