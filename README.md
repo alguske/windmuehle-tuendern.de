@@ -1,62 +1,93 @@
-# Windmühle Tündern Website
+# Windmuehle Tuendern Website
 
-Official site of the non-profit association restoring the historic windmill in Tündern, Germany.
+Static website for the Förderverein Windmühle Tündern e.V., the association restoring the historic windmill in Tündern.
 
-## Tech stack
+## Quick Start
 
-- [Zola](https://www.getzola.org/) static site generator. Build: `zola build`. Preview: `zola serve`.
-- Tera templates in `templates/`, Sass in `sass/main.scss`.
-- Trilingual: German (default), English (`/en`), Spanish (`/es`). Every content change must cover all three. See [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md).
+Prerequisite: install [Zola](https://www.getzola.org/).
 
-## Scripts
+```bash
+zola build
+./start-local.sh
+```
 
-All scripts live in `scripts/`, are offline and idempotent. Bashunit tests in `scripts/tests/`.
+The local preview normally runs at `http://127.0.0.1:1111`. If the port is busy, pass another one through to Zola:
 
-| Script | Purpose |
+```bash
+./start-local.sh --port 1112
+```
+
+## Project Shape
+
+| Area | Path |
 |---|---|
-| `new-post.sh <slug> [opts]` | Scaffold an Aktuelles post in DE / EN / ES, optimize images, generate thumbnail |
-| `make-thumb.sh <image-path>` | Swap a post's hero image and regenerate its thumbnail across all three languages |
-| `new-tour.sh --date ... --time ... --kind ...` | Append a guided tour entry to `data/fuehrungen.toml` |
-| `validate-fuehrungen.py` | Lint `data/fuehrungen.toml` shape and field values |
-| `mark-for-translation.sh <dir>` | Reset every `.md` in a directory to `to be translated` |
+| Content, German default | `content/` |
+| Content, English | `content/en/` |
+| Content, Spanish | `content/es/` |
+| Templates | `templates/` |
+| Styles | `sass/main.scss` |
+| Static images | `static/imgs/` |
+| Guided tours data | `data/fuehrungen.toml` |
+| Utility scripts | `scripts/` |
 
-### `new-post.sh` options
+The site is trilingual: German (`/`), English (`/en/`) and Spanish (`/es/`). Every content or translation change must be made in all three languages.
 
+## Common Workflows
+
+### Build and Preview
+
+```bash
+zola build
+./start-local.sh
 ```
--d, --dir <path>          Source image directory (default: local/imgs/)
--t, --title <string>      Post title (default: slug humanized)
--s, --summary <string>    Description (default: title)
--D, --date <YYYY-MM-DD>   Post date (default: today)
+
+Run `zola build` before committing.
+
+### Create an Aktuelles Post
+
+Posts live in:
+
+- `content/aktuelles/`
+- `content/en/aktuelles/`
+- `content/es/aktuelles/`
+
+Use the helper when starting from images or boilerplate:
+
+```bash
+./scripts/new-post.sh <slug> -s "Kurze Beschreibung."
 ```
 
-Filenames follow `YYYY-MM-DD-<slug>.md`. Zola derives `page.date` from the filename, so frontmatter has no `date` field.
+Useful options:
 
-## Blog post workflow
+| Option | Meaning |
+|---|---|
+| `-d, --dir <path>` | Source image directory, defaults to `local/imgs/` |
+| `-t, --title <text>` | Post title |
+| `-s, --summary <text>` | Frontmatter description |
+| `-D, --date <YYYY-MM-DD>` | Post date, defaults to today |
 
-1. Drop source images into `local/imgs/` (gitignored).
-2. `./scripts/new-post.sh <slug> -s "Kurze Beschreibung."`
-3. Edit the DE post in `content/aktuelles/YYYY-MM-DD-<slug>.md`. Add headings, group images in `<div class="post-images">` blocks of even size.
-4. Translate the EN and ES stubs in `content/en/aktuelles/` and `content/es/aktuelles/`. Remove the `<!-- TODO: translate -->` marker.
-5. Optional: `./scripts/make-thumb.sh <image-path>` to swap the hero.
-6. `zola build && zola serve`, verify all locales.
-7. Commit with a conventional message.
+Post filenames must be `YYYY-MM-DD-<slug>.md`. Zola derives `page.date` from the filename, so do not add a `date` field to frontmatter.
+
+After scaffolding:
+
+1. Write the German post first.
+2. Mirror the same structure in English and Spanish.
+3. Group gallery images with `<div class="post-images">`.
+4. Keep `[extra] image` set to an existing image in `static/imgs/`.
+5. Ensure `static/imgs/thumbs/<image>.jpg` exists for the selected hero image.
+6. Run `zola build`.
+
+To swap a post hero image and regenerate thumbnails:
+
+```bash
+./scripts/make-thumb.sh static/imgs/<image>.jpg
+```
 
 See `content/aktuelles/2026-04-17-einweihung-der-windmuehle.md` for a structured example.
 
-## Führungen (guided tours)
+### Edit Guided Tours
 
-The page at `/fuehrungen/` lists upcoming tours. Data lives in `data/fuehrungen.toml`. Edit and run `zola build`.
-
-Slot fields:
-
-| Field | Required | Notes |
-|---|---|---|
-| `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
-| `time` | yes | 24h `HH:MM` |
-| `duration_min` | no | integer, defaults to `60` |
-| `kind` | yes | `"public"` or `"private"` |
-| `status` | yes | `"free"`, `"booked"` or `"cancelled"`. Private cannot be `"free"` |
-| `guide` | no | first name(s), e.g. `"Dirk"` or `"Falk & Philipp"` |
+Tours are stored in `data/fuehrungen.toml`. Add one `[[slots]]` table per tour:
 
 ```toml
 [[slots]]
@@ -67,14 +98,41 @@ status = "free"
 guide = "Dirk"
 ```
 
-Notes:
-- Past tours auto-move into a collapsible archive grouped by year.
-- Private slots show only `kind`, `time` and `guide`. Never include family or group names in the data file.
-- JSON-LD `Event` schema is emitted only for upcoming public, non-cancelled slots.
-- Phone numbers on the contact card are base64-encoded and revealed on click. See `static/js/contact-reveal.js`.
-- Run `./scripts/validate-fuehrungen.py` after editing.
+Fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
+| `time` | yes | 24-hour `HH:MM` |
+| `duration_min` | no | integer, defaults to `60` |
+| `kind` | yes | `"public"` or `"private"` |
+| `status` | yes | `"free"`, `"booked"` or `"cancelled"` |
+| `guide` | no | first names only |
+
+Private slots cannot be `"free"` and must not include family names, group names or other identifiers. They are rendered anonymously on the site.
+
+After editing:
+
+```bash
+./scripts/validate-fuehrungen.py
+zola build
+```
+
+## Scripts
+
+| Script | Purpose |
+|---|---|
+| `scripts/new-post.sh` | Scaffold trilingual Aktuelles posts, optimize images and create thumbnails |
+| `scripts/make-thumb.sh` | Change a post hero image and regenerate its thumbnail |
+| `scripts/optimize-imgs.sh` | Optimize source images |
+| `scripts/new-tour.sh` | Append a guided tour slot |
+| `scripts/validate-fuehrungen.py` | Validate `data/fuehrungen.toml` |
+| `scripts/check-i18n.py` | Check translation parity |
+| `scripts/mark-for-translation.sh` | Mark Markdown files in a directory for translation |
 
 ## Testing
+
+Script tests use bashunit:
 
 ```bash
 ./scripts/lib/bashunit scripts/tests
@@ -82,8 +140,22 @@ Notes:
 
 Add or update tests when changing script behavior.
 
-## For AI agents
+## Contribution Rules
 
-AI config (agents, skills, instructions) is defined once under `.agnostic-ai/` and transpiled to Claude Code and Codex with [agnostic-ai](https://github.com/Chemaclass/agnostic-ai). The `.claude/`, `.codex/`, `CLAUDE.md` and `AGENTS.md` files are generated and git-ignored. Edit specs under `.agnostic-ai/`, then run `agnostic-ai sync`. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+- Keep German, English and Spanish content in sync.
+- Preserve matching translation key order in `config.toml`.
+- Use conventional commit messages.
+- Keep generated AI assistant files out of hand edits.
+- Run `zola build` before committing.
 
-Read [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md) for voice, tone, image layout rules and the creative freedom expected when drafting or enriching content.
+## AI Assistant Config
+
+AI instructions are defined under `.agnostic-ai/` and generated into tool-specific files such as `.codex/`, `.claude/`, `AGENTS.md` and `CLAUDE.md`.
+
+Do not edit generated AI files directly. Edit `.agnostic-ai/` and run:
+
+```bash
+agnostic-ai sync
+```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) and [`.agnostic-ai/AGNOSTIC_AI.md`](./.agnostic-ai/AGNOSTIC_AI.md) for the full agent workflow, voice rules and post-writing guidance.
