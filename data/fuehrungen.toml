@@ -53,13 +53,6 @@ status = "booked"
 guide = "Dirk"
 
 [[slots]]
-date = "2026-07-12"
-time = "15:00"
-kind = "private"
-status = "booked"
-guide = "Philipp"
-
-[[slots]]
 date = "2026-07-17"
 time = "17:00"
 kind = "private"
