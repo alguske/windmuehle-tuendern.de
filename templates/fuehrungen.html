@@ -247,52 +247,70 @@
     {% if past_sorted | length > 0 %}
         <section class="fuehrungen-past">
             <details>
-                <summary>
-                    {{ trans(key="fuehrungen_past_toggle", lang=lang) }}
-                    <span class="fuehrungen-past-count">({{ past_sorted | length }})</span>
+                <summary class="fuehrungen-past-summary">
+                    <span class="fuehrungen-past-summary__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                            <polyline points="3 4 3 10 9 10"/>
+                            <path d="M12 7v5l3 2"/>
+                        </svg>
+                    </span>
+                    <span class="fuehrungen-past-summary__label">{{ trans(key="fuehrungen_past_toggle", lang=lang) }}</span>
                 </summary>
 
-                {# Build unique year list #}
-                {% set_global years = [] %}
-                {% for s in past_sorted %}
-                    {% set y = s.date | split(pat="-") | first %}
-                    {% if y not in years %}
-                        {% set_global years = years | concat(with=y) %}
-                    {% endif %}
-                {% endfor %}
-
-                {% for year in years %}
-                    <div class="fuehrungen-year">
-                        <h3>{{ year }}</h3>
-                        <ul class="fuehrungen-slots fuehrungen-slots--past">
-                            {% for s in past_sorted %}
-                                {% set sy = s.date | split(pat="-") | first %}
-                                {% if sy == year %}
-                                    {% set duration = s.duration_min | default(value=60) %}
-                                    <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
-                                        <span class="fuehrungen-date-inline">{{ m::fmt_date(date=s.date, lang=lang, kind="day_month_short") }}</span>
-                                        <span class="fuehrungen-slot__time">
-                                            <strong>{{ s.time }}</strong>
-                                        </span>
-                                        <div class="fuehrungen-slot__meta">
-                                            <span class="kind-pill kind-pill--{{ s.kind }}">
-                                                {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
-                                            </span>
-                                            {% if s.guide %}
-                                                <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                {% set grouped = past_sorted | group_by(attribute="date") %}
+                <div class="fuehrungen-list">
+                    {% for date_key, day_slots in grouped %}
+                        {% set day_sorted = day_slots | sort(attribute="time") %}
+                        <article class="fuehrungen-day fuehrungen-day--past">
+                            <div class="fuehrungen-day__cal" aria-hidden="true">
+                                <span class="fuehrungen-day__cal-month">{{ m::fmt_date(date=date_key, lang=lang, kind="month_short") }}</span>
+                                <span class="fuehrungen-day__cal-day">{{ date_key | date(format="%d") }}</span>
+                                <span class="fuehrungen-day__cal-dow">{{ m::fmt_date(date=date_key, lang=lang, kind="weekday_short") }}</span>
+                            </div>
+                            <div class="fuehrungen-day__body">
+                                <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
+                                <ul class="fuehrungen-slots">
+                                    {% for s in day_sorted %}
+                                        {% set duration = s.duration_min | default(value=60) %}
+                                        <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
+                                            <div class="fuehrungen-slot__time">
+                                                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <polyline points="12 6 12 12 16 14"/>
+                                                </svg>
+                                                {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
+                                                <span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
+                                            </div>
+                                            <div class="fuehrungen-slot__meta">
+                                                <span class="kind-pill kind-pill--{{ s.kind }}">
+                                                    {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
+                                                </span>
+                                                {% if s.guide %}
+                                                    <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="fuehrungen-slot__status">
+                                                {% if s.status == "cancelled" %}
+                                                    <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
+                                                {% elif s.kind == "private" %}
+                                                    <span class="badge badge--private">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
+                                                {% elif s.status == "booked" %}
+                                                    <span class="badge badge--booked">{{ trans(key="fuehrungen_status_booked", lang=lang) }}</span>
+                                                {% else %}
+                                                    <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
+                                                {% endif %}
+                                            </div>
+                                            {% if s.link %}
+                                                <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
                                             {% endif %}
-                                        </div>
-                                        <div class="fuehrungen-slot__status">
-                                            {% if s.status == "cancelled" %}
-                                                <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
-                                            {% endif %}
-                                        </div>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endfor %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
             </details>
         </section>
     {% endif %}

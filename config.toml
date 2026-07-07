@@ -146,7 +146,7 @@ fuehrungen_copied_label = "Kopiert"
 fuehrungen_meeting_label = "Treffpunkt"
 fuehrungen_open_in_maps = "In Google Maps öffnen"
 fuehrungen_reveal_phone = "Telefonnummer anzeigen"
-fuehrungen_past_toggle = "Vergangene Führungen anzeigen"
+fuehrungen_past_toggle = "Vergangene Termine"
 fuehrungen_more_info = "Mehr erfahren"
 
 # ===========================================
@@ -286,7 +286,7 @@ fuehrungen_copied_label = "Copied"
 fuehrungen_meeting_label = "Meeting point"
 fuehrungen_open_in_maps = "Open in Google Maps"
 fuehrungen_reveal_phone = "Show phone number"
-fuehrungen_past_toggle = "Show past tours"
+fuehrungen_past_toggle = "Past dates"
 fuehrungen_more_info = "Learn more"
 
 # ===========================================
@@ -426,7 +426,7 @@ fuehrungen_copied_label = "Copiado"
 fuehrungen_meeting_label = "Punto de encuentro"
 fuehrungen_open_in_maps = "Abrir en Google Maps"
 fuehrungen_reveal_phone = "Mostrar número de teléfono"
-fuehrungen_past_toggle = "Mostrar visitas pasadas"
+fuehrungen_past_toggle = "Fechas pasadas"
 fuehrungen_more_info = "Más información"
 
 # ===========================================
