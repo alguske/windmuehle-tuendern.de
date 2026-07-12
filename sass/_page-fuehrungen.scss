@@ -253,6 +253,21 @@ $fh-surface-soft: #f8fafc;
   strong { color: $fh-brand-2; font-weight: 600; }
 }
 
+.fuehrungen-slot__title {
+  min-width: 0;
+
+  strong { color: $fh-text; font-weight: 600; }
+}
+
+.fuehrungen-slot__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: $fh-text-soft;
+
+  svg { color: $fh-brand; flex-shrink: 0; }
+}
+
 .fuehrungen-slot__status { justify-self: end; }
 
 .fuehrungen-slot__link {
@@ -282,6 +297,10 @@ $fh-surface-soft: #f8fafc;
   &--private {
     background: rgba(37, 99, 168, 0.1);
     color: $fh-brand-2;
+  }
+  &--event {
+    background: rgba(140, 78, 168, 0.12);
+    color: #7a3f96;
   }
 }
 

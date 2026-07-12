@@ -5,7 +5,7 @@
 #   date         "YYYY-MM-DD"
 #   time         "HH:MM"  (24h)
 #   duration_min default 60
-#   kind         "public" | "private"
+#   kind         "public" | "private" | "event"
 #   status       "free" | "booked" | "cancelled"
 #                 (private slots are always "booked" or "cancelled")
 #   guide        first name(s) of the tour guide, e.g. "Dirk" or "Falk & Philipp"
@@ -15,6 +15,11 @@
 #
 # Optional fields:
 #   link  relative path or absolute URL; renders a "more info" link on the slot
+#
+# Event fields (kind = "event"): non-tour events like a concert.
+#   title       required, the event name (shown instead of a guide)
+#   location    optional, venue when it is not the mill, e.g. a church
+#   free_entry  optional bool; true shows an "Eintritt frei" badge
 
 [[slots]]
 date = "2026-05-25"
@@ -66,3 +71,13 @@ duration_min = 60
 kind = "private"
 status = "booked"
 guide = "Dirk"
+
+[[slots]]
+date = "2026-08-29"
+time = "17:00"
+kind = "event"
+status = "free"
+title = "Benefizkonzert Frauenchor Tündern"
+location = "St. Christophorus-Kirche in Tündern"
+free_entry = true
+link = "/aktuelles/benefizkonzert-frauenchor/"

@@ -79,6 +79,15 @@
   }
 }
 
+.blog-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+
+  .tag-chip-list { margin: 0; flex-shrink: 0; }
+}
+
 .blog-date {
   font-size: 0.85rem;
   color: #888;

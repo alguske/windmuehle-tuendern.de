@@ -2,6 +2,7 @@
 title = "Führungen"
 description = "Termine für öffentliche und private Führungen durch die Windmühle Tündern."
 template = "fuehrungen.html"
+aliases = ["termine"]
 
 [extra]
 subtitle = "Termine in der Windmühle Tündern"

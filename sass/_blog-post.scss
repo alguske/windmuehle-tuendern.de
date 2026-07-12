@@ -152,21 +152,29 @@
 
 .event-when {
   display: flex;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.1rem;
+  gap: 0.8rem;
+  padding: 0.8rem 1.3rem;
   margin: 1.5rem 0 2rem;
-  background: var(--section-bg-accent);
-  border-left: 4px solid var(--c-brand-1);
-  border-radius: 6px;
+  background: linear-gradient(135deg, #fbf1da 0%, #f6e4c1 100%);
+  border: 1px solid rgba(232, 168, 56, 0.45);
+  // slight tilt gives the announcement a pinned-up, hand-placed feel
+  transform: rotate(-0.6deg);
+  border-radius: 4px 14px 4px 14px;
   font-size: 1rem;
   color: var(--c-text-1);
 
-  strong { color: var(--c-brand-1); }
+  strong {
+    color: var(--c-brand-2);
+    // marker-highlight sweep under the label, not a boxed alert
+    box-shadow: inset 0 -0.5em 0 rgba(232, 168, 56, 0.4);
+  }
 
   &::before {
     content: "🗓";
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1;
   }
 }

@@ -48,19 +48,21 @@
                 </div>
                 {% endif %}
                 <div class="blog-card-content">
-                    <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
-                        {{ m::fmt_date(date=post.date, lang=lang) }}
-                    </time>
+                    <div class="blog-card-head">
+                        <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
+                            {{ m::fmt_date(date=post.date, lang=lang) }}
+                        </time>
+                        {% if post.taxonomies.tags %}
+                        <ul class="tag-chip-list">
+                            {% for t in post.taxonomies.tags %}
+                            <li><span class="tag-chip tag-chip-inline">{{ t }}</span></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
                     <h2>{{ post.title }}</h2>
                     {% if post.description %}
                     <p>{{ post.description }}</p>
-                    {% endif %}
-                    {% if post.taxonomies.tags %}
-                    <ul class="tag-chip-list">
-                        {% for t in post.taxonomies.tags %}
-                        <li><span class="tag-chip tag-chip-inline">{{ t }}</span></li>
-                        {% endfor %}
-                    </ul>
                     {% endif %}
                     <span class="read-more">{{ trans(key="blog_read_more", lang=lang) }}</span>
                 </div>

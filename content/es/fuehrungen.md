@@ -2,6 +2,7 @@
 title = "Visitas guiadas"
 description = "Fechas para visitas guiadas públicas y privadas al molino de Tündern."
 template = "fuehrungen.html"
+aliases = ["es/fechas"]
 
 [extra]
 subtitle = "Visitas al molino de Tündern"

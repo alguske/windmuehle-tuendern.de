@@ -13,7 +13,7 @@ except ModuleNotFoundError:
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "fuehrungen.toml"
 
-KINDS = {"public", "private"}
+KINDS = {"public", "private", "event"}
 STATUSES = {"free", "booked", "cancelled"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 TIME_RE = re.compile(r"^\d{2}:\d{2}$")
@@ -36,6 +36,9 @@ def validate() -> list[str]:
         status = slot.get("status")
         guide = slot.get("guide")
         duration_min = slot.get("duration_min")
+        title = slot.get("title")
+        location = slot.get("location")
+        free_entry = slot.get("free_entry")
 
         if not DATE_RE.match(date):
             errors.append(f"{prefix}: invalid date '{date}' (expected YYYY-MM-DD)")
@@ -49,6 +52,14 @@ def validate() -> list[str]:
             )
         if kind == "private" and status == "free":
             errors.append(f"{prefix}: private slot cannot have status 'free'")
+        if kind == "event" and not (isinstance(title, str) and title.strip()):
+            errors.append(f"{prefix}: event slot requires a non-empty 'title'")
+        if title is not None and not isinstance(title, str):
+            errors.append(f"{prefix}: title must be string, got {title!r}")
+        if location is not None and not isinstance(location, str):
+            errors.append(f"{prefix}: location must be string, got {location!r}")
+        if free_entry is not None and not isinstance(free_entry, bool):
+            errors.append(f"{prefix}: free_entry must be boolean, got {free_entry!r}")
         if duration_min is not None and not isinstance(duration_min, int):
             errors.append(f"{prefix}: duration_min must be integer, got {duration_min!r}")
         if duration_min is not None and isinstance(duration_min, int) and duration_min <= 0:

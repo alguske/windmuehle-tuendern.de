@@ -80,39 +80,7 @@
                             <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
                             <ul class="fuehrungen-slots">
                                 {% for s in day_sorted %}
-                                    {% set duration = s.duration_min | default(value=60) %}
-                                    <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
-                                        <div class="fuehrungen-slot__time">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <circle cx="12" cy="12" r="10"/>
-                                                <polyline points="12 6 12 12 16 14"/>
-                                            </svg>
-                                            {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
-                                            <span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
-                                        </div>
-                                        <div class="fuehrungen-slot__meta">
-                                            <span class="kind-pill kind-pill--{{ s.kind }}">
-                                                {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
-                                            </span>
-                                            {% if s.guide %}
-                                                <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
-                                            {% endif %}
-                                        </div>
-                                        <div class="fuehrungen-slot__status">
-                                            {% if s.status == "cancelled" %}
-                                                <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
-                                            {% elif s.kind == "private" %}
-                                                <span class="badge badge--private">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
-                                            {% elif s.status == "booked" %}
-                                                <span class="badge badge--booked">{{ trans(key="fuehrungen_status_booked", lang=lang) }}</span>
-                                            {% else %}
-                                                <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
-                                            {% endif %}
-                                        </div>
-                                        {% if s.link %}
-                                            <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
-                                        {% endif %}
-                                    </li>
+                                    {{ m::slot_item(s=s, lang=lang) }}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -272,39 +240,7 @@
                                 <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
                                 <ul class="fuehrungen-slots">
                                     {% for s in day_sorted %}
-                                        {% set duration = s.duration_min | default(value=60) %}
-                                        <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
-                                            <div class="fuehrungen-slot__time">
-                                                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10"/>
-                                                    <polyline points="12 6 12 12 16 14"/>
-                                                </svg>
-                                                {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
-                                                <span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
-                                            </div>
-                                            <div class="fuehrungen-slot__meta">
-                                                <span class="kind-pill kind-pill--{{ s.kind }}">
-                                                    {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
-                                                </span>
-                                                {% if s.guide %}
-                                                    <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
-                                                {% endif %}
-                                            </div>
-                                            <div class="fuehrungen-slot__status">
-                                                {% if s.status == "cancelled" %}
-                                                    <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
-                                                {% elif s.kind == "private" %}
-                                                    <span class="badge badge--private">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
-                                                {% elif s.status == "booked" %}
-                                                    <span class="badge badge--booked">{{ trans(key="fuehrungen_status_booked", lang=lang) }}</span>
-                                                {% else %}
-                                                    <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
-                                                {% endif %}
-                                            </div>
-                                            {% if s.link %}
-                                                <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
-                                            {% endif %}
-                                        </li>
+                                        {{ m::slot_item(s=s, lang=lang) }}
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -319,7 +255,7 @@
 {# ---------- JSON-LD: emit upcoming public, non-cancelled slots ---------- #}
 {% set_global ld_events = [] %}
 {% for s in upcoming_sorted %}
-    {% if s.kind == "public" and s.status != "cancelled" %}
+    {% if (s.kind == "public" or s.kind == "event") and s.status != "cancelled" %}
         {% set_global ld_events = ld_events | concat(with=s) %}
     {% endif %}
 {% endfor %}
@@ -327,24 +263,23 @@
 <script type="application/ld+json">
 [
 {% for s in ld_events %}
-    {% set duration = s.duration_min | default(value=60) %}
     {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": {{ "Mühlenführung Windmühle Tündern" | json_encode | safe }},
+      "name": {% if s.kind == "event" %}{{ s.title | json_encode | safe }}{% else %}{{ "Mühlenführung Windmühle Tündern" | json_encode | safe }}{% endif %},
       "startDate": "{{ s.date }}T{{ s.time }}",
-      "duration": "PT{{ duration }}M",
-      "eventStatus": "{% if s.status == 'cancelled' %}https://schema.org/EventCancelled{% else %}https://schema.org/EventScheduled{% endif %}",
+      {% if s.kind != "event" %}"duration": "PT{{ s.duration_min | default(value=60) }}M",
+      {% endif %}"eventStatus": "{% if s.status == 'cancelled' %}https://schema.org/EventCancelled{% else %}https://schema.org/EventScheduled{% endif %}",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": {% if s.kind == "event" %}{% if s.free_entry %}true{% else %}false{% endif %}{% else %}true{% endif %},
       "location": {
         "@type": "Place",
-        "name": "Windmühle Tündern",
+        "name": {% if s.kind == "event" and s.location %}{{ s.location | json_encode | safe }}{% else %}"Windmühle Tündern"{% endif %},
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Windmühlenweg 20",
+          {% if s.kind != "event" %}"streetAddress": "Windmühlenweg 20",
           "postalCode": "31789",
-          "addressLocality": "Hameln",
+          {% endif %}"addressLocality": "Hameln",
           "addressCountry": "DE"
         }
       },

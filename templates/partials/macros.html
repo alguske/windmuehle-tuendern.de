@@ -79,3 +79,60 @@
 {%- endif -%}
 {%- endmacro %}
 
+{# One calendar slot <li>. Shared by the upcoming and past lists on the
+   Führungen page so the two never drift. kind is "public" | "private"
+   (guided tours) or "event" (non-tour events like a concert: renders a
+   title + optional location instead of a guide, and an "Eintritt frei"
+   badge when free_entry is set). #}
+{% macro slot_item(s, lang) %}
+{%- set duration = s.duration_min | default(value=60) -%}
+<li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
+    <div class="fuehrungen-slot__time">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
+        {% if s.kind != "event" %}<span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>{% endif %}
+    </div>
+    <div class="fuehrungen-slot__meta">
+        {% if s.kind == "event" %}
+            <span class="kind-pill kind-pill--event">{{ trans(key="fuehrungen_kind_event", lang=lang) }}</span>
+            <span class="fuehrungen-slot__title"><strong>{{ s.title }}</strong></span>
+            {% if s.location %}
+                <span class="fuehrungen-slot__location">
+                    <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {{ s.location }}
+                </span>
+            {% endif %}
+        {% else %}
+            <span class="kind-pill kind-pill--{{ s.kind }}">
+                {% if s.kind == "private" %}{{ trans(key="fuehrungen_kind_private", lang=lang) }}{% else %}{{ trans(key="fuehrungen_kind_public", lang=lang) }}{% endif %}
+            </span>
+            {% if s.guide %}
+                <span class="fuehrungen-slot__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="fuehrungen-slot__status">
+        {% if s.status == "cancelled" %}
+            <span class="badge badge--cancelled">{{ trans(key="fuehrungen_status_cancelled", lang=lang) }}</span>
+        {% elif s.kind == "event" %}
+            {% if s.free_entry %}<span class="badge badge--free">{{ trans(key="fuehrungen_free_entry", lang=lang) }}</span>{% endif %}
+        {% elif s.kind == "private" %}
+            <span class="badge badge--private">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
+        {% elif s.status == "booked" %}
+            <span class="badge badge--booked">{{ trans(key="fuehrungen_status_booked", lang=lang) }}</span>
+        {% else %}
+            <span class="badge badge--free">{{ trans(key="fuehrungen_status_free", lang=lang) }}</span>
+        {% endif %}
+    </div>
+    {% if s.link %}
+        <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
+    {% endif %}
+</li>
+{% endmacro %}
+
