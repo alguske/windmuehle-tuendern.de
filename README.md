@@ -2,6 +2,12 @@
 
 Static website for the Förderverein Windmühle Tündern e.V., the association restoring the historic windmill in Tündern.
 
+## Updating without coding
+
+Not a developer? See **[HOWTO.md](./HOWTO.md)**. You describe the change in plain
+English to an AI assistant (OpenAI Codex in the ChatGPT desktop app, or Claude
+Code); it edits the files and opens a pull request for you to approve.
+
 ## Quick Start
 
 Prerequisite: install [Zola](https://www.getzola.org/).
@@ -105,11 +111,13 @@ Fields:
 | `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
 | `time` | yes | 24-hour `HH:MM` |
 | `duration_min` | no | integer, defaults to `60` |
-| `kind` | yes | `"public"` or `"private"` |
+| `kind` | yes | `"public"`, `"private"` or `"event"` (non-tour, e.g. a concert) |
 | `status` | yes | `"free"`, `"booked"` or `"cancelled"` |
-| `guide` | no | first names only |
+| `guide` | no | first names only (tours) |
 
 Private slots cannot be `"free"` and must not include family names, group names or other identifiers. They are rendered anonymously on the site.
+
+Event slots (`kind = "event"`) use `title` (required) plus optional `location` (venue when it is not the mill) and `free_entry` (bool). Add them by editing this file directly; `new-tour.sh` handles tours only.
 
 After editing:
 
@@ -122,6 +130,7 @@ zola build
 
 | Script | Purpose |
 |---|---|
+| `scripts/setup.sh` | Install the pinned Zola + Python deps (fresh machine, or Codex/CI sandbox) |
 | `scripts/new-post.sh` | Scaffold trilingual Aktuelles posts, optimize images and create thumbnails |
 | `scripts/make-thumb.sh` | Change a post hero image and regenerate its thumbnail |
 | `scripts/optimize-imgs.sh` | Optimize source images |

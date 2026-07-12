@@ -15,10 +15,13 @@ Detailed task playbooks live in `.agents/skills/<name>/SKILL.md`. Claude auto-ru
 
 Helper scripts (any agent can run these directly):
 
+- `./scripts/setup.sh` — install the pinned Zola + Python deps. Run this FIRST in a fresh sandbox (e.g. Codex) so `zola build` and the validators work; skip if `zola build` already runs.
 - `./start-local.sh` — serve at http://127.0.0.1:1111
 - `./scripts/new-post.sh` / `./scripts/make-thumb.sh` — scaffold a post / optimize an image + thumbnail
 - `./scripts/new-tour.sh` — append a public/private tour slot (events are manual, see new-tour playbook)
 - `./scripts/validate-fuehrungen.py` — validate tour data (needs Python 3.11+)
+
+Verify any change before committing: `./scripts/validate-fuehrungen.py`, `./scripts/check-i18n.py`, then `zola build` — the same gates CI runs on the pull request.
 
 Claude-only extras: subagent role docs in `.agents/agents/*.md` (blog-post-creator, i18n-checker, seo-auditor).
 

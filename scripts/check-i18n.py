@@ -88,6 +88,9 @@ def list_content(lang: str) -> set[str]:
         # Skip the other-language subtrees when scanning DE root.
         if lang == "de" and parts and parts[0] in {"en", "es"}:
             continue
+        # Per-directory agent config, not translatable site content.
+        if rel.name in {"AGENTS.md", "CLAUDE.md"}:
+            continue
         out.add(str(rel))
     return out
 
