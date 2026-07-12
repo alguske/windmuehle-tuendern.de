@@ -12,3 +12,7 @@ node_modules/
 
 # Codex writes session state under the user home (~/.codex), not the repo.
 .codex/
+
+# Global Claude-CLI tooling (caveman / cavecrew) lives in ~/.claude, not the repo.
+.agents/skills/caveman*
+.agents/skills/cavecrew

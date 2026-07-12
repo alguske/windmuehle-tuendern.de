@@ -6,7 +6,7 @@ This file is the single source of truth for agent instructions. Root `AGENTS.md`
 
 `content/` and `data/` also carry a scoped `AGENTS.md` (+ `CLAUDE.md`), symlinked from `.agents/nested/`, that Codex merges when working in that subtree. Zola ignores them via `ignored_content` in `config.toml`. `templates/` deliberately has none: Zola parses every file there as a Tera template.
 
-Detailed task playbooks live in `.agents/skills/<name>/SKILL.md`. Claude auto-runs them as skills; other agents should read the matching SKILL.md before the task:
+Detailed task playbooks live in `.agents/skills/<name>/SKILL.md`. Claude auto-runs them as skills; other agents (Codex, ...) read the matching SKILL.md before the task and follow its body — skip the YAML frontmatter, which is Claude-only trigger metadata. The body is plain, tool-neutral procedure.
 
 - `new-post` — write a trilingual (DE/EN/ES) blog post: voice, image layout, thumbnails
 - `new-tour` — add / update / cancel a Führungen slot or event in `data/fuehrungen.toml`
