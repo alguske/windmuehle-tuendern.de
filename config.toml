@@ -7,6 +7,9 @@ description = "Förderverein zur Erhaltung der historischen Windmühle in Tünde
 default_language = "de"
 compile_sass = true
 generate_feeds = true
+# Per-directory agent instructions (AGENTS.md / CLAUDE.md) live in content/ too;
+# keep Zola from treating them as pages.
+ignored_content = ["**/AGENTS.md", "**/CLAUDE.md"]
 feed_filenames = ["rss.xml"]
 taxonomies = [{name = "tags", feed = true}]
 

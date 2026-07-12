@@ -1,5 +1,27 @@
 # Windmühle Tündern - Project Instructions
 
+## For AI agents (Claude, Codex, ChatGPT, ...)
+
+This file is the single source of truth for agent instructions. Root `AGENTS.md` and `CLAUDE.md` are symlinks to `.agents/AGENTS.md`; `.claude/agents` and `.claude/skills` symlink into `.agents/`. Edit files under `.agents/`, never the symlinks.
+
+`content/` and `data/` also carry a scoped `AGENTS.md` (+ `CLAUDE.md`), symlinked from `.agents/nested/`, that Codex merges when working in that subtree. Zola ignores them via `ignored_content` in `config.toml`. `templates/` deliberately has none: Zola parses every file there as a Tera template.
+
+Detailed task playbooks live in `.agents/skills/<name>/SKILL.md`. Claude auto-runs them as skills; other agents should read the matching SKILL.md before the task:
+
+- `new-post` — write a trilingual (DE/EN/ES) blog post: voice, image layout, thumbnails
+- `new-tour` — add / update / cancel a Führungen slot or event in `data/fuehrungen.toml`
+- `i18n-sync` — audit DE/EN/ES translation parity
+- `build-check` — run `zola build` and report
+
+Helper scripts (any agent can run these directly):
+
+- `./start-local.sh` — serve at http://127.0.0.1:1111
+- `./scripts/new-post.sh` / `./scripts/make-thumb.sh` — scaffold a post / optimize an image + thumbnail
+- `./scripts/new-tour.sh` — append a public/private tour slot (events are manual, see new-tour playbook)
+- `./scripts/validate-fuehrungen.py` — validate tour data (needs Python 3.11+)
+
+Claude-only extras: subagent role docs in `.agents/agents/*.md` (blog-post-creator, i18n-checker, seo-auditor).
+
 ## Tech Stack
 
 - **SSG**: [Zola](https://www.getzola.org/). Build `zola build`, serve `zola serve`.
@@ -47,12 +69,13 @@ Every content or translation change **must** cover all 3 languages.
   - `date` ISO `YYYY-MM-DD`, Europe/Berlin
   - `time` `HH:MM` 24h
   - `duration_min` integer, defaults to 60
-  - `kind` `"public"` or `"private"`
+  - `kind` `"public"`, `"private"` or `"event"` (non-tour events such as a concert)
   - `status` `"free"`, `"booked"` or `"cancelled"`; private slots cannot be `"free"`
   - `guide` optional string, first name(s) of the tour guide
+  - event slots (`kind = "event"`) also use: `title` (required), `location` (optional venue when it is not the mill), `free_entry` (optional bool, `true` shows an "Eintritt frei" badge)
 - Private slots render opaque. Never include family names or other identifiers in the data file.
 - Phone numbers on the contact card are base64-encoded server-side, revealed on click. When changing one, update `data-display`, `data-tel`, `data-wa` in `templates/fuehrungen.html` via Tera's `base64_encode` filter.
-- JSON-LD `Event` schema emits only for upcoming public, non-cancelled slots.
+- JSON-LD `Event` schema emits for upcoming public tours and events (non-cancelled).
 - After editing, run `scripts/validate-fuehrungen.py`. Run `zola build` before committing.
 
 ## Conventions

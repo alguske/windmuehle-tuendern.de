@@ -14,9 +14,9 @@ The Führungen page (`/fuehrungen/`) reads from `data/fuehrungen.toml` at build 
 | `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
 | `time` | yes | `HH:MM` 24h |
 | `duration_min` | no | integer, defaults to `60` |
-| `kind` | yes | `"public"` (anyone) or `"private"` (closed group) |
+| `kind` | yes | `"public"` (anyone), `"private"` (closed group), or `"event"` (non-tour event, see below) |
 | `status` | yes | `"free"`, `"booked"` or `"cancelled"`. Private cannot be `"free"` |
-| `guide` | no | first name(s), e.g. `"Dirk"` or `"Falk & Philipp"` |
+| `guide` | no | first name(s), e.g. `"Dirk"` or `"Falk & Philipp"` (tours only) |
 
 ## Slot template
 
@@ -29,6 +29,32 @@ kind = "public"     # "public" or "private"
 status = "free"     # "free", "booked", "cancelled"
 guide = "Firstname"
 ```
+
+## Events (kind = "event")
+
+Non-tour events (a concert, a talk) live in the same file so they show on the same calendar, but render differently: a title and optional venue instead of a guide, and no duration. Extra fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `title` | yes | event name, e.g. `"Benefizkonzert Frauenchor Tündern"` |
+| `location` | no | venue when it is not the mill, e.g. `"St. Christophorus-Kirche in Tündern"` |
+| `free_entry` | no | bool; `true` shows an "Eintritt frei" badge |
+
+`status` is `"free"` (happening) or `"cancelled"`. Events are **not** supported by `new-tour.sh` (public/private only), so add them by editing `data/fuehrungen.toml` directly:
+
+```toml
+[[slots]]
+date = "2026-08-29"
+time = "17:00"
+kind = "event"
+status = "free"
+title = "Benefizkonzert Frauenchor Tündern"
+location = "St. Christophorus-Kirche in Tündern"
+free_entry = true
+link = "/aktuelles/benefizkonzert-frauenchor/"   # optional "Mehr erfahren" link
+```
+
+Upcoming, non-cancelled events also emit JSON-LD, using `title` and `location`.
 
 ## Conventions (strict)
 
