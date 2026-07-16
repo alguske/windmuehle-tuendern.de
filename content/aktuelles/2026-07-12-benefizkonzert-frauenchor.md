@@ -1,5 +1,5 @@
 +++
-title = "Benefizkonzert des Frauenchors Tündern"
+title = "Benefizkonzert des Frauenchors Tündern am 29. August"
 description = "Der Frauenchor Tündern singt am 29. August 2026 in der St. Christophorus-Kirche. Der Erlös kommt der Windmühle zugute."
 template = "blog-post.html"
 
