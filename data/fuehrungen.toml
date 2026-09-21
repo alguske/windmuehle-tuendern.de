@@ -102,3 +102,15 @@ time = "14:00"
 kind = "private"
 status = "booked"
 guide = "Dirk"
+
+[[slots]]
+date = "2026-09-30"
+time = "16:00"
+kind = "private"
+status = "booked"
+
+[[slots]]
+date = "2027-09-09"
+time = "15:00"
+kind = "private"
+status = "booked"
