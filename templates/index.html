@@ -107,18 +107,18 @@
         {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
         {% set all_tour_slots = tours_data.slots | default(value=[]) %}
 
-        {% set_global upcoming_public = [] %}
+        {% set_global upcoming_visible = [] %}
         {% for s in all_tour_slots %}
             {% set slot_ts = s.date | date(format="%s") | int %}
-            {% if slot_ts >= today_ts and s.kind == "public" and s.status != "cancelled" %}
-                {% set_global upcoming_public = upcoming_public | concat(with=s) %}
+            {% if slot_ts >= today_ts and s.status != "cancelled" %}
+                {% set_global upcoming_visible = upcoming_visible | concat(with=s) %}
             {% endif %}
         {% endfor %}
-        {% set upcoming_public_sorted = upcoming_public | sort(attribute="date") %}
+        {% set upcoming_visible_sorted = upcoming_visible | sort(attribute="date") %}
 
-        {% if upcoming_public_sorted | length > 0 %}
+        {% if upcoming_visible_sorted | length > 0 %}
             <div class="tours-cards">
-                {% for s in upcoming_public_sorted | slice(end=3) %}
+                {% for s in upcoming_visible_sorted | slice(end=3) %}
                     {% set duration = s.duration_min | default(value=60) %}
                     <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="tours-card">
                         <div class="tours-card__cal" aria-hidden="true">
@@ -134,12 +134,21 @@
                                     <polyline points="12 6 12 12 16 14"/>
                                 </svg>
                                 {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
-                                <span class="tours-card__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>
+                                {% if s.kind != "event" %}<span class="tours-card__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>{% endif %}
                             </div>
                             <div class="tours-card__meta">
-                                <span class="kind-pill kind-pill--public">{{ trans(key="fuehrungen_kind_public", lang=lang) }}</span>
-                                {% if s.guide %}
-                                    <span class="tours-card__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                {% if s.kind == "event" %}
+                                    <span class="kind-pill kind-pill--event">{{ trans(key="fuehrungen_kind_event", lang=lang) }}</span>
+                                    <span class="tours-card__guide"><strong>{{ s.title }}</strong></span>
+                                {% elif s.kind == "private" %}
+                                    {# Private slots stay opaque here: closed group, never the guide or group name. #}
+                                    <span class="kind-pill kind-pill--private">{{ trans(key="fuehrungen_kind_private", lang=lang) }}</span>
+                                    <span class="tours-card__guide">{{ trans(key="fuehrungen_private_label", lang=lang) }}</span>
+                                {% else %}
+                                    <span class="kind-pill kind-pill--public">{{ trans(key="fuehrungen_kind_public", lang=lang) }}</span>
+                                    {% if s.guide %}
+                                        <span class="tours-card__guide">{{ trans(key="fuehrungen_guide_label", lang=lang) }} <strong>{{ s.guide }}</strong></span>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                         </div>
