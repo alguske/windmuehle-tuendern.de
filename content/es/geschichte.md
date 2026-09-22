@@ -4,6 +4,8 @@ description = "La historia del histórico molino de Tündern desde 1883 hasta ho
 template = "page.html"
 
 [extra]
+youtube_id = "ajloB64x8Ck"
+video_poster = "/imgs/video-muehle-poster.jpg"
 subtitle = "Desde 1883 hasta hoy"
 +++
 

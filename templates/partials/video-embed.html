@@ -1,0 +1,12 @@
+{# Two-click YouTube embed: nothing is requested from Google until the visitor
+   clicks. Driven by page.extra.youtube_id / page.extra.video_poster. #}
+<div class="video-embed" data-youtube-id="{{ page.extra.youtube_id }}" data-title="{{ page.title }}">
+    <button type="button" class="video-embed-trigger" aria-label="{{ trans(key='video_play', lang=lang) }}">
+        <span class="video-thumbnail">
+            <img src="{{ page.extra.video_poster }}" alt="{{ trans(key='video_poster_alt', lang=lang) }}"
+                 width="1200" height="675" loading="lazy" decoding="async">
+        </span>
+    </button>
+    <p class="video-embed-credit">{{ trans(key='video_credit', lang=lang) }}</p>
+    <p class="video-embed-notice">{{ trans(key='video_privacy_notice', lang=lang) }}</p>
+</div>

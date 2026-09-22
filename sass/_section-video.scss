@@ -84,3 +84,60 @@
   border-radius: 4px;
 }
 
+
+// ================================
+// TWO-CLICK YOUTUBE EMBED
+// ================================
+.video-embed {
+  max-width: 800px;
+  margin: 2.5rem auto 0;
+}
+
+.video-embed-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  .video-thumbnail {
+    display: block;
+    border-radius: 8px;
+  }
+
+  // The width/height attributes land as presentational hints, so height has to
+  // go back to auto or aspect-ratio is ignored and the poster outgrows the player.
+  .video-thumbnail img {
+    height: auto;
+    margin: 0;
+  }
+
+  &:hover .video-thumbnail::after {
+    background: rgba(204, 0, 0, 1);
+  }
+}
+
+.video-embed-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 8px;
+}
+
+.video-embed-credit {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  text-align: center;
+}
+
+.video-embed-notice {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #666;
+  text-align: center;
+}

@@ -4,6 +4,8 @@ description = "Die Geschichte der historischen Windmühle Tündern von 1883 bis 
 template = "page.html"
 
 [extra]
+youtube_id = "ajloB64x8Ck"
+video_poster = "/imgs/video-muehle-poster.jpg"
 subtitle = "Von 1883 bis heute"
 +++
 

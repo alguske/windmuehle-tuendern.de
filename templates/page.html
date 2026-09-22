@@ -36,5 +36,9 @@
     <article class="page-content">
         {{ page.content | safe }}
     </article>
+
+    {% if page.extra.youtube_id %}
+        {% include "partials/video-embed.html" %}
+    {% endif %}
 </div>
 {% endblock content %}

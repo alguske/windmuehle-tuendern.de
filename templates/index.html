@@ -13,7 +13,9 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="home-hero">
+<section class="home-hero home-hero--video">
+    <video class="hero-video" data-src="/video/muehle-loop.mp4" poster="/imgs/muehle-loop-poster.jpg"
+           autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="hero-content">
         <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="hero-logo" width="166" height="166" fetchpriority="high" decoding="async">
         <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>

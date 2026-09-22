@@ -4,6 +4,8 @@ description = "The history of the historic Tündern windmill from 1883 to today.
 template = "page.html"
 
 [extra]
+youtube_id = "ajloB64x8Ck"
+video_poster = "/imgs/video-muehle-poster.jpg"
 subtitle = "From 1883 to today"
 +++
 

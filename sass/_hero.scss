@@ -21,11 +21,61 @@
   }
 }
 
+// Decorative background loop. Sits above .home-hero::before, below the scrim.
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.home-hero--video {
+  background: #16301f; // avoids a light flash before the poster paints
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+                rgba(12, 28, 18, 0.62) 0%,
+                rgba(12, 28, 18, 0.48) 45%,
+                rgba(12, 28, 18, 0.72) 100%);
+  }
+
+  // The logo artwork has an opaque white background baked in, so over the
+  // video it has to read as a deliberate badge rather than a stray rectangle.
+  .hero-logo {
+    border-radius: 18px;
+    padding: 0.5rem;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-title {
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-text {
+    color: rgba(255, 255, 255, 0.88);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
 .hero-content {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-logo {
