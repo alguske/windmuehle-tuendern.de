@@ -2,26 +2,21 @@
 // HERO SECTION
 // ================================
 .home-hero {
-  background: linear-gradient(135deg, #fff 0%, #f0f5fa 50%, #e8a83815 100%);
-  padding: 4rem 1rem;
-  text-align: center;
   position: relative;
+  // The sticky header sits in flow above the hero, so its height comes off.
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100svh - var(--nav-height));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 6rem clamp(1.25rem, 4vw, 3.5rem) clamp(2rem, 4vh, 3.5rem);
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(37, 99, 168, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(232, 168, 56, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
+  background: #16301f;
+  text-align: left;
 }
 
-// Decorative background loop. Sits above .home-hero::before, below the scrim.
+// Decorative background loop. Sits under the scrim, which carries the contrast.
 .hero-video {
   position: absolute;
   inset: 0;
@@ -31,80 +26,113 @@
   z-index: 0;
 }
 
-.home-hero--video {
-  background: #16301f; // avoids a light flash before the poster paints
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(180deg,
-                rgba(12, 28, 18, 0.62) 0%,
-                rgba(12, 28, 18, 0.48) 45%,
-                rgba(12, 28, 18, 0.72) 100%);
-  }
-
-  // The logo artwork has an opaque white background baked in, so over the
-  // video it has to read as a deliberate badge rather than a stray rectangle.
-  .hero-logo {
-    border-radius: 18px;
-    padding: 0.5rem;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  }
-
-  .hero-title {
-    color: #fff;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
-  }
-
-  .hero-subtitle {
-    color: rgba(255, 255, 255, 0.94);
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .hero-text {
-    color: rgba(255, 255, 255, 0.88);
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-  }
+// Weighted to the bottom so the mill and the fields stay readable up top.
+.home-hero--video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+              rgba(15, 51, 89, 0.34) 0%,
+              rgba(15, 51, 89, 0.05) 24%,
+              rgba(15, 51, 89, 0.12) 44%,
+              rgba(15, 51, 89, 0.58) 70%,
+              rgba(15, 51, 89, 0.84) 90%,
+              rgba(15, 51, 89, 0.92) 100%);
 }
 
 .hero-content {
-  max-width: 900px;
-  margin: 0 auto;
   position: relative;
   z-index: 2;
+  max-width: 620px;
 }
 
-.hero-logo {
-  width: 160px;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+.hero-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
 .hero-title {
-  font-size: 2.8rem;
+  font-size: clamp(2.25rem, 5.4vw, 3.9rem);
   font-weight: 800;
-  margin-bottom: 1rem;
-  color: var(--c-brand-1);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
-.hero-subtitle {
-  font-size: 1.35rem;
+.hero-lead {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.hero-button-ghost {
+  display: inline-block;
+  padding: 1rem 2.25rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50px;
+  color: #fff;
   font-weight: 600;
-  color: #444;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+    color: #fff;
+  }
 }
 
-.hero-text {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  text-align: center;
+.hero-aside {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+  }
+
+  svg {
+    animation: hero-scroll-hint 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-scroll-hint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
 

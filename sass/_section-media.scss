@@ -1,0 +1,67 @@
+// ================================
+// MEDIA SECTION
+// ================================
+.section-media {
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+  background: #fff;
+}
+
+.home-media {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--c-text-1);
+    margin: 0 0 2rem;
+  }
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.media-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none !important;
+
+  .video-thumbnail {
+    border-radius: 12px;
+  }
+
+  // Width/height attributes arrive as presentational hints, so height has to go
+  // back to auto or aspect-ratio is ignored.
+  .video-thumbnail img {
+    height: auto;
+    margin: 0;
+  }
+
+  &:hover .video-thumbnail::after {
+    background: rgba(204, 0, 0, 1);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--c-text-1);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--c-text-3);
+  }
+}

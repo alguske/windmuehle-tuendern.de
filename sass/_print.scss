@@ -17,8 +17,14 @@
   .home-hero {
     background: #f5f5f5 !important;
     padding: 2rem !important;
+    min-height: 0 !important;
 
-    &::before {
+    &::after {
+      display: none !important;
+    }
+
+    .hero-video,
+    .hero-aside {
       display: none !important;
     }
 

@@ -3,24 +3,43 @@
 // ================================
 @media (max-width: 768px) {
   .home-hero {
-    padding: 2.5rem 1rem;
+    min-height: calc(88svh - var(--nav-height));
+    padding: 5rem 1.25rem 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 1.25rem;
   }
 
-  .hero-logo {
-    width: 120px;
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .hero-title {
-    font-size: 1.75rem;
-    line-height: 1.3;
+  .home-hero .cta-button,
+  .hero-button-ghost {
+    text-align: center;
   }
 
-  .hero-subtitle {
-    font-size: 1rem;
+  .hero-aside {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .hero-text {
-    font-size: 0.95rem;
+  // The scroll hint competes with the buttons once they stack full width.
+  .hero-scroll {
+    display: none;
+  }
+
+  .home-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .tours-preview__head,
+  .news-preview__head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .cta-button {
@@ -130,16 +149,8 @@
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .hero-logo {
-    width: 100px;
+  .home-facts {
+    grid-template-columns: 1fr;
   }
 
   .cta-button {
@@ -164,9 +175,4 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-}
 

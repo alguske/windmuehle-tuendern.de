@@ -4,23 +4,14 @@
 .home-achieved {
   max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 
   h2 {
-    font-size: 2rem;
-    color: var(--c-brand-1);
-    margin: 0 0 0.5rem;
-    position: relative;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
-      margin: 0.75rem auto 0;
-      border-radius: 2px;
-    }
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--c-text-1);
+    margin: 0 0 2rem;
   }
 }
 

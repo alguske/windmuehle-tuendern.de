@@ -7,26 +7,26 @@
   border-top: 3px solid var(--c-accent);
 }
 
+.news-preview__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
 .news-preview {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 
   h2 {
-    font-size: 2rem;
-    color: var(--c-brand-1);
-    margin: 0 0 1.5rem;
-    position: relative;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
-      margin: 0.75rem auto 0;
-      border-radius: 2px;
-    }
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--c-text-1);
+    margin: 0;
   }
 }
 
@@ -105,8 +105,8 @@
 
 .flyer-card {
   display: grid;
-  grid-template-columns: minmax(220px, 320px) 1fr;
-  gap: 2rem;
+  grid-template-columns: 96px 1fr auto;
+  gap: 1.5rem;
   align-items: center;
   background: #fff;
   border-radius: 12px;
@@ -120,10 +120,9 @@
     box-shadow: var(--card-shadow-hover);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     grid-template-columns: 1fr;
     gap: 1rem;
-    text-align: center;
   }
 }
 
@@ -138,14 +137,15 @@
 
 .flyer-card__body {
   h2 {
-    margin: 0 0 0.5rem;
-    color: var(--c-brand-1);
-    font-size: 1.5rem;
+    margin: 0 0 0.25rem;
+    color: var(--c-text-1);
+    font-size: 1.15rem;
   }
 
   p {
-    margin: 0 0 1rem;
-    color: #444;
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--c-text-3);
   }
 }
 
@@ -154,7 +154,9 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--c-brand-1);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.92rem;
+  white-space: nowrap;
 
   svg {
     flex-shrink: 0;
@@ -163,44 +165,87 @@
 
 // Home — Upcoming tours section
 .section-tours {
-  padding: 3rem 1rem;
-  background: #fff;
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+  background: linear-gradient(135deg, var(--c-brand-2) 0%, var(--c-brand-3) 100%);
+  color: #fff;
 }
 
 .tours-preview {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 
   h2 {
-    font-size: 2rem;
-    color: var(--c-brand-1);
+    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+    color: #fff;
     margin: 0 0 0.5rem;
-    position: relative;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--c-brand-1), var(--c-accent));
-      margin: 0.75rem auto 0;
-      border-radius: 2px;
-    }
+    letter-spacing: -0.015em;
   }
 }
 
+.tours-preview__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
 .tours-subtitle {
-  color: #666;
+  color: rgba(255, 255, 255, 0.86);
   font-size: 1.05rem;
-  margin: 0 0 2rem;
+  margin: 0;
+  max-width: 620px;
+}
+
+// The panel is brand navy now, so every surface inside it goes translucent.
+.section-tours {
+  .tours-card {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: none;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.34);
+      box-shadow: none;
+    }
+  }
+
+  .tours-card__cal {
+    background: rgba(255, 255, 255, 0.1);
+    border-right: 2px solid var(--c-accent);
+  }
+
+  .tours-card__cal-month,
+  .tours-card__cal-dow { color: rgba(255, 255, 255, 0.75); }
+  .tours-card__cal-day { color: #fff; }
+  .tours-card__date { color: #fff; }
+  .tours-card__time { color: rgba(255, 255, 255, 0.86); }
+  .tours-card__duration { color: rgba(255, 255, 255, 0.66); }
+  .tours-card__guide { color: rgba(255, 255, 255, 0.86); }
+  .tours-card__guide strong { color: #fff; }
+
+  .kind-pill {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+  }
+
+  .tours-empty {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.86);
+
+    p { color: rgba(255, 255, 255, 0.86); }
+    svg { color: rgba(255, 255, 255, 0.6); }
+  }
 }
 
 .tours-cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin-bottom: 1.5rem;
   text-align: left;
 
   @media (min-width: 720px) {

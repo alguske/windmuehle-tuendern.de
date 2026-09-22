@@ -17,91 +17,63 @@
     <video class="hero-video" data-src="/video/muehle-loop.mp4" poster="/imgs/muehle-loop-poster.jpg"
            autoplay muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="hero-content">
-        <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="hero-logo" width="166" height="166" fetchpriority="high" decoding="async">
-        <h1 class="hero-title">{{ trans(key="home_hero_title", lang=lang) }}</h1>
-        <p class="hero-subtitle">{{ trans(key="home_hero_subtitle", lang=lang) }}</p>
-        <p class="hero-text">{{ trans(key="home_hero_text", lang=lang) }}</p>
-        <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
-            {{ trans(key="home_hero_cta", lang=lang) }}
+        <p class="hero-eyebrow">{{ trans(key="home_hero_title", lang=lang) }}</p>
+        <h1 class="hero-title">{{ trans(key="home_hero_headline", lang=lang) }}</h1>
+        <p class="hero-lead">{{ trans(key="home_hero_lead", lang=lang) }}</p>
+        <div class="hero-actions">
+            <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
+                {{ trans(key="home_hero_cta", lang=lang) }}
+            </a>
+            <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="hero-button-ghost">
+                {{ trans(key="home_hero_cta_secondary", lang=lang) }}
+            </a>
+        </div>
+    </div>
+    <div class="hero-aside">
+        <a class="hero-scroll" href="#mission">
+            <span>{{ trans(key="home_hero_scroll", lang=lang) }}</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"/>
+                <path d="m19 12-7 7-7-7"/>
+            </svg>
         </a>
     </div>
 </section>
 
 <!-- Mission Section -->
-<section class="section-light">
+<section class="section-light" id="mission">
     <div class="home-intro">
-        <h2>{{ trans(key="home_mission_title", lang=lang) }}</h2>
-        <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
-    </div>
-</section>
-
-<!-- Video Section -->
-<section class="section-video">
-    <div class="home-video">
-        <h2>{{ trans(key="home_video_title", lang=lang) }}</h2>
-        <a href="https://www.ndr.de/fernsehen/sendungen/hallo_niedersachsen/tuendern-alte-windmuehle-bei-hameln-bekommt-wieder-fluegel,hallonds-6514.html" target="_blank" rel="noopener noreferrer" class="video-link">
-            <div class="video-thumbnail">
-                <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="{{ trans(key='home_video_alt', lang=lang) }}" loading="lazy" decoding="async">
-                <span class="video-caption">{{ trans(key="home_video_caption", lang=lang) }}</span>
-            </div>
-        </a>
-    </div>
-</section>
-
-<!-- News Section -->
-<section class="section-news">
-    <div class="news-preview">
-        <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
-        <div class="news-cards">
-            {% set news_section = get_section(path=m::content_path(slug="aktuelles/_index.md", lang=lang)) %}
-            {% for post in news_section.pages | slice(end=2) %}
-            <a href="{{ post.permalink }}" class="news-card">
-                {% if post.extra.image %}
-                    {% set parts = post.extra.image | split(pat="/") %}
-                    {% set filename = parts | last | split(pat=".") | first %}
-                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
-                {% endif %}
-                <div class="news-card-content">
-                    <span class="news-date">{{ m::fmt_date(date=post.date, lang=lang) }}</span>
-                    <h3>{{ post.title }}</h3>
-                </div>
+        <div class="home-intro__lead">
+            <p class="section-eyebrow">{{ trans(key="home_mission_title", lang=lang) }}</p>
+            <h2>{{ trans(key="home_mission_headline", lang=lang) }}</h2>
+            <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
+            <a href="{{ m::url(slug='geschichte', lang=lang) }}" class="news-link">
+                {{ trans(key="nav_geschichte", lang=lang) }} &rarr;
             </a>
+        </div>
+        <div class="home-facts">
+            {% for n in [1, 2, 3, 4] %}
+                <div class="fact-card{% if n == 4 %} fact-card--accent{% endif %}">
+                    <span class="fact-card__year">{{ trans(key="home_fact_" ~ n ~ "_year", lang=lang) }}</span>
+                    <span class="fact-card__text">{{ trans(key="home_fact_" ~ n ~ "_text", lang=lang) }}</span>
+                </div>
             {% endfor %}
         </div>
-        <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="news-link">
-            {{ trans(key="home_all_news", lang=lang) }} &rarr;
-        </a>
-    </div>
-</section>
-
-<!-- Flyer Section -->
-<section class="section-light">
-    <div class="home-flyer">
-        <a href="/downloads/flyer-muehleneroeffnung.pdf" class="flyer-card" download>
-            <div class="flyer-card__image">
-                <img src="/imgs/thumbs/flyer-muehleneroeffnung.jpg" alt="{{ trans(key='home_flyer_image_alt', lang=lang) }}" loading="lazy" decoding="async" width="600" height="427">
-            </div>
-            <div class="flyer-card__body">
-                <h2>{{ trans(key="home_flyer_title", lang=lang) }}</h2>
-                <p>{{ trans(key="home_flyer_text", lang=lang) }}</p>
-                <span class="flyer-card__cta">
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    {{ trans(key="home_flyer_cta", lang=lang) }}
-                </span>
-            </div>
-        </a>
     </div>
 </section>
 
 <!-- Upcoming Tours Section -->
 <section class="section-tours">
     <div class="tours-preview">
-        <h2>{{ trans(key="home_tours_title", lang=lang) }}</h2>
-        <p class="tours-subtitle">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
+        <div class="tours-preview__head">
+            <div>
+                <h2>{{ trans(key="home_tours_title", lang=lang) }}</h2>
+                <p class="tours-subtitle">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
+            </div>
+            <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="hero-button-ghost">
+                {{ trans(key="home_tours_cta", lang=lang) }}
+            </a>
+        </div>
 
         {% set tours_data = load_data(path="data/fuehrungen.toml") %}
         {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
@@ -161,18 +133,14 @@
                 <p>{{ trans(key="home_tours_empty", lang=lang) }}</p>
             </div>
         {% endif %}
-
-        <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="news-link">
-            {{ trans(key="home_tours_cta", lang=lang) }} &rarr;
-        </a>
     </div>
 </section>
 
 <!-- Restaurierung Section -->
 <section class="section-accent">
     <div class="home-achieved">
-        <h2>{{ trans(key="home_achieved_title", lang=lang) }}</h2>
-        <p class="achieved-subtitle">{{ trans(key="home_achieved_subtitle", lang=lang) }}</p>
+        <p class="section-eyebrow">{{ trans(key="home_achieved_title", lang=lang) }}</p>
+        <h2>{{ trans(key="home_achieved_subtitle", lang=lang) }}</h2>
         {% set restoration = load_data(path="data/restoration.toml") %}
         {% set r = restoration[lang] %}
         <div class="achieved-columns">
@@ -201,10 +169,85 @@
     </div>
 </section>
 
+<!-- News Section -->
+<section class="section-news">
+    <div class="news-preview">
+        <div class="news-preview__head">
+            <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
+            <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="news-link">
+                {{ trans(key="home_all_news", lang=lang) }} &rarr;
+            </a>
+        </div>
+        <div class="news-cards">
+            {% set news_section = get_section(path=m::content_path(slug="aktuelles/_index.md", lang=lang)) %}
+            {% for post in news_section.pages | slice(end=2) %}
+            <a href="{{ post.permalink }}" class="news-card">
+                {% if post.extra.image %}
+                    {% set parts = post.extra.image | split(pat="/") %}
+                    {% set filename = parts | last | split(pat=".") | first %}
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
+                {% endif %}
+                <div class="news-card-content">
+                    <span class="news-date">{{ m::fmt_date(date=post.date, lang=lang) }}</span>
+                    <h3>{{ post.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Media Section -->
+<section class="section-media">
+    <div class="home-media">
+        <p class="section-eyebrow">{{ trans(key="home_media_eyebrow", lang=lang) }}</p>
+        <h2>{{ trans(key="home_media_title", lang=lang) }}</h2>
+        <div class="media-grid">
+            <a href="{{ m::url(slug='geschichte', lang=lang) }}" class="media-item">
+                <div class="video-thumbnail">
+                    <img src="/imgs/video-muehle-poster.jpg" alt="{{ trans(key='video_poster_alt', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="675">
+                </div>
+                <h3>{{ trans(key="home_media_film_title", lang=lang) }}</h3>
+                <p>{{ trans(key="home_media_film_meta", lang=lang) }} &middot; {{ trans(key="video_credit", lang=lang) }}</p>
+            </a>
+            <a href="https://www.ndr.de/fernsehen/sendungen/hallo_niedersachsen/tuendern-alte-windmuehle-bei-hameln-bekommt-wieder-fluegel,hallonds-6514.html" target="_blank" rel="noopener noreferrer" class="media-item">
+                <div class="video-thumbnail">
+                    <img src="/imgs/neue-fluegel/windmuehle-fertig.jpg" alt="{{ trans(key='home_video_alt', lang=lang) }}" loading="lazy" decoding="async">
+                </div>
+                <h3>{{ trans(key="home_video_title", lang=lang) }}</h3>
+                <p>{{ trans(key="home_video_caption", lang=lang) }}</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Flyer Section -->
+<section class="section-light">
+    <div class="home-flyer">
+        <a href="/downloads/flyer-muehleneroeffnung.pdf" class="flyer-card" download>
+            <div class="flyer-card__image">
+                <img src="/imgs/thumbs/flyer-muehleneroeffnung.jpg" alt="{{ trans(key='home_flyer_image_alt', lang=lang) }}" loading="lazy" decoding="async" width="600" height="427">
+            </div>
+            <div class="flyer-card__body">
+                <h2>{{ trans(key="home_flyer_title", lang=lang) }}</h2>
+                <p>{{ trans(key="home_flyer_text", lang=lang) }}</p>
+            </div>
+            <span class="flyer-card__cta">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                {{ trans(key="home_flyer_cta", lang=lang) }}
+            </span>
+        </a>
+    </div>
+</section>
+
 <!-- Partners Section -->
 <section class="section-light">
     <div class="home-partners">
-        <h2>{{ trans(key="home_partners_title", lang=lang) }}</h2>
+        <p class="section-eyebrow">{{ trans(key="home_partners_title", lang=lang) }}</p>
         <div class="partners-grid">
             <span class="partner-badge">{{ trans(key="home_partner_1", lang=lang) }}</span>
             <span class="partner-badge">{{ trans(key="home_partner_3", lang=lang) }}</span>
