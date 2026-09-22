@@ -4,43 +4,27 @@
 .home-partners {
   max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-
-  .section-eyebrow {
-    margin: 0;
-    flex-shrink: 0;
-  }
 }
 
+// A grid, not flex: badges sized to their text leave the longest name orphaned
+// on a row of its own.
 .partners-grid {
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 0.75rem;
 }
 
 .partner-badge {
-  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.1rem;
+  padding: 0.85rem 1rem;
   background: rgba(37, 99, 168, 0.06);
   border: 1px solid rgba(37, 99, 168, 0.12);
   border-radius: 10px;
   color: var(--c-brand-2);
   font-weight: 600;
   font-size: 0.82rem;
+  line-height: 1.35;
   text-align: center;
-
-  @media (max-width: 768px) {
-    flex: 0 1 calc((100% - 0.75rem) / 2);
-  }
-
-  @media (max-width: 600px) {
-    flex: 1 1 100%;
-  }
 }

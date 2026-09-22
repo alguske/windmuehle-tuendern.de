@@ -7,6 +7,7 @@
             <div class="footer-col">
                 <p class="footer-association">{{ trans(key="footer_association", lang=lang) }}</p>
                 <p class="footer-address">{{ trans(key="footer_address", lang=lang) }}</p>
+                <p class="footer-tagline">{{ trans(key="footer_tagline", lang=lang) }}</p>
             </div>
             <div class="footer-col">
                 <p class="footer-links-title">{{ trans(key="footer_links_title", lang=lang) }}</p>
@@ -15,6 +16,14 @@
                     <a href="{{ m::url(slug=slug, lang=lang) }}">{{ trans(key=footer_keys[loop.index0], lang=lang) }}</a>
                     {% endfor %}
                 </nav>
+            </div>
+            <div class="footer-col">
+                {# The mill stands at a different address from the association's post. #}
+                <p class="footer-links-title">{{ trans(key="footer_visit_title", lang=lang) }}</p>
+                <p class="footer-address">{{ trans(key="footer_visit_address", lang=lang) }}</p>
+                <a class="footer-visit-link" href="{{ m::url(slug='fuehrungen', lang=lang) }}">
+                    {{ trans(key="footer_visit_link", lang=lang) }} &rarr;
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
