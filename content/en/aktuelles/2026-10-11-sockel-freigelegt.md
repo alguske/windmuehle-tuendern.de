@@ -4,7 +4,7 @@ description = "The base of the mill is exposed so that gravel can be added. The 
 template = "blog-post.html"
 
 [taxonomies]
-tags = ["Bauarbeiten"]
+tags = ["Construction"]
 
 [extra]
 image = "/imgs/sockel-freigelegt/sockel-freigelegt-03.jpg"

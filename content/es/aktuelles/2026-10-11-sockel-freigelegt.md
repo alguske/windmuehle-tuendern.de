@@ -4,7 +4,7 @@ description = "El zócalo del molino está al descubierto para poder rellenarlo 
 template = "blog-post.html"
 
 [taxonomies]
-tags = ["Bauarbeiten"]
+tags = ["Obras"]
 
 [extra]
 image = "/imgs/sockel-freigelegt/sockel-freigelegt-03.jpg"
