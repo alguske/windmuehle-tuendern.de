@@ -1,6 +1,6 @@
 +++
 title = "Aktuelles"
-description = "Neuigkeiten rund um die Windmühle Tündern."
+description = "Neuigkeiten, Baufortschritt und Termine rund um die historische Windmühle Tündern bei Hameln."
 template = "section.html"
 page_template = "blog-post.html"
 sort_by = "date"

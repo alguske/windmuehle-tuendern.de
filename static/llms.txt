@@ -1,0 +1,31 @@
+# Windmühle Tündern
+
+> Website des Fördervereins Windmühle Tündern e.V. Die Holländer-Windmühle von 1883 steht in Tündern bei Hameln am Weserradweg. Der Verein erhält und restauriert die Mühle und bietet Führungen an. Die Seite ist auf Deutsch, Englisch und Spanisch verfügbar.
+
+Mill website of the Förderverein Windmühle Tündern e.V. Dutch windmill from 1883 in Tündern near Hameln (Lower Saxony, Germany), on the Weser Cycle Route. Guided tours, restoration news and donations. Available in German, English and Spanish.
+
+## Deutsch
+- [Startseite](https://windmuehle-tuendern.de/): Überblick, nächste Führungen
+- [Aktuelles](https://windmuehle-tuendern.de/aktuelles/): Neuigkeiten und Baufortschritt (RSS: https://windmuehle-tuendern.de/aktuelles/rss.xml)
+- [Führungen](https://windmuehle-tuendern.de/fuehrungen/): Termine für öffentliche und private Führungen
+- [Geschichte](https://windmuehle-tuendern.de/geschichte/): Geschichte der Mühle
+- [Spenden](https://windmuehle-tuendern.de/spenden/): Verein unterstützen
+- [Bilder](https://windmuehle-tuendern.de/bilder/)
+- [Impressum](https://windmuehle-tuendern.de/impressum/)
+
+## English
+- [Home](https://windmuehle-tuendern.de/en/)
+- [News](https://windmuehle-tuendern.de/en/aktuelles/) (RSS: https://windmuehle-tuendern.de/en/aktuelles/rss.xml)
+- [Guided tours](https://windmuehle-tuendern.de/en/fuehrungen/)
+- [History](https://windmuehle-tuendern.de/en/geschichte/)
+- [Donate](https://windmuehle-tuendern.de/en/spenden/)
+
+## Español
+- [Inicio](https://windmuehle-tuendern.de/es/)
+- [Noticias](https://windmuehle-tuendern.de/es/aktuelles/) (RSS: https://windmuehle-tuendern.de/es/aktuelles/rss.xml)
+- [Visitas guiadas](https://windmuehle-tuendern.de/es/fuehrungen/)
+- [Historia](https://windmuehle-tuendern.de/es/geschichte/)
+- [Donaciones](https://windmuehle-tuendern.de/es/spenden/)
+
+## Optional
+- [Sitemap](https://windmuehle-tuendern.de/sitemap.xml)

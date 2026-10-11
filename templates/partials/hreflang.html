@@ -1,10 +1,14 @@
 {% if section is defined %}
     {% set current_path = section.path %}
+    {% set has_path = true %}
 {% elif page is defined %}
     {% set current_path = page.path %}
+    {% set has_path = true %}
 {% else %}
     {% set current_path = "/" %}
+    {% set has_path = false %}
 {% endif %}
+{% if has_path %}
 {# Remove language prefix to get base German path #}
 {% if current_path is starting_with(pat="/en/") %}
     {% set base_path = current_path | replace(from="/en", to="") %}
@@ -33,3 +37,7 @@
 <link rel="alternate" hreflang="en" href="{{ config.base_url }}/en{{ base_path }}">
 <link rel="alternate" hreflang="es" href="{{ config.base_url }}/es{{ base_path }}">
 <link rel="alternate" hreflang="x-default" href="{{ config.base_url }}{{ base_path }}">
+{% else %}
+<!-- Taxonomy pages are language specific: self canonical, no hreflang -->
+<link rel="canonical" href="{{ current_url }}">
+{% endif %}

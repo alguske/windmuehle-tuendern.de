@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ trans(key="tag_single_title", lang=lang) }} {{ term.name }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ trans(key="tags_index_subtitle", lang=lang) }}{% endblock description %}
+{% block title %}{{ trans(key="tag_single_title", lang=lang) }} {{ term.name }} | {{ trans(key="site_title", lang=lang) }}{% endblock title %}
+{% block description %}{{ trans(key="tag_single_title", lang=lang) }} {{ term.name }}. {{ trans(key="tags_index_subtitle", lang=lang) }}{% endblock description %}
 
 {% block content %}
 <div class="page-wrapper">

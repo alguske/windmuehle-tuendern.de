@@ -11,8 +11,8 @@
     {% endif %}
     {% set page_description = (section.description or site_description) %}
 {% elif term is defined %}
-    {% set page_title = term.name %}
-    {% set page_description = site_description %}
+    {% set page_title = trans(key="tag_single_title", lang=lang) ~ " " ~ term.name %}
+    {% set page_description = page_title ~ ". " ~ trans(key="tags_index_subtitle", lang=lang) %}
 {% elif terms is defined %}
     {% set page_title = trans(key="tags_index_title", lang=lang) %}
     {% set page_description = trans(key="tags_index_subtitle", lang=lang) %}
@@ -22,10 +22,12 @@
 {% endif %}
 {% set page_url = (current_url or config.base_url) %}
 {% if page is defined and page.extra.image %}
-    {% set og_image = config.base_url ~ page.extra.image %}
+    {% set og_image_path = page.extra.image %}
 {% else %}
-    {% set og_image = config.base_url ~ config.extra.og_image %}
+    {% set og_image_path = config.extra.og_image %}
 {% endif %}
+{% set og_image = config.base_url ~ og_image_path %}
+{% set og_image_meta = get_image_metadata(path="static" ~ og_image_path) %}
 
 {% set org_description = trans(key="seo_org_description", lang=lang) %}
 {% set landmark_name = trans(key="seo_landmark_name", lang=lang) %}
@@ -47,8 +49,8 @@
 <meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ page_description }}">
 <meta property="og:image" content="{{ og_image }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="{{ og_image_meta.width }}">
+<meta property="og:image:height" content="{{ og_image_meta.height }}">
 <meta property="og:image:alt" content="{{ page_title }}">
 <meta property="og:url" content="{{ page_url }}">
 {% set is_post = page is defined and page.path is matching(pat="/aktuelles/|/en/aktuelles/|/es/aktuelles/") %}
@@ -75,7 +77,6 @@
 <meta name="twitter:description" content="{{ page_description }}">
 <meta name="twitter:image" content="{{ og_image }}">
 <meta name="twitter:image:alt" content="{{ page_title }}">
-<meta name="twitter:creator" content="@Chemaclass">
 
 <!-- JSON-LD WebSite -->
 <script type="application/ld+json">
@@ -84,7 +85,7 @@
     "@type": "WebSite",
     "name": "{{ config.extra.site_name }}",
     "url": "{{ config.extra.site_url }}",
-    "description": "{{ page_description }}",
+    "description": "{{ site_description }}",
     "inLanguage": "{{ lang }}",
     "availableLanguage": ["de", "en", "es"],
     "publisher": {
@@ -109,8 +110,7 @@
         "addressLocality": "{{ config.extra.org_city }}",
         "postalCode": "{{ config.extra.org_postal }}",
         "addressCountry": "{{ config.extra.org_country }}"
-    },
-    "sameAs": []
+    }
 }
 </script>
 

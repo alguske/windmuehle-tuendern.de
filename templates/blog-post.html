@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block title %}{% set suffixed = page.title ~ " | " ~ trans(key="site_title", lang=lang) %}{{ suffixed if suffixed | length <= 60 else page.title }}{% endblock title %}
 {% block description %}{{ (page.description or config.description) }}{% endblock description %}
 
 {% block head %}
@@ -38,6 +38,18 @@
         "@type": "WebPage",
         "@id": "{{ page.permalink }}"
     }
+}
+</script>
+<!-- JSON-LD BreadcrumbList -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "{{ trans(key='site_title', lang=lang) }}", "item": "{{ config.base_url }}{{ <lang_prefix lang={lang} /> }}/"},
+        {"@type": "ListItem", "position": 2, "name": "{{ trans(key='nav_aktuelles', lang=lang) }}", "item": "{{ config.base_url }}{{ <url slug="aktuelles" lang={lang} /> }}"},
+        {"@type": "ListItem", "position": 3, "name": "{{ page.title }}", "item": "{{ page.permalink }}"}
+    ]
 }
 </script>
 {% endblock head %}

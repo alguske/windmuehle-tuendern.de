@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+{% block title %}{{ section.title }} | {{ trans(key="site_title", lang=lang) }}{% endblock title %}
 {% block description %}{{ (section.description or config.description) }}{% endblock description %}
 
 {% block content %}
