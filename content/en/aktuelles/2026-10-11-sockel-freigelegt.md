@@ -31,9 +31,9 @@ The wood for the restrooms has arrived. We brought the boards to the mill on a t
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-03.jpg">
 </div>
 
-## Break after the work day
+## Coffee break
 
-In between there was coffee in the mill. We talked about how the work is going and what is still to do. Thank you to everyone who helped.
+During a break the helpers could refresh themselves with coffee. Thank you to everyone who helped.
 
 <div class="post-images">
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-04.jpg">

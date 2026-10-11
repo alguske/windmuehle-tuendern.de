@@ -31,9 +31,9 @@ Für die Sanitäranlage ist das Holz angekommen. Mit dem Hänger haben wir die B
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-03.jpg">
 </div>
 
-## Pause nach dem Arbeitseinsatz
+## Kaffeepause
 
-Zwischendurch gab es Kaffee in der Mühle. Wir haben über den Stand der Arbeiten gesprochen und über das, was noch ansteht. Danke an alle, die mit angepackt haben.
+In einer Pause konnten sich die Helfer mit Kaffee stärken. Danke an alle, die mit angepackt haben.
 
 <div class="post-images">
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-04.jpg">

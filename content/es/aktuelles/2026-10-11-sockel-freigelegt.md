@@ -31,9 +31,9 @@ Ha llegado la madera para los aseos. Trajimos las tablas al molino en un remolqu
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-03.jpg">
 </div>
 
-## Descanso tras la jornada de trabajo
+## Pausa para el café
 
-Entre tanto hubo café en el molino. Hablamos de cómo van las obras y de lo que queda por hacer. Gracias a todos los que echaron una mano.
+En un descanso, los ayudantes pudieron reponer fuerzas con un café. Gracias a todos los que echaron una mano.
 
 <div class="post-images">
   <img src="/imgs/sockel-freigelegt/sockel-freigelegt-04.jpg">
