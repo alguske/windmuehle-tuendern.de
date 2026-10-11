@@ -1,13 +1,4 @@
 {% extends "base.html" %}
-{% import "partials/macros.html" as m %}
-
-{% if section.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif section.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
 
 {% block title %}{{ trans(key="home_hero_title", lang=lang) }}{% endblock title %}
 
@@ -21,10 +12,10 @@
         <h1 class="hero-title">{{ trans(key="home_hero_headline", lang=lang) }}</h1>
         <p class="hero-lead">{{ trans(key="home_hero_lead", lang=lang) }}</p>
         <div class="hero-actions">
-            <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
+            <a href="{{ <url slug="spenden" lang={lang} /> }}" class="cta-button">
                 {{ trans(key="home_hero_cta", lang=lang) }}
             </a>
-            <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="hero-button-ghost">
+            <a href="{{ <url slug="fuehrungen" lang={lang} /> }}" class="hero-button-ghost">
                 {{ trans(key="home_hero_cta_secondary", lang=lang) }}
             </a>
         </div>
@@ -47,7 +38,7 @@
             <p class="section-eyebrow">{{ trans(key="home_mission_title", lang=lang) }}</p>
             <h2>{{ trans(key="home_mission_headline", lang=lang) }}</h2>
             <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
-            <a href="{{ m::url(slug='geschichte', lang=lang) }}" class="news-link">
+            <a href="{{ <url slug="geschichte" lang={lang} /> }}" class="news-link">
                 {{ trans(key="nav_geschichte", lang=lang) }} &rarr;
             </a>
         </div>
@@ -70,36 +61,30 @@
                 <h2>{{ trans(key="home_tours_title", lang=lang) }}</h2>
                 <p class="tours-subtitle">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
             </div>
-            <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="hero-button-ghost">
+            <a href="{{ <url slug="fuehrungen" lang={lang} /> }}" class="hero-button-ghost">
                 {{ trans(key="home_tours_cta", lang=lang) }}
             </a>
         </div>
 
         {% set tours_data = load_data(path="data/fuehrungen.toml") %}
         {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
-        {% set all_tour_slots = tours_data.slots | default(value=[]) %}
+        {% set all_tour_slots = (tours_data.slots or []) %}
 
-        {% set_global upcoming_visible = [] %}
-        {% for s in all_tour_slots %}
-            {% set slot_ts = s.date | date(format="%s") | int %}
-            {% if slot_ts >= today_ts and s.status != "cancelled" %}
-                {% set_global upcoming_visible = upcoming_visible | concat(with=s) %}
-            {% endif %}
-        {% endfor %}
+        {% set upcoming_visible = [s for s in all_tour_slots if (s.date | date(format="%s") | int) >= today_ts and s.status != "cancelled"] %}
         {% set upcoming_visible_sorted = upcoming_visible | sort(attribute="date") %}
 
         {% if upcoming_visible_sorted | length > 0 %}
             <div class="tours-cards">
-                {% for s in upcoming_visible_sorted | slice(end=3) %}
-                    {% set duration = s.duration_min | default(value=60) %}
-                    <a href="{{ m::url(slug='fuehrungen', lang=lang) }}" class="tours-card">
+                {% for s in upcoming_visible_sorted[:3] %}
+                    {% set duration = (s.duration_min or 60) %}
+                    <a href="{{ <url slug="fuehrungen" lang={lang} /> }}" class="tours-card">
                         <div class="tours-card__cal" aria-hidden="true">
-                            <span class="tours-card__cal-month">{{ m::fmt_date(date=s.date, lang=lang, kind="month_short") }}</span>
+                            <span class="tours-card__cal-month">{{ <fmt_date date={s.date} lang={lang} kind="month_short" /> }}</span>
                             <span class="tours-card__cal-day">{{ s.date | date(format="%d") }}</span>
-                            <span class="tours-card__cal-dow">{{ m::fmt_date(date=s.date, lang=lang, kind="weekday_short") }}</span>
+                            <span class="tours-card__cal-dow">{{ <fmt_date date={s.date} lang={lang} kind="weekday_short" /> }}</span>
                         </div>
                         <div class="tours-card__body">
-                            <h3 class="tours-card__date">{{ m::fmt_date(date=s.date, lang=lang, kind="long_with_weekday") }}</h3>
+                            <h3 class="tours-card__date">{{ <fmt_date date={s.date} lang={lang} kind="long_with_weekday" /> }}</h3>
                             <div class="tours-card__time">
                                 <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"/>
@@ -129,7 +114,7 @@
             </div>
         {% else %}
             <div class="tours-empty">
-                {{ m::icon_calendar(size=40, stroke=1.5) }}
+                {{ <icon_calendar size={40} stroke={1.5} /> }}
                 <p>{{ trans(key="home_tours_empty", lang=lang) }}</p>
             </div>
         {% endif %}
@@ -149,21 +134,21 @@
                     <img src="/imgs/flugel-abgebaut/windmill-5.jpeg" alt="{{ trans(key='home_before_label', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_plan_title", lang=lang) }}</h3>
-                <ul>{% for item in r.plan %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
+                <ul>{% for item in r.plan %}<li>{{ <emphasize text={item} /> }}</li>{% endfor %}</ul>
             </div>
             <div class="achieved-column achieved-done">
                 <div class="achieved-image">
                     <img src="/imgs/neue-fluegel/windmuehle-sonnenschein.jpg" alt="{{ trans(key='home_after_label', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_done_title", lang=lang) }}</h3>
-                <ul>{% for item in r.done %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
+                <ul>{% for item in r.done %}<li>{{ <emphasize text={item} /> }}</li>{% endfor %}</ul>
             </div>
             <div class="achieved-column achieved-next">
                 <div class="achieved-image">
                     <img src="/imgs/ostern-fuehrung/besucher-eingang.jpg" alt="{{ trans(key='home_achieved_next_title', lang=lang) }}" loading="lazy" decoding="async">
                 </div>
                 <h3>{{ trans(key="home_achieved_next_title", lang=lang) }}</h3>
-                <ul>{% for item in r.next %}<li>{{ m::emphasize(text=item) }}</li>{% endfor %}</ul>
+                <ul>{% for item in r.next %}<li>{{ <emphasize text={item} /> }}</li>{% endfor %}</ul>
             </div>
         </div>
     </div>
@@ -174,13 +159,13 @@
     <div class="news-preview">
         <div class="news-preview__head">
             <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
-            <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="news-link">
+            <a href="{{ <url slug="aktuelles" lang={lang} /> }}" class="news-link">
                 {{ trans(key="home_all_news", lang=lang) }} &rarr;
             </a>
         </div>
         <div class="news-cards">
-            {% set news_section = get_section(path=m::content_path(slug="aktuelles/_index.md", lang=lang)) %}
-            {% for post in news_section.pages | slice(end=2) %}
+            {% set news_section = get_section(path="aktuelles/_index.md" if lang == "de" else lang ~ "/aktuelles/_index.md", lang=config.default_language) %}
+            {% for post in news_section.pages[:2] %}
             <a href="{{ post.permalink }}" class="news-card">
                 {% if post.extra.image %}
                     {% set parts = post.extra.image | split(pat="/") %}
@@ -188,7 +173,7 @@
                     <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
                 {% endif %}
                 <div class="news-card-content">
-                    <span class="news-date">{{ m::fmt_date(date=post.date, lang=lang) }}</span>
+                    <span class="news-date">{{ <fmt_date date={post.date} lang={lang} /> }}</span>
                     <h3>{{ post.title }}</h3>
                 </div>
             </a>
@@ -203,7 +188,7 @@
         <p class="section-eyebrow">{{ trans(key="home_media_eyebrow", lang=lang) }}</p>
         <h2>{{ trans(key="home_media_title", lang=lang) }}</h2>
         <div class="media-grid">
-            <a href="{{ m::url(slug='geschichte', lang=lang) }}" class="media-item">
+            <a href="{{ <url slug="geschichte" lang={lang} /> }}" class="media-item">
                 <div class="video-thumbnail">
                     <img src="/imgs/video-muehle-poster.jpg" alt="{{ trans(key='video_poster_alt', lang=lang) }}" loading="lazy" decoding="async" width="1200" height="675">
                 </div>
@@ -263,7 +248,7 @@
     <div class="cta-content">
         <p class="cta-quote">{{ trans(key="home_cta_quote", lang=lang) }}</p>
         <p class="cta-message">{{ trans(key="home_cta_message", lang=lang) }}</p>
-        <a href="{{ m::url(slug='spenden', lang=lang) }}" class="cta-button">
+        <a href="{{ <url slug="spenden" lang={lang} /> }}" class="cta-button">
             {{ trans(key="home_cta_button", lang=lang) }}
         </a>
     </div>

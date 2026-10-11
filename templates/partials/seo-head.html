@@ -1,11 +1,15 @@
 {% set site_title = trans(key="site_title", lang=lang) %}
 {% set site_description = trans(key="site_description", lang=lang) %}
 {% if page is defined %}
-    {% set page_title = page.title | default(value=site_title) %}
-    {% set page_description = page.description | default(value=site_description) %}
+    {% set page_title = (page.title or site_title) %}
+    {% set page_description = (page.description or site_description) %}
 {% elif section is defined %}
-    {% set page_title = section.title | default(value=site_title) %}
-    {% set page_description = section.description | default(value=site_description) %}
+    {% if section.path in ["/", "/en/", "/es/", "en/", "es/"] %}
+        {% set page_title = trans(key="home_hero_title", lang=lang) %}
+    {% else %}
+        {% set page_title = (section.title or site_title) %}
+    {% endif %}
+    {% set page_description = (section.description or site_description) %}
 {% elif term is defined %}
     {% set page_title = term.name %}
     {% set page_description = site_description %}
@@ -16,7 +20,7 @@
     {% set page_title = site_title %}
     {% set page_description = site_description %}
 {% endif %}
-{% set page_url = current_url | default(value=config.base_url) %}
+{% set page_url = (current_url or config.base_url) %}
 {% if page is defined and page.extra.image %}
     {% set og_image = config.base_url ~ page.extra.image %}
 {% else %}
@@ -47,7 +51,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ page_title }}">
 <meta property="og:url" content="{{ page_url }}">
-{% set is_post = page is defined and page.path is matching("/aktuelles/|/en/aktuelles/|/es/aktuelles/") %}
+{% set is_post = page is defined and page.path is matching(pat="/aktuelles/|/en/aktuelles/|/es/aktuelles/") %}
 {% if is_post %}
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%d') }}">

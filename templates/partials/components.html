@@ -1,27 +1,22 @@
 {# ===========================================================================
-   Tera macros for trilingual templates.
-   Import: {% import "partials/macros.html" as m %}
+   Tera components for trilingual templates.
+   Call: {{ <name arg="literal" other={expression} /> }}. Components are global
+   and only see what is passed in, so pass lang explicitly.
    =========================================================================== #}
 
 {# Localized URL for an internal slug.
-   m::url(slug="spenden", lang=lang)
+   url(slug="spenden", lang=lang)
      de -> /spenden/
      en -> /en/spenden/
      es -> /es/spenden/  #}
-{% macro url(slug, lang) %}{% if lang == "de" %}/{{ slug }}/{% else %}/{{ lang }}/{{ slug }}/{% endif %}{% endmacro %}
+{% component url(slug, lang) %}{% if lang == "de" %}/{{ slug }}/{% else %}/{{ lang }}/{{ slug }}/{% endif %}{% endcomponent %}
 
 {# Language path prefix (no slug).
-   m::lang_prefix(lang=lang) -> "" | "/en" | "/es" #}
-{% macro lang_prefix(lang) %}{% if lang == "de" %}{% else %}/{{ lang }}{% endif %}{% endmacro %}
-
-{# Content-tree path. DE lives at the root of content/, EN under content/en/,
-   ES under content/es/. Used with get_section / load_data style lookups.
-     m::content_path(slug="aktuelles/_index.md", lang="de") -> "aktuelles/_index.md"
-     m::content_path(slug="aktuelles/_index.md", lang="en") -> "en/aktuelles/_index.md" #}
-{% macro content_path(slug, lang) %}{% if lang == "de" %}{{ slug }}{% else %}{{ lang }}/{{ slug }}{% endif %}{% endmacro %}
+   lang_prefix(lang=lang) -> "" | "/en" | "/es" #}
+{% component lang_prefix(lang) %}{% if lang == "de" %}{% else %}/{{ lang }}{% endif %}{% endcomponent %}
 
 {# Calendar icon. #}
-{% macro icon_calendar(size=22, stroke=2) %}<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="{{ stroke }}" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>{% endmacro %}
+{% component icon_calendar(size=22, stroke=2) %}<svg viewBox="0 0 24 24" width="{{ size }}" height="{{ size }}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="{{ stroke }}" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>{% endcomponent %}
 
 {# Localized date formatter.
    kind: "long"              -> "17. April 2026" / "April 17, 2026" / "17 de abril de 2026"
@@ -29,39 +24,39 @@
    kind: "month_short"       -> "Apr."
    kind: "weekday_short"     -> "Fr."
    kind: "day_month_short"   -> "17. Apr." / "Apr 17" / "17 abr." #}
-{% macro fmt_date(date, lang, kind="long") -%}
+{% component fmt_date(date, lang, kind="long") -%}
 {%- if kind == "long" -%}
-{%- if lang == "de" -%}{{ date | date(format="%d. %B %Y", locale="de_DE") }}
-{%- elif lang == "en" -%}{{ date | date(format="%B %d, %Y", locale="en_US") }}
-{%- else -%}{{ date | date(format="%d de %B de %Y", locale="es_ES") }}{%- endif -%}
+{%- if lang == "de" -%}{{ date | date(format="dd. MMMM y", locale="de_DE") }}
+{%- elif lang == "en" -%}{{ date | date(format="MMMM dd, y", locale="en_US") }}
+{%- else -%}{{ date | date(format="dd 'de' MMMM 'de' y", locale="es_ES") }}{%- endif -%}
 {%- elif kind == "long_with_weekday" -%}
-{%- if lang == "de" -%}{{ date | date(format="%A, %d. %B %Y", locale="de_DE") }}
-{%- elif lang == "en" -%}{{ date | date(format="%A, %B %d, %Y", locale="en_US") }}
-{%- else -%}{{ date | date(format="%A, %d de %B de %Y", locale="es_ES") }}{%- endif -%}
+{%- if lang == "de" -%}{{ date | date(format="EEEE, dd. MMMM y", locale="de_DE") }}
+{%- elif lang == "en" -%}{{ date | date(format="EEEE, MMMM dd, y", locale="en_US") }}
+{%- else -%}{{ date | date(format="EEEE, dd 'de' MMMM 'de' y", locale="es_ES") }}{%- endif -%}
 {%- elif kind == "month_short" -%}
-{%- if lang == "de" -%}{{ date | date(format="%b", locale="de_DE") }}
-{%- elif lang == "en" -%}{{ date | date(format="%b", locale="en_US") }}
-{%- else -%}{{ date | date(format="%b", locale="es_ES") }}{%- endif -%}
+{%- if lang == "de" -%}{{ (date | date(format="MMM", locale="de_DE") | replace(from=".", to=""))[:3] }}
+{%- elif lang == "en" -%}{{ (date | date(format="MMM", locale="en_US") | replace(from=".", to=""))[:3] }}
+{%- else -%}{{ (date | date(format="MMM", locale="es_ES") | replace(from=".", to=""))[:3] }}{%- endif -%}
 {%- elif kind == "weekday_short" -%}
-{%- if lang == "de" -%}{{ date | date(format="%a", locale="de_DE") }}
-{%- elif lang == "en" -%}{{ date | date(format="%a", locale="en_US") }}
-{%- else -%}{{ date | date(format="%a", locale="es_ES") }}{%- endif -%}
+{%- if lang == "de" -%}{{ (date | date(format="EEE", locale="de_DE") | replace(from=".", to=""))[:3] }}
+{%- elif lang == "en" -%}{{ (date | date(format="EEE", locale="en_US") | replace(from=".", to=""))[:3] }}
+{%- else -%}{{ (date | date(format="EEE", locale="es_ES") | replace(from=".", to=""))[:3] }}{%- endif -%}
 {%- elif kind == "day_month_short" -%}
-{%- if lang == "de" -%}{{ date | date(format="%d. %b", locale="de_DE") }}
-{%- elif lang == "en" -%}{{ date | date(format="%b %d", locale="en_US") }}
-{%- else -%}{{ date | date(format="%d %b", locale="es_ES") }}{%- endif -%}
+{%- if lang == "de" -%}{{ date | date(format="dd. MMM", locale="de_DE") }}
+{%- elif lang == "en" -%}{{ date | date(format="MMM dd", locale="en_US") }}
+{%- else -%}{{ date | date(format="dd MMM", locale="es_ES") }}{%- endif -%}
 {%- endif -%}
-{%- endmacro fmt_date %}
+{%- endcomponent fmt_date %}
 
-{# Native language name. m::lang_native(lang="de") -> "Deutsch" #}
-{% macro lang_native(lang) %}{% if lang == "de" %}Deutsch{% elif lang == "en" %}English{% else %}Español{% endif %}{% endmacro %}
+{# Native language name. lang_native(lang="de") -> "Deutsch" #}
+{% component lang_native(lang) %}{% if lang == "de" %}Deutsch{% elif lang == "en" %}English{% else %}Español{% endif %}{% endcomponent %}
 
 {# Word for "Language" in the given UI lang.
-   m::lang_label(lang="de") -> "Sprache" #}
-{% macro lang_label(lang) %}{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}{% endmacro %}
+   lang_label(lang="de") -> "Sprache" #}
+{% component lang_label(lang) %}{% if lang == "de" %}Sprache{% elif lang == "en" %}Language{% else %}Idioma{% endif %}{% endcomponent %}
 
 {# Render plain text with **bold** markers as <strong>. Uses inline markdown. #}
-{% macro emphasize(text) %}{{ text | markdown(inline=true) | safe }}{% endmacro %}
+{% component emphasize(text) %}{{ text | markdown(inline=true) | safe }}{% endcomponent %}
 
 {# Strip the language prefix from a path so the language switcher can
    point at the same logical page in another language.
@@ -69,23 +64,23 @@
      "/es/aktuelles/"  -> "/aktuelles/"
      "/spenden/"       -> "/spenden/"
    Accepts both leading-slash and non-leading-slash forms. #}
-{% macro strip_lang_prefix(path) -%}
-{%- if path is starting_with("/en/") -%}{{ path | replace(from="/en", to="") }}
-{%- elif path is starting_with("en/") -%}/{{ path | replace(from="en/", to="") }}
-{%- elif path is starting_with("/es/") -%}{{ path | replace(from="/es", to="") }}
-{%- elif path is starting_with("es/") -%}/{{ path | replace(from="es/", to="") }}
-{%- elif path is starting_with("/") -%}{{ path }}
+{% component strip_lang_prefix(path) -%}
+{%- if path is starting_with(pat="/en/") -%}{{ path | replace(from="/en", to="") }}
+{%- elif path is starting_with(pat="en/") -%}/{{ path | replace(from="en/", to="") }}
+{%- elif path is starting_with(pat="/es/") -%}{{ path | replace(from="/es", to="") }}
+{%- elif path is starting_with(pat="es/") -%}/{{ path | replace(from="es/", to="") }}
+{%- elif path is starting_with(pat="/") -%}{{ path }}
 {%- else -%}/{{ path }}
 {%- endif -%}
-{%- endmacro %}
+{%- endcomponent strip_lang_prefix %}
 
 {# One calendar slot <li>. Shared by the upcoming and past lists on the
    Führungen page so the two never drift. kind is "public" | "private"
    (guided tours) or "event" (non-tour events like a concert: renders a
    title + optional location instead of a guide, and an "Eintritt frei"
    badge when free_entry is set). #}
-{% macro slot_item(s, lang) %}
-{%- set duration = s.duration_min | default(value=60) -%}
+{% component slot_item(s, lang) %}
+{%- set duration = (s.duration_min or 60) -%}
 <li class="fuehrungen-slot fuehrungen-slot--{{ s.kind }} fuehrungen-slot--{{ s.status }}">
     <div class="fuehrungen-slot__time">
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -134,5 +129,5 @@
         <a class="fuehrungen-slot__link" href="{{ s.link }}">{{ trans(key="fuehrungen_more_info", lang=lang) }} →</a>
     {% endif %}
 </li>
-{% endmacro %}
+{% endcomponent %}
 

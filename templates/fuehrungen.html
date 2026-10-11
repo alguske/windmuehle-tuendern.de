@@ -1,16 +1,7 @@
 {% extends "base.html" %}
-{% import "partials/macros.html" as m %}
-
-{% if page.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif page.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+{% block description %}{{ (page.description or config.description) }}{% endblock description %}
 
 {% block content %}
 {% if page.extra.header_image %}
@@ -37,18 +28,10 @@
     {# ---------- Slot data ---------- #}
     {% set data = load_data(path="data/fuehrungen.toml") %}
     {% set today_ts = now() | date(format="%Y-%m-%d") | date(format="%s") | int %}
-    {% set all_slots = data.slots | default(value=[]) %}
+    {% set all_slots = (data.slots or []) %}
 
-    {% set_global upcoming = [] %}
-    {% set_global past = [] %}
-    {% for s in all_slots %}
-        {% set slot_ts = s.date | date(format="%s") | int %}
-        {% if slot_ts >= today_ts %}
-            {% set_global upcoming = upcoming | concat(with=s) %}
-        {% else %}
-            {% set_global past = past | concat(with=s) %}
-        {% endif %}
-    {% endfor %}
+    {% set upcoming = [s for s in all_slots if (s.date | date(format="%s") | int) >= today_ts] %}
+    {% set past = [s for s in all_slots if (s.date | date(format="%s") | int) < today_ts] %}
 
     {% set upcoming_sorted = upcoming | sort(attribute="date") %}
     {% set past_sorted = past | sort(attribute="date") | reverse %}
@@ -56,31 +39,31 @@
     {# ---------- Upcoming ---------- #}
     <section class="fuehrungen-section">
         <h2 class="fuehrungen-section-title">
-            {{ m::icon_calendar() }}
+            {{ <icon_calendar /> }}
             {{ trans(key="fuehrungen_upcoming_title", lang=lang) }}
         </h2>
 
         {% if upcoming_sorted | length == 0 %}
             <div class="fuehrungen-empty">
-                {{ m::icon_calendar(size=40, stroke=1.5) }}
+                {{ <icon_calendar size={40} stroke={1.5} /> }}
                 <p>{{ trans(key="fuehrungen_no_upcoming", lang=lang) }}</p>
             </div>
         {% else %}
-            {% set grouped = upcoming_sorted | group_by(attribute="date") %}
+            {% set upcoming_dates = [s.date for s in upcoming_sorted] | unique %}
             <div class="fuehrungen-list">
-                {% for date_key, day_slots in grouped %}
-                    {% set day_sorted = day_slots | sort(attribute="time") %}
+                {% for date_key in upcoming_dates %}
+                    {% set day_sorted = [s for s in upcoming_sorted if s.date == date_key] | sort(attribute="time") %}
                     <article class="fuehrungen-day">
                         <div class="fuehrungen-day__cal" aria-hidden="true">
-                            <span class="fuehrungen-day__cal-month">{{ m::fmt_date(date=date_key, lang=lang, kind="month_short") }}</span>
+                            <span class="fuehrungen-day__cal-month">{{ <fmt_date date={date_key} lang={lang} kind="month_short" /> }}</span>
                             <span class="fuehrungen-day__cal-day">{{ date_key | date(format="%d") }}</span>
-                            <span class="fuehrungen-day__cal-dow">{{ m::fmt_date(date=date_key, lang=lang, kind="weekday_short") }}</span>
+                            <span class="fuehrungen-day__cal-dow">{{ <fmt_date date={date_key} lang={lang} kind="weekday_short" /> }}</span>
                         </div>
                         <div class="fuehrungen-day__body">
-                            <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
+                            <h3 class="fuehrungen-day__date">{{ <fmt_date date={date_key} lang={lang} kind="long_with_weekday" /> }}</h3>
                             <ul class="fuehrungen-slots">
                                 {% for s in day_sorted %}
-                                    {{ m::slot_item(s=s, lang=lang) }}
+                                    {{ <slot_item s={s} lang={lang} /> }}
                                 {% endfor %}
                             </ul>
                         </div>
@@ -226,21 +209,21 @@
                     <span class="fuehrungen-past-summary__label">{{ trans(key="fuehrungen_past_toggle", lang=lang) }}</span>
                 </summary>
 
-                {% set grouped = past_sorted | group_by(attribute="date") %}
+                {% set past_dates = [s.date for s in past_sorted] | unique %}
                 <div class="fuehrungen-list">
-                    {% for date_key, day_slots in grouped %}
-                        {% set day_sorted = day_slots | sort(attribute="time") %}
+                    {% for date_key in past_dates %}
+                        {% set day_sorted = [s for s in past_sorted if s.date == date_key] | sort(attribute="time") %}
                         <article class="fuehrungen-day fuehrungen-day--past">
                             <div class="fuehrungen-day__cal" aria-hidden="true">
-                                <span class="fuehrungen-day__cal-month">{{ m::fmt_date(date=date_key, lang=lang, kind="month_short") }}</span>
+                                <span class="fuehrungen-day__cal-month">{{ <fmt_date date={date_key} lang={lang} kind="month_short" /> }}</span>
                                 <span class="fuehrungen-day__cal-day">{{ date_key | date(format="%d") }}</span>
-                                <span class="fuehrungen-day__cal-dow">{{ m::fmt_date(date=date_key, lang=lang, kind="weekday_short") }}</span>
+                                <span class="fuehrungen-day__cal-dow">{{ <fmt_date date={date_key} lang={lang} kind="weekday_short" /> }}</span>
                             </div>
                             <div class="fuehrungen-day__body">
-                                <h3 class="fuehrungen-day__date">{{ m::fmt_date(date=date_key, lang=lang, kind="long_with_weekday") }}</h3>
+                                <h3 class="fuehrungen-day__date">{{ <fmt_date date={date_key} lang={lang} kind="long_with_weekday" /> }}</h3>
                                 <ul class="fuehrungen-slots">
                                     {% for s in day_sorted %}
-                                        {{ m::slot_item(s=s, lang=lang) }}
+                                        {{ <slot_item s={s} lang={lang} /> }}
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -253,12 +236,7 @@
 </div>
 
 {# ---------- JSON-LD: emit upcoming public, non-cancelled slots ---------- #}
-{% set_global ld_events = [] %}
-{% for s in upcoming_sorted %}
-    {% if (s.kind == "public" or s.kind == "event") and s.status != "cancelled" %}
-        {% set_global ld_events = ld_events | concat(with=s) %}
-    {% endif %}
-{% endfor %}
+{% set ld_events = [s for s in upcoming_sorted if (s.kind == "public" or s.kind == "event") and s.status != "cancelled"] %}
 {% if ld_events | length > 0 %}
 <script type="application/ld+json">
 [
@@ -268,7 +246,7 @@
       "@type": "Event",
       "name": {% if s.kind == "event" %}{{ s.title | json_encode | safe }}{% else %}{{ "Mühlenführung Windmühle Tündern" | json_encode | safe }}{% endif %},
       "startDate": "{{ s.date }}T{{ s.time }}",
-      {% if s.kind != "event" %}"duration": "PT{{ s.duration_min | default(value=60) }}M",
+      {% if s.kind != "event" %}"duration": "PT{{ (s.duration_min or 60) }}M",
       {% endif %}"eventStatus": "{% if s.status == 'cancelled' %}https://schema.org/EventCancelled{% else %}https://schema.org/EventScheduled{% endif %}",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "isAccessibleForFree": {% if s.kind == "event" %}{% if s.free_entry %}true{% else %}false{% endif %}{% else %}true{% endif %},
@@ -288,7 +266,7 @@
         "name": "Förderverein Windmühle Tündern e.V.",
         "url": "{{ config.base_url }}"
       },
-      "url": "{{ current_url | default(value=config.base_url ~ '/fuehrungen/') }}"
+      "url": "{{ (current_url or config.base_url ~ '/fuehrungen/') }}"
     }{% if not loop.last %},{% endif %}
 {% endfor %}
 ]

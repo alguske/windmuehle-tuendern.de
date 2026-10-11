@@ -1,16 +1,7 @@
 {% extends "base.html" %}
-{% import "partials/macros.html" as m %}
-
-{% if page.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif page.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+{% block description %}{{ (page.description or config.description) }}{% endblock description %}
 
 {% block head %}
 <!-- JSON-LD BlogPosting -->
@@ -19,9 +10,9 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "{{ page.title }}",
-    "image": "{{ config.base_url }}{{ page.extra.image | default(value='/imgs/og-image.jpg') }}",
+    "image": "{{ config.base_url }}{{ (page.extra.image or '/imgs/og-image.jpg') }}",
     "datePublished": "{{ page.date | date(format='%Y-%m-%d') }}",
-    "dateModified": "{{ page.updated | default(value=page.date) | date(format='%Y-%m-%d') }}",
+    "dateModified": "{{ (page.updated or page.date) | date(format='%Y-%m-%d') }}",
     "author": {
         "@type": "Organization",
         "name": "{{ config.extra.org_name }}",
@@ -35,14 +26,14 @@
             "url": "{{ config.base_url }}{{ config.extra.logo }}"
         }
     },
-    "description": "{{ page.description | default(value=page.title) }}",
+    "description": "{{ (page.description or page.title) }}",
     "inLanguage": "{{ lang }}",
     "url": "{{ page.permalink }}",
     {% if page.taxonomies.tags %}
     "articleSection": "{{ page.taxonomies.tags | first }}",
     "keywords": "{{ page.taxonomies.tags | join(sep=', ') }}",
     {% endif %}
-    "wordCount": {{ page.word_count | default(value=0) }},
+    "wordCount": {{ (page.word_count or 0) }},
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "{{ page.permalink }}"
@@ -56,7 +47,7 @@
     <div class="page-wrapper">
         <!-- Back to list link -->
         <nav class="blog-nav-top">
-            <a href="{{ m::url(slug='aktuelles', lang=lang) }}" class="back-link">
+            <a href="{{ <url slug="aktuelles" lang={lang} /> }}" class="back-link">
                 {{ trans(key="blog_back_to_list", lang=lang) }}
             </a>
         </nav>
@@ -64,7 +55,7 @@
         <!-- Post header -->
         <header class="blog-header">
             <time class="blog-date" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
-                {{ m::fmt_date(date=page.date, lang=lang) }}
+                {{ <fmt_date date={page.date} lang={lang} /> }}
             </time>
             <h1>{{ page.title }}</h1>
             {% if page.taxonomies.tags %}
@@ -84,7 +75,7 @@
         {% if page.extra.image and not page.extra.hide_hero and body_img_count > 1 %}
         <figure class="blog-hero-image">
             <img src="{{ page.extra.image }}" alt="{{ page.title }}" fetchpriority="high" decoding="async" width="1200" height="800"{% if page.extra.image_position %} style="object-position: {{ page.extra.image_position }};"{% endif %}>
-            <figcaption>{{ page.extra.image_credit | default(value=page.title) }}</figcaption>
+            <figcaption>{{ (page.extra.image_credit or page.title) }}</figcaption>
         </figure>
         {% endif %}
 
@@ -95,7 +86,7 @@
             {% if page.extra.image and page.content | split(pat="<img") | length == 1 %}
             <figure class="blog-full-image">
                 <img src="{{ page.extra.image }}" alt="{{ page.title }}" fetchpriority="high" decoding="async" width="1200" height="800">
-                <figcaption>{{ page.extra.image_credit | default(value=page.title) }}</figcaption>
+                <figcaption>{{ (page.extra.image_credit or page.title) }}</figcaption>
             </figure>
             {% endif %}
         </div>

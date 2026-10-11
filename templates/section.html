@@ -1,16 +1,7 @@
 {% extends "base.html" %}
-{% import "partials/macros.html" as m %}
-
-{% if section.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif section.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
 
 {% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ section.description | default(value=config.description) }}{% endblock description %}
+{% block description %}{{ (section.description or config.description) }}{% endblock description %}
 
 {% block content %}
 {% if section.extra.header_image %}
@@ -34,8 +25,7 @@
     <div class="blog-list">
         {% for post in section.pages %}
         {% set post_year = post.date | date(format="%Y") %}
-        {% if post_year != current_year %}
-        {% set_global current_year = post_year %}
+        {% if loop.first or post_year != (section.pages[loop.index0 - 1].date | date(format="%Y")) %}
         <h2 class="blog-year-heading">{{ post_year }}</h2>
         {% endif %}
         <article class="blog-card">
@@ -50,7 +40,7 @@
                 <div class="blog-card-content">
                     <div class="blog-card-head">
                         <time class="blog-date" datetime="{{ post.date | date(format='%Y-%m-%d') }}">
-                            {{ m::fmt_date(date=post.date, lang=lang) }}
+                            {{ <fmt_date date={post.date} lang={lang} /> }}
                         </time>
                         {% if post.taxonomies.tags %}
                         <ul class="tag-chip-list">

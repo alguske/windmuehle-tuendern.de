@@ -11,7 +11,7 @@
 set -euo pipefail
 
 # Keep in lockstep with the version pinned in .github/workflows/*.yml.
-ZOLA_VERSION="0.22.0"
+ZOLA_VERSION="0.23.6"
 
 install_zola() {
   if command -v zola >/dev/null 2>&1 && zola --version 2>/dev/null | grep -q "$ZOLA_VERSION"; then

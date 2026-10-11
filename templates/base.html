@@ -1,17 +1,16 @@
-{% import "partials/macros.html" as m %}
 <!DOCTYPE html>
 {% if section is defined %}
-    {% if section.path is starting_with("/en/") or section.path is starting_with("en/") %}{% set lang = "en" %}{% elif section.path is starting_with("/es/") or section.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+    {% if section.path is starting_with(pat="/en/") or section.path is starting_with(pat="en/") %}{% set lang = "en" %}{% elif section.path is starting_with(pat="/es/") or section.path is starting_with(pat="es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
 {% elif page is defined %}
-    {% if page.path is starting_with("/en/") or page.path is starting_with("en/") %}{% set lang = "en" %}{% elif page.path is starting_with("/es/") or page.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+    {% if page.path is starting_with(pat="/en/") or page.path is starting_with(pat="en/") %}{% set lang = "en" %}{% elif page.path is starting_with(pat="/es/") or page.path is starting_with(pat="es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
 {% elif term is defined and term.pages | length > 0 %}
     {% set tp = term.pages | first %}
-    {% if tp.path is starting_with("/en/") or tp.path is starting_with("en/") %}{% set lang = "en" %}{% elif tp.path is starting_with("/es/") or tp.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+    {% if tp.path is starting_with(pat="/en/") or tp.path is starting_with(pat="en/") %}{% set lang = "en" %}{% elif tp.path is starting_with(pat="/es/") or tp.path is starting_with(pat="es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
 {% elif terms is defined and terms | length > 0 %}
     {% set tt = terms | first %}
     {% if tt.pages | length > 0 %}
         {% set tp = tt.pages | first %}
-        {% if tp.path is starting_with("/en/") or tp.path is starting_with("en/") %}{% set lang = "en" %}{% elif tp.path is starting_with("/es/") or tp.path is starting_with("es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
+        {% if tp.path is starting_with(pat="/en/") or tp.path is starting_with(pat="en/") %}{% set lang = "en" %}{% elif tp.path is starting_with(pat="/es/") or tp.path is starting_with(pat="es/") %}{% set lang = "es" %}{% else %}{% set lang = "de" %}{% endif %}
     {% else %}{% set lang = "de" %}{% endif %}
 {% elif lang is not defined %}
     {% set lang = "de" %}
@@ -32,7 +31,7 @@
     <link rel="manifest" href="/manifest.json">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="{{ trans(key='site_title', lang=lang) }} – {{ trans(key='nav_aktuelles', lang=lang) }}" href="{{ config.base_url }}{{ m::url(slug='aktuelles', lang=lang) }}rss.xml">
+    <link rel="alternate" type="application/rss+xml" title="{{ trans(key='site_title', lang=lang) }} – {{ trans(key='nav_aktuelles', lang=lang) }}" href="{{ config.base_url }}{{ <url slug="aktuelles" lang={lang} /> }}rss.xml">
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://rum.cronitor.io" crossorigin>

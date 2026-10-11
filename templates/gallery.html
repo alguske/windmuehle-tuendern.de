@@ -1,15 +1,7 @@
 {% extends "base.html" %}
 
-{% if page.path is starting_with("/en/") %}
-    {% set lang = "en" %}
-{% elif page.path is starting_with("/es/") %}
-    {% set lang = "es" %}
-{% else %}
-    {% set lang = "de" %}
-{% endif %}
-
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
-{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+{% block description %}{{ (page.description or config.description) }}{% endblock description %}
 
 {% block content %}
 {% if page.extra.header_image %}

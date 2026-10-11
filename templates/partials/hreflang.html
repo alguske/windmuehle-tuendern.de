@@ -6,22 +6,22 @@
     {% set current_path = "/" %}
 {% endif %}
 {# Remove language prefix to get base German path #}
-{% if current_path is starting_with("/en/") %}
+{% if current_path is starting_with(pat="/en/") %}
     {% set base_path = current_path | replace(from="/en", to="") %}
-{% elif current_path is starting_with("en/") %}
+{% elif current_path is starting_with(pat="en/") %}
     {% set base_path = "/" ~ current_path | replace(from="en/", to="") %}
-{% elif current_path is starting_with("/es/") %}
+{% elif current_path is starting_with(pat="/es/") %}
     {% set base_path = current_path | replace(from="/es", to="") %}
-{% elif current_path is starting_with("es/") %}
+{% elif current_path is starting_with(pat="es/") %}
     {% set base_path = "/" ~ current_path | replace(from="es/", to="") %}
-{% elif current_path is starting_with("/") %}
+{% elif current_path is starting_with(pat="/") %}
     {% set base_path = current_path %}
 {% else %}
     {% set base_path = "/" ~ current_path %}
 {% endif %}
 
 <!-- Canonical URL -->
-{% if current_path is starting_with("/") %}
+{% if current_path is starting_with(pat="/") %}
     {% set canonical_path = current_path %}
 {% else %}
     {% set canonical_path = "/" ~ current_path %}

@@ -1,8 +1,7 @@
-{% import "partials/macros.html" as m %}
 <header class="site-header">
     <nav class="main-nav">
         <div class="nav-brand">
-            <a href="{{ m::lang_prefix(lang=lang) }}/" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
+            <a href="{{ <lang_prefix lang={lang} /> }}/" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
                 <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="logo" width="40" height="40" decoding="async">
                 <span class="site-title">{{ trans(key="site_title", lang=lang) }}</span>
             </a>
@@ -13,7 +12,7 @@
             {% set nav_data = load_data(path="data/nav.toml") %}
             {% set nav_items = nav_data.items %}
             {% for item in nav_items %}
-            <li><a href="{{ m::url(slug=item.slug, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
+            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}">{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
         </ul>
 
@@ -33,9 +32,9 @@
                 {% else %}
                     {% set current_path = "/" %}
                 {% endif %}
-                {% set base_path = m::strip_lang_prefix(path=current_path) %}
+                {% set base_path %}{{ <strip_lang_prefix path={current_path} /> }}{% endset %}
                 {% for code in ["de", "en", "es"] %}
-                <li role="menuitem"><a href="{{ m::lang_prefix(lang=code) }}{{ base_path | safe }}" {% if lang == code %}aria-current="true"{% endif %}>{{ m::lang_native(lang=code) }}</a></li>
+                <li role="menuitem"><a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" {% if lang == code %}aria-current="true"{% endif %}>{{ <lang_native lang={code} /> }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -55,13 +54,13 @@
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
         <ul class="mobile-nav-list">
             {% for item in nav_items %}
-            <li><a href="{{ m::url(slug=item.slug, lang=lang) }}">{{ trans(key=item.key, lang=lang) }}</a></li>
+            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}">{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
             <li class="mobile-lang-section">
-                <span class="mobile-lang-label">{{ m::lang_label(lang=lang) }}</span>
+                <span class="mobile-lang-label">{{ <lang_label lang={lang} /> }}</span>
                 <div class="mobile-lang-links">
                     {% for code in ["de", "en", "es"] %}
-                    <a href="{{ m::lang_prefix(lang=code) }}{{ base_path | safe }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
+                    <a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
                     {% endfor %}
                 </div>
             </li>
