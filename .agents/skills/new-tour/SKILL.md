@@ -13,6 +13,7 @@ The Führungen page (`/fuehrungen/`) reads from `data/fuehrungen.toml` at build 
 |---|---|---|
 | `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
 | `time` | yes | `HH:MM` 24h |
+| `all_day` | no | For a whole-day private reservation, set `true` and use `time = "00:00"` only for sorting; the site displays an all-day label instead. |
 | `duration_min` | no | integer, defaults to `60` |
 | `kind` | yes | `"public"` (anyone), `"private"` (closed group), or `"event"` (non-tour event, see below) |
 | `status` | yes | `"free"`, `"booked"` or `"cancelled"`. Private cannot be `"free"` |

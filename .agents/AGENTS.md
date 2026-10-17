@@ -72,6 +72,7 @@ Every content or translation change **must** cover all 3 languages.
 - Schema (validated by `scripts/validate-fuehrungen.py`):
   - `date` ISO `YYYY-MM-DD`, Europe/Berlin
   - `time` `HH:MM` 24h
+  - `all_day` optional bool for private reservations; use `time = "00:00"` only as a sorting value. The site displays an all-day label instead of a time or duration.
   - `duration_min` integer, defaults to 60
   - `kind` `"public"`, `"private"` or `"event"` (non-tour events such as a concert)
   - `status` `"free"`, `"booked"` or `"cancelled"`; private slots cannot be `"free"`

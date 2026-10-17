@@ -38,6 +38,7 @@ def validate() -> list[str]:
         prefix = f"slot #{i}"
         date = str(slot.get("date", ""))
         time = str(slot.get("time", ""))
+        all_day = slot.get("all_day", False)
         kind = slot.get("kind")
         status = slot.get("status")
         guide = slot.get("guide")
@@ -50,6 +51,10 @@ def validate() -> list[str]:
             errors.append(f"{prefix}: invalid date '{date}' (expected YYYY-MM-DD)")
         if not TIME_RE.match(time):
             errors.append(f"{prefix}: invalid time '{time}' (expected HH:MM)")
+        if not isinstance(all_day, bool):
+            errors.append(f"{prefix}: all_day must be boolean, got {all_day!r}")
+        elif all_day and (kind != "private" or time != "00:00"):
+            errors.append(f"{prefix}: all_day requires a private slot with time '00:00' for sorting")
         if kind not in KINDS:
             errors.append(f"{prefix}: invalid kind '{kind}' (expected {sorted(KINDS)})")
         if status not in STATUSES:
