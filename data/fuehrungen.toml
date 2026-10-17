@@ -4,6 +4,7 @@
 # Slot fields:
 #   date         "YYYY-MM-DD"
 #   time         "HH:MM"  (24h)
+#   all_day      optional bool; true uses 00:00 only for sorting and displays "all day"
 #   duration_min default 60
 #   kind         "public" | "private" | "event"
 #   status       "free" | "booked" | "cancelled"
@@ -106,6 +107,19 @@ guide = "Dirk"
 [[slots]]
 date = "2026-09-30"
 time = "16:00"
+kind = "private"
+status = "booked"
+
+[[slots]]
+date = "2027-05-13"
+time = "15:00"
+kind = "private"
+status = "booked"
+
+[[slots]]
+date = "2027-07-29"
+time = "00:00"
+all_day = true
 kind = "private"
 status = "booked"
 

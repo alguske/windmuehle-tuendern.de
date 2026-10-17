@@ -112,6 +112,7 @@ Fields:
 |---|---|---|
 | `date` | yes | `YYYY-MM-DD`, Europe/Berlin |
 | `time` | yes | 24-hour `HH:MM` |
+| `all_day` | no | Private reservation only; set `true` with `time = "00:00"` as a sorting value. The site displays “all day,” not midnight or a duration. |
 | `duration_min` | no | integer, defaults to `60` |
 | `kind` | yes | `"public"`, `"private"` or `"event"` (non-tour, e.g. a concert) |
 | `status` | yes | `"free"`, `"booked"` or `"cancelled"` |

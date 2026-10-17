@@ -87,8 +87,12 @@
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12 6 12 12 16 14"/>
         </svg>
-        {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
-        {% if s.kind != "event" %}<span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>{% endif %}
+        {% if s.all_day %}
+            <strong>{{ trans(key="fuehrungen_all_day", lang=lang) }}</strong>
+        {% else %}
+            {% set clock_suffix = trans(key="fuehrungen_clock_suffix", lang=lang) %}<strong>{{ s.time }}{% if clock_suffix %} {{ clock_suffix }}{% endif %}</strong>
+            {% if s.kind != "event" %}<span class="fuehrungen-slot__duration">{{ duration }} {{ trans(key="fuehrungen_min", lang=lang) }}</span>{% endif %}
+        {% endif %}
     </div>
     <div class="fuehrungen-slot__meta">
         {% if s.kind == "event" %}
