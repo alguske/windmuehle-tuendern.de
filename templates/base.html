@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2c5f2d">
+    <meta name="theme-color" content="#17352e">
 
     <title>{% block title %}{{ trans(key="site_title", lang=lang) }}{% endblock title %}</title>
     <meta name="description" content="{% block description %}{{ trans(key="site_description", lang=lang) }}{% endblock description %}">
@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://rum.cronitor.io" crossorigin>
     <link rel="dns-prefetch" href="https://rum.cronitor.io">
 
-    <!-- Styles -->
+    <link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/main.css">
 
     {% include "partials/seo-head.html" %}
@@ -70,9 +70,9 @@
     {% include "partials/lightbox.html" %}
 
     <!-- JavaScript -->
-    <script src="/js/lightbox.js"></script>
-    <script src="/js/mobile-menu.js"></script>
-    <script src="/js/back-to-top.js"></script>
+    <script src="/js/lightbox.js" defer></script>
+    <script src="/js/mobile-menu.js" defer></script>
+    <script src="/js/back-to-top.js" defer></script>
     <script src="/js/hero-video.js" defer></script>
     <script src="/js/video-embed.js" defer></script>
     <script src="/js/copy.js" defer></script>

@@ -2,6 +2,10 @@
 
 {% block title %}{{ trans(key="home_hero_title", lang=lang) }}{% endblock title %}
 
+{% block head %}
+<link rel="preload" as="image" href="/imgs/muehle-loop-poster.jpg" fetchpriority="high">
+{% endblock head %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="home-hero home-hero--video">
@@ -38,30 +42,30 @@
             <p class="section-eyebrow">{{ trans(key="home_mission_title", lang=lang) }}</p>
             <h2>{{ trans(key="home_mission_headline", lang=lang) }}</h2>
             <p>{{ trans(key="home_mission_text", lang=lang) | safe }}</p>
-            <a href="{{ <url slug="geschichte" lang={lang} /> }}" class="news-link">
+            <a href="{{ <url slug="geschichte" lang={lang} /> }}" class="text-link">
                 {{ trans(key="nav_geschichte", lang=lang) }} &rarr;
             </a>
         </div>
-        <div class="home-facts">
+        <ol class="home-facts">
             {% for n in [1, 2, 3, 4] %}
-                <div class="fact-card{% if n == 4 %} fact-card--accent{% endif %}">
+                <li class="fact-card{% if n == 4 %} fact-card--accent{% endif %}">
                     <span class="fact-card__year">{{ trans(key="home_fact_" ~ n ~ "_year", lang=lang) }}</span>
                     <span class="fact-card__text">{{ trans(key="home_fact_" ~ n ~ "_text", lang=lang) }}</span>
-                </div>
+                </li>
             {% endfor %}
-        </div>
+        </ol>
     </div>
 </section>
 
 <!-- Upcoming Tours Section -->
 <section class="section-tours">
     <div class="tours-preview">
-        <div class="tours-preview__head">
+        <div class="section-head tours-preview__head">
             <div>
                 <h2>{{ trans(key="home_tours_title", lang=lang) }}</h2>
-                <p class="tours-subtitle">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
+                <p class="section-lead">{{ trans(key="home_tours_subtitle", lang=lang) }}</p>
             </div>
-            <a href="{{ <url slug="fuehrungen" lang={lang} /> }}" class="hero-button-ghost">
+            <a href="{{ <url slug="fuehrungen" lang={lang} /> }}" class="button-outline">
                 {{ trans(key="home_tours_cta", lang=lang) }}
             </a>
         </div>
@@ -126,7 +130,7 @@
 </section>
 
 <!-- Restaurierung Section -->
-<section class="section-accent">
+<section class="section-restoration">
     <div class="home-achieved">
         <p class="section-eyebrow">{{ trans(key="home_achieved_title", lang=lang) }}</p>
         <h2>{{ trans(key="home_achieved_subtitle", lang=lang) }}</h2>
@@ -161,9 +165,9 @@
 <!-- News Section -->
 <section class="section-news">
     <div class="news-preview">
-        <div class="news-preview__head">
+        <div class="section-head news-preview__head">
             <h2>{{ trans(key="home_news_title", lang=lang) }}</h2>
-            <a href="{{ <url slug="aktuelles" lang={lang} /> }}" class="news-link">
+            <a href="{{ <url slug="aktuelles" lang={lang} /> }}" class="text-link">
                 {{ trans(key="home_all_news", lang=lang) }} &rarr;
             </a>
         </div>
@@ -174,7 +178,7 @@
                 {% if post.extra.image %}
                     {% set parts = post.extra.image | split(pat="/") %}
                     {% set filename = parts | last | split(pat=".") | first %}
-                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="{{ post.title }}" loading="lazy" decoding="async" width="400" height="250"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
+                    <img src="/imgs/thumbs/{{ filename }}.jpg" alt="" loading="lazy" decoding="async" width="600" height="450"{% if post.extra.image_position %} style="object-position: {{ post.extra.image_position }};"{% endif %}>
                 {% endif %}
                 <div class="news-card-content">
                     <span class="news-date">{{ <fmt_date date={post.date} lang={lang} /> }}</span>
@@ -250,8 +254,10 @@
 <!-- CTA Section -->
 <section class="section-cta">
     <div class="cta-content">
-        <p class="cta-quote">{{ trans(key="home_cta_quote", lang=lang) }}</p>
-        <p class="cta-message">{{ trans(key="home_cta_message", lang=lang) }}</p>
+        <div>
+            <p class="cta-quote">{{ trans(key="home_cta_quote", lang=lang) }}</p>
+            <p class="cta-message">{{ trans(key="home_cta_message", lang=lang) }}</p>
+        </div>
         <a href="{{ <url slug="spenden" lang={lang} /> }}" class="cta-button">
             {{ trans(key="home_cta_button", lang=lang) }}
         </a>

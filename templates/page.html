@@ -18,6 +18,7 @@
 <div class="page-wrapper">
     {% if not page.extra.header_image %}
     <header class="page-header">
+        <p class="section-eyebrow">{{ trans(key="site_title", lang=lang) }}</p>
         <h1>{{ page.title }}</h1>
         {% if page.extra.subtitle %}
         <p>{{ page.extra.subtitle }}</p>

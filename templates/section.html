@@ -16,6 +16,7 @@
 <div class="page-wrapper">
     {% if not section.extra.header_image %}
     <header class="page-header">
+        <p class="section-eyebrow">{{ trans(key="site_title", lang=lang) }}</p>
         <h1>{{ trans(key="blog_index_title", lang=lang) }}</h1>
         <p>{{ trans(key="blog_index_subtitle", lang=lang) }}</p>
     </header>

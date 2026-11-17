@@ -27,7 +27,7 @@ class MobileMenu {
 
     // Close menu on resize if viewport becomes larger
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && this.isOpen) {
+      if (window.innerWidth >= 900 && this.isOpen) {
         this.close();
       }
     });

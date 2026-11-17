@@ -1,5 +1,15 @@
+{% if section is defined %}
+    {% set current_path = section.path %}
+{% elif page is defined %}
+    {% set current_path = page.path %}
+{% else %}
+    {% set current_path = "/" %}
+{% endif %}
+{% set base_path %}{{ <strip_lang_prefix path={current_path} /> }}{% endset %}
+{% set nav_data = load_data(path="data/nav.toml") %}
+{% set nav_items = nav_data.items %}
 <header class="site-header">
-    <nav class="main-nav">
+    <nav class="main-nav" aria-label="{{ trans(key='footer_links_title', lang=lang) }}">
         <div class="nav-brand">
             <a href="{{ <lang_prefix lang={lang} /> }}/" class="logo-link" aria-label="{{ trans(key='home_hero_title', lang=lang) }}">
                 <img src="{{ config.extra.logo }}" alt="{{ config.extra.logo_alt }}" class="logo" width="40" height="40" decoding="async">
@@ -7,60 +17,47 @@
             </a>
         </div>
 
-        <!-- Desktop navigation -->
         <ul class="nav-menu">
-            {% set nav_data = load_data(path="data/nav.toml") %}
-            {% set nav_items = nav_data.items %}
             {% for item in nav_items %}
-            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}">{{ trans(key=item.key, lang=lang) }}</a></li>
+            {% set item_path = "/" ~ item.slug ~ "/" %}
+            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}" class="nav-link{% if item.slug == 'spenden' %} nav-link--donate{% endif %}"{% if base_path is starting_with(pat=item_path) %} aria-current="page"{% endif %}>{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
         </ul>
 
-        <!-- Language switcher -->
         <div class="lang-switcher">
-            <button class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+            <button class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="{{ <lang_label lang={lang} /> }}: {{ <lang_native lang={lang} /> }}">
                 <span class="lang-current">{{ lang | upper }}</span>
-                <svg class="lang-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                <svg class="lang-icon" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
                     <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
                 </svg>
             </button>
             <ul class="lang-dropdown" role="menu">
-                {% if section is defined %}
-                    {% set current_path = section.path %}
-                {% elif page is defined %}
-                    {% set current_path = page.path %}
-                {% else %}
-                    {% set current_path = "/" %}
-                {% endif %}
-                {% set base_path %}{{ <strip_lang_prefix path={current_path} /> }}{% endset %}
                 {% for code in ["de", "en", "es"] %}
-                <li role="menuitem"><a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" {% if lang == code %}aria-current="true"{% endif %}>{{ <lang_native lang={code} /> }}</a></li>
+                <li role="menuitem"><a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" lang="{{ code }}" hreflang="{{ code }}" {% if lang == code %}aria-current="true"{% endif %}>{{ <lang_native lang={code} /> }}</a></li>
                 {% endfor %}
             </ul>
         </div>
 
-        <!-- Mobile menu button -->
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         </button>
     </nav>
 
-    <!-- Mobile menu overlay -->
     <div class="mobile-overlay" aria-hidden="true"></div>
 
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
         <ul class="mobile-nav-list">
             {% for item in nav_items %}
-            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}">{{ trans(key=item.key, lang=lang) }}</a></li>
+            {% set item_path = "/" ~ item.slug ~ "/" %}
+            <li><a href="{{ <url slug={item.slug} lang={lang} /> }}"{% if base_path is starting_with(pat=item_path) %} aria-current="page"{% endif %}>{{ trans(key=item.key, lang=lang) }}</a></li>
             {% endfor %}
             <li class="mobile-lang-section">
                 <span class="mobile-lang-label">{{ <lang_label lang={lang} /> }}</span>
                 <div class="mobile-lang-links">
                     {% for code in ["de", "en", "es"] %}
-                    <a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
+                    <a href="{{ <lang_prefix lang={code} /> }}{{ base_path | safe }}" lang="{{ code }}" hreflang="{{ code }}" {% if lang == code %}class="active" aria-current="true"{% endif %}>{{ code | upper }}</a>
                     {% endfor %}
                 </div>
             </li>
