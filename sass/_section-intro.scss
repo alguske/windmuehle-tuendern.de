@@ -52,11 +52,9 @@
   }
 
   &--accent {
-    margin-left: -2px;
     padding-block: 1.25rem;
     background: var(--c-surface);
-    border-left: 2px solid var(--c-accent);
-    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    border-radius: var(--radius-m);
 
     .fact-card__year { color: var(--c-text-1); }
     .fact-card__text { color: var(--c-text-1); font-weight: 500; }
