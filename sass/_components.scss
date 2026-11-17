@@ -1,42 +1,47 @@
 // ================================
-// CTA BUTTON
+// BUTTONS
 // ================================
 .cta-button {
-  display: inline-block;
-  background: linear-gradient(135deg, #e8a838 0%, #d4922a 100%);
-  color: #1a1a1a;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  background: var(--c-accent);
+  color: var(--c-text-1);
+  padding: 0.85rem 1.75rem;
+  border: 0;
+  border-radius: 999px;
   text-decoration: none !important;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
-  box-shadow: 0 4px 20px rgba(232, 168, 56, 0.4);
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-  }
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  transition: background 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(232, 168, 56, 0.5);
-    background: linear-gradient(135deg, #f0b442 0%, #e8a838 100%);
-    color: #1a1a1a;
+    background: var(--c-accent-hover);
+    color: var(--c-text-1);
+    transform: translateY(-1px);
+  }
+}
 
-    &::before {
-      left: 100%;
-    }
+.button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border: 1.5px solid var(--c-brand-1);
+  border-radius: 999px;
+  color: var(--c-brand-1);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: var(--c-brand-1);
+    color: #fff;
   }
 }
 
@@ -47,23 +52,41 @@ section {
   padding: 3rem 1rem;
 }
 
+main > section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) var(--page-gutter);
+}
+
 .section-light {
-  background-color: var(--section-bg-light);
+  background-color: var(--c-ground);
 }
 
 .section-accent {
-  background: var(--section-bg-accent);
+  background: var(--c-surface);
+  border-block: 1px solid var(--c-line);
 }
 
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 
-// ================================
-// SECTION EYEBROW
-// ================================
-.section-eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #737b8a;
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+  }
+}
+
+.section-lead {
+  margin: 0.75rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--c-text-2);
+  max-width: 40rem;
+}
+
+main > .section-light + .section-light {
+  padding-top: 0;
 }

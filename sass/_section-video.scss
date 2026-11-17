@@ -2,7 +2,7 @@
 // VIDEO SECTION
 // ================================
 .section-video {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563a8 100%);
+  background: linear-gradient(135deg, var(--c-brand-3) 0%, var(--c-brand-1) 100%);
   padding: 3rem 1rem;
 }
 
@@ -130,7 +130,7 @@
   margin: 0.75rem 0 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #444;
+  color: var(--c-text-2);
   text-align: center;
 }
 
@@ -138,6 +138,6 @@
   margin: 0.35rem 0 0;
   font-size: 0.85rem;
   line-height: 1.5;
-  color: #666;
+  color: var(--c-text-3);
   text-align: center;
 }

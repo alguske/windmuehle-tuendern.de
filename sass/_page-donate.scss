@@ -91,7 +91,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid var(--c-accent);
+      outline: 3px solid var(--c-focus);
       outline-offset: 2px;
     }
 
@@ -162,7 +162,7 @@
   }
 
   .donor-impact__intro {
-    color: #444;
+    color: var(--c-text-2);
     line-height: 1.7;
     margin-bottom: 1.25rem;
   }
@@ -191,14 +191,14 @@
   figcaption {
     padding: 0.6rem 0.75rem;
     font-size: 0.9rem;
-    color: #444;
+    color: var(--c-text-2);
     line-height: 1.4;
   }
 }
 
 
 .thanks-section {
-  background: linear-gradient(135deg, rgba(37, 99, 168, 0.05) 0%, rgba(26, 74, 122, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(46, 106, 92, 0.05) 0%, rgba(23, 53, 46, 0.05) 100%);
   padding: 1.5rem 2rem;
   border-radius: 16px;
   text-align: center;

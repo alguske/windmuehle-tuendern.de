@@ -3,12 +3,12 @@
 // ================================
 $fh-brand: var(--c-brand-1);
 $fh-brand-2: var(--c-brand-2);
-$fh-accent: var(--c-accent);
+$fh-accent: var(--c-brand-1);
 $fh-text: var(--c-text-1);
 $fh-text-soft: var(--c-text-3);
-$fh-border: #e2e8f0;
+$fh-border: var(--c-line);
 $fh-surface: #fff;
-$fh-surface-soft: #f8fafc;
+$fh-surface-soft: var(--c-surface-2);
 
 .fuehrungen-intro {
   margin-bottom: 2.5rem;
@@ -36,9 +36,10 @@ $fh-surface-soft: #f8fafc;
   align-items: center;
   gap: 0.6rem;
   margin: 0 0 1.25rem;
-  font-size: 1.4rem;
-  color: $fh-brand-2;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: $fh-text;
+  font-weight: 600;
   letter-spacing: -0.01em;
 
   svg { color: $fh-accent; flex-shrink: 0; }
@@ -64,9 +65,10 @@ $fh-surface-soft: #f8fafc;
   align-items: center;
   gap: 0.6rem;
   margin: 0 0 1.25rem;
-  font-size: 1.4rem;
-  color: $fh-brand-2;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: $fh-text;
+  font-weight: 600;
   letter-spacing: -0.01em;
 
   &::-webkit-details-marker { display: none; }
@@ -106,7 +108,7 @@ $fh-surface-soft: #f8fafc;
   color: $fh-text-soft;
   text-align: center;
 
-  svg { color: #cbd5e0; }
+  svg { color: var(--c-line); }
   p { margin: 0; max-width: 32em; line-height: 1.6; }
 }
 
@@ -125,7 +127,7 @@ $fh-surface-soft: #f8fafc;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    border-color: rgba(37, 99, 168, 0.3);
+    border-color: rgba(46, 106, 92, 0.3);
     box-shadow: var(--card-shadow);
   }
 }
@@ -138,20 +140,9 @@ $fh-surface-soft: #f8fafc;
   align-items: center;
   justify-content: center;
   padding: 0.85rem 0.5rem;
-  background: linear-gradient(160deg, $fh-brand 0%, $fh-brand-2 100%);
-  color: #fff;
+  background: var(--c-brand-tint);
+  color: $fh-text;
   text-align: center;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, $fh-accent 0%, transparent 100%);
-  }
 }
 
 .fuehrungen-day__cal-month {
@@ -159,12 +150,13 @@ $fh-surface-soft: #f8fafc;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.85);
+  color: $fh-brand;
 }
 
 .fuehrungen-day__cal-day {
+  font-family: var(--font-display);
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.05;
   margin: 0.1rem 0;
   font-variant-numeric: tabular-nums;
@@ -175,7 +167,7 @@ $fh-surface-soft: #f8fafc;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: $fh-accent;
+  color: $fh-text-soft;
 }
 
 .fuehrungen-day__body {
@@ -186,6 +178,7 @@ $fh-surface-soft: #f8fafc;
 
 .fuehrungen-day__date {
   margin: 0 0 0.75rem;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
   color: $fh-brand-2;
@@ -295,7 +288,7 @@ $fh-surface-soft: #f8fafc;
     color: #2f7a4f;
   }
   &--private {
-    background: rgba(37, 99, 168, 0.1);
+    background: rgba(46, 106, 92, 0.1);
     color: $fh-brand-2;
   }
   &--event {
@@ -322,9 +315,9 @@ $fh-surface-soft: #f8fafc;
     border: 1px solid rgba(56, 161, 105, 0.3);
   }
   &--booked {
-    background: rgba(232, 168, 56, 0.15);
-    color: #a05f0a;
-    border: 1px solid rgba(232, 168, 56, 0.4);
+    background: rgba(242, 201, 76, 0.15);
+    color: var(--c-accent-ink);
+    border: 1px solid rgba(242, 201, 76, 0.4);
   }
   &--cancelled {
     background: rgba(220, 53, 53, 0.12);
@@ -332,9 +325,9 @@ $fh-surface-soft: #f8fafc;
     border: 1px solid rgba(220, 53, 53, 0.25);
   }
   &--private {
-    background: rgba(37, 99, 168, 0.1);
+    background: rgba(46, 106, 92, 0.1);
     color: $fh-brand-2;
-    border: 1px solid rgba(37, 99, 168, 0.25);
+    border: 1px solid rgba(46, 106, 92, 0.25);
   }
 }
 
@@ -388,7 +381,7 @@ $fh-surface-soft: #f8fafc;
 
   &:hover {
     border-color: transparent;
-    box-shadow: 0 6px 24px rgba(37, 99, 168, 0.12);
+    box-shadow: 0 6px 24px rgba(46, 106, 92, 0.12);
 
     &::before { opacity: 1; }
   }
@@ -431,18 +424,18 @@ $fh-surface-soft: #f8fafc;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 
-  svg { color: var(--c-accent); }
+  svg { color: var(--c-brand-1); }
 
   &:hover,
   &:focus-visible {
     background: #fff;
     border-color: var(--c-accent);
     color: $fh-brand-2;
-    box-shadow: 0 2px 10px rgba(232, 168, 56, 0.18);
+    box-shadow: 0 2px 10px rgba(242, 201, 76, 0.18);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--c-accent);
+    outline: 3px solid var(--c-focus);
     outline-offset: 2px;
   }
 }
@@ -529,16 +522,16 @@ $fh-surface-soft: #f8fafc;
   color: $fh-brand-2;
   border: 1px solid $fh-border;
 
-  svg { color: var(--c-accent); }
+  svg { color: var(--c-brand-1); }
 
   &:hover,
   &:focus-visible {
     background: #fff;
     border-color: var(--c-accent);
     color: $fh-brand-2;
-    box-shadow: 0 2px 10px rgba(232, 168, 56, 0.18);
+    box-shadow: 0 2px 10px rgba(242, 201, 76, 0.18);
   }
-  &:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+  &:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 2px; }
 }
 
 .btn-whatsapp {
@@ -572,7 +565,7 @@ $fh-surface-soft: #f8fafc;
   &:hover,
   &:focus-visible {
     background: $fh-surface-soft;
-    border-color: rgba(37, 99, 168, 0.35);
+    border-color: rgba(46, 106, 92, 0.35);
   }
 
   &:focus-visible {
@@ -774,4 +767,38 @@ $fh-surface-soft: #f8fafc;
   .contact-card__number { font-size: 1.25rem; letter-spacing: 0; }
   .fuehrungen-day__date { font-size: 0.85rem; }
   .fuehrungen-section-title { font-size: 1.05rem; }
+}
+
+// Contact panel sits on copper shade; the cards inside stay light so the
+// phone reveal and its feedback keep their tested contrast.
+.fuehrungen-contact {
+  --c-focus: var(--c-accent);
+  background: var(--c-brand-3);
+  border-color: var(--c-brand-3);
+  border-radius: var(--radius-l);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: none;
+  color: #fff;
+
+  .fuehrungen-section-title {
+    color: #fff;
+
+    svg { color: var(--c-accent); }
+
+    &::after { background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent); }
+  }
+
+  .fuehrungen-contact-intro { color: rgba(255, 255, 255, 0.88); }
+
+  .contact-card,
+  .fuehrungen-meeting { --c-focus: var(--c-brand-2); }
+}
+
+.fuehrungen-intro {
+  background: var(--c-surface);
+  border-left: 4px solid var(--c-brand-1);
+  border-radius: var(--radius-m);
+  padding: 1.5rem 1.75rem;
+
+  strong { color: var(--c-text-1); }
 }

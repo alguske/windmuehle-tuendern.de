@@ -48,7 +48,7 @@
   a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.8em;
-    color: #666;
+    color: var(--c-text-3);
   }
 
   h1, h2, h3, h4 {

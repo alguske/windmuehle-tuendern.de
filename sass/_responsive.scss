@@ -2,80 +2,6 @@
 // RESPONSIVE ADJUSTMENTS
 // ================================
 @media (max-width: 768px) {
-  .home-hero {
-    min-height: calc(88svh - var(--nav-height));
-    padding: 5rem 1.25rem 2rem;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-end;
-    gap: 1.25rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .home-hero .cta-button,
-  .hero-button-ghost {
-    text-align: center;
-  }
-
-  .hero-aside {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  // The scroll hint competes with the buttons once they stack full width.
-  .hero-scroll {
-    display: none;
-  }
-
-  .home-intro {
-    grid-template-columns: 1fr;
-  }
-
-  .tours-preview__head,
-  .news-preview__head {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cta-button {
-    padding: 0.85rem 2rem;
-    font-size: 1rem;
-  }
-
-  section {
-    padding: 2rem 0.75rem;
-  }
-
-  .home-intro h2 {
-    font-size: 1.5rem;
-  }
-
-  .home-intro p {
-    font-size: 1rem;
-  }
-
-  .page-wrapper {
-    padding: 2rem 1rem 2rem;
-  }
-
-  .page-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-
-    h1 {
-      font-size: 1.8rem;
-    }
-
-    p {
-      font-size: 1rem;
-    }
-  }
-
   .gallery-section h3 {
     font-size: 1.2rem;
   }
@@ -126,10 +52,19 @@
     }
   }
 
-  a, button {
+  .tours-preview__head,
+  .news-preview__head {
+    align-items: flex-start;
+  }
+
+  section {
+    padding: 2rem 0.75rem;
+  }
+
+  // Bigger tap targets, but leave links that flow inside running text alone.
+  a:not(p a):not(li a):not(.page-content a):not(.blog-content a),
+  button {
     min-height: 44px;
-    display: inline-flex;
-    align-items: center;
   }
 
   .update-images img:hover,
@@ -149,29 +84,12 @@
 }
 
 @media (max-width: 480px) {
-  .home-facts {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-button {
-    padding: 0.75rem 1.75rem;
-    font-size: 0.95rem;
-  }
-
-  .home-intro h2 {
-    font-size: 1.25rem;
-  }
-
   .card h3 {
     font-size: 1.1rem;
   }
 
   .scroll-img {
     height: 220px;
-  }
-
-  .page-header h1 {
-    font-size: 1.5rem;
   }
 }
 

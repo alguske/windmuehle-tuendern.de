@@ -1,19 +1,26 @@
 // ================================
 // HERO SECTION
 // ================================
-.home-hero {
+main > .home-hero {
+  --c-focus: var(--c-accent);
   position: relative;
   // The sticky header sits in flow above the hero, so its height comes off.
-  min-height: calc(100vh - var(--nav-height));
-  min-height: calc(100svh - var(--nav-height));
+  min-height: calc(88svh - var(--nav-height));
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 6rem clamp(1.25rem, 4vw, 3.5rem) clamp(2rem, 4vh, 3.5rem);
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding: 6rem max(var(--page-gutter), calc((100% - var(--wide-width)) / 2)) clamp(2rem, 6vh, 4rem);
   overflow: hidden;
-  background: #16301f;
+  background: var(--c-brand-3) url('/imgs/muehle-loop-poster.jpg') 52% 40% / cover no-repeat;
   text-align: left;
+
+  @media (min-width: 900px) {
+    min-height: min(calc(100svh - var(--nav-height)), 820px);
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
 }
 
 // Decorative background loop. Sits under the scrim, which carries the contrast.
@@ -24,9 +31,10 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  margin: 0;
+  border-radius: 0;
 }
 
-// Weighted to the bottom so the mill and the fields stay readable up top.
 .home-hero--video::after {
   content: '';
   position: absolute;
@@ -34,64 +42,78 @@
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(180deg,
-              rgba(15, 51, 89, 0.34) 0%,
-              rgba(15, 51, 89, 0.05) 24%,
-              rgba(15, 51, 89, 0.12) 44%,
-              rgba(15, 51, 89, 0.58) 70%,
-              rgba(15, 51, 89, 0.84) 90%,
-              rgba(15, 51, 89, 0.92) 100%);
+              rgba(23, 53, 46, 0) 15%,
+              rgba(23, 53, 46, 0.8) 52%,
+              rgba(23, 53, 46, 0.96) 100%);
+
+  @media (min-width: 900px) {
+    background:
+      linear-gradient(90deg,
+                      rgba(23, 53, 46, 0.9) 0%,
+                      rgba(23, 53, 46, 0.6) 36%,
+                      rgba(23, 53, 46, 0) 62%),
+      linear-gradient(180deg,
+                      rgba(23, 53, 46, 0) 55%,
+                      rgba(23, 53, 46, 0.7) 100%);
+  }
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 620px;
+  max-width: 44rem;
 }
 
 .hero-eyebrow {
   margin: 0 0 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--c-accent);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
 .hero-title {
-  font-size: clamp(2.25rem, 5.4vw, 3.9rem);
-  font-weight: 800;
-  line-height: 1.06;
+  font-size: clamp(2.75rem, 7vw, 4.75rem);
+  line-height: 1.02;
   letter-spacing: -0.025em;
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   color: #fff;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
 .hero-lead {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.6;
-  margin: 0 0 1.75rem;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  margin: 0 0 2rem;
+  max-width: 34rem;
   color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @media (min-width: 560px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .hero-button-ghost {
-  display: inline-block;
-  padding: 1rem 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
   border: 1.5px solid rgba(255, 255, 255, 0.72);
-  border-radius: 50px;
+  border-radius: 999px;
   color: #fff;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1.2;
   text-decoration: none;
-  transition: var(--transition-smooth);
+  transition: background 0.2s ease, border-color 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.14);
@@ -103,11 +125,12 @@
 .hero-aside {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
+  display: none;
   flex-shrink: 0;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
 }
 
 .hero-scroll {
@@ -115,8 +138,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -135,4 +158,3 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
 }
-

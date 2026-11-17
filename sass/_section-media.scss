@@ -1,21 +1,18 @@
 // ================================
 // MEDIA SECTION
 // ================================
-.section-media {
-  padding: clamp(3rem, 6vw, 5rem) 1rem;
-  background: #fff;
+main > .section-media {
+  background: var(--c-surface);
+  border-block: 1px solid var(--c-line);
 }
 
 .home-media {
-  max-width: 1100px;
+  max-width: var(--wide-width);
   margin: 0 auto;
 
   h2 {
-    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--c-text-1);
-    margin: 0 0 2rem;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
   }
 }
 
@@ -53,15 +50,14 @@
 
   h3 {
     margin: 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.4;
+    font-size: 1.5rem;
+    line-height: 1.25;
     color: var(--c-text-1);
   }
 
   p {
     margin: 0;
-    font-size: 0.9rem;
-    color: var(--c-text-3);
+    font-size: 1rem;
+    color: var(--c-text-2);
   }
 }

@@ -1,24 +1,61 @@
-// Windmühle Tündern - Main Stylesheet
+// Palette taken from the mill itself: limewashed tower, verdigris copper cap,
+// tarred timber sails and the rapeseed field around it.
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-latin-wght-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
-  --nav-height: 70px;
+  --nav-height: 72px;
 
-  // Primary blue palette - classic and trustworthy
-  --c-brand-1: #2563a8;
-  --c-brand-2: #1a4a7a;
-  --c-brand-3: #0f3359;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
 
-  --c-link: #1e5496;
-  --c-accent: #e8a838;
+  --c-ground: #f7f5ef;
+  --c-surface: #fff;
+  --c-surface-2: #f1eee6;
+  --c-line: #e3dfd4;
 
-  --c-text-1: #213547;
-  --c-text-2: #444;
-  --c-text-3: #555;
+  --c-brand-1: #2e6a5c;
+  --c-brand-2: #1f4a40;
+  --c-brand-3: #17352e;
+  --c-brand-tint: #eaf1ee;
 
-  // Design tokens
-  --section-bg-light: #f8fafc;
-  --section-bg-accent: linear-gradient(135deg, #2563a810 0%, #e8a83810 100%);
-  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --c-link: #2e6a5c;
+  --c-accent: #f2c94c;
+  --c-accent-hover: #f5d46c;
+  // Rapeseed is too light for text on limewash; this shade keeps AA contrast.
+  --c-accent-ink: #7a5a00;
+
+  --c-text-1: #1e2422;
+  --c-text-2: #3f4744;
+  --c-text-3: #4a524e;
+
+  --c-focus: #1f4a40;
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --page-gutter: clamp(1rem, 4vw, 3.5rem);
+  --content-width: 720px;
+  --wide-width: 1200px;
+
+  --section-bg-light: var(--c-ground);
+  --section-bg-accent: var(--c-surface);
+  --card-shadow: 0 1px 2px rgba(30, 36, 34, 0.06), 0 4px 16px rgba(30, 36, 34, 0.05);
+  --card-shadow-hover: 0 2px 4px rgba(30, 36, 34, 0.08), 0 10px 28px rgba(30, 36, 34, 0.09);
+  --transition-smooth: all 0.2s ease;
 }

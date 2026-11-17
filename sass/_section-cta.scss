@@ -1,56 +1,47 @@
 // ================================
 // CTA SECTION
 // ================================
-// Closes the page on the mill, the way the hero opens on it, so the final ask
-// sits on a surface with weight instead of a pale wash.
-.section-cta {
-  position: relative;
-  padding: clamp(4rem, 8vw, 6rem) 1rem;
-  text-align: center;
-  background: #16301f url('/imgs/video-muehle-poster.jpg') center 35% / cover no-repeat;
+main > .section-cta {
+  --c-focus: var(--c-accent);
+  background: var(--c-brand-1);
   color: #fff;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-                rgba(15, 51, 89, 0.82) 0%,
-                rgba(15, 51, 89, 0.74) 50%,
-                rgba(15, 51, 89, 0.88) 100%);
-    pointer-events: none;
-  }
 }
 
 .cta-content {
-  position: relative;
-  z-index: 1;
-  max-width: 760px;
+  max-width: var(--wide-width);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
 }
 
 .cta-quote {
-  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
   font-style: italic;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: #fff;
-  margin: 0 0 1rem;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+  margin: 0 0 0.75rem;
+  max-width: 24em;
 }
 
 .cta-message {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.92);
-  margin: 0 0 2rem;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  .cta-message {
-    font-size: 1rem;
-  }
+.cta-content .cta-button {
+  flex-shrink: 0;
 }

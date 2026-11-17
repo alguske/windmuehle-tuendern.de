@@ -2,69 +2,79 @@
 // MISSION / INTRO SECTION
 // ================================
 .home-intro {
-  max-width: 1200px;
+  max-width: var(--wide-width);
   margin: 0 auto;
-  padding: 1rem;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
   align-items: start;
   text-align: left;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
 }
 
 .home-intro__lead {
   h2 {
-    border-top: none;
-    margin: 0 0 1rem;
-    padding-top: 0;
-    font-size: clamp(1.6rem, 2.8vw, 2.25rem);
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--c-text-1);
+    margin: 0 0 1.25rem;
+    font-size: clamp(2rem, 4vw, 2.75rem);
   }
 
-  p {
-    font-size: 1.05rem;
-    line-height: 1.8;
+  p:not(.section-eyebrow) {
+    font-size: 1.125rem;
+    line-height: 1.7;
     color: var(--c-text-2);
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.5rem;
   }
+
+  strong { color: var(--c-text-1); }
 }
 
 .home-facts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--c-line);
 }
 
 .fact-card {
-  padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fff;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0 1.5rem 1.25rem;
+
+  @media (min-width: 560px) {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-left: 2rem;
+  }
 
   &--accent {
-    border-color: rgba(232, 168, 56, 0.45);
-    background: rgba(232, 168, 56, 0.08);
+    margin-left: -2px;
+    padding-block: 1.25rem;
+    background: var(--c-surface);
+    border-left: 2px solid var(--c-accent);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
 
-    .fact-card__year {
-      color: #a05f0a;
-    }
+    .fact-card__year { color: var(--c-text-1); }
+    .fact-card__text { color: var(--c-text-1); font-weight: 500; }
   }
 }
 
 .fact-card__year {
-  display: block;
-  font-size: 2rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
   color: var(--c-brand-1);
 }
 
 .fact-card__text {
-  display: block;
-  margin-top: 0.4rem;
-  font-size: 0.9rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
-  color: var(--c-text-3);
+  color: var(--c-text-2);
 }

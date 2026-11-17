@@ -19,7 +19,7 @@
   font-weight: 500;
   color: var(--c-brand-1);
   background: white;
-  border: 1px solid rgba(37, 99, 168, 0.2);
+  border: 1px solid rgba(46, 106, 92, 0.2);
   text-decoration: none;
   transition: var(--transition-smooth);
   white-space: nowrap;
@@ -29,7 +29,7 @@
     background: #fff;
     color: var(--c-brand-2);
     border-color: var(--c-accent);
-    box-shadow: 0 2px 8px rgba(232, 168, 56, 0.18);
+    box-shadow: 0 2px 8px rgba(242, 201, 76, 0.18);
   }
 }
 
@@ -85,12 +85,12 @@
 
     &:hover,
     &:focus-visible {
-      color: var(--c-accent);
+      color: var(--c-accent-ink);
     }
 
     &:focus-visible {
       opacity: 1;
-      outline: 2px solid var(--c-accent);
+      outline: 3px solid var(--c-focus);
       outline-offset: 2px;
       border-radius: 4px;
     }
@@ -103,7 +103,7 @@
 
   .anchor-link--copied {
     opacity: 1;
-    color: var(--c-accent);
+    color: var(--c-accent-ink);
     transform: scale(1.1);
   }
 }
@@ -120,7 +120,7 @@
   p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #444;
+    color: var(--c-text-2);
   }
 }
 
