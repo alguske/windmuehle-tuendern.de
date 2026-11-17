@@ -44,17 +44,18 @@ class Lightbox {
     });
 
     // Images in galleries
-    document.querySelectorAll('[data-lightbox-gallery]').forEach(gallery => {
-      const images = gallery.querySelectorAll('img');
-      images.forEach((img, index) => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => {
-          this.images = Array.from(images).map(i => ({
-            src: i.src,
-            alt: i.alt
-          }));
-          this.open(index);
-        });
+    // One sequence across every gallery on the page, so next/prev crosses categories.
+    const galleryImages = Array.from(document.querySelectorAll('[data-lightbox-gallery] img'));
+    const galleryItems = galleryImages.map(i => ({
+      src: i.src,
+      alt: i.alt,
+      caption: i.alt || this.galleryLabel(i)
+    }));
+    galleryImages.forEach((img, index) => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        this.images = galleryItems;
+        this.open(index);
       });
     });
 
@@ -84,6 +85,12 @@ class Lightbox {
         this.open(index >= 0 ? index : 0);
       });
     });
+  }
+
+  galleryLabel(img) {
+    const year = img.closest('.gallery-year')?.querySelector('h2')?.textContent.trim();
+    const section = img.closest('.gallery-section')?.querySelector('h3')?.textContent.trim();
+    return [year, section].filter(Boolean).join(' · ');
   }
 
   open(index) {
@@ -139,7 +146,7 @@ class Lightbox {
 
     // Update caption
     if (this.caption) {
-      this.caption.textContent = current.alt || '';
+      this.caption.textContent = current.caption ?? current.alt ?? '';
     }
 
     // Update counter
